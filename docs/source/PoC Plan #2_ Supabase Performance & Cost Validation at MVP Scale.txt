@@ -1,0 +1,99 @@
+PoC Plan #2: Supabase Performance & Cost Validation at MVP Scale
+(Mandated by ADR-WCF-001d: Database & BaaS Platform Selection Strategy & Proof-of-Concept Mandate)
+1. Objective:
+Performance Validation: Empirically validate Supabase (PostgreSQL with RLS, PostgREST API, Edge Functions) against pre-defined quantitative performance targets for representative MVP workloads and data volumes.
+Cost Projection & Viability: Develop a realistic cost model for Supabase usage at 1k, 5k, and 10k MAU, rigorously assessing against the project's budget constraints (PRD: $75/month overall backend cap post-Cycle 3; PoC failure if 10k MAU > $150/month).
+RLS Feasibility & Impact: Assess performance impact and implementation complexity of core RLS policies.
+Core Feature & Operational Feasibility: Confirm essential backend flows and basic operational tasks (backup/restore, data migration snippet) are manageable.
+Observability Snippet: Evaluate ease of diagnosing issues via Supabase dashboard/logs.
+2. Scope & Environment:
+Supabase Project: Dedicated "worldchef-poc" Supabase project in target production region (e.g., us-west-2).
+Tier for PoC: Start on Free tier. If data seeding (100k recipes, 20k users) or extension requirements (e.g., if pg_stat_statements is only on paid) exceed Free tier limits, temporarily upgrade to the smallest "Pro" (or equivalent paid) tier for the duration of the PoC. This cost and the reason for upgrade will be documented.
+
+Schema & RLS: Full relational schema (ADR-WCF-006a/b) including indexes, triggers, ENUMs. Core RLS policies for recipes, recipe_collections, creators implemented and verified for correctness (e.g., policy violation tests).
+Extensions: pg_trgm, unaccent enabled. pg_stat_statements enabled if possible for query analysis.
+Data Seeding (Realistic MVP Scale):
+Users: 20,000 (fake, with varied roles for RLS testing).
+Creators: 5,000.
+Recipes: 100,000 (realistic JSONB for steps/nutrition; relational recipe_ingredients).
+Interactions: ~500k recipe_likes, ~100k collection_recipes across ~20k recipe_collections, ~50k creator_followers.
+Node.js script using  Data distribution should be somewhat realistic (e.g., some popular recipes/creators).
+
+Edge Function ( Deno/TS Supabase Edge Function: accepts ~20 mock ingredient JSON objects, simulates 50ms CPU work (e.g., complex calculation loop, not just setTimeout), returns static nutrition JSON.
+Benchmark Tooling:
+k6: Primary tool for load testing PostgREST API and Edge Function HTTP endpoints.
+Cost Modeling Tool: Detailed spreadsheet referencing current Supabase pricing, explicitly listing assumptions.
+
+Monitoring During PoC: Utilize Supabase Dashboard metrics (CPU, memory, IOPS if available). Enable SQL query logging (e.g., log_statement = 'all' temporarily if needed, or leverage pg_stat_statements) to identify slow queries.
+3. Step-by-Step Plan:
+A. Task 0: Finalize Quantitative Performance Targets & Assumptions (Pre-PoC Start - Sign-off Required):
+Define specific p90/p95 latency targets for each benchmark query/operation (e.g., Read Query p95 < 120ms, Write Flow p95 < 200ms, Edge Warm p95 < 150ms, Edge Cold p95 < 800ms).
+Document detailed MAU usage assumptions for cost model (sessions/user, reads/writes per session, avg. data size, etc.).
+
+B. Setup, Migration Verification & Seeding (Time-boxed: e.g., 2-3 days human effort + script run time):
+Provision Supabase PoC project (upgrade tier if necessary for seed volume/extensions).
+Apply all schema migrations. Verify schema and RLS policies are active and correct (e.g., script checks pg_policy, attempts violating reads/writes with test user JWTs).
+Deploy nutritionEnrich Edge Function.
+Execute data seeding script in efficient batches. Document performance, any issues. Verify data counts.
+Document index creation times and sizes.
+
+C. Performance Benchmarks (Time-boxed: e.g., 3-4 days human effort for script dev, execution, analysis):
+Authentication for k6: Generate a pool of ~100 valid JWTs for distinct test users with representative roles. k6 VUs will randomly select JWTs from this pool to simulate real RLS-affected traffic. Service_role key used only for baseline "no RLS" comparison tests if specified.
+Test 1: Read Query - Recipe Listing (High Concurrency Read with RLS):
+Query: Complex SELECT from active_recipes view, joining creators, filtering by diet @> '{"<random_tag>"}', ORDER BY published_at DESC, LIMIT 20 OFFSET X.
+k6 Script: Ramp to 50 VUs over 30s. Each VU loops, fetching paginated results for 5 minutes.
+Measure: p50, p90, p95, p99 latencies; error rate. Capture EXPLAIN ANALYZE for representative slow queries.
+
+Test 2: Write Operation - User Signup + Creator Profile + First Recipe (Transactional Write via RPC):
+Flow: Implement as a single Supabase Database Function (RPC) create_user_creator_recipe(payload) that handles inserts into auth.users (via admin SDK within function if needed, or separate auth call then RPC), public.users, creators, recipes, recipe_ingredients within a DB transaction.
+k6 Script: Ramp to 20 VUs over 30s. Each VU calls the RPC endpoint every 5-10 seconds for 5 minutes.
+Measure: p50, p90, p95 latencies for RPC call; error rate; DB transaction contention if observable.
+
+Test 3: Edge Function - 
+k6 Script:
+Cold Starts: Deploy/re-deploy function. Immediately hit with 10-20 sequential requests from a single VU, measuring latency of each.
+Warm Performance: Ramp to 30 VUs over 30s. Each VU calls function every 3 seconds for 5 minutes after an initial warm-up call per VU.
+
+Measure: Latency distribution (clearly identify cold vs. warm); error rate. Check Supabase logs for cold start indicators if available.
+
+
+D. Cost Modeling (Time-boxed: e.g., 1-2 days human effort):
+Gather actual usage from PoC (DB storage, egress from k6 results, function invocations/duration, auth users, simulated image storage/egress based on PoC recipe count and image view assumptions).
+Use detailed MAU Usage Assumptions Document to project for 1k, 5k, 10k MAU.
+Model costs against Supabase Free & smallest relevant Paid Tier (e.g., Pro, including costs for features like PITR if deemed necessary by ADR-WCF-020).
+Explicitly list unit costs and assumptions in the cost model spreadsheet.
+
+E. Operational Snippets (Time-boxed: e.g., 0.5-1 day human effort):
+Backup/DR: Perform pg_dump (or Supabase CLI equivalent) of PoC DB. Attempt pg_restore to a local Dockerized Postgres. Document process, time, any issues. Review Supabase PITR if on paid tier.
+Migration Snippet: Export schema and ~100 users/recipes. Attempt import to local vanilla PG. Document effort.
+
+5. Success Criteria & Evaluation (Based on Pre-PoC Finalized Targets from Task 0):
+A. Performance:
+Read Query p95 latency < Target_Read_X ms.
+Write Flow (RPC) p95 latency < Target_Write_Y ms.
+Edge Function Warm p95 latency < Target_EdgeWarm_Z1 ms; Cold Start p95 latency < Target_EdgeCold_Z2 ms.
+Error rate across benchmarks < 1%.
+PoC Fails if two of these scenarios miss finalized targets by >30% despite reasonable optimization attempts within PoC timebox.
+
+B. Cost Projection:
+Projected 10k MAU monthly cost ≤ $100 (allows buffer for $75 budget).
+Projected 1k-5k MAU fits Free Tier, or cost is <$25/mo if paid tier needed for PoC scale/features.
+PoC Fails if 10k MAU projection > $150/mo.
+
+C. RLS Feasibility & Performance:
+RLS policies functional and clear. RLS overhead on critical queries <20-30% compared to non-RLS baseline (if baselined). Qualitative DX positive.
+
+D. Core Feature & Operational Feasibility:
+Seeding, benchmarks, basic backup/restore completed. Qualitative DX for these tasks acceptable.
+
+PoC Evaluation Report explicitly addresses each criterion.
+6. Deliverables & Documentation from PoC Phase:
+Code: Data seeding scripts, k6 benchmark scripts, nutritionEnrich Edge Function, any helper scripts.
+PoC Evaluation Report:
+Quantitative results vs. targets. Raw benchmark data/logs (k6 JSON output, EXPLAIN ANALYZE snippets) as appendix.
+Detailed Cost Model spreadsheet & MAU Usage Assumptions Document.
+RLS assessment. Operational snippets assessment. Qualitative DX feedback.
+Clear Recommendation: Proceed with Supabase for MVP (with specific config/optimizations) OR Supabase PoC failed, trigger re-evaluation (ADR-WCF-001d) and initiate Disaggregated Stack PoC.
+Identified Supabase bottlenecks, risks, specific configuration recommendations.
+
+

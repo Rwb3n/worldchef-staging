@@ -1,0 +1,38 @@
+{
+  "v": 1,
+  "g_updated": 3,
+  "artifact_registry_tree": {
+    "projects": {
+      "flutter": {
+        "worldchef_poc_flutter": "git_remote_url/worldchef_poc_flutter"
+      },
+      "react_native": {
+        "worldchef_poc_rn": "git_remote_url/worldchef_poc_rn"
+      },
+      "mock_server": {
+        "worldchef_poc_mock_server": "git_remote_url/worldchef_poc_mock_server",
+        "worldchef_poc_mock_server_readme": "worldchef_poc_mock_server/README.md"
+      }
+    },
+    "docs": {
+      "device_config": {
+        "worldchef_poc_device_config": "docs/device_configuration.md"
+      },
+      "ai_tooling": {
+        "worldchef_poc_ai_tooling_guide": "docs/ai_tooling_guide.md",
+        "worldchef_poc_ai_prompt_templates": "docs/ai_prompt_templates.md"
+      },
+      "time_tracking": {
+        "worldchef_poc_time_tracking_template": "docs/time_tracking_template.xlsx",
+        "worldchef_poc_time_tracking_guide": "docs/time_tracking_guide.md"
+      },
+      "ci_and_onboarding": {
+        "worldchef_poc_ci_template": "docs/ci_template_guidelines.md",
+        "worldchef_poc_stage1_onboarding_guide": "docs/stage1_onboarding_guide.md"
+      },
+      "testing": {
+        "worldchef_poc_smoke_test_report": "docs/smoke_test_report_stage1.md"
+      }
+    }
+  }
+} 

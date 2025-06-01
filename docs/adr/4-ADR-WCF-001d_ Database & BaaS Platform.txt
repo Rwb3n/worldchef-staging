@@ -1,0 +1,92 @@
+ADR-WCF-001d: Database & BaaS Platform Selection Strategy & Proof-of-Concept Mandate
+Status: ACCEPTED (Decision for MVP Contingent on Rigorous PoC Validation)
+Date: 2025-06-01 (Final version incorporating comprehensive feedback on PoC rigor, quantitative targets, cost modeling, RLS implications, backup/DR considerations, and vendor lock-in mitigation for MVP)
+Authors: WorldChef Architecture Team (Human Leads with AI Assistance)
+1. Context and Problem Statement
+WorldChef requires a persistent data store and Backend-as-a-Service (BaaS) features (authentication, storage, serverless functions) to accelerate MVP development. This ADR documents the selection of Supabase for these capabilities, explicitly for the MVP phase. This decision is made with the understanding that a full quantitative comparison against disaggregated alternative stacks has been deferred to a mandatory, rigorous Post-Acceptance Proof-of-Concept (PoC) validation phase. This PoC will focus on performance (including RLS impact), cost viability at anticipated MVP scale, and core feature feasibility.
+2. Decision Drivers
+Maximum MVP Development Velocity: Primary driver; leverage integrated BaaS to rapidly deliver core MVP features.
+Relational Data Needs & SQL Preference: For core data structure and complex queries.
+Essential Integrated BaaS Features: Out-of-the-box Auth, Storage, basic serverless Functions.
+Cost-Effectiveness for MVP & Early Scale: Alignment with project budget (PRD: $75/month overall backend cap post-Cycle 3).
+Security Model: Fine-grained data access control via RLS.
+Developer Experience & Ecosystem: Good client libraries, documentation.
+(Explicit Assumption: The primary factor for this MVP-phase decision is the perceived development speed of an integrated BaaS. The PoC phase is designed to empirically validate this against critical performance and cost NFRs.)
+3. Considered Options
+Option 1: Supabase (PostgreSQL + Auth + Storage + Edge Functions) - Chosen for MVP, subject to PoC
+Pros: High perceived MVP velocity; integrated suite; PostgreSQL with RLS; good supabase-js client.
+Cons (to be validated/managed by PoC): Service-level vendor lock-in; performance of supabase-js (HTTP to PostgREST) and RLS under load; Edge Function cold starts; cost predictability beyond free tier.
+Option 2: Firebase (Firestore + Firebase BaaS)
+(Rejected due to team's stronger SQL preference for this project's data model and RLS appeal, despite Firestore's capabilities).
+Option 3: Disaggregated Stack (e.g., Managed PostgreSQL like Neon + Auth Service like Auth0 + Object Storage like S3)
+Pros: Potentially optimal performance/cost per component at scale; less single-vendor lock-in.
+Cons: Significantly higher MVP integration effort and initial setup complexity, conflicting with primary velocity driver. (This becomes the primary alternative if Supabase PoC fails).
+4. Decision
+Chosen Option: Supabase is selected as the Database and BaaS platform for the WorldChef MVP.
+Crucial Contingency & PoC Mandate: This decision is strictly contingent upon successful completion of the mandatory Proof-of-Concept (PoC) validations detailed in Section 4.1, to be executed in early Cycle 1 (or sooner). Failure to meet these PoC validation criteria will trigger an immediate re-evaluation of this ADR, including initiating PoCs for Option 3 (Disaggregated Stack) with a newly defined PoC plan.
+4.1. Mandatory Proof-of-Concept (PoC) Plan:
+Objective: Empirically validate Supabase's performance (including RLS and Edge Functions), cost viability for projected MVP scale, and core feature feasibility against pre-defined quantitative targets.
+Scope & Setup:
+Supabase project setup with schema from ADR-WCF-006a/b.
+Seed with realistic MVP data (e.g., 1k users, 100 creators, 5k recipes, 50k interactions).
+Test against a Supabase instance configuration representative of what would be used if moving to a paid plan (e.g., smallest "Pro" tier equivalent if free tier limits are a concern for PoC scale).
+
+Key Areas & Quantitative Targets (Targets 
+Performance - Critical Read Queries (RLS Enabled):
+Measure 95th percentile latency (at DB/PostgREST layer, excluding client-API network) for 3-5 representative complex queries (e.g., Home Feed recipe list with joins & RLS; Recipe Detail with RLS; Ingredient search with RLS).
+Target Example: p95 latency < 150ms for each query under simulated load of 50 concurrent readers.
+Test queries involving RLS policies that might trigger function calls or complex joins.
+
+Performance - Critical Write Operations (RLS Enabled):
+Measure latency for user signup + profile creation; new recipe + ingredients creation.
+Target Example: p95 latency < 200ms for these operations.
+
+Performance - Representative Edge Function:
+Measure cold start time and warm execution time for a sample asynchronous task (e.g., mock nutrition enrichment for 100 ingredients).
+Target Example: Cold start < 800ms; warm execution < 200ms.
+
+Cost Projection Validation:
+Model anticipated data storage (GB), bandwidth/egress (GB), API calls (millions), Edge Function invocations/compute for 1k, 5k, and 10k MAU, using documented Supabase pricing for the chosen region and instance/tier.
+Document underlying usage assumptions for the model (e.g., X reads/user/day, Y image views/user/day).
+Target: Projected monthly cost for 10k MAU (active usage) realistically fits within 
+50−
+50−
+100, validating the $75/month project budget cap feasibility. Free tier should comfortably handle 1k MAU simulation.
+
+RLS Feasibility & Complexity: Implement RLS for 2-3 core entities; confirm query patterns are achievable with acceptable SQL complexity and performance. Qualitatively assess RLS debugging/maintenance effort by human team.
+Backup/DR Simulation (Basic): Perform a simulated data export and review Supabase's documented restore procedures for PITR (if on a plan supporting it for PoC) or daily backups. Assess if RTO/RPO (detailed in ADR-WCF-020) seem achievable.
+Migration Feasibility Snippet (Lock-in Assessment): Briefly PoC exporting a subset of users (Supabase Auth) and recipe data (PostgreSQL) and importing into a local vanilla PostgreSQL instance and a mock alternative auth setup (e.g., simple credential list). Document effort/challenges. This quantifies part of the "lock-in penalty."
+
+PoC "Failure" Criteria (Triggers Re-evaluation):
+Consistent failure to meet 2 of 3 core performance benchmark targets by a margin >30-50%.
+Projected monthly cost for 10k MAU clearly exceeding $150 (significant buffer over $75 target).
+Core RLS policies for essential security proving unperformant to the point of non-viability, or excessively complex to implement/debug within reasonable effort for MVP.
+Significant, unexpected limitations in Supabase features critical for MVP (e.g., auth, storage, basic functions) discovered during PoC.
+
+5. Rationale
+Supabase is chosen for MVP due to its integrated BaaS suite (Auth, Storage, Functions) alongside PostgreSQL, which is perceived to offer the fastest development velocity for initial feature delivery. This integrated nature reduces upfront infrastructure setup and service wiring compared to a disaggregated stack. The strengths of PostgreSQL (SQL, relational integrity, RLS) align with project data modeling preferences (ADR-WCF-006a).
+This decision explicitly prioritizes initial development speed for MVP, accepting the trade-off of service-level vendor lock-in and deferring a full quantitative comparison against disaggregated stacks. The mandatory PoC phase is designed to rigorously validate the critical assumptions regarding Supabase's performance under WorldChef's specific load/query patterns with RLS, and its cost viability at MVP scale, before extensive development investment. If the PoC fails, a pivot to a disaggregated stack (Option 3) will be actively pursued.
+6. Consequences
+Positive Consequences / Benefits (Anticipated for MVP if PoC Validates):
+Accelerated backend development and feature delivery.
+Simplified initial infrastructure and operational management.
+Strong data integrity (PostgreSQL) and security model (RLS, managed Auth).
+Negative Consequences / Trade-offs / Risks:
+Service-Level Vendor Lock-in (High Risk if PoC Fails or is Skipped): Migration from Supabase's specific Auth, Storage, RLS logic, and Edge Functions would be a major refactoring effort.
+Performance Under Specific Loads (PoC Validation Critical): Actual performance of supabase-js (HTTP) interactions, complex RLS, and Edge Functions for WorldChef's use cases needs empirical proof.
+Cost Scaling & Predictability (PoC Validation Critical): Free tier limits must be understood; costs beyond require careful modeling and monitoring against budget. Supabase pricing models may evolve.
+RLS Implementation Complexity & Performance Impact: Requires careful design and ongoing testing.
+Supabase-Specific Expertise Development: Team needs to build proficiency with Supabase features and limitations.
+7. Validation / Success Metrics (Post-PoC, if Supabase is Confirmed)
+PoC phase successfully completed, with all quantitative targets met and qualitative assessments positive.
+Core backend features implemented rapidly. RLS policies effectively secure data without prohibitive performance cost.
+Operational costs align with PoC projections and project budget. Platform stable and reliable.
+Backup/DR procedures (ADR-WCF-020) are successfully implemented and tested against Supabase.
+8. Review / Revisit
+Immediately after PoC Phase (Hard Gate): Decision to proceed with Supabase is confirmed or refuted based on PoC results against defined targets. If refuted, this ADR is updated, and strategy shifts to evaluating Option 3 (Disaggregated Stack) with new PoCs.
+When approaching free tier limits or defined budget thresholds.
+If Supabase significantly changes pricing, core feature set, or SLAs relevant to WorldChef.
+Annually, to reassess against alternative BaaS/database solutions, especially if significant pain points related to performance, cost, or lock-in emerge.
+Human Accountability: While AI assists in development, the WorldChef Architecture Team (Human Leads) holds ultimate accountability for this decision and the rigorous execution and objective evaluation of the mandated PoCs.
+
+

@@ -1,0 +1,229 @@
+{
+  "v": 1,
+  "id": "initiative_plan_poc1_mobile_stack_selection",
+  "g_created": "g<timestamp>",
+  "g_updated": "g<timestamp>",
+  "status": "DRAFT",
+
+  "originating_user_request_id_ref": null,
+  "_originating_user_request_id_ref_locked": true,
+
+  "originating_analysis_report_id_refs": [], // PoC Plan itself is not an "Analysis Report" but a plan. ADR is a decision.
+  "_originating_analysis_report_id_refs_list_immutable": false,
+
+  "originating_artifact_ids_context": [
+    "poc_plan_1_mobile_client_stack_v20250601", // Assuming PoC Plan #1 has this ID
+    "adr_wcf_001a_mobile_client_tech_stack_v20250601" // Mandating ADR
+  ],
+  "_originating_artifact_ids_context_list_immutable": false,
+
+  "linked_project_summary_id_ref": "worldchef_mvp_summary_0",
+  "_linked_project_summary_id_ref_locked": true,
+
+  "overall_goal": "To empirically compare Flutter and React Native (RN, with New Architecture enabled) on key dimensions for the WorldChef application, enabling an evidence-based final stack selection. Dimensions include runtime performance for media-heavy screens, AI code generation effectiveness & human oversight efficiency, developer experience (DX), and basic NFR implementation feasibility for offline, Accessibility (A11y), and Internationalization (i18n).",
+  "_overall_goal_locked": false,
+
+  "quality_acceptance_criteria": [
+    {
+      "criterion_id": "qac_poc1_001",
+      "description": "Scrolling FPS (Recipe List on defined mid-range devices): Sustained average >= 58 FPS AND 95th percentile frame build time < 17ms. No more than 2-3 visible jank events (frame drops > 50ms) per 30-second scroll (3 runs averaged per stack).",
+      "metric_or_verification_method": "Metric collection using Flipper FPS monitor (RN) / Flutter DevTools Performance View (Flutter). Documented test procedure.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_002",
+      "description": "TTI/Load Time (List & Detail screens on defined mid-range devices): p95 < 1.5 seconds (post one initial 'warm-up' app launch, then measure subsequent cold/warm launches). 'Interactive' defined as content rendered and main elements responsive.",
+      "metric_or_verification_method": "On-device code instrumentation (Stopwatch/performance.now()) and visual confirmation. Documented test procedure, caches cleared for 'cold' TTI.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_003",
+      "description": "Memory Usage (Recipe List on defined mid-range devices): Native memory (Android Studio Profiler / Xcode Instruments) and JS/Dart heap remain stable after scrolling full list, with no runaway growth. Relative comparison between stacks.",
+      "metric_or_verification_method": "Profiling tools as specified. Logged memory snapshots.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_004",
+      "description": "Bundle Size: Release build APK/IPA size compared relatively. Significantly larger size for one stack is a negative factor.",
+      "metric_or_verification_method": "File size of release builds.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_005",
+      "description": "AI Code Generation & Human Oversight Efficiency: Quantitative metrics (AI Generation Time, AI Prompt Iteration Count, Human Intervention Hours) and qualitative assessment (1-5 rubric) of AI's ability to produce idiomatic, maintainable, performant code and ease of human review/debug/optimization.",
+      "metric_or_verification_method": "Meticulous time/effort tracking logs. Pre-defined qualitative rubric.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_006",
+      "description": "Developer Experience (DX) (Human Oversight Perspective): Qualitative assessment (1-5 rubric) of ease of project setup, build times, hot reload/fast refresh effectiveness, debugging experience, and quality/accessibility of documentation/community resources.",
+      "metric_or_verification_method": "PoC lead's documented assessment using pre-defined rubric.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_007",
+      "description": "UI Fidelity & Feature Completeness within PoC Scope: Qualitative assessment (1-5 rubric) of ability to achieve Figma design specs (for PoC elements) and successful implementation of all defined PoC features (List, Detail, Nav, State, Offline stub, A11y/i18n stubs).",
+      "metric_or_verification_method": "PoC lead's documented assessment using pre-defined rubric. Visual comparison against PoC feature scope.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_008",
+      "description": "Stability & Robustness: Low number of crashes or critical bugs encountered per stack during PoC development and testing. Target: < 1 critical crash per stack.",
+      "metric_or_verification_method": "Bug tracking log during PoC.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_009",
+      "description": "NFR Stub Implementation Assessment: Qualitative assessment (1-5 rubric) of ease/success of implementing basic offline caching, A11y (labels, focus, contrast), and i18n (string loading, pluralization, RTL) stubs.",
+      "metric_or_verification_method": "PoC lead's documented assessment using pre-defined rubric. Verification against PoC scope for NFRs.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_010",
+      "description": "Showstopper Avoidance: Stack must not hit any defined 'Showstopper' conditions (e.g., persistent critical performance failure, AI code requiring >60-70% rewrite, fundamental roadblocks, inability to complete PoC scope).",
+      "metric_or_verification_method": "Evaluation against PoC Plan #1 Section 7.",
+      "_locked_entry_definition": false
+    },
+    {
+      "criterion_id": "qac_poc1_011",
+      "description": "Deliverables: Completion and delivery of Code Repositories (worldchef_poc_flutter, worldchef_poc_rn) and the PoC Evaluation Report with all specified sections and a clear recommendation.",
+      "metric_or_verification_method": "Review of submitted artifacts against PoC Plan #1 Section 8.",
+      "_locked_entry_definition": false
+    }
+  ],
+  "_quality_acceptance_criteria_list_immutable": false,
+
+  "scaffolding_directives": null,
+
+  "initiative_lifecycle_stages": [
+    {
+      "_locked_entry_definition": false,
+      "stage_id": "poc1_s1_setup",
+      "title": "PoC Environment Setup & Tooling Configuration",
+      "description": "Initialize projects for both Flutter and React Native, configure minimal CI, set up mock data server, prepare test devices (physical & emulators), and finalize AI tooling & prompting strategy, all as per PoC Plan #1.",
+      "stage_order": 1,
+      "expected_execution_plan_types": ["setup_plan", "configuration_plan"],
+      "entry_criteria": [
+        { "criterion_id": "poc1_s1_ec1", "description": "PoC Plan #1 ('Mobile Client Stack Performance & AI Effectiveness') is approved and its details are stable.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s1_ec2", "description": "Human PoC Lead(s) assigned and briefed on PoC Plan #1.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s1_ec3", "description": "Access to required AI models and tools confirmed.", "_locked_entry_definition": false }
+      ],
+      "_entry_criteria_list_immutable": false,
+      "exit_criteria": [
+        { "criterion_id": "poc1_s1_xc1", "description": "Flutter project initialized with standard tooling and minimal CI functional (build, lint/format).", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s1_xc2", "description": "React Native project initialized (Expo CLI, New Arch enabled) with standard tooling and minimal CI functional.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s1_xc3", "description": "Mock data server operational, serving identical mock JSON data as per PoC plan.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s1_xc4", "description": "Physical test devices (Pixel 5, iPhone 11) and emulators/simulators configured and accessible.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s1_xc5", "description": "AI tooling (model, API access) and core prompting strategy documented and ready for use.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s1_xc6", "description": "Time/Effort tracking mechanism (spreadsheet/tool) established.", "_locked_entry_definition": false }
+      ],
+      "_exit_criteria_list_immutable": false,
+      "status": "PENDING",
+      "linked_execution_plan_ids": [],
+      "g_status_updated": "g<timestamp>",
+      "follow_on_initiative_plan_ids_from_stage": null
+    },
+    {
+      "_locked_entry_definition": false,
+      "stage_id": "poc1_s2_flutter_impl",
+      "title": "Flutter PoC Implementation & Initial Evaluation",
+      "description": "Implement all features defined in PoC Plan #1 Section 2 (Scope A-G) using Flutter. Collect initial performance metrics, track AI/Human effort, validate NFR stubs, and record DX notes. Strict adherence to 20-25 human oversight hours for this stack's PoC.",
+      "stage_order": 2,
+      "expected_execution_plan_types": ["development_plan", "testing_plan"],
+      "entry_criteria": [
+        { "criterion_id": "poc1_s2_ec1", "description": "Stage 'poc1_s1_setup' completed successfully.", "_locked_entry_definition": false }
+      ],
+      "_entry_criteria_list_immutable": false,
+      "exit_criteria": [
+        { "criterion_id": "poc1_s2_xc1", "description": "All PoC scope features (A-G) functionally implemented for Flutter.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s2_xc2", "description": "Initial Flutter performance metrics (FPS, TTI, Memory, Bundle Size) collected as per PoC plan.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s2_xc3", "description": "AI generation time, prompt iteration count, and human intervention hours meticulously logged for Flutter PoC.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s2_xc4", "description": "Flutter NFR stubs (Offline, A11y, i18n) implemented and validated against PoC scope.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s2_xc5", "description": "Qualitative DX notes for Flutter PoC recorded by the PoC lead.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s2_xc6", "description": "Flutter PoC code committed to 'worldchef_poc_flutter' repository.", "_locked_entry_definition": false }
+      ],
+      "_exit_criteria_list_immutable": false,
+      "status": "PENDING",
+      "linked_execution_plan_ids": [],
+      "g_status_updated": "g<timestamp>",
+      "follow_on_initiative_plan_ids_from_stage": null
+    },
+    {
+      "_locked_entry_definition": false,
+      "stage_id": "poc1_s3_rn_impl",
+      "title": "React Native PoC Implementation & Initial Evaluation",
+      "description": "Implement all features defined in PoC Plan #1 Section 2 (Scope A-G) using React Native (New Architecture, Expo). Collect initial performance metrics, track AI/Human effort, validate NFR stubs, and record DX notes. Strict adherence to 20-25 human oversight hours for this stack's PoC.",
+      "stage_order": 3,
+      "expected_execution_plan_types": ["development_plan", "testing_plan"],
+      "entry_criteria": [
+        { "criterion_id": "poc1_s3_ec1", "description": "Stage 'poc1_s1_setup' completed successfully.", "_locked_entry_definition": false }
+      ],
+      "_entry_criteria_list_immutable": false,
+      "exit_criteria": [
+        { "criterion_id": "poc1_s3_xc1", "description": "All PoC scope features (A-G) functionally implemented for React Native.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s3_xc2", "description": "Initial React Native performance metrics (FPS, TTI, Memory, Bundle Size) collected as per PoC plan.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s3_xc3", "description": "AI generation time, prompt iteration count, and human intervention hours meticulously logged for React Native PoC.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s3_xc4", "description": "React Native NFR stubs (Offline, A11y, i18n) implemented and validated against PoC scope.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s3_xc5", "description": "Qualitative DX notes for React Native PoC recorded by the PoC lead.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s3_xc6", "description": "React Native PoC code committed to 'worldchef_poc_rn' repository.", "_locked_entry_definition": false }
+      ],
+      "_exit_criteria_list_immutable": false,
+      "status": "PENDING",
+      "linked_execution_plan_ids": [],
+      "g_status_updated": "g<timestamp>",
+      "follow_on_initiative_plan_ids_from_stage": null
+    },
+    {
+      "_locked_entry_definition": false,
+      "stage_id": "poc1_s4_eval_report",
+      "title": "Comparative Analysis, Final Benchmarking & Reporting",
+      "description": "Perform final comparative benchmarks if needed, consolidate all data from Flutter and React Native PoCs, analyze results against all evaluation criteria, and produce the final PoC Evaluation Report including a clear recommendation.",
+      "stage_order": 4,
+      "expected_execution_plan_types": ["analysis_plan", "documentation_plan"],
+      "entry_criteria": [
+        { "criterion_id": "poc1_s4_ec1", "description": "Stage 'poc1_s2_flutter_impl' completed successfully.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s4_ec2", "description": "Stage 'poc1_s3_rn_impl' completed successfully.", "_locked_entry_definition": false }
+      ],
+      "_entry_criteria_list_immutable": false,
+      "exit_criteria": [
+        { "criterion_id": "poc1_s4_xc1", "description": "PoC Evaluation Report completed, containing all elements specified in PoC Plan #1 Section 8 (side-by-side metrics, qualitative scores, challenges, AI effectiveness, DX, screenshots/videos, library versions, recommendation with rationale, learnings, risks).", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s4_xc2", "description": "Raw data logs (perf tool outputs, time tracking sheets) compiled as appendix to the report.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s4_xc3", "description": "Decision on preferred mobile stack (Flutter or React Native) made and documented based on PoC findings.", "_locked_entry_definition": false },
+        { "criterion_id": "poc1_s4_xc4", "description": "Contingency plan (PoC Plan #1 Section 9) invoked if results are ambiguous or both stacks hit showstoppers.", "_locked_entry_definition": false }
+      ],
+      "_exit_criteria_list_immutable": false,
+      "status": "PENDING",
+      "linked_execution_plan_ids": [],
+      "g_status_updated": "g<timestamp>",
+      "follow_on_initiative_plan_ids_from_stage": [
+        "initiative_plan_update_adr_wcf_001a", // Plan to update the ADR with the decision
+        "initiative_plan_finalize_adr_wcf_025" // Plan to finalize early UI/UX ADR
+        // Potentially "initiative_plan_poc3_client_state_management" if this PoC is a direct trigger
+      ]
+    }
+  ],
+  "_initiative_lifecycle_stages_list_immutable": false,
+
+  "follow_on_initiative_plan_ids_from_initiative": [
+    // As per PoC Plan #1 Section 10 and Checkpoint Summary V.
+    // These are likely the same as from the final stage, but could also include broader project phase gates.
+    // "initiative_plan_poc3_client_state_management"
+  ],
+
+  "decision_log": [],
+  "_decision_log_list_is_append_only": true,
+
+  "notes_and_context": [
+    "This initiative executes PoC Plan #1: Mobile Client Stack Performance & AI Effectiveness (Flutter vs. React Native), mandated by ADR-WCF-001a.",
+    "Total Calendar Timebox for PoC: 4 weeks maximum (sequential stacks, or parallel if two distinct, equally skilled leads are available).",
+    "Effort per Stack PoC: Strict timebox of 20-25 human oversight hours PLUS AI generation time.",
+    "AI Interaction Model: Same AI model (e.g., GPT-4-Turbo via OpenAI API with specific version, temp=0.7) and consistent high-level prompting strategies for both PoCs. Human oversight for prompt engineering, code review, debugging, optimization, NFR integration.",
+    "Test Devices (Physical): Android - Google Pixel 5 (Android 12+); iOS - iPhone 11 (iOS 15+). Emulators/Simulators for general dev.",
+    "Network Simulation: Consistent 'Fast 3G' (e.g., 5 Mbps down, 1 Mbps up, 100ms RTT) for image loading/offline tests.",
+    "Mock Data & Server: Identical mock JSON data (50 recipes) from local mock server (e.g., json-server) with <30ms response times.",
+    "Build Modes for Performance: Release/profile builds (flutter run --profile, react-native run-android --variant=release).",
+    "PoC Human Lead(s): [Assigned Lead Name(s) and their initial proficiency in RN/Flutter to be documented here]. Learning curve during PoC also noted.",
+    "Human Oversight Task Time-boxing Example: Max 8 human hours per stack on performance tuning.",
+    "Scope of Implementation (Features A-G from PoC Plan #1 Section 2): Project Setup & CI, Media-Heavy Recipe List, Recipe Detail, Basic Navigation, Simple Shared UI State & Persistence, Basic Offline Caching Stub, Basic A11y & i18n Stubs."
+  ]
+}

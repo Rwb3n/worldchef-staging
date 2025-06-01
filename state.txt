@@ -1,0 +1,11 @@
+{
+  "v": 5,
+  "g": 5,
+  "ph": "CONSTRUCT",
+  "st": "READY",
+  "cp_id": "plan_poc1_stage1_setup_v2",
+  "ct_id": null,
+  "rt": {},
+  "active_issue_ids": [],
+  "last_error": null
+} 

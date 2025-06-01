@@ -1,0 +1,394 @@
+{
+  "v": 1,
+  "id": "plan_poc1_stage1_setup",
+  "status": "PENDING",
+  "preceding_plan_id_ref": "initiative_plan_poc1_mobile_stack_selection",
+  "origin_artifact_id": "plan_poc_1",
+  "goal": "Set up complete development environment and tooling for both Flutter and React Native PoCs, ensuring all prerequisites are met for fair comparison.",
+  "scope": [
+    "Initialize Flutter project with standard tooling and CI",
+    "Initialize React Native project (Expo CLI, New Arch) with standard tooling and CI",
+    "Set up mock data server with identical JSON data",
+    "Configure test devices and emulators",
+    "Prepare AI tooling and prompting strategy",
+    "Establish time/effort tracking mechanism"
+  ],
+  "exclusions": [
+    "Actual feature implementation",
+    "Performance testing",
+    "UI/UX implementation",
+    "State management implementation",
+    "Offline/A11y/i18n implementation"
+  ],
+  "g_created": 1,
+  "g_updated": 1,
+  "tasks": [
+    {
+      "id": "task_poc1_s1_001",
+      "title": "Flutter Project Initialization",
+      "description": "Create and configure Flutter project with standard tooling, CI, and development environment setup.",
+      "intent": "Establish a production-ready Flutter development environment with all necessary tooling for the PoC.",
+      "inputs": [
+        {
+          "name": "Flutter SDK",
+          "source_description": "Official Flutter SDK installation",
+          "details": "Latest stable version of Flutter SDK"
+        },
+        {
+          "name": "Android Studio / VS Code",
+          "source_description": "IDE installation",
+          "details": "Latest stable version with Flutter plugins"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Flutter Project Repository",
+          "artifact_id": "worldchef_poc_flutter",
+          "expected_path": "worldchef_poc_flutter",
+          "description": "Initialized Flutter project with standard tooling and CI configuration",
+          "embed_annotations_required": true
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_poc1_s1_001_1",
+          "description": "Install Flutter SDK and verify installation",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_001_2",
+          "description": "Create new Flutter project with standard structure",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_flutter",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_001_3",
+          "description": "Configure CI pipeline (GitHub Actions)",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_flutter/.github/workflows/ci.yml",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_001_4",
+          "description": "Set up linting and formatting rules",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_flutter/analysis_options.yaml",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_001_5",
+          "description": "Configure development environment (IDE, plugins)",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        }
+      ],
+      "dependencies": [],
+      "criticality": "HIGH",
+      "status": "PENDING",
+      "linked_issue_ids": [],
+      "notes": []
+    },
+    {
+      "id": "task_poc1_s1_002",
+      "title": "React Native Project Initialization",
+      "description": "Create and configure React Native project with Expo CLI, New Architecture enabled, and standard tooling.",
+      "intent": "Establish a production-ready React Native development environment with all necessary tooling for the PoC.",
+      "inputs": [
+        {
+          "name": "Node.js",
+          "source_description": "Official Node.js installation",
+          "details": "Latest LTS version of Node.js"
+        },
+        {
+          "name": "Expo CLI",
+          "source_description": "Expo CLI installation",
+          "details": "Latest stable version of Expo CLI"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "React Native Project Repository",
+          "artifact_id": "worldchef_poc_rn",
+          "expected_path": "worldchef_poc_rn",
+          "description": "Initialized React Native project with Expo CLI, New Architecture, and standard tooling",
+          "embed_annotations_required": true
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_poc1_s1_002_1",
+          "description": "Install Node.js and verify installation",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_002_2",
+          "description": "Install Expo CLI and verify installation",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_002_3",
+          "description": "Create new React Native project with Expo CLI",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_rn",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_002_4",
+          "description": "Enable New Architecture",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_rn/app.json",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_002_5",
+          "description": "Configure CI pipeline (GitHub Actions)",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_rn/.github/workflows/ci.yml",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_002_6",
+          "description": "Set up ESLint and Prettier",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_rn/.eslintrc.js",
+          "notes": null
+        }
+      ],
+      "dependencies": [],
+      "criticality": "HIGH",
+      "status": "PENDING",
+      "linked_issue_ids": [],
+      "notes": []
+    },
+    {
+      "id": "task_poc1_s1_003",
+      "title": "Mock Data Server Setup",
+      "description": "Set up local mock data server with identical JSON data for both PoCs.",
+      "intent": "Create a consistent data source for both PoCs with predefined response times.",
+      "inputs": [
+        {
+          "name": "Mock Data JSON",
+          "source_description": "Predefined recipe data",
+          "details": "50 recipes in JSON format"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Mock Server Repository",
+          "artifact_id": "worldchef_poc_mock_server",
+          "expected_path": "worldchef_poc_mock_server",
+          "description": "Local mock server with predefined recipe data",
+          "embed_annotations_required": true
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_poc1_s1_003_1",
+          "description": "Create mock data JSON file",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_mock_server/data/recipes.json",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_003_2",
+          "description": "Set up json-server",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_mock_server/package.json",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_003_3",
+          "description": "Configure response time middleware",
+          "status": "PENDING",
+          "target_artifact_id": "worldchef_poc_mock_server/server.js",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_003_4",
+          "description": "Test server response times",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        }
+      ],
+      "dependencies": [],
+      "criticality": "HIGH",
+      "status": "PENDING",
+      "linked_issue_ids": [],
+      "notes": []
+    },
+    {
+      "id": "task_poc1_s1_004",
+      "title": "Test Device Configuration",
+      "description": "Configure physical test devices and emulators for both platforms.",
+      "intent": "Ensure consistent testing environment across both PoCs.",
+      "inputs": [
+        {
+          "name": "Physical Devices",
+          "source_description": "Google Pixel 5 and iPhone 11",
+          "details": "Android 12+ and iOS 15+ respectively"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Device Configuration Guide",
+          "artifact_id": "worldchef_poc_device_config",
+          "expected_path": "docs/device_configuration.md",
+          "description": "Documentation of device setup and configuration",
+          "embed_annotations_required": true
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_poc1_s1_004_1",
+          "description": "Configure Google Pixel 5",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_004_2",
+          "description": "Configure iPhone 11",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_004_3",
+          "description": "Set up Android emulator",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_004_4",
+          "description": "Set up iOS simulator",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_004_5",
+          "description": "Configure network simulation",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        }
+      ],
+      "dependencies": [],
+      "criticality": "HIGH",
+      "status": "PENDING",
+      "linked_issue_ids": [],
+      "notes": []
+    },
+    {
+      "id": "task_poc1_s1_005",
+      "title": "AI Tooling Setup",
+      "description": "Configure AI tooling and document prompting strategy.",
+      "intent": "Ensure consistent AI code generation approach across both PoCs.",
+      "inputs": [
+        {
+          "name": "AI Model Access",
+          "source_description": "OpenAI API access",
+          "details": "GPT-4-Turbo API access"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AI Tooling Guide",
+          "artifact_id": "worldchef_poc_ai_tooling",
+          "expected_path": "docs/ai_tooling.md",
+          "description": "Documentation of AI tooling setup and prompting strategy",
+          "embed_annotations_required": true
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_poc1_s1_005_1",
+          "description": "Configure OpenAI API access",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_005_2",
+          "description": "Document base prompting strategy",
+          "status": "PENDING",
+          "target_artifact_id": "docs/ai_tooling.md",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_005_3",
+          "description": "Create prompt templates",
+          "status": "PENDING",
+          "target_artifact_id": "docs/prompt_templates.md",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_005_4",
+          "description": "Test AI code generation",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        }
+      ],
+      "dependencies": [],
+      "criticality": "HIGH",
+      "status": "PENDING",
+      "linked_issue_ids": [],
+      "notes": []
+    },
+    {
+      "id": "task_poc1_s1_006",
+      "title": "Time/Effort Tracking Setup",
+      "description": "Establish mechanism for tracking time and effort across both PoCs.",
+      "intent": "Ensure accurate measurement of human oversight hours and AI generation time.",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Time Tracking Template",
+          "artifact_id": "worldchef_poc_time_tracking",
+          "expected_path": "docs/time_tracking_template.xlsx",
+          "description": "Excel template for tracking time and effort",
+          "embed_annotations_required": true
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_poc1_s1_006_1",
+          "description": "Create time tracking template",
+          "status": "PENDING",
+          "target_artifact_id": "docs/time_tracking_template.xlsx",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_006_2",
+          "description": "Document tracking procedures",
+          "status": "PENDING",
+          "target_artifact_id": "docs/time_tracking_guide.md",
+          "notes": null
+        },
+        {
+          "item_id": "check_poc1_s1_006_3",
+          "description": "Test tracking mechanism",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": null
+        }
+      ],
+      "dependencies": [],
+      "criticality": "MEDIUM",
+      "status": "PENDING",
+      "linked_issue_ids": [],
+      "notes": []
+    }
+  ]
+} 

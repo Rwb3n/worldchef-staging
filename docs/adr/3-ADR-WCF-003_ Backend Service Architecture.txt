@@ -1,0 +1,82 @@
+ADR-WCF-003: Backend Service Architecture
+Status: ACCEPTED
+Date: 2025-06-01 (Final version solidifying Fastify-only for MVP with a data-driven evolution path to hybrid, incorporating comprehensive feedback on async task management, boundary criteria, operational considerations, and cost modeling for MVP)
+Authors: WorldChef Backend Team
+1. Context and Problem Statement
+The WorldChef mobile application requires a backend API for business logic, data persistence (Supabase - ADR-WCF-001d), authentication (ADR-WCF-005), and third-party integrations. This ADR documents the backend service architecture, prioritizing MVP simplicity and development velocity by starting with a Fastify-only application server. It establishes a clear, pragmatic, and data-driven path for future evolution towards a hybrid model incorporating Supabase Edge Functions if and when specific needs (performance, cost, workload characteristics) are demonstrably met and justify the added complexity.
+2. Decision Drivers
+Maximum MVP Development Velocity & Simplicity: Minimize upfront architectural and operational overhead.
+Control & Stability of API Contract (via Fastify): Maintain a well-defined API for the mobile client.
+Handling Core Business Logic & Orchestration for MVP (within Fastify).
+Centralized Middleware & Security (within Fastify).
+Stack Consistency (TypeScript/Node.js for Fastify).
+Testability & Maintainability (for MVP Fastify application).
+Clear, Evidence-Based Path for Future Evolution to Hybrid.
+Cost-Effectiveness: Align with project budget (PRD: $75/month after Cycle 3 for all backend services, including Fastify PaaS and Supabase).
+AI Code Generation Leverage: Architecture should support effective AI-assisted development for Fastify.
+3. Decision: Backend Service Architecture Strategy
+The project will adopt a Fastify-Only Application Server architecture for the initial MVP development phase, with a clearly defined, data-driven strategy for evolving to a Hybrid Model (Fastify + Supabase Edge Functions) post-MVP.
+MVP Phase (Fastify-Only Custom Backend):
+The Fastify application (ADR-WCF-001c) will serve as the sole custom backend service layer. It will handle all API requests, business logic, orchestration, and initial implementations of asynchronous tasks (e.g., nutrition worker) and webhook handlers (e.g., Stripe).
+Internal Modularity: Strict use of Fastify's plugin system for clear separation of concerns (e.g., recipeServicePlugin, paymentWebhookPlugin, asyncTaskRunnerPlugin) is mandatory. Regular architectural reviews will assess this.
+Management of Asynchronous/Background Tasks within Fastify (MVP):
+Short-lived async operations: Handled directly in route handlers (non-blocking await).
+Potentially longer-running or resource-intensive MVP background tasks (e.g., nutrition enrichment for a recipe upon creation):
+An API endpoint in Fastify triggers the task, immediately returning 202 Accepted.
+Task details are pushed to a durable job queue implemented using a dedicated Supabase table (e.g., background_jobs (id, task_type, payload, status, created_at, attempts)).
+A scheduled Supabase Edge Function (cron-triggered, e.g., every minute) will poll this background_jobs table, pick up pending jobs, and execute the relevant processing logic (which might involve calling other Supabase functions or even back to a specific internal Fastify endpoint designed for batch processing if the logic is complex and already resides in Fastify). This offloads sustained processing from the primary API event loop.
+This means the "hybrid" model starts minimally with a Supabase Edge Function acting as a robust cron/queue worker for tasks initiated by Fastify, keeping Fastify itself lean for API requests. In-memory queues within Fastify are avoided for critical tasks due to lack of resilience.
+
+
+
+Post-MVP Evolution to Hybrid (Data-Driven Triggers):
+The adoption or migration of further specific functionalities to Supabase Edge Functions will be triggered by:
+Performance Trigger: A specific Fastify route or background job (still within Fastify) consistently causes high CPU/memory usage (e.g., >70% instance capacity for >5 minutes during processing) or significantly degrades overall API responsiveness, and the workload is well-suited for serverless.
+Cost Trigger: Cost modeling shows >20-30% operational cost savings by moving a specific high-invocation, short-duration workload to Edge Functions compared to scaling the Fastify instance. (Initial modeling for MVP will include projected costs for Supabase Pro tier + a small PaaS for Fastify to ensure the $75/mo budget is feasible).
+Architectural Fit/Complexity Trigger: New features that are inherently event-driven (e.g., complex multi-step DB reactive flows) or highly decoupled, CPU-intensive, short computations are architecturally a much cleaner fit as standalone Edge Functions.
+
+Each such migration/adoption will be justified by a small internal design note or a formal ADR update.
+
+AI Code Generation: AI will be leveraged for Fastify plugins, route handlers, service logic, test cases, and potentially for the initial Supabase Edge Functions (queue worker), with human oversight ensuring adherence to patterns and quality.
+4. Rationale
+This "Fastify-first for MVP, evolve to hybrid based on evidence" strategy prioritizes initial simplicity and velocity while building a foundation for scalable and cost-effective solutions for specific workloads as the application matures.
+Reduced MVP Complexity: Focuses team effort on a single custom backend paradigm (Fastify) for core API delivery.
+Robust MVP Async Task Handling: Using a Supabase table as a job queue processed by a scheduled Supabase Edge Function provides a durable and decoupled way to handle longer-running MVP background tasks without burdening the Fastify API server's main event loop or relying on non-resilient in-memory queues. This introduces the "hybrid" element in a very controlled and beneficial way from early on for specific needs.
+Clear Evolutionary Path: Fastify's modularity and the defined triggers provide a structured way to identify and migrate specific functionalities to serverless when genuinely beneficial.
+Performance Management: Initial performance PoCs focus on Fastify ↔ Supabase (ADR-WCF-001d). Monitoring (ADR-WCF-021) will provide data for evolution triggers.
+Local Development: For MVP, supabase start (which can include local Edge Function emulation for the queue worker) and npm run dev for Fastify is manageable.
+Cost Modeling for MVP: Early cost modeling (Cycle 1) will validate if a small, always-on Fastify PaaS instance + Supabase Pro tier (for production features like PITR and higher free tier limits) + projected Edge Function usage for the queue worker can stay within the $75/month budget.
+Caching, Rate Limiting, API Versioning:
+Caching (ADR-WCF-022): Fastify uses node-cache (in-memory, short TTLs, e.g., 30-60s for frequently read data like published recipe lists). Invalidate on relevant mutations. Redis considered post-MVP if advanced caching needs arise.
+Rate Limiting (ADR-WCF-015, ADR-WCF-023): fastify-rate-limit for incoming API requests. Circuit breakers (e.g., opossum) for outgoing calls to third-parties (Edamam, Stripe).
+API Versioning (ADR-WCF-015): Managed within Fastify (/v1/...). If a route is later fully proxied to or replaced by an Edge Function, Fastify can maintain the /v1/... route for client consistency.
+5. Consequences
+Positive Consequences / Benefits:
+Maximized MVP development velocity with a focused backend stack.
+Simplified initial operational footprint.
+Robust handling of MVP async tasks via DB queue + Edge Function worker.
+Data-driven, evidence-based path for future architectural evolution to a more distributed hybrid model.
+Negative Consequences / Trade-offs / Risks:
+Initial Fastify Workload: Fastify handles all synchronous API traffic. (Mitigation: Performance PoCs, monitoring, efficient coding).
+Complexity of DB Job Queue & Edge Function Worker: While more robust, this is more complex than an in-memory queue. Requires careful implementation and testing.
+Discipline for Modularity: Maintaining strict internal modularity in Fastify is key for future extractability. (Mitigation: Regular architectural reviews).
+Cost of Always-On Components: A "warm" Fastify instance on PaaS + Supabase Pro tier (for robust features) has fixed monthly costs, unlike a purely serverless approach. (Mitigation: Choose smallest viable PaaS instance; cost modeling PoC).
+6. Validation / Success Metrics
+Successful and rapid implementation of core MVP backend APIs and initial webhook/async task handling (via Fastify routes and the DB queue + Edge Function worker).
+Fastify application meets performance targets for client-facing APIs.
+DB Queue + Edge Function worker processes background tasks reliably without impacting Fastify API performance.
+Cost Model Validation (Early Cycle 1 PoC): Projected costs for Fastify PaaS + Supabase Pro + estimated Edge Function invocations for MVP scale (e.g., 10k MAU) align with $75/month budget.
+Internal modularity of Fastify is maintained and regularly reviewed.
+Observability (ADR-WCF-021): Fastify exposes Prometheus-compatible metrics (fastify-metrics). Supabase Dashboard and logs used. Centralized logging (e.g., Logflare) configured. Alerts for key metrics (e.g., p95 Fastify request duration > 200ms for 5 mins).
+7. Review / Revisit
+After Cycle 2 (Monetization & core features implemented): Critically evaluate Fastify performance, resource usage for any direct async tasks, reliability of the DB queue/Edge Function worker, and operational costs against the defined triggers for further Edge Function adoption.
+If any Fastify-hosted task consistently meets performance/cost/complexity triggers for migration to a dedicated Edge Function.
+Annually, or when significant changes in PaaS vs. Supabase Edge Function pricing or capabilities occur.
+Testing Strategy Sketch for Hybrid Components:
+Fastify Unit Tests (Jest + supabase-js mocks).
+Fastify Integration Tests (Jest + TestContainers or Supabase Local Dev for DB interactions).
+Edge Function Unit/Integration Tests (Supabase CLI local emulation + Jest/Deno test).
+Contract Tests (OpenAPI validation for Fastify responses).
+E2E Tests (Mobile client ↔ Deployed Fastify ↔ Deployed Supabase + Edge Functions in staging).
+
+
