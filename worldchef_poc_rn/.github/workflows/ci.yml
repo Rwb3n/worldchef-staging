@@ -1,0 +1,57 @@
+name: React Native CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Verify Expo CLI
+        run: npx expo --version
+        
+      - name: Lint code
+        run: npm run lint
+        
+      - name: Check formatting
+        run: npm run format:check
+        
+      - name: Run tests
+        run: npm test -- --watchAll=false
+        
+      - name: Build for web (development)
+        run: npx expo export:web --dev
+        
+      - name: Setup EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+          
+      - name: Build Android (development)
+        run: eas build --platform android --profile development --non-interactive
+        if: ${{ secrets.EXPO_TOKEN }}
+        
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: react-native-builds
+          path: |
+            dist/
+          retention-days: 7 

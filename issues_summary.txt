@@ -1,5 +1,11 @@
 {
-  "v": 1,
-  "g_updated": 1,
-  "issues_map": {}
+  "v": 2,
+  "g_updated": 14,
+  "issues_map": {
+    "issue_console_encoding_build_runner": {
+      "status": "RESOLVED",
+      "title": "Console Encoding Issue with PowerShell/PSReadLine blocks build_runner observation on Windows",
+      "severity": "MEDIUM"
+    }
+  }
 } 

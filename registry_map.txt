@@ -1,7 +1,11 @@
 {
-  "v": 1,
-  "g_updated": 3,
+  "v": 10,
+  "g_updated": 17,
   "artifact_registry_tree": {
+    "plans": {
+      "worldchef_poc_stage1_setup_v2": "plans/plan_poc1_stage1_setupv2.txt",
+      "worldchef_poc_stage2_flutter_impl": "plans/plan_poc1_stage2_flutter_impl.txt"
+    },
     "projects": {
       "flutter": {
         "worldchef_poc_flutter": "git_remote_url/worldchef_poc_flutter"
@@ -31,8 +35,90 @@
         "worldchef_poc_stage1_onboarding_guide": "docs/stage1_onboarding_guide.md"
       },
       "testing": {
-        "worldchef_poc_smoke_test_report": "docs/smoke_test_report_stage1.md"
+        "worldchef_poc_smoke_test_report": "docs/smoke_test_report_stage1.md",
+        "worldchef_poc_flutter_smoke_test": "worldchef_poc_flutter/lib/smoke_test.dart",
+        "worldchef_poc_flutter_smoke_test_runner": "worldchef_poc_flutter/test/smoke_test_runner.dart",
+        "worldchef_poc_flutter_standalone_smoke_test": "worldchef_poc_flutter/standalone_smoke_test.dart",
+        "worldchef_poc_rn_smoke_test": "worldchef_poc_rn/smokeTest.js",
+        "worldchef_poc_rn_smoke_test_runner": "worldchef_poc_rn/runSmokeTest.js"
+      },
+      "stage1": {
+        "worldchef_poc_setup_guide": "docs/setup_guide.md",
+        "worldchef_poc_ai_tooling_guide": "docs/ai_tooling_guide.md",
+        "worldchef_poc_time_tracking_guide": "docs/time_tracking_guide.md",
+        "worldchef_poc_device_config_guide": "docs/device_configuration_guide.md",
+        "ci_template_guidelines": "docs/ci_template_guidelines.md"
+      },
+      "stage2": {
+        "flutter_dev_baseline_report": "docs/flutter_development_baseline.md",
+        "flutter_time_tracking_log": "docs/flutter_time_tracking_log.md", 
+        "flutter_list_performance_report": "docs/flutter_list_performance.md",
+        "flutter_performance_data_compilation": "docs/flutter_performance_data_summary.md",
+        "flutter_dx_ai_notes": "docs/flutter_dx_ai_notes.md",
+        "flutter_poc_effort_log_summary": "docs/flutter_poc_effort_summary.md",
+        "flutter_testing_procedures": "docs/flutter_testing_procedures.md",
+        "flutter_testing_quick_guide": "docs/flutter_testing_quick_guide.md",
+        "flutter_testing_summary": "docs/flutter_testing_summary.md",
+        "flutter_performance_trace_analysis": "docs/flutter_performance_trace_analysis.md",
+        "flutter_poc_completion_summary": "docs/flutter_poc_completion_summary.md"
       }
+    },
+    "test_artifacts": {
+      "flutter_tests": {
+        "flutter_smoke_test": "worldchef_poc_flutter/lib/smoke_test.dart",
+        "flutter_smoke_test_runner": "worldchef_poc_flutter/test/smoke_test_runner.dart",
+        "flutter_standalone_smoke_test": "worldchef_poc_flutter/standalone_smoke_test.dart"
+      },
+      "react_native_tests": {
+        "rn_smoke_test": "worldchef_poc_rn/smokeTest.js",
+        "rn_smoke_test_runner": "worldchef_poc_rn/runSmokeTest.js"
+      }
+    },
+    "worldchef_poc_flutter": {
+      "lib": {
+        "models": {
+          "flutter_recipe_models_manual": "worldchef_poc_flutter/lib/models/recipe_manual.dart"
+        },
+        "services": {
+          "flutter_api_service": "worldchef_poc_flutter/lib/services/recipe_api_service.dart",
+          "flutter_theme_persistence_service": "worldchef_poc_flutter/lib/services/theme_persistence_service.dart",
+          "flutter_offline_recipe_list_cache_stub": "worldchef_poc_flutter/lib/services/recipe_cache_service.dart"
+        },
+        "l10n": {
+          "flutter_i18n_setup_snippet": "worldchef_poc_flutter/lib/l10n/app_localizations_helper.dart",
+          "flutter_i18n_arb_en": "worldchef_poc_flutter/lib/l10n/app_en.arb",
+          "flutter_i18n_arb_es": "worldchef_poc_flutter/lib/l10n/app_es.arb",
+          "flutter_i18n_arb_ar": "worldchef_poc_flutter/lib/l10n/app_ar.arb",
+          "flutter_i18n_config": "worldchef_poc_flutter/l10n.yaml"
+        },
+        "providers": {
+          "flutter_ui_state_management": "worldchef_poc_flutter/lib/providers/theme_provider.dart"
+        },
+        "widgets": {
+          "flutter_recipe_card_widget": "worldchef_poc_flutter/lib/widgets/recipe_card.dart"
+        },
+        "screens": {
+          "flutter_recipe_list_screen": "worldchef_poc_flutter/lib/screens/recipe_list_screen.dart",
+          "flutter_recipe_detail_screen": "worldchef_poc_flutter/lib/screens/recipe_detail_screen.dart",
+          "flutter_accessibility_enhancements_snippet": "worldchef_poc_flutter/lib/screens/"
+        },
+        "flutter_main_app": "worldchef_poc_flutter/lib/main.dart"
+      },
+      "routing": {
+        "flutter_navigation_config": "worldchef_poc_flutter/lib/routing/app_router.dart"
+      },
+      "test": {
+        "integration": {
+          "flutter_integration_tests": "worldchef_poc_flutter/test/integration/recipe_data_flow_test.dart"
+        },
+        "unit": {
+          "flutter_unit_tests": "worldchef_poc_flutter/test/unit/recipe_models_test.dart"
+        }
+      },
+      "worldchef_poc_flutter_enhanced": "worldchef_poc_flutter/"
+    },
+    "mock_server": {
+      "worldchef_poc_mock_server": "worldchef_poc_mock_server/"
     }
   }
 } 

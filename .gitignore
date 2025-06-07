@@ -1,0 +1,58 @@
+# --- FLUTTER PROJECT IGNORE ---
+worldchef_poc_flutter/.dart_tool/
+worldchef_poc_flutter/build/
+worldchef_poc_flutter/.flutter-plugins-dependencies
+worldchef_poc_flutter/pubspec.lock
+worldchef_poc_flutter/.packages
+worldchef_poc_flutter/.idea/
+worldchef_poc_flutter/.vscode/
+worldchef_poc_flutter/lib/generated/
+# Flutter generated localization files
+worldchef_poc_flutter/lib/generated/l10n/
+# Misc
+worldchef_poc_flutter/.DS_Store
+
+# --- REACT NATIVE PROJECT IGNORE ---
+worldchef_poc_rn/node_modules/
+worldchef_poc_rn/package-lock.json
+worldchef_poc_rn/.expo/
+worldchef_poc_rn/.vscode/
+worldchef_poc_rn/.DS_Store
+
+# --- NODE.JS MOCK SERVER IGNORE ---
+worldchef_poc_mock_server/node_modules/
+worldchef_poc_mock_server/package-lock.json
+worldchef_poc_mock_server/.DS_Store
+
+# --- IDE/EDITOR FILES (GLOBAL) ---
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# --- OS CONTROL FILES (DO NOT IGNORE) ---
+!state.txt
+!registry_map.txt
+!issues_summary.txt
+!plans/
+!issues/
+
+# --- DOCS & TRACE FILES ---
+docs/trace/*.json
+# Ignore Excel and other binary docs if not source
+*.xlsx
+*.xls
+
+# --- GENERAL ---
+*.log
+*.tmp
+*.swp
+
+# --- EXCEPTIONS: DO NOT IGNORE SOURCE/CONFIG FILES ---
+!worldchef_poc_flutter/pubspec.yaml
+!worldchef_poc_flutter/l10n.yaml
+!worldchef_poc_flutter/analysis_options.yaml
+!worldchef_poc_rn/package.json
+!worldchef_poc_mock_server/package.json
+!worldchef_poc_mock_server/README.md 

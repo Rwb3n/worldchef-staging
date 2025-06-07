@@ -1,0 +1,111 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+          cache: true
+          
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pub-cache
+            .dart_tool
+          key: flutter-deps-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: flutter-deps-${{ runner.os }}-
+          
+      - name: Install dependencies
+        run: flutter pub get
+        
+      - name: Verify Flutter installation
+        run: flutter doctor -v
+        
+      - name: Analyze code
+        run: flutter analyze
+        
+      - name: Check formatting
+        run: dart format --set-exit-if-changed .
+        
+      - name: Run tests with coverage
+        run: |
+          flutter test --coverage
+          dart pub global activate coverage
+          dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --report-on=lib
+        
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: coverage/lcov.info
+          fail_ci_if_error: false
+          
+      - name: Build Android APK (Debug) with performance profiling
+        run: |
+          echo "::group::Android Debug Build Performance"
+          START_TIME=$(date +%s)
+          flutter build apk --debug --verbose
+          END_TIME=$(date +%s)
+          BUILD_DURATION=$((END_TIME - START_TIME))
+          echo "Android Debug Build Time: ${BUILD_DURATION}s"
+          
+          # Get APK size
+          APK_SIZE=$(stat -c%s build/app/outputs/flutter-apk/app-debug.apk)
+          APK_SIZE_MB=$((APK_SIZE / 1024 / 1024))
+          echo "APK Size: ${APK_SIZE_MB}MB (${APK_SIZE} bytes)"
+          echo "::endgroup::"
+          
+      - name: Build Android App Bundle (Debug)
+        run: |
+          echo "::group::Android Bundle Build Performance"
+          START_TIME=$(date +%s)
+          flutter build appbundle --debug --verbose
+          END_TIME=$(date +%s)
+          BUILD_DURATION=$((END_TIME - START_TIME))
+          echo "Android Bundle Build Time: ${BUILD_DURATION}s"
+          
+          # Get Bundle size
+          BUNDLE_SIZE=$(stat -c%s build/app/outputs/bundle/debug/app-debug.aab)
+          BUNDLE_SIZE_MB=$((BUNDLE_SIZE / 1024 / 1024))
+          echo "Bundle Size: ${BUNDLE_SIZE_MB}MB (${BUNDLE_SIZE} bytes)"
+          echo "::endgroup::"
+          
+      - name: Generate build performance report
+        run: |
+          echo "# Build Performance Metrics" > build_performance.md
+          echo "- **Timestamp**: $(date)" >> build_performance.md
+          echo "- **Flutter Version**: $(flutter --version | head -n1)" >> build_performance.md
+          echo "- **Build Artifacts Created**: APK and AAB debug builds" >> build_performance.md
+          ls -la build/app/outputs/flutter-apk/app-debug.apk >> build_performance.md || echo "APK not found" >> build_performance.md
+          ls -la build/app/outputs/bundle/debug/app-debug.aab >> build_performance.md || echo "Bundle not found" >> build_performance.md
+        
+      - name: Archive build artifacts with enhanced metadata
+        uses: actions/upload-artifact@v3
+        with:
+          name: flutter-builds-${{ github.sha }}
+          path: |
+            build/app/outputs/flutter-apk/app-debug.apk
+            build/app/outputs/bundle/debug/app-debug.aab
+            build_performance.md
+            coverage/lcov.info
+          retention-days: 30
+          
+      - name: Archive test coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-coverage-${{ github.sha }}
+          path: coverage/
+          retention-days: 30 

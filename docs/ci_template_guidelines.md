@@ -1,5 +1,7 @@
 # CI Template Guidelines for WorldChef PoC
 
+> **📋 Navigation**: This document is part of the WorldChef PoC documentation suite. See [Stage 1 Onboarding Guide](./stage1_onboarding_guide.md) for complete project overview and navigation.
+
 This document defines the shared CI/CD pipeline requirements and standards for both Flutter and React Native PoC projects to ensure fair comparison.
 
 ## Overview

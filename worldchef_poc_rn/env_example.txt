@@ -1,0 +1,16 @@
+# Environment Variables Template for WorldChef React Native PoC
+# Copy this file to .env and fill in actual values
+# DO NOT commit the .env file - it should be gitignored
+
+# Mock Data Server Configuration
+EXPO_PUBLIC_MOCK_SERVER_BASE_URL=http://localhost:3000
+
+# API Keys (to be stored as GitHub Secrets in CI)
+# EXPO_PUBLIC_OPENAI_API_KEY=your_openai_api_key_here
+
+# Development Configuration
+NODE_ENV=development
+EXPO_PUBLIC_DEBUG_MODE=true
+
+# Expo Configuration
+# EXPO_TOKEN=your_expo_token_for_eas_builds 

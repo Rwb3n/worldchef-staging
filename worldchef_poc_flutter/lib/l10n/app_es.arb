@@ -1,0 +1,40 @@
+{
+  "@@locale": "es",
+  "@@context": "WorldChef PoC Flutter - Localización de Pantalla de Detalles de Receta",
+  
+  "recipeDetailTitle": "Detalles de la Receta",
+  
+  "recipeBy": "Receta de {creatorName}",
+  
+  "cookingTime": "Tiempo de Cocción",
+  
+  "preparationTime": "Tiempo de Preparación",
+  
+  "servings": "Porciones",
+  
+  "difficulty": "Dificultad",
+  
+  "ingredients": "Ingredientes",
+  
+  "ingredientCount": "{count, plural, =0{Sin ingredientes} =1{1 ingrediente} other{{count} ingredientes}}",
+  
+  "cookingSteps": "Pasos de Cocción",
+  
+  "stepNumber": "Paso {number}",
+  
+  "totalTime": "Total: {minutes}m",
+  
+  "rating": "Calificación: {rating}/5",
+  
+  "reviewCount": "{count, plural, =0{Sin reseñas} =1{1 reseña} other{{count} reseñas}}",
+  
+  "backToRecipes": "Volver a Recetas",
+  
+  "recipeImage": "Imagen de receta para {recipeName}",
+  
+  "difficultyEasy": "Fácil",
+  
+  "difficultyMedium": "Medio",
+  
+  "difficultyHard": "Difícil"
+} 

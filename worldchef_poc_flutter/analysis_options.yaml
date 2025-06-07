@@ -1,0 +1,30 @@
+# This file configures the analyzer for Flutter project linting and formatting
+# Based on CI Template Guidelines for WorldChef PoC
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - build/**
+  errors:
+    # Treat missing returns as errors
+    missing_return: error
+    # Treat unused imports as errors
+    unused_import: error
+    # Treat dead code as warnings
+    dead_code: warning
+
+linter:
+  rules:
+    # Additional rules for PoC consistency
+    - avoid_print
+    - prefer_const_constructors
+    - prefer_const_literals_to_create_immutables
+    - prefer_final_fields
+    - unnecessary_const
+    - unnecessary_new
+    - use_key_in_widget_constructors
+    - avoid_unnecessary_containers
+    - sized_box_for_whitespace 
