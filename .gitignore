@@ -1,3 +1,22 @@
+# --- DEPENDENCY FOLDERS (GLOBAL) ---
+node_modules/
+.pnp/
+.pnp.js
+.yalc/
+.yalc.lock
+.cache/
+.next/
+.output/
+.vercel/
+.netlify/
+.firebase/
+.storybook/
+.expo/
+
+# --- ENVIRONMENT VARIABLES (GLOBAL) ---
+.env
+.env.*
+
 # --- FLUTTER PROJECT IGNORE ---
 worldchef_poc_flutter/.dart_tool/
 worldchef_poc_flutter/build/
@@ -16,13 +35,30 @@ worldchef_poc_flutter/.DS_Store
 worldchef_poc_rn/node_modules/
 worldchef_poc_rn/package-lock.json
 worldchef_poc_rn/.expo/
+worldchef_poc_rn/.expo-shared/
 worldchef_poc_rn/.vscode/
 worldchef_poc_rn/.DS_Store
+# Yarn lockfile (if used)
+worldchef_poc_rn/yarn.lock
+
+# --- iOS/macOS PROJECT IGNORE ---
+# iOS build artifacts and workspace files
+Pods/
+*.xcworkspace
+*.xcuserstate
+*.pbxproj
+*.ipa
+# Android build artifacts
+*.apk
+*.aab
 
 # --- NODE.JS MOCK SERVER IGNORE ---
 worldchef_poc_mock_server/node_modules/
 worldchef_poc_mock_server/package-lock.json
+# Yarn lockfile (if used)
+worldchef_poc_mock_server/yarn.lock
 worldchef_poc_mock_server/.DS_Store
+npm-debug.log*
 
 # --- IDE/EDITOR FILES (GLOBAL) ---
 .idea/
@@ -48,6 +84,15 @@ docs/trace/*.json
 *.log
 *.tmp
 *.swp
+coverage/
+dist/
+.sass-cache/
+.turbo/
+.parcel-cache/
+.cypress/
+.nyc_output/
+.eslintcache
+build/
 
 # --- EXCEPTIONS: DO NOT IGNORE SOURCE/CONFIG FILES ---
 !worldchef_poc_flutter/pubspec.yaml

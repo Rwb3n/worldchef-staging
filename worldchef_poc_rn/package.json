@@ -25,18 +25,54 @@
       }
     ],
     "requisites": [
-      { "description": "Node.js latest LTS version", "type": "DEVELOPMENT_ENVIRONMENT" },
-      { "description": "Expo CLI latest stable version", "type": "DEVELOPMENT_ENVIRONMENT" },
-      { "description": "Android SDK API level 31+ for Android deployment", "type": "PLATFORM_REQUIREMENT" },
-      { "description": "Xcode latest stable for iOS deployment", "type": "PLATFORM_REQUIREMENT" }
+      {
+        "description": "Node.js latest LTS version",
+        "type": "DEVELOPMENT_ENVIRONMENT"
+      },
+      {
+        "description": "Expo CLI latest stable version",
+        "type": "DEVELOPMENT_ENVIRONMENT"
+      },
+      {
+        "description": "Android SDK API level 31+ for Android deployment",
+        "type": "PLATFORM_REQUIREMENT"
+      },
+      {
+        "description": "Xcode latest stable for iOS deployment",
+        "type": "PLATFORM_REQUIREMENT"
+      }
     ],
     "external_dependencies": [
-      { "name": "expo", "version": "~50.0.0", "reason": "Expo framework for simplified React Native development" },
-      { "name": "react-native", "version": "0.73.0", "reason": "Core React Native framework with New Architecture support" },
-      { "name": "axios", "version": "^1.6.0", "reason": "HTTP client for API communication with mock data server" },
-      { "name": "zustand", "version": "^4.4.0", "reason": "Lightweight state management for application state" },
-      { "name": "react-navigation", "version": "^6.0.0", "reason": "Navigation library for screen routing and navigation" },
-      { "name": "@shopify/flash-list", "version": "^1.6.0", "reason": "High-performance list component for recipe lists" }
+      {
+        "name": "expo",
+        "version": "~50.0.0",
+        "reason": "Expo framework for simplified React Native development"
+      },
+      {
+        "name": "react-native",
+        "version": "0.73.0",
+        "reason": "Core React Native framework with New Architecture support"
+      },
+      {
+        "name": "axios",
+        "version": "^1.6.0",
+        "reason": "HTTP client for API communication with mock data server"
+      },
+      {
+        "name": "zustand",
+        "version": "^4.4.0",
+        "reason": "Lightweight state management for application state"
+      },
+      {
+        "name": "react-navigation",
+        "version": "^6.0.0",
+        "reason": "Navigation library for screen routing and navigation"
+      },
+      {
+        "name": "@shopify/flash-list",
+        "version": "^1.6.0",
+        "reason": "High-performance list component for recipe lists"
+      }
     ],
     "internal_dependencies": [],
     "dependents": [],
@@ -51,39 +87,52 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test:performance": "node scripts/run-performance-tests.js",
+    "build:bundle": "npx expo export --platform android --dev false",
+    "analyze:bundle": "npx @expo/bundle-analyzer dist/bundles/android-*.js",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "expo": "~50.0.0",
-    "react": "18.2.0",
-    "react-native": "0.73.0",
-    "axios": "^1.6.0",
-    "zustand": "^4.4.0",
-    "@react-navigation/native": "^6.1.0",
-    "@react-navigation/stack": "^6.3.0",
+    "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/bottom-tabs": "^6.5.0",
-    "react-native-screens": "~3.29.0",
-    "react-native-safe-area-context": "4.8.2",
-    "@shopify/flash-list": "^1.6.0",
-    "expo-status-bar": "~1.11.1"
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/stack": "^6.4.1",
+    "@shopify/flash-list": "1.7.6",
+    "axios": "^1.6.0",
+    "expo": "~53.0.0",
+    "expo-build-properties": "~0.14.6",
+    "expo-image": "~2.2.0",
+    "expo-status-bar": "~2.2.3",
+    "react": "19.0.0",
+    "react-native": "0.79.3",
+    "react-native-gesture-handler": "^2.25.0",
+    "react-native-performance": "^5.1.2",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
+    "@babel/preset-flow": "^7.27.1",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^12.0.0",
+    "@types/jest": "^29.5.14",
     "@types/react": "~18.2.0",
-    "@types/react-native": "~0.73.0",
-    "typescript": "^5.0.0",
+    "babel-jest": "^30.0.0-beta.3",
     "eslint": "^8.0.0",
     "eslint-config-expo": "^7.0.0",
-    "prettier": "^3.0.0",
     "jest": "^29.0.0",
-    "@testing-library/react-native": "^12.0.0"
+    "jest-expo": "^49.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
   },
   "private": true
-} 
+}

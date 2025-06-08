@@ -1,10 +1,13 @@
 {
-  "v": 10,
-  "g_updated": 17,
+  "v": 17,
+  "g": 43,
   "artifact_registry_tree": {
     "plans": {
       "worldchef_poc_stage1_setup_v2": "plans/plan_poc1_stage1_setupv2.txt",
-      "worldchef_poc_stage2_flutter_impl": "plans/plan_poc1_stage2_flutter_impl.txt"
+      "worldchef_poc_stage2_flutter_impl": "plans/plan_poc1_stage2_flutter_impl.txt",
+      "worldchef_poc_stage3_rn_impl": "plans/plan_poc1_stage3_rn_impl.txt",
+      "rn_enhancement_mini_plan": "plans/plan_rn_enhancement_mini.txt",
+      "testing_infrastructure_fixes": "plans/plan_testing_fixes.txt"
     },
     "projects": {
       "flutter": {
@@ -19,48 +22,160 @@
       }
     },
     "docs": {
-      "device_config": {
-        "worldchef_poc_device_config": "docs/device_configuration.md"
+      "poc1_mobile_stack_selection": {
+        "readme": "docs/poc1_mobile_stack_selection/README.md",
+        "stage1_setup": {
+          "stage1_onboarding_guide": "docs/poc1_mobile_stack_selection/stage1_setup/stage1_onboarding_guide.md",
+          "ai_tooling_guide": "docs/poc1_mobile_stack_selection/stage1_setup/ai_tooling_guide.md",
+          "time_tracking_guide": "docs/poc1_mobile_stack_selection/stage1_setup/time_tracking_guide.md",
+          "device_configuration": "docs/poc1_mobile_stack_selection/stage1_setup/device_configuration.md",
+          "ci_template_guidelines": "docs/poc1_mobile_stack_selection/stage1_setup/ci_template_guidelines.md",
+          "ai_prompt_templates": "docs/poc1_mobile_stack_selection/stage1_setup/ai_prompt_templates.md",
+          "smoke_test_report_stage1": "docs/poc1_mobile_stack_selection/stage1_setup/smoke_test_report_stage1.md",
+          "time_tracking_template": "docs/poc1_mobile_stack_selection/stage1_setup/time_tracking_template.xlsx"
+        },
+        "stage2_flutter": {
+          "flutter_development_baseline": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_development_baseline.md",
+          "flutter_time_tracking_log": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_time_tracking_log.md",
+          "flutter_list_performance": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_list_performance.md",
+          "flutter_performance_data_summary": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_performance_data_summary.md",
+          "flutter_dx_ai_notes": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_dx_ai_notes.md",
+          "flutter_poc_effort_summary": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_poc_effort_summary.md",
+          "flutter_testing_procedures": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_testing_procedures.md",
+          "flutter_testing_quick_guide": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_testing_quick_guide.md",
+          "flutter_testing_summary": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_testing_summary.md",
+          "flutter_performance_trace_analysis": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_performance_trace_analysis.md",
+          "flutter_poc_completion_summary": "docs/poc1_mobile_stack_selection/stage2_flutter/flutter_poc_completion_summary.md"
+        },
+        "stage3_react_native": {
+          "stage3_onboarding_guide": "docs/poc1_mobile_stack_selection/stage3_react_native/stage3_onboarding_guide.md",
+          "rn_development_baseline": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_development_baseline.md",
+          "rn_list_performance": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_list_performance.md",
+          "rn_performance_data_summary": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_performance_data_summary.md",
+          "rn_dx_ai_notes": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_dx_ai_notes.md",
+          "rn_enhancement_ai_time_log": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_enhancement_ai_time_log.md",
+          "rn_flutter_comparative_analysis": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_flutter_comparative_analysis.md",
+          "rn_testing_summary": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_testing_summary.md",
+          "rn_performance_testing_guide": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_performance_testing_guide.md",
+          "rn_performance_testing_instructions": "docs/poc1_mobile_stack_selection/stage3_react_native/rn_performance_testing_instructions.md"
+        },
+        "stage4_evaluation": {
+          "consolidated_metrics_matrix": "docs/poc1_mobile_stack_selection/stage4_evaluation/consolidated_metrics_matrix.md",
+          "qualitative_assessment_report": "docs/poc1_mobile_stack_selection/stage4_evaluation/qualitative_assessment_report.md",
+          "final_recommendation_report": "docs/poc1_mobile_stack_selection/stage4_evaluation/final_recommendation_report.md",
+          "poc_evaluation_report_final": "docs/poc1_mobile_stack_selection/stage4_evaluation/poc_evaluation_report_final.md",
+          "actual_test_results_audit": "docs/poc1_mobile_stack_selection/stage4_evaluation/actual_test_results_audit.md",
+          "corrected_test_results_verification": "docs/poc1_mobile_stack_selection/stage4_evaluation/corrected_test_results_verification.md",
+          "final_decision_record": "docs/poc1_mobile_stack_selection/stage4_evaluation/final_decision_record.md",
+          "poc_completion_summary": "docs/poc1_mobile_stack_selection/stage4_evaluation/poc_completion_summary.md",
+          "test_execution_report": "docs/poc1_mobile_stack_selection/stage4_evaluation/test_execution_report.md",
+          "testing_infrastructure_fixes_report": "docs/poc1_mobile_stack_selection/stage4_evaluation/testing_infrastructure_fixes_report.md",
+          "platform_readiness_assessment": "docs/poc1_mobile_stack_selection/stage4_evaluation/platform_readiness_assessment.md"
+        },
+        "immediate_next_steps": {
+          "react_native_poc_archive": "docs/poc1_mobile_stack_selection/immediate_next_steps/react_native_poc_archive.md",
+          "flutter_production_setup": "docs/poc1_mobile_stack_selection/immediate_next_steps/flutter_production_setup.md",
+          "flutter_production_setup_guide": "docs/poc1_mobile_stack_selection/immediate_next_steps/flutter_production_setup_guide.md",
+          "flutter_team_training": "docs/poc1_mobile_stack_selection/immediate_next_steps/flutter_team_training.md",
+          "flutter_team_training_plan": "docs/poc1_mobile_stack_selection/immediate_next_steps/flutter_team_training_plan.md"
+        },
+        "adr": {
+          "mobile_client_technology_stack_updated": "docs/poc1_mobile_stack_selection/adr/1-ADR-WCF-001a_Mobile_Client_Technology_Stack_UPDATED.txt"
+        }
       },
-      "ai_tooling": {
-        "worldchef_poc_ai_tooling_guide": "docs/ai_tooling_guide.md",
-        "worldchef_poc_ai_prompt_templates": "docs/ai_prompt_templates.md"
+      "poc2_documentation_structure": {
+        "artifact_id": "poc2_documentation_structure",
+        "primary_filepath": "docs/poc2_supabase_validation/",
+        "type": "directory_structure", 
+        "status": "CREATED",
+        "description": "Complete directory structure for PoC #2 Supabase validation with stage-based organization",
+        "created_at": "2025-01-15T21:30:00Z",
+        "updated_at": "2025-01-15T21:30:00Z"
       },
-      "time_tracking": {
-        "worldchef_poc_time_tracking_template": "docs/time_tracking_template.xlsx",
-        "worldchef_poc_time_tracking_guide": "docs/time_tracking_guide.md"
+      "poc2_main_readme": {
+        "artifact_id": "poc2_main_readme",
+        "primary_filepath": "docs/poc2_supabase_validation/README.md", 
+        "type": "documentation",
+        "status": "CREATED",
+        "description": "Comprehensive PoC #2 documentation hub with implementation roadmap, success criteria, and navigation guide",
+        "created_at": "2025-01-15T21:30:00Z",
+        "updated_at": "2025-01-15T21:30:00Z"
       },
-      "ci_and_onboarding": {
-        "worldchef_poc_ci_template": "docs/ci_template_guidelines.md",
-        "worldchef_poc_stage1_onboarding_guide": "docs/stage1_onboarding_guide.md"
+      "poc2_source_structure": {
+        "artifact_id": "poc2_source_structure", 
+        "primary_filepath": "src/poc2_supabase_validation/",
+        "type": "directory_structure",
+        "status": "CREATED", 
+        "description": "Source code directory structure for PoC #2 implementation artifacts including schema, seeding, testing, benchmarking, and edge functions",
+        "created_at": "2025-01-15T21:30:00Z",
+        "updated_at": "2025-01-15T21:30:00Z"
       },
-      "testing": {
-        "worldchef_poc_smoke_test_report": "docs/smoke_test_report_stage1.md",
-        "worldchef_poc_flutter_smoke_test": "worldchef_poc_flutter/lib/smoke_test.dart",
-        "worldchef_poc_flutter_smoke_test_runner": "worldchef_poc_flutter/test/smoke_test_runner.dart",
-        "worldchef_poc_flutter_standalone_smoke_test": "worldchef_poc_flutter/standalone_smoke_test.dart",
-        "worldchef_poc_rn_smoke_test": "worldchef_poc_rn/smokeTest.js",
-        "worldchef_poc_rn_smoke_test_runner": "worldchef_poc_rn/runSmokeTest.js"
+      "poc2_context_requirements": {
+        "artifact_id": "poc2_context_requirements",
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/CONTEXT_AND_REQUIREMENTS.md",
+        "type": "documentation",
+        "status": "CREATED",
+        "description": "Comprehensive context document integrating ADR requirements, PoC #1 lessons, and Supabase validation scope",
+        "created_at": "2025-01-15T10:00:00Z",
+        "updated_at": "2025-01-15T21:45:00Z",
+        "referenced_sources": [
+          "docs/adr/4-ADR-WCF-001d_ Database & BaaS Platform.txt",
+          "docs/adr/6-ADR-WCF-006a_ Core Entity Data Modeling Strategy.txt", 
+          "docs/adr/7-ADR-WCF-006b_ JSONB Usage for Semi-Structured Recipe Data.txt",
+          "docs/adr/5-ADR-WCF-005_ Authentication & Authorization Strategy.txt",
+          "docs/poc1_mobile_stack_selection/README.md",
+          "docs/source/PoC Plan #2_ Supabase Performance & Cost Validation at MVP Scale.txt"
+        ],
+        "source_refs": ["ADR-WCF-001d", "ADR-WCF-005", "ADR-WCF-006a", "ADR-WCF-006b", "PoC #1 Results"]
       },
-      "stage1": {
-        "worldchef_poc_setup_guide": "docs/setup_guide.md",
-        "worldchef_poc_ai_tooling_guide": "docs/ai_tooling_guide.md",
-        "worldchef_poc_time_tracking_guide": "docs/time_tracking_guide.md",
-        "worldchef_poc_device_config_guide": "docs/device_configuration_guide.md",
-        "ci_template_guidelines": "docs/ci_template_guidelines.md"
+      "poc2_critical_evaluation_response": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/CRITICAL_EVALUATION_RESPONSE.md", 
+        "description": "Comprehensive response to critical PoC #2 evaluation with detailed plan enhancements and methodology improvements",
+        "created_at": "2025-01-15T22:00:00Z",
+        "g": 39,
+        "source_refs": ["plan_poc2_supabase_validation", "Critical Evaluation Feedback", "PoC #1 Methodology"]
       },
-      "stage2": {
-        "flutter_dev_baseline_report": "docs/flutter_development_baseline.md",
-        "flutter_time_tracking_log": "docs/flutter_time_tracking_log.md", 
-        "flutter_list_performance_report": "docs/flutter_list_performance.md",
-        "flutter_performance_data_compilation": "docs/flutter_performance_data_summary.md",
-        "flutter_dx_ai_notes": "docs/flutter_dx_ai_notes.md",
-        "flutter_poc_effort_log_summary": "docs/flutter_poc_effort_summary.md",
-        "flutter_testing_procedures": "docs/flutter_testing_procedures.md",
-        "flutter_testing_quick_guide": "docs/flutter_testing_quick_guide.md",
-        "flutter_testing_summary": "docs/flutter_testing_summary.md",
-        "flutter_performance_trace_analysis": "docs/flutter_performance_trace_analysis.md",
-        "flutter_poc_completion_summary": "docs/flutter_poc_completion_summary.md"
+      "poc2_v4_critical_improvements": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/V4_CRITICAL_IMPROVEMENTS.md",
+        "description": "v4 implementation plan addressing 6 remaining critical gaps for decision-grade signal quality vs best-case snapshot",
+        "created_at": "2025-01-15T23:00:00Z", 
+        "g": 40,
+        "source_refs": ["Follow-up Critical Evaluation", "plan_poc2_supabase_validation_v4", "Signal Quality Analysis"]
+      },
+      "poc2_v4_final_cleanup": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/V4_FINAL_CLEANUP.md",
+        "description": "Systematic cleanup addressing structural noise, threshold mismatches, and substantive gaps for automation-ready JSON",
+        "created_at": "2025-01-15T23:30:00Z",
+        "g": 41,
+        "source_refs": ["Line-by-Line Critique", "plan_poc2_supabase_validation_v4.1", "JSON Quality Standards"]
+      },
+      "poc2_performance_targets": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/performance_targets.md",
+        "description": "Realistic quantitative performance targets accounting for PostgREST/HTTPS overhead with stakeholder approval",
+        "created_at": "2025-01-16T00:00:00Z",
+        "g": 42,
+        "source_refs": ["CONTEXT_AND_REQUIREMENTS", "ADR-WCF-001d", "PostgREST Architecture"]
+      },
+      "poc2_mau_assumptions": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/mau_usage_assumptions.md",
+        "description": "Detailed MAU usage patterns with peak concurrency modeling for accurate cost and load testing",
+        "created_at": "2025-01-16T00:00:00Z",
+        "g": 42,
+        "source_refs": ["CONTEXT_AND_REQUIREMENTS", "Usage Pattern Analysis", "Concurrency Modeling"]
+      },
+      "poc2_cost_criteria": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/cost_success_criteria.md",
+        "description": "Cost success/failure thresholds with pricing volatility buffer and budget constraints",
+        "created_at": "2025-01-16T00:00:00Z",
+        "g": 42,
+        "source_refs": ["ADR-WCF-001d", "Budget Constraints", "Financial Risk Analysis"]
+      },
+      "poc2_baseline_measurements": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/baseline_reality_check.md",
+        "description": "Network and PostgREST overhead measurements with single-user baseline data confirming target realism",
+        "created_at": "2025-01-16T00:05:00Z",
+        "g": 43,
+        "source_refs": ["poc2_performance_targets", "PostgREST Architecture", "Network Analysis"]
       }
     },
     "test_artifacts": {
@@ -119,6 +234,37 @@
     },
     "mock_server": {
       "worldchef_poc_mock_server": "worldchef_poc_mock_server/"
+    },
+    "worldchef_poc_rn": {
+      "src": {
+        "services": {
+          "rn_enhanced_api_service": "worldchef_poc_rn/src/services/api.ts"
+        },
+        "types": {
+          "rn_enhanced_types_v2": "worldchef_poc_rn/src/types/index.ts",
+          "rn_error_types": "worldchef_poc_rn/src/types/errors.ts"
+        },
+        "components": {
+          "rn_error_ui_components": "worldchef_poc_rn/src/components/ErrorDisplay.tsx"
+        },
+        "utils": {
+          "rn_type_validators": "worldchef_poc_rn/src/utils/typeValidation.ts"
+        }
+      },
+      "__tests__": {
+        "services": {
+          "rn_api_service_tests_v2": "worldchef_poc_rn/__tests__/services/api.test.ts"
+        },
+        "components": {
+          "rn_component_tests": "worldchef_poc_rn/__tests__/components/RecipeCard.test.tsx"
+        },
+        "simple_test": "worldchef_poc_rn/__tests__/simple.test.js"
+      },
+      "config": {
+        "rn_jest_config_custom_v1": "worldchef_poc_rn/jest.config.js",
+        "rn_jest_setup_custom": "worldchef_poc_rn/jest-setup.js",
+        "rn_babel_config_flow_support_v2": "worldchef_poc_rn/babel.config.js"
+      }
     }
   }
 } 

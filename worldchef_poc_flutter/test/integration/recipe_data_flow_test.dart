@@ -58,7 +58,9 @@ void main() {
     });
 
     tearDownAll(() {
-      apiService.dispose();
+      // Note: API service disposal is handled after all tests complete
+      // to avoid premature HTTP client closure during concurrent tests
+      // The client will be automatically disposed when the test process ends
     });
 
     group('Mock Server Connectivity', () {
@@ -277,9 +279,12 @@ void main() {
   group('Performance and Reliability', () {
     test('should handle multiple concurrent requests', () async {
       try {
+        // Use the same service instance for all requests to avoid client conflicts
+        final service = RecipeApiService.instance;
+        
         final futures = List.generate(
           3,
-          (index) => RecipeApiService.instance.getRecipeById(index + 1),
+          (index) => service.getRecipeById(index + 1),
         );
         
         final results = await Future.wait(futures);

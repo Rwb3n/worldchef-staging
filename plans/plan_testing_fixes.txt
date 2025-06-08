@@ -1,0 +1,339 @@
+{
+  "v": 1,
+  "id": "plan_testing_fixes_v1",
+  "status": "COMPLETED",
+  "preceding_plan_id_ref": "plan_rn_enhancement_mini_v2",
+  "origin_artifact_id": "test_execution_report",
+  "goal": "Fix immediate testing infrastructure issues for both Flutter and React Native implementations to achieve reliable test execution across both platforms. Address Flutter compilation issues and HTTP client management, plus resolve critical React Native Jest configuration problems.",
+  "scope": [
+    "Flutter: Fix unit test compilation errors (missing sampleRecipeJson variable)",
+    "Flutter: Improve HTTP client management for concurrent requests",
+    "Flutter: Code cleanup and test stabilization",
+    "React Native: Resolve critical Jest configuration and jest-expo preset issues",
+    "React Native: Implement alternative testing strategy if Jest issues persist",
+    "React Native: Validate test execution across all implemented test suites",
+    "Both: Ensure comprehensive test coverage and documentation"
+  ],
+  "exclusions": [
+    "New feature development beyond testing fixes",
+    "Performance optimization beyond test reliability",
+    "UI/UX changes not related to testing infrastructure",
+    "Advanced testing frameworks beyond fixing current issues",
+    "CI/CD pipeline integration (separate future effort)",
+    "E2E testing implementation (focus on unit/integration fixes)"
+  ],
+  "g_created": "g29",
+  "g_updated": "g29",
+  "time_budget": {
+    "total_maximum_hours": 6.0,
+    "strict_monitoring": true,
+    "budget_allocation": {
+      "flutter_fixes": 2.0,
+      "react_native_critical_jest": 3.0,
+      "documentation_validation": 1.0
+    }
+  },
+  "tasks": [
+    {
+      "id": "task_flutter_test_fixes_001",
+      "title": "Flutter Unit Test Compilation & HTTP Client Fixes",
+      "description": "Fix missing sampleRecipeJson variable causing unit test compilation errors and improve HTTP client management to handle concurrent requests properly.",
+      "intent": "Restore Flutter test suite to 100% passing by resolving compilation issues and the one failing concurrent request test.",
+      "inputs": [
+        {
+          "name": "Flutter Test Suite with Compilation Errors",
+          "source_description": "Current Flutter tests with sampleRecipeJson undefined errors",
+          "details": "worldchef_poc_flutter/test/unit/recipe_models_test.dart with missing variable definitions"
+        },
+        {
+          "name": "Flutter HTTP Client Implementation",
+          "source_description": "Current HTTP client with concurrent request issues",
+          "details": "RecipeApiService failing on multiple concurrent requests due to client management"
+        },
+        {
+          "name": "Test Execution Report",
+          "source_description": "Analysis of current test failures",
+          "details": "docs/test_execution_report.md identifying specific failure patterns"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Fixed Flutter Unit Tests",
+          "artifact_id": "flutter_unit_tests_fixed",
+          "expected_path": "worldchef_poc_flutter/test/unit/recipe_models_test.dart",
+          "description": "Unit tests with all missing variables defined and compilation errors resolved.",
+          "embed_annotations_required": true
+        },
+        {
+          "name": "Enhanced HTTP Client Management",
+          "artifact_id": "flutter_http_client_enhanced",
+          "expected_path": "worldchef_poc_flutter/lib/services/recipe_api_service.dart",
+          "description": "HTTP client with improved concurrent request handling and proper client lifecycle management.",
+          "embed_annotations_required": true
+        },
+        {
+          "name": "Flutter Test Validation Report",
+          "artifact_id": "flutter_test_validation_report",
+          "expected_path": "docs/flutter_test_validation.md",
+          "description": "Documentation of all test fixes and validation of 100% test pass rate.",
+          "embed_annotations_required": false
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_flutter_001_1",
+          "description": "Analyze unit test compilation errors and identify all missing variables (sampleRecipeJson, etc.) in recipe_models_test.dart.",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": "Review test file and create comprehensive list of missing dependencies"
+        },
+        {
+          "item_id": "check_flutter_001_2",
+          "description": "Define missing sampleRecipeJson variable and any other required test data with proper JSON structure matching API responses.",
+          "status": "PENDING",
+          "target_artifact_id": "flutter_unit_tests_fixed",
+          "notes": "Ensure test data matches actual API schema from mock server"
+        },
+        {
+          "item_id": "check_flutter_001_3",
+          "description": "Fix HTTP client management in RecipeApiService to properly handle concurrent requests without 'Client is already closed' errors.",
+          "status": "PENDING",
+          "target_artifact_id": "flutter_http_client_enhanced",
+          "notes": "Review client lifecycle, connection pooling, and concurrent request patterns"
+        },
+        {
+          "item_id": "check_flutter_001_4",
+          "description": "Run complete Flutter test suite to verify 100% pass rate (10/10 tests) and validate all compilation errors resolved.",
+          "status": "PENDING",
+          "target_artifact_id": "flutter_test_validation_report",
+          "notes": "Document before/after test results with specific focus on concurrent request test"
+        },
+        {
+          "item_id": "check_flutter_001_5",
+          "description": "Clean up any unused test imports, variables, or dependencies that may cause future maintenance issues.",
+          "status": "PENDING",
+          "target_artifact_id": "flutter_unit_tests_fixed",
+          "notes": "Ensure test codebase is maintainable and follows Flutter testing best practices"
+        }
+      ],
+      "dependencies": [],
+      "criticality": "HIGH",
+      "status": "DONE",
+      "linked_issue_ids": [],
+      "notes": ["Flutter tests are mostly working (9/10) but need critical fixes for production readiness"],
+      "estimated_ai_prompts": 8,
+      "estimated_human_hours": 2.0
+    },
+    {
+      "id": "task_rn_jest_critical_fix_002",
+      "title": "React Native Jest Configuration Critical Fix",
+      "description": "Resolve the critical jest-expo preset runtime error preventing all React Native tests from executing. Implement alternative testing strategy if Jest issues persist.",
+      "intent": "Restore React Native test execution capability from current 0/2 test suites passing to functional test infrastructure with comprehensive API service test coverage.",
+      "inputs": [
+        {
+          "name": "React Native Jest Configuration",
+          "source_description": "Current Jest setup with jest-expo runtime errors",
+          "details": "worldchef_poc_rn/jest.config.js and package.json with Object.defineProperty errors"
+        },
+        {
+          "name": "Comprehensive API Service Tests",
+          "source_description": "Well-implemented test code that cannot execute",
+          "details": "__tests__/services/api.test.ts with thorough error handling and retry logic tests"
+        },
+        {
+          "name": "jest-expo Preset Documentation",
+          "source_description": "Expo testing documentation and known issues",
+          "details": "Official Expo testing guidelines and alternative approaches"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Fixed Jest Configuration",
+          "artifact_id": "rn_jest_config_working",
+          "expected_path": "worldchef_poc_rn/jest.config.js",
+          "description": "Working Jest configuration that allows test discovery and execution without runtime errors.",
+          "embed_annotations_required": true
+        },
+        {
+          "name": "Alternative Test Runner Setup (if needed)",
+          "artifact_id": "rn_alternative_test_setup",
+          "expected_path": "worldchef_poc_rn/test-setup-alternative.js",
+          "description": "Alternative testing configuration using different preset or test runner if jest-expo cannot be fixed.",
+          "embed_annotations_required": true
+        },
+        {
+          "name": "Validated API Service Tests",
+          "artifact_id": "rn_api_tests_validated",
+          "expected_path": "__tests__/services/api.test.ts",
+          "description": "API service tests successfully executing with comprehensive coverage of error handling, retry logic, and success scenarios.",
+          "embed_annotations_required": true
+        },
+        {
+          "name": "React Native Test Execution Report",
+          "artifact_id": "rn_test_execution_report",
+          "expected_path": "docs/rn_test_execution_validation.md",
+          "description": "Documentation of Jest fixes, test execution results, and any alternative strategies implemented.",
+          "embed_annotations_required": false
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_rn_002_1",
+          "description": "Analyze jest-expo preset runtime error in detail: investigate Object.defineProperty issue and review jest-expo/setup.js:122 failure point.",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": "May require jest-expo version downgrade or alternative preset configuration"
+        },
+        {
+          "item_id": "check_rn_002_2",
+          "description": "Attempt Jest configuration fixes: try different jest-expo versions, alternative presets, or custom setup files to resolve runtime errors.",
+          "status": "PENDING",
+          "target_artifact_id": "rn_jest_config_working",
+          "notes": "Priority: Fix current setup. Fallback: Alternative approach if Jest cannot be stabilized"
+        },
+        {
+          "item_id": "check_rn_002_3",
+          "description": "If Jest fixes fail: Implement alternative testing strategy using different test runner (e.g., Vitest, plain Node.js testing, or Detox setup) for API service tests.",
+          "status": "PENDING",
+          "target_artifact_id": "rn_alternative_test_setup",
+          "notes": "Contingency plan if jest-expo issues are unresolvable within time budget"
+        },
+        {
+          "item_id": "check_rn_002_4",
+          "description": "Validate API service test execution: Run all API service tests successfully and verify comprehensive coverage (success, error scenarios, retry logic).",
+          "status": "PENDING",
+          "target_artifact_id": "rn_api_tests_validated",
+          "notes": "Target: Execute the well-written test suite that currently cannot run"
+        },
+        {
+          "item_id": "check_rn_002_5",
+          "description": "Document testing solution and create React Native test execution guide for future development.",
+          "status": "PENDING",
+          "target_artifact_id": "rn_test_execution_report",
+          "notes": "Include troubleshooting guide and lessons learned from Jest configuration challenges"
+        }
+      ],
+      "dependencies": [],
+      "criticality": "CRITICAL",
+      "status": "DONE",
+      "linked_issue_ids": [],
+      "notes": ["CRITICAL: React Native has 0% test execution currently. This is a blocking issue for production readiness."],
+      "estimated_ai_prompts": 12,
+      "estimated_human_hours": 3.0
+    },
+    {
+      "id": "task_testing_documentation_003",
+      "title": "Testing Infrastructure Documentation & Validation",
+      "description": "Update comprehensive testing documentation reflecting all fixes, create testing guides for both platforms, and validate overall testing infrastructure improvements.",
+      "intent": "Provide complete documentation of testing infrastructure state post-fixes and establish testing guidelines for continued development.",
+      "inputs": [
+        {
+          "name": "Fixed Flutter Test Suite",
+          "source_description": "Output from Task 001 with all tests passing",
+          "details": "Validated Flutter testing infrastructure with 100% pass rate"
+        },
+        {
+          "name": "Fixed React Native Test Execution",
+          "source_description": "Output from Task 002 with working test infrastructure",
+          "details": "React Native testing capability restored through Jest fixes or alternative strategy"
+        },
+        {
+          "name": "Original Test Execution Report",
+          "source_description": "Baseline testing report before fixes",
+          "details": "docs/test_execution_report.md showing initial state"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Updated Test Execution Report",
+          "artifact_id": "test_execution_report_final",
+          "expected_path": "docs/test_execution_report_final.md",
+          "description": "Comprehensive testing report showing before/after states and final infrastructure status for both platforms.",
+          "embed_annotations_required": false
+        },
+        {
+          "name": "Testing Infrastructure Guide",
+          "artifact_id": "testing_infrastructure_guide",
+          "expected_path": "docs/testing_infrastructure_guide.md",
+          "description": "Complete guide for running tests, troubleshooting common issues, and maintaining test infrastructure for both Flutter and React Native.",
+          "embed_annotations_required": false
+        },
+        {
+          "name": "Cross-Platform Testing Comparison",
+          "artifact_id": "cross_platform_testing_comparison_final",
+          "expected_path": "docs/cross_platform_testing_comparison.md",
+          "description": "Final comparative analysis of Flutter vs React Native testing capabilities post-fixes.",
+          "embed_annotations_required": false
+        }
+      ],
+      "execution_checklist": [
+        {
+          "item_id": "check_doc_003_1",
+          "description": "Validate that both Flutter and React Native test suites are executing successfully and document final pass rates.",
+          "status": "PENDING",
+          "target_artifact_id": null,
+          "notes": "Target: Flutter 100% (10/10), React Native 100% (2/2 or more)"
+        },
+        {
+          "item_id": "check_doc_003_2",
+          "description": "Create comprehensive testing infrastructure guide covering setup, execution, troubleshooting, and maintenance for both platforms.",
+          "status": "PENDING",
+          "target_artifact_id": "testing_infrastructure_guide",
+          "notes": "Include specific instructions for reproducing test environments and resolving common issues"
+        },
+        {
+          "item_id": "check_doc_003_3",
+          "description": "Update the final test execution report with post-fix results and impact analysis of infrastructure improvements.",
+          "status": "PENDING",
+          "target_artifact_id": "test_execution_report_final",
+          "notes": "Show clear before/after comparison and infrastructure reliability improvements"
+        },
+        {
+          "item_id": "check_doc_003_4",
+          "description": "Compile final cross-platform testing comparison with updated infrastructure capabilities and developer experience insights.",
+          "status": "PENDING",
+          "target_artifact_id": "cross_platform_testing_comparison_final",
+          "notes": "Update recommendation based on improved testing infrastructure for both platforms"
+        }
+      ],
+      "dependencies": ["task_flutter_test_fixes_001", "task_rn_jest_critical_fix_002"],
+      "criticality": "MEDIUM",
+      "status": "PENDING",
+      "linked_issue_ids": [],
+      "notes": ["Documentation task to consolidate testing infrastructure improvements"],
+      "estimated_ai_prompts": 6,
+      "estimated_human_hours": 1.0
+    }
+  ],
+  "total_estimated_ai_prompts": 26,
+  "total_estimated_human_hours": 6.0,
+  "contingency_buffer": 0.5,
+  "success_criteria": {
+    "flutter_testing": "All Flutter tests passing (10/10), including unit tests and integration tests, with no compilation errors",
+    "react_native_testing": "React Native test infrastructure functional with API service tests executing successfully (target: 2/2 test suites passing minimum)",
+    "test_infrastructure_reliability": "Both platforms have stable, reproducible testing infrastructure suitable for continuous development",
+    "documentation_completeness": "Comprehensive testing guides and troubleshooting documentation for both platforms",
+    "time_budget_compliance": "All fixes completed within 6.0 hour total budget"
+  },
+  "risk_mitigation": {
+    "jest_configuration_failure": "If jest-expo issues cannot be resolved within 2 hours, implement alternative testing strategy using different test runner or approach",
+    "flutter_http_client_complexity": "If concurrent request fixes prove complex, document workaround and implement connection management improvements within scope",
+    "time_overrun": "Strict time monitoring with checkpoint at 5.0 hours to ensure documentation task can be completed",
+    "dependency_conflicts": "For React Native Jest issues, maintain list of tested dependency versions and alternative approaches"
+  },
+  "testing_strategy": {
+    "validation_approach": "Execute full test suites for both platforms after each fix to ensure no regressions",
+    "priority_order": "1) Flutter fixes (quick wins), 2) React Native critical Jest issues (highest impact), 3) Documentation (consolidation)",
+    "success_definition": "Both platforms achieve reliable, reproducible test execution with comprehensive coverage of core functionality",
+    "fallback_plans": "Alternative testing strategies documented if primary approaches fail"
+  },
+  "overseer_approval": {
+    "status": "PENDING",
+    "approval_notes": "Plan addresses critical testing infrastructure issues identified in test execution report. Focuses on immediate reliability improvements rather than new feature development. Time budget appropriate for scope.",
+    "critical_checkpoints": [
+      "Task 002 checkpoint at 2.5 hours: If Jest issues unresolved, implement alternative strategy",
+      "Overall checkpoint at 5.0 hours: Ensure documentation task can be completed within budget"
+    ],
+    "approval_timestamp": "pending"
+  }
+} 

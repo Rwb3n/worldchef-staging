@@ -28,6 +28,8 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "sdkVersion": "53.0.0",
+    "platforms": ["ios", "android", "web"],
     "plugins": [
       [
         "expo-build-properties",

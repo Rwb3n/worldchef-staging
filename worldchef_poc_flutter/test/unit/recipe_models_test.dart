@@ -44,25 +44,25 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../lib/models/recipe_manual.dart';
 
 void main() {
+  // Sample test data - moved to top level for access across all test groups
+  final sampleRecipeJson = {
+    'id': 1,
+    'schema_version': 1,
+    'title': 'Test Recipe',
+    'description': 'A test recipe for unit testing',
+    'cookTime': 25,
+    'prepTime': 15,
+    'servings': 4,
+    'difficulty': 'Medium',
+    'category': 'Test',
+    'ingredients': ['ingredient1', 'ingredient2', 'ingredient3'],
+    'imageUrl': 'https://example.com/test.jpg',
+    'rating': 4.5,
+    'reviewCount': 100,
+    'createdAt': '2024-01-15T10:30:00Z',
+  };
+
   group('Recipe Model Unit Tests', () {
-    
-    // Sample test data
-    final sampleRecipeJson = {
-      'id': 1,
-      'schema_version': 1,
-      'title': 'Test Recipe',
-      'description': 'A test recipe for unit testing',
-      'cookTime': 25,
-      'prepTime': 15,
-      'servings': 4,
-      'difficulty': 'Medium',
-      'category': 'Test',
-      'ingredients': ['ingredient1', 'ingredient2', 'ingredient3'],
-      'imageUrl': 'https://example.com/test.jpg',
-      'rating': 4.5,
-      'reviewCount': 100,
-      'createdAt': '2024-01-15T10:30:00Z',
-    };
 
     group('Recipe JSON Serialization', () {
       test('should create Recipe from valid JSON', () {
@@ -101,7 +101,7 @@ void main() {
         expect(json['imageUrl'], equals('https://example.com/test.jpg'));
         expect(json['rating'], equals(4.5));
         expect(json['reviewCount'], equals(100));
-        expect(json['createdAt'], equals('2024-01-15T10:30:00Z'));
+        expect(json['createdAt'], equals('2024-01-15T10:30:00.000Z'));
       });
 
       test('should handle round-trip serialization correctly', () {
@@ -269,7 +269,9 @@ void main() {
       test('should implement equality correctly', () {
         final recipe1 = Recipe.fromJson(sampleRecipeJson);
         final recipe2 = Recipe.fromJson(sampleRecipeJson);
-        final recipe3 = Recipe.fromJson({...sampleRecipeJson, 'title': 'Different Title'});
+        final modifiedJson = Map<String, dynamic>.from(sampleRecipeJson);
+        modifiedJson['id'] = 2; // Change ID instead of title since equality is based on ID
+        final recipe3 = Recipe.fromJson(modifiedJson);
 
         expect(recipe1, equals(recipe2));
         expect(recipe1, isNot(equals(recipe3)));

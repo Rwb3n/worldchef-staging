@@ -1,0 +1,29 @@
+{
+  "testDate": "2025-06-07T17:18:02.176Z",
+  "framework": "React Native",
+  "expo_version": "53.0.0",
+  "react_native_version": "0.79.3",
+  "device": "To be filled manually",
+  "results": {
+    "bundleSize": {
+      "note": "Bundle not found - run expo export first"
+    },
+    "performance": {},
+    "memory": {},
+    "timestamps": {}
+  },
+  "instructions": {
+    "next_steps": [
+      "1. Start the app: npm start",
+      "2. Navigate through screens to collect TTI data",
+      "3. Scroll through recipe list for 30+ seconds",
+      "4. Check console for FPS measurements",
+      "5. Re-run this script to update metrics"
+    ],
+    "comparison_needed": {
+      "flutter_fps": "59.2 FPS average",
+      "flutter_tti": "Check Flutter performance docs",
+      "flutter_bundle": "Check Flutter bundle size"
+    }
+  }
+}

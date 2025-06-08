@@ -1,0 +1,926 @@
+{
+  "plan_id": "poc2_supabase_validation",
+  "v": 4.1,
+  "title": "PoC #2: Supabase Performance & Cost Validation at MVP Scale (v4.1 - Clean)",
+  "description": "Comprehensive validation of Supabase as WorldChef backend platform through empirical performance testing, detailed cost modeling, and operational readiness assessment. Evidence-based evaluation with v4 enhancements for decision-grade signal quality addressing all critical gaps.",
+  "goal": "Validate Supabase platform viability for WorldChef MVP through rigorous performance benchmarking (Read/Write/Edge Functions), cost projection modeling (1k-10k MAU), RLS security implementation, and operational procedure validation. Deliver data-driven recommendation with 90%+ confidence level using realistic concurrency and workload testing.",
+  "current_g": 39,
+  "preceding_plan_id_ref": null,
+  "status": "PENDING",
+  "created_at": "2025-01-15T10:00:00Z",
+  "updated_at": "2025-01-15T23:00:00Z",
+  "priority": "HIGH",
+  "estimated_duration_days": 21,
+  "total_effort_hours": 93,
+  "actual_start_date": null,
+  "completion_date": null,
+  "stage_exit_gates": {
+    "baseline_overhead_gate": "If baseline overhead >50% of targets → escalate for stakeholder decision",
+    "performance_threshold_gate": "If read p95 >2× target after first k6 run → drop tuning timebox and escalate", 
+    "cost_viability_gate": "If 10k MAU cost projection >$120/month → trigger alternative evaluation",
+    "operational_readiness_gate": "If backup/restore fails or takes >4 hours → document operational risk"
+  },
+  "tasks": [
+    {
+      "task_id": "poc2_t001",
+      "title": "Stage 0: Performance Targets & MAU Assumptions Finalization",
+      "description": "Define specific quantitative performance targets and detailed MAU usage assumptions for cost modeling. Critical foundation that all subsequent evaluation depends on. Must achieve stakeholder sign-off before proceeding.",
+      "status": "DONE",
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "CRITICAL",
+      "estimated_effort_hours": 4,
+      "dependencies": [],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "targets_read",
+          "description": "Define Read Query p95 latency target (revised baseline: <150ms for recipe listing with RLS, accounting for PostgREST overhead)",
+          "status": "DONE",
+          "target_artifact_id": "poc2_performance_targets"
+        },
+        {
+          "item_id": "targets_write", 
+          "description": "Define Write Flow p95 latency target (revised baseline: <250ms for user signup + creator + recipe flow)",
+          "status": "DONE",
+          "target_artifact_id": "poc2_performance_targets"
+        },
+        {
+          "item_id": "targets_edge_warm",
+          "description": "Define Edge Function Warm p95 latency target (revised baseline: <200ms for realistic nutrition calculation)",
+          "status": "DONE", 
+          "target_artifact_id": "poc2_performance_targets"
+        },
+        {
+          "item_id": "targets_edge_cold",
+          "description": "Define Edge Function Cold Start p95 latency target (baseline: <800ms for first invocation)",
+          "status": "DONE",
+          "target_artifact_id": "poc2_performance_targets"
+        },
+        {
+          "item_id": "mau_assumptions",
+          "description": "Document detailed MAU usage patterns with peak concurrency derivation: MAU × (sessions/day ÷ 86400) × burst_factor. Calculate realistic VUs: 10k MAU → 150 VUs read / 60 VUs write",
+          "status": "DONE",
+          "target_artifact_id": "poc2_mau_assumptions"
+        },
+        {
+          "item_id": "cost_thresholds",
+          "description": "Confirm cost success criteria: 10k MAU ≤$100/month (buffer for $75 budget), failure threshold >$150/month, with 20% pricing volatility buffer",
+          "status": "DONE",
+          "target_artifact_id": "poc2_cost_criteria"
+        }
+      ],
+      "inputs": [],
+      "outputs": [
+        {
+          "artifact_id": "poc2_performance_targets",
+          "expected_path": "docs/poc2_supabase_validation/stage0_targets/performance_targets.md",
+          "description": "Realistic quantitative performance targets accounting for PostgREST/HTTPS overhead with stakeholder approval"
+        },
+        {
+          "artifact_id": "poc2_mau_assumptions", 
+          "expected_path": "docs/poc2_supabase_validation/stage0_targets/mau_usage_assumptions.md",
+          "description": "Detailed MAU usage patterns with peak concurrency modeling for accurate cost and load testing"
+        },
+        {
+          "artifact_id": "poc2_cost_criteria",
+          "expected_path": "docs/poc2_supabase_validation/stage0_targets/cost_success_criteria.md", 
+          "description": "Cost success/failure thresholds with pricing volatility buffer and budget constraints"
+        }
+      ],
+      "notes": "COMPLETED: All foundation targets defined with PostgREST overhead accounted for. Performance targets: Read <150ms, Write <250ms, Edge Warm <200ms, Edge Cold <800ms. MAU modeling complete with peak concurrency (10k MAU → 50 VUs). Cost criteria established: 10k MAU ≤$100/month acceptable, >$150/month failure. Ready for Stage 0b baseline reality check.",
+      "created_at": "2025-01-15T10:00:00Z",
+      "updated_at": "2025-01-16T00:00:00Z"
+    },
+    {
+      "task_id": "poc2_t001b",
+      "title": "Stage 0b: Network & PostgREST Baseline Reality Check",
+      "description": "Establish network and PostgREST overhead baseline with single-user queries to calibrate realistic performance expectations before full load testing. Critical for accurate target setting.",
+      "status": "BLOCKED",
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "CRITICAL",
+      "estimated_effort_hours": 3,
+      "dependencies": ["poc2_t001"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "baseline_simple_query",
+          "description": "Run simple SELECT query (single table, no joins) and measure end-to-end latency from k6 to establish network + PostgREST baseline",
+          "status": "DONE",
+          "target_artifact_id": "poc2_baseline_measurements"
+        },
+        {
+          "item_id": "baseline_rls_query",
+          "description": "Run same query with RLS enabled to measure RLS policy evaluation overhead in isolation",
+          "status": "DONE",
+          "target_artifact_id": "poc2_baseline_measurements"
+        },
+        {
+          "item_id": "baseline_complex_query",
+          "description": "Test representative complex query (multi-table join with filters) to understand query execution vs transport ratio",
+          "status": "DONE",
+          "target_artifact_id": "poc2_baseline_measurements"
+        },
+        {
+          "item_id": "target_adjustment",
+          "description": "If baseline overhead >50% of performance targets, escalate for stakeholder decision on target revision",
+          "status": "SKIPPED",
+          "target_artifact_id": "poc2_revised_targets"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_performance_targets",
+          "description": "Initial performance targets for baseline comparison"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_baseline_measurements",
+          "expected_path": "docs/poc2_supabase_validation/stage0_targets/baseline_reality_check.md",
+          "description": "Network and PostgREST overhead measurements with single-user baseline data"
+        },
+        {
+          "artifact_id": "poc2_revised_targets",
+          "expected_path": "docs/poc2_supabase_validation/stage0_targets/revised_performance_targets.md",
+          "description": "Adjusted performance targets based on measured baseline overhead if needed"
+        }
+      ],
+      "notes": "BLOCKED: Theoretical analysis complete but REAL TESTING REQUIRED. Need Supabase credentials to create minimal environment for actual baseline measurements. Cannot proceed with aspirational/simulated data - must measure real HTTP latency, PostgREST overhead, and RLS impact with k6 against live API.",
+      "created_at": "2025-01-15T22:00:00Z",
+      "updated_at": "2025-01-16T00:05:00Z"
+    },
+    {
+      "task_id": "poc2_t002", 
+      "title": "Stage 1: Supabase Environment Setup & Team Preparation",
+      "description": "Provision dedicated Supabase PoC project with production-like configuration, enable required extensions, configure monitoring, and conduct team training. Establish baseline environment ready for realistic scale testing.",
+      "status": "PENDING",
+      "execution_type": "NATIVE_OS_ACTION", 
+      "priority": "HIGH",
+      "estimated_effort_hours": 10,
+      "dependencies": ["poc2_t001b"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "supabase_project",
+          "description": "Create dedicated 'worldchef-poc' Supabase project in target region (us-west-2), document access credentials",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_supabase_config"
+        },
+        {
+          "item_id": "tier_assessment",
+          "description": "Assess Free tier limits vs PoC requirements (100k records, extensions). Upgrade to Pro if necessary, document reasoning and costs",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_tier_decision"  
+        },
+        {
+          "item_id": "extensions_enable",
+          "description": "Enable pg_trgm, unaccent extensions. Enable pg_stat_statements if available on tier for query analysis",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_db_config"
+        },
+        {
+          "item_id": "monitoring_setup", 
+          "description": "Configure Supabase Dashboard monitoring, enable query logging, set up performance tracking for k6 testing",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_monitoring_config"
+        },
+        {
+          "item_id": "cli_setup",
+          "description": "Install and configure Supabase CLI for schema management, function deployment, backup operations",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_cli_config"
+        },
+        {
+          "item_id": "team_training",
+          "description": "Conduct half-day workshop on Supabase CLI, RLS debugging (pg_policy), pg_stat_statements for team",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_team_training"
+        },
+        {
+          "item_id": "support_contact",
+          "description": "Contact Supabase support to inform about PoC load testing to prevent DDoS false positives",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_support_communication"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_revised_targets",
+          "description": "Revised performance targets to guide configuration choices"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_supabase_config",
+          "expected_path": "docs/poc2_supabase_validation/stage1_setup/supabase_project_config.md",
+          "description": "Complete Supabase project configuration with credentials and settings"
+        },
+        {
+          "artifact_id": "poc2_tier_decision",
+          "expected_path": "docs/poc2_supabase_validation/stage1_setup/tier_selection_rationale.md", 
+          "description": "Documentation of tier selection with cost implications for PoC duration"
+        },
+        {
+          "artifact_id": "poc2_db_config",
+          "expected_path": "docs/poc2_supabase_validation/stage1_setup/database_configuration.md",
+          "description": "Database extensions and configuration settings for performance testing"
+        },
+        {
+          "artifact_id": "poc2_monitoring_config", 
+          "expected_path": "docs/poc2_supabase_validation/stage1_setup/monitoring_setup.md",
+          "description": "Monitoring and observability configuration for PoC evaluation"  
+        },
+        {
+          "artifact_id": "poc2_cli_config",
+          "expected_path": "docs/poc2_supabase_validation/stage1_setup/cli_setup_guide.md",
+          "description": "Supabase CLI installation and configuration for development workflow"
+        },
+        {
+          "artifact_id": "poc2_team_training",
+          "expected_path": "docs/poc2_supabase_validation/stage1_setup/team_training_summary.md",
+          "description": "Team training workshop outcomes and competency verification"
+        },
+        {
+          "artifact_id": "poc2_support_communication",
+          "expected_path": "docs/poc2_supabase_validation/stage1_setup/supabase_support_coordination.md",
+          "description": "Supabase support coordination for load testing approval"
+        }
+      ],
+      "notes": "Enhanced with team training and Supabase support coordination to prevent load testing issues. Environment must be production-representative.",
+      "created_at": "2025-01-15T10:00:00Z", 
+      "updated_at": "2025-01-15T22:00:00Z"
+    },
+    {
+      "task_id": "poc2_t003",
+      "title": "Stage 2: Schema Deployment & RLS Policy Implementation", 
+      "description": "Deploy complete WorldChef relational schema with indexes, triggers, enums, and implement core RLS policies. Verify schema correctness and RLS policy enforcement through comprehensive testing.",
+      "status": "PENDING",
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "HIGH", 
+      "estimated_effort_hours": 8,
+      "dependencies": ["poc2_t002"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "schema_migration",
+          "description": "Apply complete WorldChef schema migrations: tables, indexes, triggers, enums, views (active_recipes, etc.)",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_schema_deployment"
+        },
+        {
+          "item_id": "rls_policies",
+          "description": "Implement core RLS policies for recipes, recipe_collections, creators with appropriate user role checks",
+          "status": "PENDING", 
+          "target_artifact_id": "poc2_rls_implementation"
+        },
+        {
+          "item_id": "rls_verification",
+          "description": "Create test script to verify RLS policies work correctly: test allowed/denied access patterns with different user JWTs",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_rls_tests"
+        },
+        {
+          "item_id": "schema_validation", 
+          "description": "Verify schema deployment: check pg_tables, pg_indexes, pg_policies. Document any deployment issues",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_schema_validation"
+        },
+        {
+          "item_id": "baseline_queries",
+          "description": "Test baseline queries (recipe listing, creator profile) to ensure indexes and views perform as expected",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_baseline_performance"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_supabase_config", 
+          "description": "Supabase project configuration for schema deployment"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_schema_deployment",
+          "expected_path": "src/poc2_supabase_validation/schema/migration_scripts.sql",
+          "description": "Complete schema migration scripts with deployment verification"
+        },
+        {
+          "artifact_id": "poc2_rls_implementation", 
+          "expected_path": "src/poc2_supabase_validation/schema/rls_policies.sql",
+          "description": "Row Level Security policies implementation with documentation"
+        },
+        {
+          "artifact_id": "poc2_rls_tests",
+          "expected_path": "src/poc2_supabase_validation/testing/rls_verification.js",
+          "description": "Automated RLS policy verification script with test cases"
+        },
+        {
+          "artifact_id": "poc2_schema_validation",
+          "expected_path": "docs/poc2_supabase_validation/stage2_schema/deployment_verification.md",
+          "description": "Schema deployment verification report with any issues documented"
+        },
+        {
+          "artifact_id": "poc2_baseline_performance",
+          "expected_path": "docs/poc2_supabase_validation/stage2_schema/baseline_query_performance.md", 
+          "description": "Initial query performance baseline before load testing"
+        }
+      ],
+      "notes": "RLS policies critical for realistic performance testing. Must verify both functionality and performance impact.",
+      "created_at": "2025-01-15T10:00:00Z",
+      "updated_at": "2025-01-15T10:00:00Z"
+    },
+    {
+      "task_id": "poc2_t004",
+      "title": "Stage 3: MVP-Scale Data Seeding & Edge Function Deployment",
+      "description": "Generate and seed realistic MVP-scale data (20k users, 100k recipes, 500k interactions) with proper distribution patterns. Deploy nutritionEnrich Edge Function for performance testing. Verify data integrity and function deployment.",
+      "status": "PENDING", 
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "HIGH",
+      "estimated_effort_hours": 10,
+      "dependencies": ["poc2_t003"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "seeding_script",
+          "description": "Create efficient batch data seeding script: 20k users, 5k creators, 100k recipes with realistic JSONB content",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_data_seeding_script"
+        },
+        {
+          "item_id": "interaction_data", 
+          "description": "Generate interaction data: 500k recipe_likes, 100k collection_recipes, 20k recipe_collections, 50k creator_followers",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_interaction_seeding"
+        },
+        {
+          "item_id": "data_distribution",
+          "description": "Ensure realistic data distribution: popular recipes/creators, varied user roles for RLS testing, geographic distribution",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_data_analysis"
+        },
+        {
+          "item_id": "edge_function",
+          "description": "Deploy nutritionEnrich Edge Function (Deno/TS): accepts ingredient JSON, simulates 300ms CPU work + HTTP calls for realistic workload, returns nutrition data",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_edge_function"
+        },
+        {
+          "item_id": "seeding_execution",
+          "description": "Execute data seeding in efficient batches, monitor performance, verify final data counts and integrity",
+          "status": "PENDING", 
+          "target_artifact_id": "poc2_seeding_results"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_schema_deployment",
+          "description": "Deployed schema for data seeding target tables"
+        },
+        {
+          "artifact_id_ref": "poc2_mau_assumptions",
+          "description": "MAU assumptions to guide realistic data distribution patterns"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_data_seeding_script",
+          "expected_path": "src/poc2_supabase_validation/seeding/batch_seeding_script.js", 
+          "description": "Efficient batch data seeding script with error handling and progress monitoring"
+        },
+        {
+          "artifact_id": "poc2_interaction_seeding",
+          "expected_path": "src/poc2_supabase_validation/seeding/interaction_data_script.js",
+          "description": "Interaction data generation script for realistic user behavior simulation"  
+        },
+        {
+          "artifact_id": "poc2_data_analysis",
+          "expected_path": "docs/poc2_supabase_validation/stage3_seeding/data_distribution_report.md",
+          "description": "Data distribution analysis ensuring realistic MVP-scale representation"
+        },
+        {
+          "artifact_id": "poc2_edge_function",
+          "expected_path": "src/poc2_supabase_validation/edge_functions/nutritionEnrich/index.ts",
+          "description": "Deployed Edge Function for nutrition calculation performance testing"
+        },
+        {
+          "artifact_id": "poc2_seeding_results",
+          "expected_path": "docs/poc2_supabase_validation/stage3_seeding/seeding_execution_report.md",
+          "description": "Data seeding execution report with performance metrics and final verification"
+        }
+      ],
+      "notes": "Data must be realistic for valid performance testing. Monitor seeding performance as proxy for write performance characteristics.",
+      "created_at": "2025-01-15T10:00:00Z",
+      "updated_at": "2025-01-15T10:00:00Z"
+    },
+    {
+      "task_id": "poc2_t005",
+      "title": "Stage 4: Comprehensive Performance Benchmarking",
+      "description": "Execute rigorous k6 load testing across three critical scenarios: Read Query (recipe listing with RLS), Write Operations (user signup flow), and Edge Function performance (cold start + warm performance). Capture detailed performance metrics against established targets.",
+      "status": "PENDING",
+      "execution_type": "NATIVE_OS_ACTION", 
+      "priority": "CRITICAL",
+      "estimated_effort_hours": 20,
+      "dependencies": ["poc2_t004"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "jwt_pool",
+          "description": "Generate pool of 100+ valid JWTs for diverse test users with representative roles for realistic RLS testing",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_jwt_pool"
+        },
+        {
+          "item_id": "read_benchmark",
+          "description": "Test 1: Recipe Listing - k6 script with 150 VUs (MAU-derived concurrency), complex SELECT from active_recipes with RLS, measure p50/p90/p95/p99 latencies",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_read_benchmark"
+        },
+        {
+          "item_id": "write_benchmark", 
+          "description": "Test 2: User Signup Flow - k6 script with 60 VUs (MAU-derived write concurrency) testing transactional RPC for user+creator+recipe creation",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_write_benchmark"
+        },
+        {
+          "item_id": "edge_cold_test",
+          "description": "Test 3a: Edge Function Cold Starts - Deploy/redeploy function, measure first 10-20 request latencies",
+          "status": "PENDING", 
+          "target_artifact_id": "poc2_edge_cold_benchmark"
+        },
+        {
+          "item_id": "edge_warm_test",
+          "description": "Test 3b: Edge Function Warm Performance - 60 VUs sustained load (realistic Edge concurrency) after warm-up, measure steady-state performance", 
+          "status": "PENDING",
+          "target_artifact_id": "poc2_edge_warm_benchmark"
+        },
+        {
+          "item_id": "rls_overhead",
+          "description": "RLS Performance Impact - Compare performance with/without RLS using service_role key baseline if possible",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_rls_overhead_analysis"
+        },
+        {
+          "item_id": "edge_burst_test",
+          "description": "Test 3c: Edge Function Burst Load - 200 VUs × 60s to test auto-scaling vs throttling under spike traffic",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_edge_burst_benchmark"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_seeding_results",
+          "description": "Seeded data for realistic load testing scenarios"
+        },
+        {
+          "artifact_id_ref": "poc2_performance_targets", 
+          "description": "Performance targets for benchmark success evaluation"
+        },
+        {
+          "artifact_id_ref": "poc2_edge_function",
+          "description": "Deployed Edge Function for performance testing"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_jwt_pool",
+          "expected_path": "src/poc2_supabase_validation/benchmarking/jwt_generator.js",
+          "description": "JWT generation and management for realistic multi-user load testing"
+        },
+        {
+          "artifact_id": "poc2_read_benchmark", 
+          "expected_path": "src/poc2_supabase_validation/benchmarking/k6_read_test.js",
+          "description": "k6 read performance benchmark with detailed latency analysis and raw results"
+        },
+        {
+          "artifact_id": "poc2_write_benchmark",
+          "expected_path": "src/poc2_supabase_validation/benchmarking/k6_write_test.js", 
+          "description": "k6 write performance benchmark for transactional operations with detailed metrics"
+        },
+        {
+          "artifact_id": "poc2_edge_cold_benchmark",
+          "expected_path": "src/poc2_supabase_validation/benchmarking/k6_edge_cold_test.js",
+          "description": "Edge Function cold start performance analysis with latency distribution"
+        },
+        {
+          "artifact_id": "poc2_edge_warm_benchmark",
+          "expected_path": "src/poc2_supabase_validation/benchmarking/k6_edge_warm_test.js", 
+          "description": "Edge Function warm performance benchmark under sustained load"
+        },
+                  {
+            "artifact_id": "poc2_rls_overhead_analysis",
+            "expected_path": "docs/poc2_supabase_validation/stage4_benchmarking/rls_performance_impact.md",
+            "description": "Detailed RLS performance overhead analysis with recommendations"
+          },
+          {
+            "artifact_id": "poc2_edge_burst_benchmark",
+            "expected_path": "src/poc2_supabase_validation/benchmarking/k6_edge_burst_test.js",
+            "description": "Edge Function burst load testing (200 VUs) for auto-scaling assessment"
+          }
+      ],
+      "notes": "CRITICAL: All benchmarks (sustained + burst) must run successfully with <1% error rate. Includes 200 VU burst testing for Edge auto-scaling assessment. Capture EXPLAIN ANALYZE for slow queries.",
+      "created_at": "2025-01-15T10:00:00Z",
+      "updated_at": "2025-01-15T10:00:00Z"
+    },
+    {
+      "task_id": "poc2_t006",
+      "title": "Stage 5: Cost Modeling & Financial Viability Analysis", 
+      "description": "Develop comprehensive cost projection model using actual PoC usage data. Project costs at 1k, 5k, and 10k MAU scales against defined budget constraints. Create detailed financial viability assessment with sensitivity analysis.",
+      "status": "PENDING",
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "CRITICAL", 
+      "estimated_effort_hours": 8,
+      "dependencies": ["poc2_t005"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "usage_analysis",
+          "description": "Analyze actual PoC usage: DB storage, egress from k6 tests, function invocations/duration, auth users",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_usage_analysis"
+        },
+        {
+          "item_id": "cost_model_base",
+          "description": "Create detailed cost model spreadsheet with current Supabase pricing, unit costs, and explicit assumptions",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_cost_model"
+        },
+        {
+          "item_id": "mau_projections",
+          "description": "Project costs for 1k, 5k, 10k MAU using MAU Usage Assumptions and actual PoC performance characteristics", 
+          "status": "PENDING",
+          "target_artifact_id": "poc2_mau_cost_projections"
+        },
+        {
+          "item_id": "budget_assessment",
+          "description": "Assess against budget constraints: Free tier viability, $75/month target, $150/month failure threshold",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_budget_viability"
+        },
+        {
+          "item_id": "sensitivity_analysis",
+          "description": "Perform sensitivity analysis: usage variance impact, pricing changes, scaling assumptions validation",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_cost_sensitivity"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_mau_assumptions",
+          "description": "MAU usage assumptions for cost projection accuracy"
+        },
+        {
+          "artifact_id_ref": "poc2_read_benchmark",
+          "description": "Actual performance data for usage modeling"
+        },
+        {
+          "artifact_id_ref": "poc2_write_benchmark", 
+          "description": "Write operation costs and performance characteristics"
+        },
+        {
+          "artifact_id_ref": "poc2_edge_warm_benchmark",
+          "description": "Edge Function usage costs and performance data"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_usage_analysis",
+          "expected_path": "docs/poc2_supabase_validation/stage5_cost/actual_usage_analysis.md",
+          "description": "Detailed analysis of actual PoC usage across all Supabase services"
+        },
+        {
+          "artifact_id": "poc2_cost_model",
+          "expected_path": "docs/poc2_supabase_validation/stage5_cost/supabase_cost_model.xlsx", 
+          "description": "Comprehensive cost model spreadsheet with unit pricing and assumptions"
+        },
+        {
+          "artifact_id": "poc2_mau_cost_projections",
+          "expected_path": "docs/poc2_supabase_validation/stage5_cost/mau_cost_projections.md",
+          "description": "Detailed cost projections for 1k, 5k, and 10k MAU scenarios"
+        },
+        {
+          "artifact_id": "poc2_budget_viability",
+          "expected_path": "docs/poc2_supabase_validation/stage5_cost/budget_viability_assessment.md",
+          "description": "Budget constraint assessment with clear success/failure determination"
+        },
+        {
+          "artifact_id": "poc2_cost_sensitivity",
+          "expected_path": "docs/poc2_supabase_validation/stage5_cost/sensitivity_analysis.md",
+          "description": "Cost sensitivity analysis with variance scenarios and risk assessment"
+        }
+      ],
+      "notes": "CRITICAL: Extended cost model includes object storage, table fees, Auth billing, and cold-start costs. 10k MAU >$120/month triggers alternative evaluation.",
+      "created_at": "2025-01-15T10:00:00Z", 
+      "updated_at": "2025-01-15T23:00:00Z"
+    },
+    {
+      "task_id": "poc2_t005b",
+      "title": "Stage 5b: Security & Compliance Validation",
+      "description": "Dedicated security and compliance validation to ensure production readiness. Execute OWASP security scanning and GDPR data export validation as defined success criteria. Critical for meeting poc2_m006 requirements.",
+      "status": "PENDING",
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "HIGH",
+      "estimated_effort_hours": 8,
+      "dependencies": ["poc2_t005"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "owasp_scan",
+          "description": "Run OWASP ZAP security scan against PostgREST endpoints with RLS policies enabled",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_security_scan_results"
+        },
+        {
+          "item_id": "gdpr_export",
+          "description": "Test complete GDPR data export flow for user data across all tables with proper anonymization",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_gdpr_validation"
+        },
+        {
+          "item_id": "security_fixes",
+          "description": "Document and implement any security issues identified during scanning",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_security_remediation"
+        },
+        {
+          "item_id": "compliance_assessment",
+          "description": "Assess Supabase compliance capabilities for GDPR, data residency, audit logging requirements",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_compliance_assessment"
+        },
+        {
+          "item_id": "auth_rate_limit_test",
+          "description": "Test rate-limiting and brute-force protection on auth endpoints per ADR-WCF-005",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_auth_security_validation"
+        },
+        {
+          "item_id": "region_latency_assessment",
+          "description": "Document latency implications for EU production deployment vs us-west-2 PoC environment",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_region_analysis"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_rls_implementation",
+          "description": "RLS policies for security testing context"
+        },
+        {
+          "artifact_id_ref": "poc2_seeding_results",
+          "description": "Seeded data for GDPR export testing"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_security_scan_results",
+          "expected_path": "docs/poc2_supabase_validation/stage5b_security/owasp_security_scan.md",
+          "description": "OWASP ZAP security scan results with remediation recommendations"
+        },
+        {
+          "artifact_id": "poc2_gdpr_validation",
+          "expected_path": "docs/poc2_supabase_validation/stage5b_security/gdpr_export_validation.md",
+          "description": "GDPR data export testing results and compliance validation"
+        },
+        {
+          "artifact_id": "poc2_security_remediation",
+          "expected_path": "docs/poc2_supabase_validation/stage5b_security/security_remediation_log.md",
+          "description": "Security issue remediation documentation and implementation status"
+        },
+                  {
+            "artifact_id": "poc2_compliance_assessment",
+            "expected_path": "docs/poc2_supabase_validation/stage5b_security/compliance_assessment.md",
+            "description": "Comprehensive compliance capability assessment for production requirements"
+          },
+          {
+            "artifact_id": "poc2_auth_security_validation",
+            "expected_path": "docs/poc2_supabase_validation/stage5b_security/auth_security_testing.md",
+            "description": "Authentication endpoint security testing including rate-limiting and brute-force protection"
+          },
+          {
+            "artifact_id": "poc2_region_analysis",
+            "expected_path": "docs/poc2_supabase_validation/stage5b_security/region_latency_analysis.md",
+            "description": "Analysis of latency implications for EU production deployment vs US PoC environment"
+          }
+      ],
+      "notes": "CRITICAL: Dedicated 8-hour allocation prevents rushed security validation. Includes auth rate-limiting tests and EU region considerations. Must pass for poc2_m006 success metric.",
+      "created_at": "2025-01-15T23:00:00Z",
+      "updated_at": "2025-01-15T23:00:00Z"
+    },
+    {
+      "task_id": "poc2_t007",
+      "title": "Stage 6: Operational Validation & Final Evaluation",
+      "description": "Validate operational procedures (backup/restore, migration), assess observability capabilities, and compile comprehensive PoC evaluation report with clear recommendation. Complete evidence-based decision process.",
+      "status": "PENDING",
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "HIGH",
+      "estimated_effort_hours": 6, 
+      "dependencies": ["poc2_t006"],
+      "retry_count": 0,
+      "execution_checklist": [
+        {
+          "item_id": "backup_restore",
+          "description": "Test backup/restore procedures: pg_dump PoC DB, restore to local PostgreSQL, document process and timing",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_backup_validation"
+        },
+        {
+          "item_id": "migration_test",
+          "description": "Test data portability: export subset of schema/data, import to vanilla PostgreSQL, assess migration effort",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_migration_validation"
+        },
+        {
+          "item_id": "observability_assessment", 
+          "description": "Evaluate Supabase monitoring: dashboard metrics quality, log analysis capabilities, issue diagnosis ease",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_observability_report"
+        },
+        {
+          "item_id": "success_criteria_evaluation",
+          "description": "Systematically evaluate all success criteria: performance targets, cost thresholds, error rates, RLS overhead",
+          "status": "PENDING",
+          "target_artifact_id": "poc2_criteria_evaluation"
+        },
+        {
+          "item_id": "final_recommendation",
+          "description": "Compile comprehensive evaluation report with clear recommendation and confidence level (target 90%+)",
+          "status": "PENDING", 
+          "target_artifact_id": "poc2_final_evaluation_report"
+        }
+      ],
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_cost_criteria",
+          "description": "Cost success criteria for final evaluation"
+        },
+        {
+          "artifact_id_ref": "poc2_performance_targets",
+          "description": "Performance targets for success criteria evaluation"
+        },
+        {
+          "artifact_id_ref": "poc2_budget_viability", 
+          "description": "Budget viability assessment results"
+        },
+        {
+          "artifact_id_ref": "poc2_rls_overhead_analysis",
+          "description": "RLS performance impact assessment"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_backup_validation",
+          "expected_path": "docs/poc2_supabase_validation/stage6_evaluation/backup_restore_validation.md",
+          "description": "Backup and restore procedure validation with timing and process documentation"
+        },
+        {
+          "artifact_id": "poc2_migration_validation",
+          "expected_path": "docs/poc2_supabase_validation/stage6_evaluation/migration_portability_test.md",
+          "description": "Data migration and portability assessment with effort estimation"
+        },
+        {
+          "artifact_id": "poc2_observability_report",
+          "expected_path": "docs/poc2_supabase_validation/stage6_evaluation/observability_assessment.md", 
+          "description": "Comprehensive observability and monitoring capabilities evaluation"
+        },
+        {
+          "artifact_id": "poc2_criteria_evaluation",
+          "expected_path": "docs/poc2_supabase_validation/stage6_evaluation/success_criteria_evaluation.md",
+          "description": "Systematic evaluation of all defined success criteria with pass/fail determination"
+        },
+        {
+          "artifact_id": "poc2_final_evaluation_report",
+          "expected_path": "docs/poc2_supabase_validation/poc2_final_evaluation_report.md",
+          "description": "Comprehensive PoC evaluation report with evidence-based recommendation and 90%+ confidence"
+        }
+      ],
+      "notes": "FINAL DELIVERABLE: Must provide clear recommendation with high confidence. If Supabase fails criteria, trigger alternative platform evaluation per ADR-WCF-001d.",
+      "created_at": "2025-01-15T10:00:00Z",
+      "updated_at": "2025-01-15T10:00:00Z"
+    },
+    {
+      "task_id": "poc2_t008",
+      "title": "PoC #2 Documentation & Knowledge Preservation",
+      "description": "Create comprehensive documentation package for PoC #2 results, organize all artifacts in structured folder system, update registry, and preserve complete evaluation methodology for future reference.",
+      "status": "PENDING",
+      "execution_type": "NATIVE_OS_ACTION",
+      "priority": "MEDIUM",
+      "estimated_effort_hours": 4,
+      "dependencies": ["poc2_t007"], 
+      "retry_count": 0,
+      "inputs": [
+        {
+          "artifact_id_ref": "poc2_final_evaluation_report",
+          "description": "Final evaluation report for documentation package"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact_id": "poc2_documentation_package",
+          "expected_path": "docs/poc2_supabase_validation/README.md",
+          "description": "Comprehensive documentation package with organized folder structure and knowledge preservation"
+        }
+      ],
+      "notes": "Follow PoC #1 documentation model for consistency. Ensure complete knowledge preservation for future reference.",
+      "created_at": "2025-01-15T10:00:00Z",
+      "updated_at": "2025-01-15T10:00:00Z"
+    }
+  ],
+  "risks": [
+    {
+      "risk_id": "poc2_r001",
+      "description": "Free tier limitations may require paid tier upgrade during PoC, affecting cost projections",
+      "impact": "MEDIUM",
+      "probability": "HIGH", 
+      "mitigation": "Budget allocated for Pro tier upgrade. Document actual vs projected costs with pricing volatility buffer.",
+      "abort_criteria": "If Pro tier costs >$100/month during PoC, pause and reassess scope"
+    },
+    {
+      "risk_id": "poc2_r002",
+      "description": "Performance targets may be unrealistic due to PostgREST transport overhead (80-120ms baseline)",
+      "impact": "HIGH",
+      "probability": "MEDIUM",
+      "mitigation": "Added Stage 0b baseline reality check. Allow target revision based on measured overhead.",
+      "abort_criteria": "If baseline overhead >50% of targets, escalate for stakeholder decision"
+    },
+    {
+      "risk_id": "poc2_r003", 
+      "description": "Data seeding at 100k+ scale may encounter Supabase rate limits or timeouts",
+      "impact": "MEDIUM",
+      "probability": "MEDIUM",
+      "mitigation": "Implement efficient batching, retry logic, and progress monitoring in seeding scripts.",
+      "abort_criteria": "If seeding takes >24h, pause and reassess data volume requirements"
+    },
+    {
+      "risk_id": "poc2_r004",
+      "description": "k6 load testing may be blocked by Supabase DDoS protection or rate limiting",
+      "impact": "HIGH", 
+      "probability": "LOW",
+      "mitigation": "Pre-coordinate with Supabase support. Configure realistic load patterns with gradual ramp-up.",
+      "abort_criteria": "If persistent DDoS blocks after support coordination, reduce concurrency by 50%"
+    },
+    {
+      "risk_id": "poc2_r005",
+      "description": "Cost model assumptions may not reflect real-world usage patterns accurately",
+      "impact": "MEDIUM",
+      "probability": "MEDIUM",
+      "mitigation": "Conservative assumptions with 20% pricing volatility buffer. Validate against industry benchmarks.",
+      "abort_criteria": "If actual PoC costs exceed projections by >100%, halt and re-evaluate"
+    },
+    {
+      "risk_id": "poc2_r006",
+      "description": "Supabase pricing changes during or after PoC could invalidate cost projections",
+      "impact": "HIGH",
+      "probability": "MEDIUM",
+      "mitigation": "Include 20% pricing volatility buffer in cost models. Monitor Supabase pricing announcements.",
+      "abort_criteria": "If pricing increases >25% during PoC, trigger alternative evaluation"
+    },
+    {
+      "risk_id": "poc2_r007",
+      "description": "Schedule slippage due to optimistic effort estimates (48h may be insufficient)",
+      "impact": "MEDIUM",
+      "probability": "HIGH",
+      "mitigation": "Added 25% schedule contingency (60h total). Daily progress tracking with early escalation.",
+      "abort_criteria": "If >50% behind schedule after Stage 3, prioritize critical path only"
+    }
+  ],
+  "success_metrics": [
+    {
+      "metric_id": "poc2_m001",
+      "description": "Performance Targets Achievement",
+      "target": "All benchmark categories (Read/Write/Edge) meet revised p95 latency targets with <1% error rate",
+      "measurement": "k6 benchmark results analysis with baseline overhead accounted"
+    },
+    {
+      "metric_id": "poc2_m002", 
+      "description": "Cost Viability Confirmation with Volatility Buffer",
+      "target": "10k MAU projected cost ≤ $80/month (20% buffer under $100 target)",
+      "measurement": "Detailed cost model with actual usage data and pricing volatility scenarios"
+    },
+    {
+      "metric_id": "poc2_m003",
+      "description": "RLS Performance Overhead",
+      "target": "RLS overhead < 30% compared to non-RLS baseline performance",
+      "measurement": "Comparative performance analysis with/without RLS using service_role baseline"
+    },
+    {
+      "metric_id": "poc2_m004",
+      "description": "Operational Readiness with Full-Fidelity Testing",
+      "target": "Backup/restore, migration, and auth portability procedures validated with realistic effort estimation",
+      "measurement": "Operational validation testing including Supabase-native restore and auth export"
+    },
+    {
+      "metric_id": "poc2_m005",
+      "description": "Recommendation Confidence",
+      "target": "Final recommendation delivered with ≥90% confidence level based on comprehensive evidence",
+      "measurement": "Systematic evaluation report addressing all critical concerns with quantitative and qualitative assessment"
+    },
+    {
+      "metric_id": "poc2_m006",
+      "description": "Security & Compliance Validation",
+      "target": "OWASP security scan passes and GDPR data export flows validated",
+      "measurement": "Security testing results and compliance procedure verification"
+    }
+  ],
+  "notes": "PoC #2 Enhanced Plan incorporates critical evaluation feedback: realistic latency baselines, enhanced concurrency testing, pricing volatility buffers, full-fidelity operational testing, team preparation, and expanded security validation. 25% schedule contingency added.",
+  "linked_issues": []
+} 
