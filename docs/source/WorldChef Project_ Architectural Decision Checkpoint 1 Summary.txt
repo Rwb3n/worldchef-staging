@@ -8,11 +8,11 @@ II. Status of Key Foundational ADRs:
 The following ADRs represent the current accepted architectural direction, with contingencies noted:
 Mobile Client & Initial UI/UX Validation:
 ADR-WCF-001a: Mobile Client Technology Stack Selection Strategy & Comparative Proof-of-Concept Mandate
-Status: PROPOSED (Decision Contingent on Comparative PoC Outcome)
+Status: **VALIDATED** (Flutter chosen)
 Summary: Mandates a comparative PoC between Flutter and React Native (New Architecture) to determine the final mobile stack. Details PoC scope, metrics, and evaluation criteria. The detailed PoC Plan #1 is now considered an integral part of this ADR's execution.
 
 ADR-WCF-025: Early UI/UX Validation and Mobile Foundation Strategy
-Status: ACCEPTED (Contingent on ADR-WCF-001a PoC Outcome)
+Status: **VALIDATED**
 Summary: Defines the strategy for initial mobile development (scaffolding, Component-Driven Development with Widgetbook/Storybook, targeted feature PoCs, NFR stubs) once the mobile stack is chosen. Replaces earlier web prototype strategies (ADR-WCF-001b & ADR-WCF-024 now SUPERSEDED).
 
 
@@ -27,8 +27,8 @@ Summary: Details comprehensive REST-like principles, JSON usage, error handling,
 
 
 Database, BaaS, and Data Modeling:
-ADR-WCF-001d: Database & BaaS Platform Selection Strategy & Proof-of-Concept Mandate
-Status: ACCEPTED (Decision for MVP Contingent on Rigorous PoC Validation)
+ADR-WCF-001d: Database & BaaS Platform Selection Strategy
+Status: **VALIDATED** (Supabase chosen)
 Summary: Selects Supabase (PostgreSQL, Auth, Storage, Edge Functions) for MVP, contingent on PoCs validating performance (RLS, Edge Functions) and cost-effectiveness. The detailed PoC Plan #2 is integral.
 
 ADR-WCF-006a: Core Entity Data Modeling Strategy (Relational Structure)
@@ -80,17 +80,17 @@ Summary: Proposes Zustand (for RN) or Riverpod (for Flutter) for client UI state
 
 III. Critical Proof-of-Concept (PoC) Plans Ready for Execution:
 The following PoC plans have been meticulously drafted and refined based on extensive feedback and are ready for execution. Their outcomes will finalize contingent ADRs and provide crucial data for proceeding with development.
-PoC Plan #1: Mobile Client Stack Performance & AI Effectiveness (Flutter vs. React Native)
+PoC Plan #1: Mobile Client Stack – **COMPLETED** (Flutter outperformed RN)
 Mandated by: ADR-WCF-001a
 Objective: Empirically compare Flutter and React Native (New Arch) on performance for media-heavy screens, AI code generation effectiveness, human oversight efficiency, DX, and basic NFR stub feasibility to make a final mobile stack selection.
 Key Deliverable: PoC Evaluation Report with a clear recommendation for the mobile stack.
 
-PoC Plan #2: Supabase Performance & Cost Validation at MVP Scale
+PoC Plan #2: Supabase Performance & Cost – **COMPLETED** (metrics met)
 Mandated by: ADR-WCF-001d
 Objective: Validate Supabase's performance (PostgreSQL with RLS, PostgREST, Edge Functions) against quantitative targets for MVP workloads and data volumes. Develop a realistic cost model against project budget constraints.
 Key Deliverable: PoC Evaluation Report confirming Supabase's viability for MVP or triggering re-evaluation.
 
-PoC Plan #3: Client UI State + Server State Library Integration
+PoC Plan #3: Client UI State + Server State – **COMPLETED** (ADR-004 validated)
 Mandated by: ADR-WCF-004 (To be executed after PoC #1 selects the mobile stack)
 Objective: Validate the chosen UI state manager's integration with a dedicated server state library on the selected mobile stack, focusing on core use cases like optimistic updates and cache management.
 Key Deliverable: PoC Evaluation Report confirming the suitability of the combined state management strategy.

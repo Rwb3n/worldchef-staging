@@ -1,13 +1,30 @@
 {
-  "v": 17,
-  "g": 43,
+  "v": 32,
+  "g": 87,
   "artifact_registry_tree": {
     "plans": {
       "worldchef_poc_stage1_setup_v2": "plans/plan_poc1_stage1_setupv2.txt",
       "worldchef_poc_stage2_flutter_impl": "plans/plan_poc1_stage2_flutter_impl.txt",
       "worldchef_poc_stage3_rn_impl": "plans/plan_poc1_stage3_rn_impl.txt",
       "rn_enhancement_mini_plan": "plans/plan_rn_enhancement_mini.txt",
-      "testing_infrastructure_fixes": "plans/plan_testing_fixes.txt"
+      "testing_infrastructure_fixes": "plans/plan_testing_fixes.txt",
+      "poc4_backend_integration_validation": "plans/plan_poc4_backend_integration_validation.txt",
+      "poc4_fastify_validation": "plans/plan_poc4_fastify_validation.txt",
+      "poc4_stripe_validation": "plans/plan_poc4_stripe_validation.txt",
+      "poc4_fcm_validation": "plans/plan_poc4_fcm_validation.txt",
+      "cycle4_week0_staging_provision": "plans/plan_cycle4_week0_staging_provision.txt",
+      "fas_scaffold": "docs/poc4_backend_integration_validation/ticket_1-fastify/scaffold_log.md",
+      "fas_k6_summary": "docs/poc4_backend_integration_validation/ticket_1-fastify/k6_summary.json",
+      "fas_success_flag": "docs/poc4_backend_integration_validation/ticket_1-fastify/fastify_validated.txt",
+      "stp_setup_log": "docs/poc4_backend_integration_validation/ticket_2-stripe/setup_log.md",
+      "stp_latency_logs": "docs/poc4_backend_integration_validation/ticket_2-stripe/latency_logs.md",
+      "stp_success_flag": "docs/poc4_backend_integration_validation/ticket_2-stripe/stripe_validated.txt",
+      "stp_latency_test": "spike/stripe-poc/latency_test.js",
+      "staging_infrastructure_config": "docs/cycle4/week0/staging_infrastructure_config.md",
+      "staging_setup_guide": "docs/cycle4/week0/staging_setup_guide.md",
+      "synthetic_data_scripts": "staging/data-generation/",
+      "nightly_refresh_system": "staging/automation/nightly-refresh.sh",
+      "staging_cicd_config": ".github/workflows/staging-deploy.yml"
     },
     "projects": {
       "flutter": {
@@ -172,10 +189,207 @@
       },
       "poc2_baseline_measurements": {
         "primary_filepath": "docs/poc2_supabase_validation/stage0_targets/baseline_reality_check.md",
-        "description": "Network and PostgREST overhead measurements with single-user baseline data confirming target realism",
+        "description": "Real network and PostgREST performance measurements with k6 load testing confirming target achievability",
         "created_at": "2025-01-16T00:05:00Z",
-        "g": 43,
-        "source_refs": ["poc2_performance_targets", "PostgREST Architecture", "Network Analysis"]
+        "updated_at": "2025-01-16T00:15:00Z",
+        "g": 44,
+        "source_refs": ["poc2_performance_targets", "PostgREST Architecture", "k6 Test Results", "Real Baseline Data"]
+      },
+      "poc2_supabase_config": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage1_setup/supabase_project_config.md",
+        "description": "Complete Supabase project configuration with credentials, access details, and region selection rationale",
+        "created_at": "2025-01-16T00:30:00Z",
+        "g": 44,
+        "source_refs": ["worldchef Supabase project", "Baseline Testing Results", "MCP Integration"]
+      },
+      "poc2_tier_decision": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage1_setup/tier_selection_rationale.md",
+        "description": "Free tier vs Pro tier analysis with cost-benefit decision matrix and usage monitoring plan",
+        "created_at": "2025-01-16T00:30:00Z",
+        "g": 44,
+        "source_refs": ["Supabase Pricing", "PoC Requirements", "Cost Analysis"]
+      },
+      "poc2_db_config": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage1_setup/database_configuration.md",
+        "description": "Database extensions configuration with pg_trgm, unaccent installation and performance optimization settings",
+        "created_at": "2025-01-16T00:30:00Z",
+        "g": 44,
+        "source_refs": ["PostgreSQL Extensions", "Search Optimization", "Migration Results"]
+      },
+      "poc2_monitoring_config": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage1_setup/monitoring_setup.md",
+        "description": "Comprehensive monitoring configuration with Supabase Dashboard, pg_stat_statements, and k6 integration",
+        "created_at": "2025-01-16T00:30:00Z",
+        "g": 44,
+        "source_refs": ["Performance Monitoring", "Dashboard Configuration", "Load Testing Integration"]
+      },
+      "poc2_cli_config": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage1_setup/cli_setup_guide.md",
+        "description": "Supabase CLI installation and configuration guide for local development workflow",
+        "created_at": "2025-01-16T00:30:00Z",
+        "g": 44,
+        "source_refs": ["Supabase CLI", "Development Workflow", "Migration Management"]
+      },
+      "poc2_team_training": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage1_setup/team_training_summary.md",
+        "description": "Team training workshop summary with CLI fundamentals, RLS debugging, and performance monitoring competencies",
+        "created_at": "2025-01-16T00:30:00Z",
+        "g": 44,
+        "source_refs": ["Supabase CLI Training", "RLS Debugging", "Performance Analysis"]
+      },
+      "poc2_support_communication": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage1_setup/supabase_support_coordination.md",
+        "description": "Supabase support coordination for load testing approval with communication protocols and emergency procedures",
+        "created_at": "2025-01-16T00:30:00Z",
+        "g": 44,
+        "source_refs": ["Load Testing Coordination", "Support Protocols", "DDoS Prevention"]
+      },
+      "poc2_schema_deployment": {
+        "primary_filepath": "src/poc2_supabase_validation/schema/migration_scripts.sql",
+        "description": "Complete WorldChef schema migration scripts with critical security and performance fixes applied",
+        "created_at": "2025-01-16T12:15:00Z",
+        "g": 45,
+        "source_refs": ["WorldChef Schema Design", "RLS Implementation", "Performance Optimization"]
+      },
+      "poc2_rls_implementation": {
+        "primary_filepath": "src/poc2_supabase_validation/schema/rls_policies.sql",
+        "description": "Comprehensive Row Level Security policies with testing bypass mechanisms for performance measurement",
+        "created_at": "2025-01-16T12:15:00Z",
+        "g": 45,
+        "source_refs": ["Security Requirements", "Performance Testing", "User Access Control"]
+      },
+      "poc2_rls_tests": {
+        "primary_filepath": "src/poc2_supabase_validation/testing/rls_verification.js",
+        "description": "RLS policy verification testing framework (conceptual placeholder for comprehensive access pattern testing)",
+        "created_at": "2025-01-16T12:15:00Z",
+        "g": 45,
+        "source_refs": ["RLS Policies", "Security Testing", "Access Pattern Validation"]
+      },
+      "poc2_schema_validation": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage2_schema/deployment_verification.md",
+        "description": "Comprehensive schema deployment verification report addressing critical review feedback with performance and security fixes",
+        "created_at": "2025-01-16T12:15:00Z",
+        "g": 45,
+        "source_refs": ["Schema Migration", "Critical Review Response", "Deployment Validation"]
+      },
+      "poc2_baseline_performance": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage2_schema/baseline_query_performance.md",
+        "description": "Baseline query performance measurements with RLS overhead analysis and Stage 4 readiness assessment",
+        "created_at": "2025-01-16T12:15:00Z",
+        "g": 45,
+        "source_refs": ["Query Optimization", "Performance Baseline", "RLS Overhead Analysis"]
+      },
+      "poc2_jwt_pool": {
+        "primary_filepath": "src/poc2_supabase_validation/benchmarking/jwt_generator_v2.js",
+        "description": "JWT token pool generation system with 44 valid tokens for multi-user load testing",
+        "created_at": "2025-01-16T15:30:00Z",
+        "g": 49,
+        "source_refs": ["Supabase Auth", "Load Testing Requirements", "User Pool Management"]
+      },
+      "poc2_read_benchmark": {
+        "primary_filepath": "src/poc2_supabase_validation/benchmarking/k6_read_test.js",
+        "description": "Read performance benchmark achieving all targets: 90.84ms p95 listing (39% under target), 84.84ms detail p95 (58% under target), 92.65ms search p95 (54% under target). Zero RLS/auth failures.",
+        "created_at": "2025-01-16T15:30:00Z",
+        "updated_at": "2025-01-16T16:00:00Z",
+        "g": 50,
+        "source_refs": ["k6 Load Testing", "Performance Validation", "25-VU Final Results"]
+      },
+      "poc2_read_benchmark_checkpoint": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage4_benchmarking/read_benchmark_final_checkpoint.md",
+        "description": "Final checkpoint documenting successful read benchmark completion with all performance targets met",
+        "created_at": "2025-01-16T16:00:00Z",
+        "g": 50,
+        "source_refs": ["Read Benchmark Results", "Performance Validation", "Checkpoint Documentation"]
+      },
+      "poc2_write_benchmark_debug_checkpoint": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage4_benchmarking/write_benchmark_debug_checkpoint.md",
+        "description": "Checkpoint documenting resolution of write benchmark 401 errors and readiness for performance run",
+        "created_at": "2025-06-12T22:55:00Z",
+        "g": 52,
+        "source_refs": ["poc2_write_benchmark", "Database Logs", "RLS Policy Fixes", "Foreign Key Validation"]
+      },
+      "poc2_benchmarking_breakthrough": {
+        "primary_filepath": "src/poc2_supabase_validation/benchmarking/phase2_breakthrough_analysis.md",
+        "description": "Breakthrough analysis identifying multi-VU configuration issues while validating perfect single-VU performance and system functionality",
+        "created_at": "2025-01-16T15:30:00Z",
+        "g": 49,
+        "source_refs": ["Load Testing Infrastructure", "Root Cause Analysis", "System Validation"]
+      },
+      "poc2_seeding_results": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage3_seeding/seeding_execution_report.md",
+        "description": "Data seeding execution report: 938,114 records seeded with 99.8% success rate, all targets achieved",
+        "created_at": "2025-01-16T15:00:00Z",
+        "g": 48,
+        "source_refs": ["Data Seeding Results", "MVP Scale Validation", "Database Preparation"]
+      },
+      "poc2_load_testing_infrastructure_analysis": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage4_benchmarking/load_testing_infrastructure_analysis.md",
+        "description": "Critical analysis of multi-VU k6 configuration issues, root cause identification, and production readiness assessment",
+        "created_at": "2025-01-16T16:00:00Z",
+        "g": 49,
+        "source_refs": ["Load Testing Infrastructure", "WSL Configuration Issues", "Single-VU Validation"]
+      },
+      "poc2_alternative_load_testing_approaches": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage4_benchmarking/alternative_load_testing_approaches.md",
+        "description": "Comprehensive guide to alternative load testing solutions addressing multi-VU configuration issues",
+        "created_at": "2025-01-16T16:00:00Z",
+        "g": 49,
+        "source_refs": ["Docker k6", "Environment Variable Issues", "Load Testing Alternatives"]
+      },
+      "poc2_edge_function_benchmark_results": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage4_benchmarking/edge_function_benchmark_results.md",
+        "description": "Comprehensive edge function performance benchmark results with cold start and warm load testing validation",
+        "created_at": "2025-06-12T23:50:00Z",
+        "g": 54,
+        "source_refs": ["Edge Function Testing", "Cold Start Performance", "Warm Load Performance", "JWT Authentication", "Production Readiness"]
+      },
+      "poc2_cost_model": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage5_cost/supabase_cost_model.md",
+        "description": "Unit pricing and cost model base for Supabase services (Stage 5)",
+        "created_at": "2025-06-13T00:20:00Z",
+        "g": 55
+      },
+      "poc2_mau_cost_projections": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage5_cost/mau_cost_projections.md",
+        "description": "Cost projections for 1k, 5k, 10k MAU scenarios",
+        "created_at": "2025-06-13T00:20:00Z",
+        "g": 55
+      },
+      "poc2_budget_viability": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage5_cost/budget_viability_assessment.md",
+        "description": "Budget viability assessment versus project constraints",
+        "created_at": "2025-06-13T00:20:00Z",
+        "g": 55
+      },
+      "poc2_cost_sensitivity": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage5_cost/sensitivity_analysis.md",
+        "description": "Sensitivity analysis for cost model variance scenarios",
+        "created_at": "2025-06-13T00:25:00Z",
+        "g": 55
+      },
+      "poc2_storage_reduction_report": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage5_cost/storage_reduction_report.md",
+        "description": "Storage footprint reduction report documenting Free tier compliance",
+        "created_at": "2025-06-13T00:30:00Z",
+        "g": 56
+      },
+      "poc2_retrospective": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage6_evaluation/poc2_retrospective.md",
+        "description": "Comprehensive ADR-driven retrospective and lessons learned",
+        "created_at": "2025-06-13T00:35:00Z",
+        "g": 57
+      },
+      "poc2_criteria_evaluation": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage6_evaluation/success_criteria_evaluation.md",
+        "description": "Systematic evaluation of all success criteria with pass/fail determination",
+        "created_at": "2025-06-13T00:35:00Z",
+        "g": 57
+      },
+      "poc2_final_evaluation_report": {
+        "primary_filepath": "docs/poc2_supabase_validation/stage6_evaluation/final_recommendation.md",
+        "description": "Final evidence-based recommendation with 85% confidence",
+        "created_at": "2025-06-13T00:35:00Z",
+        "g": 57
       }
     },
     "test_artifacts": {

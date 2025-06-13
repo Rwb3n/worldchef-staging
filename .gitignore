@@ -1,3 +1,21 @@
+# --- ROOT GITIGNORE: ONLY ALLOW DEPENDENCY FILES, staging/, docs/ ---
+
+# Ignore everything in the root by default
+/*
+
+# Allow dependency management files in the root
+!package.json
+!package-lock.json
+
+# Optionally, allow .gitignore itself
+!.gitignore
+
+# Allow these directories and their contents
+!staging/
+!docs/
+
+# END OF FILE
+
 # --- DEPENDENCY FOLDERS (GLOBAL) ---
 node_modules/
 .pnp/
@@ -101,3 +119,8 @@ build/
 !worldchef_poc_rn/package.json
 !worldchef_poc_mock_server/package.json
 !worldchef_poc_mock_server/README.md 
+
+# --- project workspace files ---
+
+plans/
+poc2_supabase_validation/

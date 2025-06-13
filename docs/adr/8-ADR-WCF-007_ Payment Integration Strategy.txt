@@ -96,3 +96,15 @@ If UI/UX research indicates Hosted Checkout is a major conversion blocker. (Then
 When expanding to new major geographic regions with unique payment method preferences.
 When planning multiple subscription tiers, advanced discounts, or complex usage-based billing.
 
+9. Validation Evidence (2025-06-13)
+Following execution of PoC #4 Backend Integration Validation on 2025-06-13, the Stripe payment flow was validated end-to-end under realistic test conditions:
+• Environment: Local Fastify server (port 3334) using real Stripe Test keys and .env.local configuration.
+• Test Suite: 20 checkout session creations via k6 script (`latency_test.js`).
+• Success Rate: 100 % (40/40 checks passed).
+• p95 Latency: 442 ms (includes network round-trip to Stripe API).
+• Webhook Verification: ✓ Signature verified, events logged.
+• Subscription Mode: ✓ Recurring price `price_1RZXilGmIGzU7qrh4Rk1LAi2` processed successfully.
+• Artifact: `stripe_validated.txt` (SHA256 5A9EE7E9C9E53A4A7BE315F9D277A6689773980819B67994DA5F48723A3BED8C).
+
+Conclusion: The decision to use Stripe Hosted Checkout remains sound. Performance is acceptable for payment operations, and implementation aligns with commitments outlined in this ADR. No changes required at this time.
+

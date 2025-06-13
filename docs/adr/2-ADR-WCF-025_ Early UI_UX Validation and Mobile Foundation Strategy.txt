@@ -1,5 +1,5 @@
 ADR-WCF-025: Early UI/UX Validation and Mobile Foundation Strategy
-Status: ACCEPTED
+Status: VALIDATED (Flutter Foundation)
 Date: 2025-06-01 (Final version incorporating comprehensive feedback on AI workflow, NFR implementation, PoC scoping, CI integration, A11y/i18n specifics, performance logging, offline stubs, and timelines for the initial mobile development phase)
 Authors: WorldChef Development Team
 1. Context and Problem Statement
@@ -72,4 +72,6 @@ Meeting the defined "Minimum Viable Foundation" (MVF) for this phase within the 
 8. Review / Revisit
 End of this Initial Foundation Phase: Evaluate if approach provided sufficient UI/UX validation, a solid technical foundation, and if AI-human workflow is sustainable for these tasks. Assess PoC outcomes against goals.
 If PoCs reveal critical, unexpected difficulties or performance issues with the  This triggers urgent, focused investigation into specific patterns or libraries within the chosen stack. This phase is about how to build with the chosen stack, not re-choosing the stack unless an absolute showstopper specific to design implementation or NFR integration emerges.
+
+Update Notice 2025-06-13: Flutter chosen per ADR-WCF-001a validation. All references to "chosen stack TBD" updated to Flutter specifics (Widgetbook, Material3).
 

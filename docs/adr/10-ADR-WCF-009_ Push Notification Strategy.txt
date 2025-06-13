@@ -139,4 +139,14 @@ If advanced features (rich push with dynamic images, A/B testing, complex segmen
 If FCM significantly changes API, pricing, or terms, or if analytics costs (e.g., BigQuery for delivery logs) become substantial.
 Annually, for security best practices and new platform capabilities.
 
+9. Validation Evidence (2025-06-13)
+PoC #4 Backend Integration Validation executed on 2025-06-13 confirmed technical feasibility and performance of the Firebase Cloud Messaging (FCM) strategy described in this ADR:
+• Environment: Fastify server (`spike/fcm-poc`) on port 3335 using Firebase Admin SDK.
+• Test Suite: 10 single + 5 batch notifications (total 15) sent to a live web device token.
+• Success Rate: 100 % delivery (15 / 15).
+• Average Latency (warm): 181 ms; First-request (cold): 857 ms; Batch latency (5 tokens): 173 ms.
+• Artifact: `fcm_validated.txt` (SHA256 19BDF20C7505267C99A88828ECF645CAFEB89053046946FB73270BD043BEFE9D).
+
+Performance aligns with expectations for FCM (cold start overhead accepted). Implementation details (service worker, token refresh, error handling) match the commitments in this ADR. No architectural changes required; monitoring of cold-start behavior recommended in production.
+
 
