@@ -4,20 +4,21 @@ on:
   push:
     branches:
       - develop
+  workflow_dispatch:
 
 jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v3
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
 
-      - name: Build & test
+      - name: Install dependencies & run tests
         run: |
           npm ci
           npm run test:ci
@@ -27,7 +28,8 @@ jobs:
           RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
           RENDER_SERVICE_ID: ${{ secrets.RENDER_DEV_SERVICE_ID }}
         run: |
-          npx @render/cli deploy-service $RENDER_SERVICE_ID --branch develop --wait 600
+          npx @render/cli deploy-service "$RENDER_SERVICE_ID" --branch develop --wait 600
 
       - name: Notify Slack (placeholder)
+        if: always()
         run: echo "TODO: send Slack notification via workflow" 
