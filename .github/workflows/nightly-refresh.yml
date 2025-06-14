@@ -1,0 +1,35 @@
+name: Nightly Staging Data Refresh
+
+on:
+  schedule:
+    # Runs at 03:00 UTC every day
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Setup Node (for Supabase CLI)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Supabase CLI
+        run: npm install -g supabase@latest
+
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Run nightly-refresh script
+        env:
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+          SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          REFRESH_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          bash staging/automation/nightly-refresh.sh 

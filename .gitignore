@@ -12,6 +12,7 @@
 
 # Allow these directories and their contents
 !staging/
+!.github/
 
 # END OF FILE
 
@@ -123,3 +124,6 @@ build/
 
 plans/
 poc2_supabase_validation/
+issues/
+state.txt
+registry_map.txt
