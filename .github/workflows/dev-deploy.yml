@@ -32,4 +32,4 @@ jobs:
 
       - name: Notify Slack (placeholder)
         if: always()
-        run: echo "TODO: send Slack notification via workflow"
+        run: echo "TODO send Slack notification via workflow"
