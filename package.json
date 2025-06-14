@@ -1,4 +1,13 @@
 {
+  "name": "worldchef",
+  "version": "1.0.0",
+  "description": "WorldChef mobile-first recipe platform",
+  "scripts": {
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "test:ci": "echo \"No tests specified yet\" && exit 0",
+    "lint": "echo \"No linting configured yet\" && exit 0",
+    "build": "echo \"No build process configured yet\" && exit 0"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",
     "dotenv": "^16.5.0"
