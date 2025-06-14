@@ -1,6 +1,6 @@
 {
-  "v": 32,
-  "g": 87,
+  "v": 48,
+  "g": 133,
   "artifact_registry_tree": {
     "plans": {
       "worldchef_poc_stage1_setup_v2": "plans/plan_poc1_stage1_setupv2.txt",
@@ -24,7 +24,41 @@
       "staging_setup_guide": "docs/cycle4/week0/staging_setup_guide.md",
       "synthetic_data_scripts": "staging/data-generation/",
       "nightly_refresh_system": "staging/automation/nightly-refresh.sh",
-      "staging_cicd_config": ".github/workflows/staging-deploy.yml"
+      "nightly_refresh_schedule": ".github/workflows/nightly-refresh.yml",
+      "data_backup_system": "staging/automation/nightly-refresh.sh",
+      "refresh_monitoring": ".github/workflows/nightly-refresh.yml",
+      "staging_cicd_config": ".github/workflows/staging-deploy.yml",
+      "cycle4_onboarding_readme": "docs/cycle4/README.md",
+      "dev_env_config": "docs/cycle4/week0/dev_environment.md",
+      "dev_cicd_workflow": ".github/workflows/dev-deploy.yml",
+      "dev_k8s_manifests": "k8s/dev/",
+      "staging_k8s_manifests": "k8s/staging/",
+      "uptime_ping_script": "staging/automation/uptime-ping.sh",
+      "cycle4_tooling_guide": "docs/cycle4/tooling_guide.md",
+      "dev_domain_tls_config": "docs/cycle4/week0/dev_domain_tls_config.md",
+      "nutrition_json_contract": "docs/cycle4/week0/nutrition_json_contract.md",
+      "nutrition_enrichment_function": "supabase/functions/nutrition_enrichment/index.ts",
+      "nutrition_cache_proposal": "docs/cycle4/week0/nutrition_cache_proposal.md",
+      "migration_nutrition_cache": "supabase/migrations/20250614_000_add_nutrition_cache.sql",
+      "nutrition_smoke_test": "docs/cycle4/week0/nutrition_smoke_test.md",
+      "staging_progress_tracker": "docs/cycle4/week0/staging_progress_tracker.md",
+      "staging_supabase_config": "docs/cycle4/week0/staging_supabase_config.md",
+      "synthetic_users_script": "staging/data-generation/01_synthetic_users.sql",
+      "synthetic_recipes_script": "staging/data-generation/02_synthetic_recipes.sql",
+      "synthetic_nutrition_script": "staging/data-generation/03_synthetic_nutrition.sql",
+      "synthetic_interactions_script": "staging/data-generation/04_synthetic_interactions.sql",
+      "nutrition_smoke_test_results": "docs/cycle4/week0/nutrition_smoke_test_results.md",
+      "staging_service_config": "infra/render/staging_services.yaml",
+      "render_autoscale_config": "infra/render/staging_autoscale_config.yaml",
+      "staging_test_gates": ".github/workflows/staging-deploy.yml",
+      "staging_security_scan": ".github/workflows/staging-deploy.yml",
+      "staging_rollback_strategy": ".github/workflows/staging-deploy.yml",
+      "staging_monitoring_dashboard": "docs/cycle4/week0/staging_monitoring_supabase.md",
+      "staging_alert_config": "docs/cycle4/week0/staging_alert_config.md",
+      "staging_health_automation": "staging/automation/nightly-health-check.sh",
+      "sample_recipe_images": "staging/automation/upload_sample_images.sh",
+      "staging_image_config": "docs/cycle4/week0/staging_image_config.md",
+      "staging_image_upload_api": "docs/fastify-api/image_upload_endpoint.md"
     },
     "projects": {
       "flutter": {
@@ -390,7 +424,8 @@
         "description": "Final evidence-based recommendation with 85% confidence",
         "created_at": "2025-06-13T00:35:00Z",
         "g": 57
-      }
+      },
+      "adr_nutrition_enrichment": "docs/adr/1-ADR-WCF-013_Nutrition_Enrichment_Strategy.txt"
     },
     "test_artifacts": {
       "flutter_tests": {
@@ -479,6 +514,7 @@
         "rn_jest_setup_custom": "worldchef_poc_rn/jest-setup.js",
         "rn_babel_config_flow_support_v2": "worldchef_poc_rn/babel.config.js"
       }
-    }
+    },
+    "deno_config": "deno.json"
   }
 } 
