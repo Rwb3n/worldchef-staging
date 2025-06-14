@@ -1,0 +1,24 @@
+# Render Health-Check & Scaling Configuration – Staging
+# Event g128
+# Render free plan: autoscaling not available. Health checks are configured.
+
+services:
+  - name: worldchef-web
+    healthCheck:
+      path: /
+      protocol: HTTP
+      intervalSeconds: 30
+      failureThreshold: 3
+      timeoutSeconds: 5
+    autoscaling:
+      enabled: false  # Free tier limitation
+
+  - name: worldchef-api
+    healthCheck:
+      path: /api/health
+      protocol: HTTP
+      intervalSeconds: 30
+      failureThreshold: 3
+      timeoutSeconds: 5
+    autoscaling:
+      enabled: false  # Free tier limitation 

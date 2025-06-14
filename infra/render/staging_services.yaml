@@ -1,0 +1,56 @@
+# Render Blueprint for WorldChef – Staging Environment
+# Event g127
+# Reference: https://render.com/docs/infrastructure-as-code
+# This YAML declares two Docker-based services (web & api) pointing at the
+# single repo github.com/Rwb3n/worldchef-staging. Environment variables are
+# injected via an Env-Var Group called worldchef-staging.
+
+services:
+  - type: web
+    name: worldchef-web
+    env: docker
+    plan: free
+    region: oregon   # change if your account's default region differs
+    repo: https://github.com/Rwb3n/worldchef-staging
+    branch: develop
+    rootDir: web            # build context for Dockerfile
+    dockerfilePath: web/Dockerfile
+    autoDeploy: true
+    envVars:
+      fromGroup: worldchef-staging
+    buildFilter:
+      paths: ["web/**"]
+    healthCheckPath: /
+
+  - type: web
+    name: worldchef-api
+    env: docker
+    plan: free
+    region: oregon
+    repo: https://github.com/Rwb3n/worldchef-staging
+    branch: develop
+    rootDir: api
+    dockerfilePath: api/Dockerfile
+    autoDeploy: true
+    startCommand: "node dist/index.js"
+    healthCheckPath: /api/health
+    envVars:
+      fromGroup: worldchef-staging
+    buildFilter:
+      paths: ["api/**"]
+
+envVarGroups:
+  - name: worldchef-staging
+    envVars:
+      - key: SUPABASE_URL
+        value: ${SUPABASE_URL}
+      - key: SUPABASE_ANON_KEY
+        sync: false  # stored securely in Render Secrets dashboard
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: USDA_API_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: NUTRITION_CACHE_TTL_HOURS
+        value: "168" 

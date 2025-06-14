@@ -1,0 +1,9 @@
+{
+  "nodeModulesDir": "auto",
+  "compilerOptions": {
+    "types": ["jsr:@supabase/functions-js/edge-runtime.d.ts"]
+  },
+  "tasks": {
+    "test": "deno test -A supabase/functions/nutrition_enrichment"
+  }
+} 

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worldchef-api
+  labels:
+    app: worldchef-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worldchef-api
+  template:
+    metadata:
+      labels:
+        app: worldchef-api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/worldchef/api:dev-<sha>
+          ports:
+            - containerPort: 3000
+          env:
+            # TODO: mount secrets later
+            - name: NODE_ENV
+              value: "development" 

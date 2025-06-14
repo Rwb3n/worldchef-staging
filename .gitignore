@@ -6,12 +6,18 @@
 # Allow dependency management files in the root
 !package.json
 !package-lock.json
+!deno.json
+!deno.lock
 
 # Optionally, allow .gitignore itself
 !.gitignore
 
 # Allow these directories and their contents
 !staging/
+!supabase/
+!k8s
+!infra/
+!__tests__/
 !.github/workflows/
 !.github/workflows/** */
 
@@ -75,8 +81,6 @@ Pods/
 worldchef_poc_mock_server/node_modules/
 worldchef_poc_mock_server/package-lock.json
 # Yarn lockfile (if used)
-worldchef_poc_mock_server/yarn.lock
-worldchef_poc_mock_server/.DS_Store
 npm-debug.log*
 
 # --- IDE/EDITOR FILES (GLOBAL) ---
@@ -86,14 +90,9 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
-# --- OS CONTROL FILES (DO NOT IGNORE) ---
-!state.txt
-!registry_map.txt
-!issues_summary.txt
-!plans/
-!issues/
 
 # --- DOCS & TRACE FILES ---
+
 docs/trace/*.json
 # Ignore Excel and other binary docs if not source
 *.xlsx
@@ -112,14 +111,6 @@ dist/
 .nyc_output/
 .eslintcache
 build/
-
-# --- EXCEPTIONS: DO NOT IGNORE SOURCE/CONFIG FILES ---
-!worldchef_poc_flutter/pubspec.yaml
-!worldchef_poc_flutter/l10n.yaml
-!worldchef_poc_flutter/analysis_options.yaml
-!worldchef_poc_rn/package.json
-!worldchef_poc_mock_server/package.json
-!worldchef_poc_mock_server/README.md 
 
 # --- project workspace files ---
 

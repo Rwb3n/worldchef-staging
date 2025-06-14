@@ -23,12 +23,11 @@ jobs:
           npm ci
           npm run test:ci
 
-      - name: Deploy to Render
+      - name: Deploy to Render via Deploy Hook
         env:
-          RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_DEV_SERVICE_ID }}
+          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEV_DEPLOY_HOOK_URL }}
         run: |
-          npx @render/cli deploy-service "$RENDER_SERVICE_ID" --branch develop --wait 600
+          curl -X POST "$RENDER_DEPLOY_HOOK_URL"
 
       - name: Notify Slack (placeholder)
         if: always()
