@@ -23,17 +23,6 @@ jobs:
           npm ci
           npm run test:ci
 
-      - name: Debug Deploy Hook URL
-        env:
-          RENDER_DEV_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEV_DEPLOY_HOOK_URL }}
-        run: |
-          echo "Deploy hook URL length: ${#RENDER_DEV_DEPLOY_HOOK_URL}"
-          echo "Deploy hook URL starts with: ${RENDER_DEV_DEPLOY_HOOK_URL:0:30}..."
-          if [ -z "$RENDER_DEV_DEPLOY_HOOK_URL" ]; then
-            echo "ERROR: RENDER_DEV_DEPLOY_HOOK_URL secret is not set!"
-            exit 1
-          fi
-
       - name: Deploy to Render via Deploy Hook
         env:
           RENDER_DEV_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEV_DEPLOY_HOOK_URL }}
