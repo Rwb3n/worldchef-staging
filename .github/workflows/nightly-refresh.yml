@@ -24,7 +24,7 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
-          version: beta
+          version: latest
 
       - name: Install PostgreSQL client
         run: sudo apt-get update && sudo apt-get install -y postgresql-client
@@ -39,7 +39,7 @@ jobs:
 
       - name: Ensure UTF-8 + LF for nightly script
         run: |
-          sudo apt-get update && sudo apt-get install -y dos2unix dnsutils
+          sudo apt-get update && sudo apt-get install -y dos2unix
 
           echo "=== Pre-convert metadata ==="
           file staging/automation/nightly-refresh.sh
@@ -71,6 +71,7 @@ jobs:
           SUPABASE_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           REFRESH_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          DATABASE_POOLER_URL: ${{ secrets.DATABASE_POOLER_URL }}
         run: |
           set -x
           echo "=== Environment check ==="
