@@ -37,6 +37,7 @@ jobs:
           REFRESH_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           # Fix line endings and execute script
+          sudo apt-get update && sudo apt-get install -y dos2unix
           dos2unix staging/automation/nightly-refresh.sh
           chmod +x staging/automation/nightly-refresh.sh
           bash staging/automation/nightly-refresh.sh 
