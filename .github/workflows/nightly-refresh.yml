@@ -9,10 +9,10 @@ on:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    environment: staging
+    environment: staging-deploy
     steps:
       - name: Checkout source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node (for Supabase CLI)
         uses: actions/setup-node@v3
