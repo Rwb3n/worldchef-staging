@@ -37,6 +37,34 @@ jobs:
           echo "=== First 5 lines (with control chars visible) ==="
           head -n 5 staging/automation/nightly-refresh.sh | cat -v
 
+      - name: Ensure UTF-8 + LF for nightly script
+        run: |
+          sudo apt-get update && sudo apt-get install -y dos2unix dnsutils
+
+          echo "=== Pre-convert metadata ==="
+          file staging/automation/nightly-refresh.sh
+
+          # 1) Transcode from UTF-16LE (with BOM) to UTF-8
+          iconv -f UTF-16LE -t UTF-8 staging/automation/nightly-refresh.sh \
+            > staging/automation/nightly-refresh.sh.utf8 || true
+
+          if [[ -s staging/automation/nightly-refresh.sh.utf8 ]]; then
+            mv staging/automation/nightly-refresh.sh.utf8 staging/automation/nightly-refresh.sh
+          else
+            echo "[INFO] iconv produced empty output; assuming file already UTF-8."
+            rm -f staging/automation/nightly-refresh.sh.utf8
+          fi
+
+          # 2) Strip CRLF to LF
+          dos2unix staging/automation/nightly-refresh.sh
+
+          # 3) Make executable
+          chmod +x staging/automation/nightly-refresh.sh
+
+          echo "=== Post-convert metadata ==="
+          file staging/automation/nightly-refresh.sh
+          head -n 3 staging/automation/nightly-refresh.sh | cat -v
+
       - name: Run nightly-refresh script
         env:
           SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
@@ -48,22 +76,6 @@ jobs:
           echo "=== Environment check ==="
           echo "DATABASE_URL set: ${DATABASE_URL:+YES}"
           echo "SUPABASE_PROJECT_ID set: ${SUPABASE_PROJECT_ID:+YES}"
-          
-          echo "=== Installing dos2unix ==="
-          sudo apt-get update && sudo apt-get install -y dos2unix
-          
-          echo "=== Converting line endings ==="
-          dos2unix staging/automation/nightly-refresh.sh
-          
-          echo "=== File metadata after conversion ==="
-          file staging/automation/nightly-refresh.sh
-          ls -la staging/automation/nightly-refresh.sh
-          
-          echo "=== Setting permissions ==="
-          chmod +x staging/automation/nightly-refresh.sh
-          
-          echo "=== Final file check ==="
-          head -n 3 staging/automation/nightly-refresh.sh | cat -v
-          
-          echo "=== Executing script ==="
+
+          echo "=== Executing nightly refresh ==="
           bash staging/automation/nightly-refresh.sh 
