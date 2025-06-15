@@ -191,6 +191,6 @@ Deno.serve(async (req: Request) => {
   return new Response(JSON.stringify(resp), {
     headers: { "Content-Type": "application/json" },
   });
-});
+}); 
 
 export { ingredientHash }; 

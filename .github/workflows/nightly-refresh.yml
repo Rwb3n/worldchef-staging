@@ -36,5 +36,7 @@ jobs:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           REFRESH_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
+          # Fix line endings and execute script
+          dos2unix staging/automation/nightly-refresh.sh
           chmod +x staging/automation/nightly-refresh.sh
-          ./staging/automation/nightly-refresh.sh 
+          bash staging/automation/nightly-refresh.sh 
