@@ -14,12 +14,13 @@
 
 # Allow these directories and their contents
 !staging/
+!staging/**
 !supabase/
 !k8s
 !infra/
 !__tests__/
 !.github/workflows/
-!.github/workflows/** */
+!.github/workflows/**
 
 # END OF FILE
 
