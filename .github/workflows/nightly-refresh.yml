@@ -29,6 +29,14 @@ jobs:
       - name: Install PostgreSQL client
         run: sudo apt-get update && sudo apt-get install -y postgresql-client
 
+      - name: Debug file metadata
+        run: |
+          echo "=== File metadata before conversion ==="
+          file staging/automation/nightly-refresh.sh || echo "File command failed"
+          ls -la staging/automation/nightly-refresh.sh
+          echo "=== First 5 lines (with control chars visible) ==="
+          head -n 5 staging/automation/nightly-refresh.sh | cat -v
+
       - name: Run nightly-refresh script
         env:
           SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
@@ -36,8 +44,26 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           REFRESH_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          # Fix line endings and execute script
+          set -x
+          echo "=== Environment check ==="
+          echo "DATABASE_URL set: ${DATABASE_URL:+YES}"
+          echo "SUPABASE_PROJECT_ID set: ${SUPABASE_PROJECT_ID:+YES}"
+          
+          echo "=== Installing dos2unix ==="
           sudo apt-get update && sudo apt-get install -y dos2unix
+          
+          echo "=== Converting line endings ==="
           dos2unix staging/automation/nightly-refresh.sh
+          
+          echo "=== File metadata after conversion ==="
+          file staging/automation/nightly-refresh.sh
+          ls -la staging/automation/nightly-refresh.sh
+          
+          echo "=== Setting permissions ==="
           chmod +x staging/automation/nightly-refresh.sh
+          
+          echo "=== Final file check ==="
+          head -n 3 staging/automation/nightly-refresh.sh | cat -v
+          
+          echo "=== Executing script ==="
           bash staging/automation/nightly-refresh.sh 
