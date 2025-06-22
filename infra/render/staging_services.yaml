@@ -20,7 +20,7 @@ services:
       fromGroup: worldchef-staging
     buildFilter:
       paths: ["web/**"]
-    healthCheckPath: /
+    healthCheckPath: /healthz
 
   - type: web
     name: worldchef-api
@@ -33,7 +33,7 @@ services:
     dockerfilePath: api/Dockerfile
     autoDeploy: true
     startCommand: "node dist/index.js"
-    healthCheckPath: /api/health
+    healthCheckPath: /healthz
     envVars:
       fromGroup: worldchef-staging
     buildFilter:

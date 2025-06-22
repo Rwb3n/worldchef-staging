@@ -4,8 +4,8 @@
 
 set -euo pipefail
 
-API_URL="https://api.worldchef-staging.onrender.com/api/health"
-WEB_URL="https://worldchef-staging.onrender.com/"
+API_URL="https://api.worldchef-staging.onrender.com/healthz"
+WEB_URL="https://worldchef-staging.onrender.com/healthz"
 
 log() { echo "[$(date -u)] $1"; }
 

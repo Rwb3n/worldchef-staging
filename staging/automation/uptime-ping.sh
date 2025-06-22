@@ -3,8 +3,8 @@
 # Pings staging & dev endpoints every 60 seconds and logs failures.
 
 URLS=(
-  "https://dev.worldchef.example.com/health"
-  "https://worldchef-staging.onrender.com/health"
+  "https://dev.worldchef.example.com/healthz"
+  "https://worldchef-staging.onrender.com/healthz"
 )
 
 while true; do
