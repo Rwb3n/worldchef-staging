@@ -79,4 +79,9 @@ jobs:
           echo "SUPABASE_PROJECT_ID set: ${SUPABASE_PROJECT_ID:+YES}"
 
           echo "=== Executing nightly refresh ==="
-          bash staging/automation/nightly-refresh.sh 
+          bash staging/automation/nightly-refresh.sh
+
+          # Add to nightly-refresh.sh before health checks
+          curl -X POST "https://api.render.com/v1/services/YOUR_SERVICE_ID/restart" \
+            -H "Authorization: Bearer $RENDER_API_TOKEN"
+          sleep 60  # Wait for restart 
