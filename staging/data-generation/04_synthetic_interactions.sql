@@ -259,11 +259,14 @@ BEGIN
   LOOP
     -- Find authors of recipes this user has liked/rated
     FOR author_record IN 
-      SELECT DISTINCT r.author_id
-      FROM recipes r
-      INNER JOIN recipe_likes rl ON r.id = rl.recipe_id
-      WHERE rl.user_id = user_record.id 
-        AND r.author_id != user_record.id  -- Don't follow yourself
+      SELECT r.author_id
+      FROM (
+        SELECT DISTINCT r.author_id
+        FROM recipes r
+        INNER JOIN recipe_likes rl ON r.id = rl.recipe_id
+        WHERE rl.user_id = user_record.id 
+          AND r.author_id != user_record.id  -- Don't follow yourself
+      ) r
       ORDER BY random()
       LIMIT floor(random() * 10 + 2)  -- Follow 2-12 authors
     LOOP
@@ -318,8 +321,11 @@ DECLARE
 BEGIN
   -- For each user with favorites, create 1-3 collections
   FOR user_record IN 
-    SELECT DISTINCT user_id as id 
-    FROM recipe_favorites 
+    SELECT user_id as id 
+    FROM (
+      SELECT DISTINCT user_id 
+      FROM recipe_favorites
+    ) f
     ORDER BY random()
   LOOP
     -- Create 1-3 collections per user

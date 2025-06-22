@@ -8,6 +8,7 @@
 !package-lock.json
 !deno.json
 !deno.lock
+!app.js
 
 # Optionally, allow .gitignore itself
 !.gitignore

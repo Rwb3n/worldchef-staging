@@ -162,7 +162,7 @@ $$ LANGUAGE plpgsql;
 DO $$
 DECLARE
   recipe_record RECORD;
-  nutrition_data JSONB;
+  calculated_nutrition_data JSONB;
   processed_count INTEGER := 0;
 BEGIN
   -- Process each recipe that doesn't have nutrition data
@@ -173,12 +173,12 @@ BEGIN
     ORDER BY created_at
   LOOP
     -- Generate nutrition data for this recipe
-    nutrition_data := generate_nutrition_data(recipe_record.ingredients, recipe_record.servings);
+    calculated_nutrition_data := generate_nutrition_data(recipe_record.ingredients, recipe_record.servings);
     
     -- Update the recipe with nutrition data
     UPDATE recipes 
     SET 
-      nutrition_data = nutrition_data,
+      nutrition_data = calculated_nutrition_data,
       updated_at = NOW()
     WHERE id = recipe_record.id;
     

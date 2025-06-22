@@ -1,15 +1,20 @@
 {
-  "name": "worldchef",
+  "name": "worldchef-staging-api",
   "version": "1.0.0",
-  "description": "WorldChef mobile-first recipe platform",
+  "description": "WorldChef staging API server with health checks",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"No tests specified yet\" && exit 0",
-    "test:ci": "echo \"No tests specified yet\" && exit 0",
-    "lint": "echo \"No linting configured yet\" && exit 0",
-    "build": "echo \"No build process configured yet\" && exit 0"
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.50.0",
-    "dotenv": "^16.5.0"
-  }
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["worldchef", "api", "staging", "health-check"],
+  "author": "",
+  "license": "ISC"
 }
