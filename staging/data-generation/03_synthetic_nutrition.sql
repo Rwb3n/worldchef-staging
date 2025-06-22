@@ -295,6 +295,11 @@ WHERE dietary_tags IS NOT NULL AND array_length(dietary_tags, 1) > 0
 GROUP BY unnest(dietary_tags)
 ORDER BY recipe_count DESC;
 
-RAISE NOTICE 'Synthetic nutrition data generation completed successfully!';
-RAISE NOTICE 'All recipes now have realistic nutrition data calculated from ingredients.';
-RAISE NOTICE 'Dietary tags have been updated based on nutritional content.'; 
+-- Final completion notice
+DO $$
+BEGIN
+  RAISE NOTICE 'Synthetic nutrition data generation completed successfully!';
+  RAISE NOTICE 'All recipes now have realistic nutrition data calculated from ingredients.';
+  RAISE NOTICE 'Dietary tags have been updated based on nutritional content.';
+END;
+$$; 

@@ -401,5 +401,10 @@ FROM users, recipes
 WHERE users.id IS NOT NULL AND recipes.id IS NOT NULL
 LIMIT 1;
 
-RAISE NOTICE 'Synthetic user interaction data generation completed successfully!';
-RAISE NOTICE 'Generated realistic patterns of user interactions for staging environment.'; 
+-- Final completion notice
+DO $$
+BEGIN
+  RAISE NOTICE 'Synthetic user interaction data generation completed successfully!';
+  RAISE NOTICE 'Generated realistic patterns of user interactions for staging environment.';
+END;
+$$; 
