@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies & run tests
         run: |
-          npm ci --workspaces --include-workspace-root
+          npm ci
           npm run test:ci
 
       - name: Deploy to Render via Deploy Hook
