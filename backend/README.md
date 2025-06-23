@@ -1,55 +1,78 @@
-# WorldChef Backend Service
+# WorldChef Backend Service (`/backend`)
 
-**Artifact ID:** `worldchef_backend_readme`  
-**Version:** 1.0  
-**Last Updated:** g153
-**Associated Plan:** `cycle4_week1_execution`
+> Artifact: `worldchef_backend_readme` | g<g-ref> | 2025-07-19
 
-## 1. Overview
+This directory contains the production backend API server for the WorldChef project. It is a [Fastify](https://www.fastify.io/) application written in TypeScript.
 
-This directory contains the source code for the primary WorldChef backend API service. It is a [Fastify](https://www.fastify.io/) application responsible for handling business logic, user authentication, and data interaction for the WorldChef mobile client.
+## Core Responsibilities
 
-Its creation and implementation are governed by the tasks defined in the project's active operational plans. This service was scaffolded as part of task `t001_infrastructure_reality_capture` and is being extended with authentication endpoints under task `t002_implement_authentication` in plan `plan_cycle4_week1_execution`.
+*   Provides the primary `/v1` API for the mobile client.
+*   Handles user authentication and authorization via Supabase.
+*   Manages core business logic for recipes, users, and interactions.
+*   Integrates with third-party services like Stripe for payments and FCM for push notifications.
 
-## 2. Architectural Context & Design Decisions
+## Key Architectural Decisions
 
-The architecture and implementation patterns for this service are derived from several key project documents:
+The architecture of this service is governed by several key ADRs:
 
--   **Backend Architecture:** [ADR-WCF-003_ Backend Service Architecture.txt](../../docs/adr/3-ADR-WCF-003_Backend%20Service%20Architecture.txt)
--   **Authentication Strategy:** [ADR-WCF-005_ Authentication & Authorization Strategy.txt](../../docs/adr/5-ADR-WCF-005_%20Authentication%20&%20Authorization%20Strategy.txt)
--   **API Design Principles:** [ADR-WCF-015_ API Design Principles & Versioning.txt](../../docs/adr/14-ADR-WCF-015_%20API%20Design%20Principles%20&%20Versioning.txt)
--   **Implementation Pattern (Auth):** [Cookbook: Supabase Authentication Integration](../../docs/cookbook/supabase_auth_integration_pattern.md)
+*   **[ADR-WCF-003: Backend Service Architecture](./docs/adr/3-ADR-WCF-003_%20Backend%20Service%20Architecture.txt)**: Chose Fastify for its performance and low overhead.
+*   **[ADR-WCF-005: Authentication & Authorization Strategy](./docs/adr/5-ADR-WCF-005_%20Authentication%20&%20Authorization%20Strategy.txt)**: Selected Supabase Auth for its robust, secure, and scalable JWT-based system.
+*   **[ADR-WCF-015: API Design Principles & Versioning](./docs/adr/14-ADR-WCF-015_%20API%20Design%20Principles%20&%20Versioning.txt)**: Established RESTful design principles and a `/v1` versioning scheme.
 
-This service validates user identity via JWTs issued by Supabase, following the pattern specified in the cookbook. It does **not** handle user credential storage directly.
+## Getting Started
 
-## 3. Operational Environment (Staging)
+### Prerequisites
 
-The status of this service in the live staging environment is tracked by the Infrastructure Reality Capture protocol.
+*   Node.js (>=18.0.0)
+*   `npm` (for dependency management)
+*   A running Supabase instance (for development)
+*   A valid `.env.local` file with Supabase credentials.
 
--   **Deployment Status:** NOT YET DEPLOYED (as of g152)
--   **Live Configuration Capture:** [`staging/reality_capture/render_config.json`](../../staging/reality_capture/render_config.json)
--   **Deployment Guide:** [`docs/cycle4/week0/minimal_app_deployment_guide.md`](../../docs/cycle4/week0/minimal_app_deployment_guide.md)
+### Installation
 
-Deployment to Render is the next step after the core authentication endpoints are implemented and tested.
+From the `/backend` directory, install the dependencies:
 
-## 4. Technical Details
+```bash
+npm install
+```
 
-### Environment Variables
+### Running in Development
 
-This service requires a `.env.local` file at the **root of the monorepo**. This file is not read-accessible by the AI OS due to permissions but must be present for local execution. Its schema is defined in [`docs/cycle4/week0/staging_env_config.md`](../../docs/cycle4/week0/staging_env_config.md).
+To run the server in development mode with hot-reloading:
 
-**Key Variables:**
-- `SUPABASE_URL`: The URL of the Supabase project.
-- `SUPABASE_SERVICE_ROLE_KEY`: The service role key for backend-to-database communication.
-- `PORT`: The port the server will listen on (defaults to 10000).
+```bash
+npm run start
+```
 
-### Scripts
+The server will be available at `http://localhost:3000`.
 
-From this directory (`/backend`):
+### Running Tests
 
--   `npm install`: Installs local dependencies.
--   `npm start`: Runs the server via `node src/server.js`.
--   `npm run dev`: Runs the server (currently identical to `start`).
+Unit and integration tests are run using Jest.
+
+```bash
+npm run test
+```
+
+## Production Build & Deployment
+
+This service is configured for deployment to Render.
+
+### Build
+
+To create a production-ready build (compiling TypeScript to JavaScript in `/dist`), run:
+
+```bash
+npm run build
+```
+
+### Deployment
+
+Deployments to the staging environment are handled automatically via the **"Staging Deploy"** GitHub Actions workflow, which is triggered by pushing to the `main` branch.
+
+The deployment configuration is managed by the root-level `render.yaml` file. For a detailed explanation of the deployment strategy, refer to the cookbook pattern:
+
+*   **[Cookbook: Render Monorepo Backend Deployment Pattern](./docs/cookbook/render_monorepo_backend_deployment_pattern.md)**
 
 ---
 *This document is a managed artifact of the Hybrid_AI_OS.* 

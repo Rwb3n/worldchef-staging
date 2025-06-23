@@ -1,66 +1,39 @@
-import { createClient } from '@supabase/supabase-js';
-import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
+import { FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { SupabaseClient } from '@supabase/supabase-js';
 
-// This would be initialized once in a real app, maybe in a plugin
-const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
+export default async function (fastify: FastifyInstance, options: FastifyPluginOptions) {
+  if (!fastify.supabase) {
+    throw new Error('Supabase client not available. Make sure the auth_plugin is registered.');
+  }
+  const supabase: SupabaseClient = fastify.supabase;
 
-type AuthBody = {
-  email?: string;
-  password?: string;
-}
+  fastify.get('/health', async (request, reply) => {
+    return reply.code(200).send({ status: 'ok' });
+  });
 
-async function authRoutes(fastify: FastifyInstance, options: any) {
-
-  // SIGN UP
-  fastify.post('/signup', async (request: FastifyRequest<{ Body: AuthBody }>, reply: FastifyReply) => {
-    const { email, password } = request.body;
-
-    if (!email || !password) {
-      return reply.code(400).send({ error: 'Email and password are required' });
-    }
-
+  fastify.post('/signup', async (request, reply) => {
+    const { email, password } = request.body as any;
     const { data, error } = await supabase.auth.signUp({
-      email: email,
-      password: password,
+      email,
+      password,
     });
 
     if (error) {
-      return reply.code(error.status || 500).send({ error: error.message });
+      return reply.status(400).send(error);
     }
-    
-    if (data.user && data.user.aud !== 'authenticated') {
-      return reply.code(200).send({ message: 'Sign up successful, please check your email to confirm.' });
-    }
-    
-    return reply.code(201).send(data);
+    return reply.status(201).send(data);
   });
 
-  // SIGN IN
-  fastify.post('/login', async (request: FastifyRequest<{ Body: AuthBody }>, reply: FastifyReply) => {
-    const { email, password } = request.body;
-
-    if (!email || !password) {
-      return reply.code(400).send({ error: 'Email and password are required' });
-    }
-
+  fastify.post('/login', async (request, reply) => {
+    const { email, password } = request.body as any;
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
+      email,
+      password,
     });
 
     if (error) {
-      return reply.code(error.status || 401).send({ error: error.message });
+      return reply.status(401).send(error);
     }
-
-    return reply.code(200).send(data);
+    return reply.send(data);
   });
-
-  // Example of a protected route
-  fastify.get('/me', { preHandler: [ (fastify as any).authenticate] }, async (request, reply) => {
-    // The `authenticate` preHandler from our plugin runs first.
-    // If the token is valid, `request.user` will be populated.
-    return (request as any).user;
-  });
-}
-
-export default authRoutes; 
+} 
