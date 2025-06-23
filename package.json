@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "npm --workspace backend run dev",
     "start": "npm --workspace backend run start",
-    "test": "npm --workspaces test"
+    "test": "npm --workspaces test",
+    "test:ci": "npm --workspaces test"
   }
 }
