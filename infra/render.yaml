@@ -1,0 +1,12 @@
+services:
+  - type: web_service
+    name: worldchef-backend
+    rootDir: backend
+    plan: starter
+    env: node
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true 

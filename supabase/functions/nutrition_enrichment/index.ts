@@ -8,6 +8,13 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
  * Contract: POST body { ingredients: Ingredient[] }
  * Returns: { nutritionData: object | null, confidence: number, provider: string }
  * Env: NUTRITION_PROVIDERS="usda,edamam,ai" (priority order)
+ *
+ * USDA API Integration Learnings (g141, cr_t004):
+ * - Nutrient IDs are specific codes, e.g., Calories (kcal) is 208, not 1008.
+ * - API response for foodNutrients is a flat list.
+ * - Nutrient ID is in `nutrientNumber` field.
+ * - Nutrient value is in `value` field.
+ * - The `USDA_API_KEY` must be set via `supabase secrets set`.
  */
 
 // Types
@@ -18,11 +25,12 @@ interface NutritionResult { nutritionData: Record<string, any>; confidence: numb
 // g113 – initial implementation
 
 // Core nutrient IDs in FoodData Central
+// Last verified: 2025-06-23 (Task cr_t004)
 const USDA_NUTRIENTS = {
-  calories: 1008,
-  protein: 203,
-  fat: 204,
-  carbs: 205,
+  calories: 208,  // Energy (kcal)
+  protein: 203,   // Protein
+  fat: 204,       // Total lipid (fat)
+  carbs: 205,     // Carbohydrate, by difference
 };
 
 // Helper: extract macro-nutrients from FDC food response
@@ -30,8 +38,9 @@ function extractMacros(food: any) {
   const macros: Record<string, number> = { calories: 0, protein_g: 0, fat_g: 0, carbs_g: 0 };
   if (!food?.foodNutrients) return macros;
   for (const n of food.foodNutrients) {
-    const num = Number(n.nutrient?.number || n.nutrientNumber);
-    const amt = Number(n.amount);
+    // USDA API returns nutrientNumber (string) and value (number), not nested objects.
+    const num = Number(n.nutrientNumber);
+    const amt = Number(n.value || 0);
     switch (num) {
       case USDA_NUTRIENTS.calories:
         macros.calories = amt; break;
@@ -155,6 +164,10 @@ Deno.serve(async (req: Request) => {
       const searchUrl = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${key}&query=${encodeURIComponent(ing.name)}&pageSize=1&nutrients=${Object.values(USDA_NUTRIENTS).join(',')}`;
       const searchRes = await fetch(searchUrl);
       const searchData = await searchRes.json();
+
+      // DEBUGGING: Log the raw response from USDA API
+      console.log(`USDA response for ${ing.name}:`, JSON.stringify(searchData, null, 2));
+
       const first = searchData.foods?.[0];
       macros = extractMacros(first);
       const expiry = new Date(Date.now() + TTL_HOURS * 3600 * 1000).toISOString();

@@ -1,0 +1,14 @@
+{
+  "ingredients": [
+    { "name": "chicken breast", "quantity": 200, "unit": "g" },
+    { "name": "olive oil", "quantity": 2, "unit": "tbsp" },
+    { "name": "brown rice", "quantity": 1, "unit": "cup" },
+    { "name": "broccoli", "quantity": 150, "unit": "g" },
+    { "name": "cheddar cheese", "quantity": 1, "unit": "oz" },
+    { "name": "salmon fillet", "quantity": 6, "unit": "oz" },
+    { "name": "sweet potato", "quantity": 1, "unit": "medium" },
+    { "name": "almonds", "quantity": 30, "unit": "g" },
+    { "name": "spinach", "quantity": 2, "unit": "cup" },
+    { "name": "greek yogurt", "quantity": 150, "unit": "g" }
+  ]
+} 

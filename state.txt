@@ -1,9 +1,9 @@
 {
-  "v": 91,
-  "st": "VALIDATING",
-  "cp_id": "cycle4_week0_staging_provision",
-  "ct_id": "stg_t007",
-  "g": 133,
-  "last_action": "stg_t007 nightly refresh automation scripted & scheduled (g133).",
-  "updated_at": "2025-06-14T15:30:00Z"
+  "v": 102,
+  "st": "IDLE",
+  "cp_id": null,
+  "ct_id": null,
+  "g": 144,
+  "last_action": "repo_restructure_v1 plan DONE (g144).",
+  "updated_at": "2025-06-23T10:45:00Z"
 } 

@@ -1,0 +1,102 @@
+{
+  "items": [
+    {
+      "ingredient_index": 0,
+      "nutrition": {
+        "calories": 165,
+        "protein_g": 20.4,
+        "fat_g": 8.1,
+        "carbs_g": 1.06
+      }
+    },
+    {
+      "ingredient_index": 1,
+      "nutrition": {
+        "calories": 900,
+        "protein_g": 0,
+        "fat_g": 100,
+        "carbs_g": 0
+      }
+    },
+    {
+      "ingredient_index": 2,
+      "nutrition": {
+        "calories": 378,
+        "protein_g": 8.89,
+        "fat_g": 3.33,
+        "carbs_g": 75.6
+      }
+    },
+    {
+      "ingredient_index": 3,
+      "nutrition": {
+        "calories": 24,
+        "protein_g": 2.35,
+        "fat_g": 0,
+        "carbs_g": 4.71
+      }
+    },
+    {
+      "ingredient_index": 4,
+      "nutrition": {
+        "calories": 393,
+        "protein_g": 21.4,
+        "fat_g": 28.6,
+        "carbs_g": 3.57
+      }
+    },
+    {
+      "ingredient_index": 5,
+      "nutrition": {
+        "calories": 150,
+        "protein_g": 22.1,
+        "fat_g": 7.08,
+        "carbs_g": 0
+      }
+    },
+    {
+      "ingredient_index": 6,
+      "nutrition": {
+        "calories": 106,
+        "protein_g": 5.45,
+        "fat_g": 1.28,
+        "carbs_g": 16.4
+      }
+    },
+    {
+      "ingredient_index": 7,
+      "nutrition": {
+        "calories": 633,
+        "protein_g": 23.3,
+        "fat_g": 56.7,
+        "carbs_g": 13.3
+      }
+    },
+    {
+      "ingredient_index": 8,
+      "nutrition": {
+        "calories": 29,
+        "protein_g": 2.35,
+        "fat_g": 0,
+        "carbs_g": 3.53
+      }
+    },
+    {
+      "ingredient_index": 9,
+      "nutrition": {
+        "calories": 467,
+        "protein_g": 3.33,
+        "fat_g": 20,
+        "carbs_g": 70
+      }
+    }
+  ],
+  "aggregate_totals": {
+    "calories": 3245,
+    "protein_g": 109.57,
+    "fat_g": 225.09,
+    "carbs_g": 188.17
+  },
+  "source": "USDA_FDC",
+  "generated_at": "2025-06-23T08:35:26.280Z"
+}

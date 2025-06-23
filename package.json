@@ -1,20 +1,14 @@
 {
-  "name": "worldchef-staging-api",
+  "name": "worldchef-monorepo",
+  "private": true,
   "version": "1.0.0",
-  "description": "WorldChef staging API server with health checks",
-  "main": "app.js",
+  "workspaces": [
+    "backend",
+    "shared"
+  ],
   "scripts": {
-    "start": "node app.js",
-    "dev": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "express": "^4.19.2"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "keywords": ["worldchef", "api", "staging", "health-check"],
-  "author": "",
-  "license": "ISC"
+    "dev": "npm --workspace backend run dev",
+    "start": "npm --workspace backend run start",
+    "test": "npm --workspaces test"
+  }
 }
