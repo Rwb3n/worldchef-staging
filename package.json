@@ -11,6 +11,7 @@
     "start": "npm --workspace backend run start",
     "build": "npm --workspace backend run build",
     "start:prod": "npm --workspace backend run start:prod",
+    "postinstall": "npm --workspace backend run build",
     "test": "npm --workspaces test && deno task test",
     "test:ci": "npm --workspaces test && deno task test",
     "test:workspace": "npm --workspaces test",
