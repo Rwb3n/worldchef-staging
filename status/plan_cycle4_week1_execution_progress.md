@@ -35,6 +35,29 @@ The second deployment was **successful**. A `curl` command to `https://worldchef
 
 **Task `t002` is now considered DONE.**
 
+## Final Update (2025-07-19) - DEPLOYMENT SUCCESS
+
+After extensive troubleshooting, the backend service deployment was **successfully completed**. The service is now live at `https://worldchef-dev.onrender.com`.
+
+### Final Resolution Steps:
+
+1. **Package Manager Alignment**: Switched from `npm` to `yarn` to align with Render's default build environment.
+2. **Monorepo Script Workarounds**: Added `build` and `start:prod` scripts to the root `package.json` to work around Render dashboard overrides.
+3. **Automatic Build Integration**: Added a `postinstall` script that automatically runs TypeScript compilation after dependency installation.
+
+### Key Deployment Learnings:
+
+1. **Render Dashboard Override Behavior**: Service settings in the Render dashboard take precedence over `render.yaml` configurations, requiring workarounds at the project level.
+2. **Package Manager Consistency**: Render's build environment defaults to `yarn`, and mixing package managers creates deployment conflicts.
+3. **Monorepo Build Orchestration**: In monorepo setups, root-level scripts may be necessary to ensure proper workspace delegation during deployment.
+4. **Plugin Dependency Management**: Fastify plugin loading order is critical - explicit dependency declarations prevent initialization race conditions.
+
+### Service Status:
+- **URL**: `https://worldchef-dev.onrender.com`
+- **Health Endpoint**: `/v1/auth/health`
+- **Authentication Endpoints**: `/v1/auth/signup`, `/v1/auth/login`
+- **Status**: ✅ LIVE and responding
+
 ## Next Steps
 
-With the deployment successful, the next step is to execute task `t003_optimize_edge_function` from the plan. 
+With authentication service successfully deployed and validated, we can proceed to **t003_optimize_edge_function** in the execution plan. 

@@ -81,4 +81,47 @@ services:
 3.  **Configure Secrets**: Create a "Secret Group" in the Render dashboard (e.g., `worldchef-staging-secrets`) and add all necessary secret environment variables.
 4.  **Deploy**: Deployments are triggered by the [Staging Deploy Workflow](../.github/workflows/staging-deploy.yml), which uses a deploy hook.
 
-This pattern provides a robust, secure, and clear method for deploying services from our monorepo to Render. 
+This pattern provides a robust, secure, and clear method for deploying services from our monorepo to Render.
+
+## 6. Troubleshooting
+
+For complex deployment issues, see the comprehensive [Render Deployment Troubleshooting Pattern](./render_deployment_troubleshooting_pattern.md).
+
+### Common Issues:
+
+1. **Dashboard Override**: Render dashboard settings may override `render.yaml` configurations
+   - **Solution**: Add fallback scripts to root `package.json`
+
+2. **Package Manager Conflicts**: Mixing npm and yarn can cause deployment failures
+   - **Solution**: Standardize on yarn for Render compatibility
+
+3. **Build Step Missing**: TypeScript compilation may not run automatically
+   - **Solution**: Use `postinstall` hook to ensure build runs
+
+### Quick Diagnostic:
+```bash
+# Check for package manager conflicts
+ls -la package-lock.json yarn.lock
+
+# Verify build output exists
+ls -la backend/dist/
+
+# Test workspace commands locally
+yarn workspace worldchef-backend build
+yarn workspace worldchef-backend start:prod
+```
+
+## 7. Lessons Learned
+
+Based on real deployment experience:
+
+- **Always use yarn** for Render deployments to avoid package manager conflicts
+- **Dashboard settings override files** - maintain both for consistency
+- **Monorepo requires explicit workspace commands** in both build and start phases
+- **Plugin loading order matters** - use explicit dependencies in Fastify
+- **Health endpoints are essential** for deployment validation
+
+## 8. Related Patterns
+
+- [Render Deployment Troubleshooting Pattern](./render_deployment_troubleshooting_pattern.md) - Comprehensive troubleshooting guide
+- [Fastify Plugin Dependency Pattern](./fastify_plugin_dependency_pattern.md) - Plugin loading best practices 
