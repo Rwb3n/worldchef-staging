@@ -1,5 +1,6 @@
 import fastify, { FastifyInstance } from 'fastify';
 import authPlugin from './plugins/auth_plugin';
+import securityHeadersPlugin from './plugins/security_headers_plugin';
 import authRoutes from './routes/v1/auth';
 
 export async function build(opts = {}): Promise<FastifyInstance> {
@@ -7,6 +8,7 @@ export async function build(opts = {}): Promise<FastifyInstance> {
 
   // Register plugins
   app.register(authPlugin);
+  app.register(securityHeadersPlugin);
 
   // Register routes
   app.register(authRoutes, { prefix: '/v1/auth' });
