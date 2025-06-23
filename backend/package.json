@@ -1,17 +1,28 @@
 {
   "name": "worldchef-backend",
   "version": "1.0.0",
-  "description": "WorldChef production backend API server (Express placeholder)",
-  "main": "src/server.js",
+  "description": "WorldChef production backend API server (Fastify)",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node src/server.js",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "jest",
+    "start": "ts-node src/server.ts",
+    "build": "tsc",
+    "start:prod": "node dist/server.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "@supabase/supabase-js": "^2.44.4",
+    "fastify": "^4.28.1",
+    "fastify-plugin": "^5.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.3",
+    "ts-node": "^10.9.2"
   }
-} 
+}
