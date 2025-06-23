@@ -40,4 +40,4 @@ async function authPlugin(fastify: FastifyInstance) {
   });
 }
 
-export default fp(authPlugin); 
+export default fp(authPlugin);

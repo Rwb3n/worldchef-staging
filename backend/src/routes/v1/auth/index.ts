@@ -1,10 +1,8 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
 import { SupabaseClient } from '@supabase/supabase-js';
+import fp from 'fastify-plugin';
 
-export default async function (fastify: FastifyInstance, options: FastifyPluginOptions) {
-  if (!fastify.supabase) {
-    throw new Error('Supabase client not available. Make sure the auth_plugin is registered.');
-  }
+async function authRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
   const supabase: SupabaseClient = fastify.supabase;
 
   fastify.get('/health', async (request, reply) => {
@@ -36,4 +34,8 @@ export default async function (fastify: FastifyInstance, options: FastifyPluginO
     }
     return reply.send(data);
   });
-} 
+}
+
+export default fp(authRoutes, {
+  dependencies: ['supabase']
+}); 
