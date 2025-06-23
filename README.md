@@ -1,12 +1,12 @@
 # WorldChef Monorepo
 
-> One repo – two apps: a Node/Express backend and a Flutter mobile client, powered by Supabase & Stripe.
+> One repo – two apps: a Node/Fastify backend and a Flutter mobile client, powered by Supabase & Stripe.
 
 ## Directory Overview
 
 | Path | Purpose |
 |------|---------|
-| `backend/` | Production API server (Express) & unit tests |
+| `backend/` | Production API server (Fastify) & unit tests |
 | `mobile/` | Flutter client (Riverpod) |
 | `shared/` | Reusable DTOs, constants, validation schemas |
 | `infra/` | Render.com spec, Docker files, GitHub Actions |
