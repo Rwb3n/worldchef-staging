@@ -81,6 +81,7 @@ issues/
 state.txt
 registry_map.txt
 poc2_supabase_validation/
+_legacy/
 
 # --- LEGACY/ARCHIVE IGNORE ---
 archive/

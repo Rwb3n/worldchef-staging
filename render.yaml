@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: worldchef-backend
+    rootDir: backend
+    plan: starter
+    runtime: node
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start:prod"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        value: https://myqhpmeprpaukgagktbn.supabase.co
+      - fromGroup: worldchef-staging-secrets
+    autoDeploy: false 

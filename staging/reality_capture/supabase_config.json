@@ -1,0 +1,35 @@
+{
+  "capture_timestamp": "2025-01-31T17:15:00Z",
+  "capture_method": "Supabase MCP Tools",
+  "project_details": {
+    "id": "myqhpmeprpaukgagktbn",
+    "organization_id": "axyawzjjuwcumrfrcdsx",
+    "name": "worldchef",
+    "region": "eu-west-1",
+    "status": "ACTIVE_HEALTHY",
+    "database": {
+      "host": "db.myqhpmeprpaukgagktbn.supabase.co",
+      "version": "17.4.1.041",
+      "postgres_engine": "17",
+      "release_channel": "ga"
+    },
+    "created_at": "2025-06-08T09:38:39.578762Z"
+  },
+  "edge_functions_status": "ERROR_CANNOT_LIST",
+  "edge_functions_error": "TypeError: File URL path must be absolute",
+  "comparison_to_week0_docs": {
+    "project_id_match": true,
+    "organization_id_match": true,
+    "name_match": true,
+    "region_match": true,
+    "status_match": true,
+    "database_version_match": true,
+    "database_host_match": true
+  },
+  "validation_notes": [
+    "Supabase project matches Week 0 documentation exactly",
+    "Edge functions cannot be listed due to MCP tool error",
+    "Project is ACTIVE_HEALTHY as expected",
+    "Database version 17.4.1.041 matches documented version"
+  ]
+} 

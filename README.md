@@ -24,8 +24,29 @@ npm --workspace backend run dev      # run API on :3000
 flutter run                          # run mobile
 ```
 
-## Deployment (Render.com)
-Render auto-deploys on git push using `infra/render.yaml`.
+## Deployment
+
+The services in this monorepo are configured for deployment to Render. All deployment configuration is managed by the `render.yaml` file in the root of this project.
+
+### Backend Service (`/backend`)
+
+The backend is a Node.js/TypeScript application deployed as a "Web Service" on Render.
+
+**Triggering a Deployment:**
+
+1.  **Commit and Push:** Ensure all your changes are committed and pushed to the `main` branch.
+2.  **Run Workflow:** Navigate to the **Actions** tab of the GitHub repository and manually run the **"Staging Deploy"** workflow.
+
+This workflow will:
+*   Install dependencies.
+*   Run tests.
+*   Build the TypeScript code into JavaScript.
+*   Trigger a deployment on Render using a secure deploy hook.
+*   Perform a health check against the live service.
+
+For detailed information on the deployment configuration and pattern, see the cookbook entry:
+
+*   **[Cookbook: Render Monorepo Backend Deployment Pattern](./docs/cookbook/render_monorepo_backend_deployment_pattern.md)**
 
 ## Tests
 ```bash
