@@ -1,0 +1,119 @@
+WorldChef Project: Architectural Decision Checkpoint Summary
+Date: 2025-06-01
+Current Phase: Foundational Architectural Decisions Defined; Proof-of-Concept (PoC) Execution Phase Imminent.
+I. Overview & Progress:
+The WorldChef project has completed a rigorous initial phase of architectural planning, resulting in a suite of well-defined and critically evaluated Architecture Decision Records (ADRs). This process involved iterative refinement based on extensive feedback, leading to robust strategies for key system components. Several foundational decisions are now explicitly contingent on empirical validation through upcoming Proof-of-Concept (PoC) activities.
+The primary goal of this checkpoint is to summarize the current architectural landscape, confirm the readiness and scope of mandated PoCs, and outline the immediate next steps for the project.
+II. Status of Key Foundational ADRs:
+The following ADRs represent the current accepted architectural direction, with contingencies noted:
+Mobile Client & Initial UI/UX Validation:
+ADR-WCF-001a: Mobile Client Technology Stack Selection Strategy & Comparative Proof-of-Concept Mandate
+Status: **VALIDATED** (Flutter chosen)
+Summary: Mandates a comparative PoC between Flutter and React Native (New Architecture) to determine the final mobile stack. Details PoC scope, metrics, and evaluation criteria. The detailed PoC Plan #1 is now considered an integral part of this ADR's execution.
+
+ADR-WCF-025: Early UI/UX Validation and Mobile Foundation Strategy
+Status: **VALIDATED**
+Summary: Defines the strategy for initial mobile development (scaffolding, Component-Driven Development with Widgetbook/Storybook, targeted feature PoCs, NFR stubs) once the mobile stack is chosen. Replaces earlier web prototype strategies (ADR-WCF-001b & ADR-WCF-024 now SUPERSEDED).
+
+
+Backend Architecture & Technology:
+ADR-WCF-003: Backend Service Architecture
+Status: ACCEPTED
+Summary: Establishes a Fastify-Only Application Server for MVP, handling all core API logic and initial async/webhook tasks. Defines a clear, data-driven path for future evolution to a hybrid model incorporating Supabase Edge Functions post-MVP. (Supersedes ADR-WCF-001c).
+
+ADR-WCF-015: API Design Principles & Versioning
+Status: ACCEPTED
+Summary: Details comprehensive REST-like principles, JSON usage, error handling, versioning (/v1/), caching, validation (JSON Schema), and operational considerations for the Fastify API.
+
+
+Database, BaaS, and Data Modeling:
+ADR-WCF-001d: Database & BaaS Platform Selection Strategy
+Status: **VALIDATED** (Supabase chosen)
+Summary: Selects Supabase (PostgreSQL, Auth, Storage, Edge Functions) for MVP, contingent on PoCs validating performance (RLS, Edge Functions) and cost-effectiveness. The detailed PoC Plan #2 is integral.
+
+ADR-WCF-006a: Core Entity Data Modeling Strategy (Relational Structure)
+Status: ACCEPTED
+Summary: Defines a robust relational model for Users, Creators, Recipes, and key interactions (Likes, Collections, Follows), incorporating soft deletes, denormalized counters, and database views.
+
+ADR-WCF-006b: JSONB Usage for Semi-Structured Recipe Data & Ingredient Modeling Strategy
+Status: ACCEPTED
+Summary: Mandates a normalized relational model for  (for searchability) and confirms JSONB usage for steps and nutrition within recipes, including validation, versioning, and query considerations.
+
+
+Key Feature Integrations:
+ADR-WCF-005: Authentication & Authorization Strategy
+Status: ACCEPTED
+Summary: Details using Supabase Auth for identity and JWT issuance, with Fastify validating JWTs (via JWKS) and enforcing API-level authorization, complemented by Supabase RLS. Covers token lifecycle, error codes, social logins, rate limiting, and operational aspects.
+
+ADR-WCF-007: Payment Integration Strategy
+Status: ACCEPTED
+Summary: Selects Stripe Hosted Checkout for MVP subscriptions, detailing SCA, tax handling (Stripe Tax), idempotency, webhook processing, reconciliation, and lifecycle management.
+
+ADR-WCF-008: Search Implementation Strategy
+Status: ACCEPTED
+Summary: Implements MVP search using PostgreSQL FTS, pg_trgm, and unaccent, with detailed setup for tsvectors, partial indexing, fallback logic, result highlighting, and API considerations.
+
+ADR-WCF-009: Push Notification Strategy
+Status: ACCEPTED
+Summary: Uses Firebase Cloud Messaging (FCM) with FlutterFire (client) and Fastify (firebase-admin SDK) for sending. Details token lifecycle management, payload structure, Android channels, and operational resilience.
+
+
+Development Process & Quality Assurance:
+ADR-WCF-010a: Overall Testing Philosophy
+Status: ACCEPTED
+Summary: Adopts a Test Pyramid model with strong emphasis on valuable, multi-level integration tests, and clear roles for unit and E2E tests.
+
+ADR-WCF-010b: Test Tooling Selection
+Status: ACCEPTED
+Summary: Specifies tools (Jest, TestContainers, Flutter test/integration_test, k6, etc.) for each test type, including external service mocking and A11y/security scan tooling.
+
+ADR-WCF-011: CI/CD Strategy
+Status: ACCEPTED
+Summary: Defines CI/CD pipelines using GitHub Actions, leveraging reusable workflows, EAS Build for Flutter, staged deployments (PR validation -> Staging -> Production with manual gate), DB migrations, and CI caching.
+
+
+Client-Side State Management (Contingent):
+ADR-WCF-004: Client UI State Management Strategy
+Status: ACCEPTED (Contingent on PoC Validation and Server State Strategy Alignment)
+Summary: Proposes Zustand (for RN) or Riverpod (for Flutter) for client UI state, with a separate specialized library for server state (e.g., TanStack Query). Mandates PoC validation. The detailed PoC Plan #3 is integral.
+
+
+III. Critical Proof-of-Concept (PoC) Plans Ready for Execution:
+The following PoC plans have been meticulously drafted and refined based on extensive feedback and are ready for execution. Their outcomes will finalize contingent ADRs and provide crucial data for proceeding with development.
+PoC Plan #1: Mobile Client Stack – **COMPLETED** (Flutter outperformed RN)
+Mandated by: ADR-WCF-001a
+Objective: Empirically compare Flutter and React Native (New Arch) on performance for media-heavy screens, AI code generation effectiveness, human oversight efficiency, DX, and basic NFR stub feasibility to make a final mobile stack selection.
+Key Deliverable: PoC Evaluation Report with a clear recommendation for the mobile stack.
+
+PoC Plan #2: Supabase Performance & Cost – **COMPLETED** (metrics met)
+Mandated by: ADR-WCF-001d
+Objective: Validate Supabase's performance (PostgreSQL with RLS, PostgREST, Edge Functions) against quantitative targets for MVP workloads and data volumes. Develop a realistic cost model against project budget constraints.
+Key Deliverable: PoC Evaluation Report confirming Supabase's viability for MVP or triggering re-evaluation.
+
+PoC Plan #3: Client UI State + Server State – **COMPLETED** (ADR-004 validated)
+Mandated by: ADR-WCF-004 (To be executed after PoC #1 selects the mobile stack)
+Objective: Validate the chosen UI state manager's integration with a dedicated server state library on the selected mobile stack, focusing on core use cases like optimistic updates and cache management.
+Key Deliverable: PoC Evaluation Report confirming the suitability of the combined state management strategy.
+
+IV. MVP Scope Sanity Check:
+A review of the core MVP features (User Auth & Onboarding, Creator Flows, Recipe CRUD & Discovery, Basic Engagement, Subscriptions, Push Notifications) confirms that the architectural decisions documented in the "ACCEPTED" and "CONTINGENT" ADRs provide the necessary underpinnings. The PoCs are designed to validate the riskiest assumptions for implementing these MVP features.
+V. Immediate Next Steps & Priorities:
+Execute PoC #1 (Mobile Client Stack): This is the highest priority as its outcome dictates the finalization of ADR-WCF-001a and ADR-WCF-025, and informs PoC #3 tooling.
+Execute PoC #2 (Supabase Viability): This can run in parallel with PoC #1 or immediately after, as its outcome is critical for overall backend viability.
+Update ADRs based on PoC Outcomes:
+Finalize ADR-WCF-001a with the chosen mobile stack.
+Confirm or revise ADR-WCF-001d based on Supabase performance/cost.
+Finalize ADR-WCF-025 with chosen mobile stack specifics.
+
+Execute PoC #3 (Client State Management): Once mobile stack is chosen and a preliminary server state library is selected for the PoC.
+Update ADR-WCF-004 based on PoC #3 outcome.
+Begin Drafting Next Tier of Foundational ADRs (in parallel if capacity allows, prioritizing those less dependent on immediate PoC outcomes):
+ADR-WCF-016: Overall Security Architecture
+ADR-WCF-018: Error Handling & Logging Strategy (API & Client)
+ADR-WCF-019: Configuration Management Strategy (Backend & Client)
+(Others like Caching, Backup/DR, Monitoring, Rate Limiting to follow, potentially informed by PoC results).
+
+VI. Conclusion:
+The project has established a strong, well-critiqued set of foundational architectural plans. The immediate focus shifts to empirical validation through the defined PoCs. This evidence-driven approach will ensure that subsequent development cycles build upon a robust, performant, and well-understood technology foundation. The AI-assisted development model will be crucial for executing these PoCs efficiently within the project's resource constraints.
+
+

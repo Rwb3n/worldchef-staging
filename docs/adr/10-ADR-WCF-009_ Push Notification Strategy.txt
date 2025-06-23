@@ -1,0 +1,152 @@
+ADR-WCF-009: Push Notification Strategy
+Status: ACCEPTED
+Date: 2025-06-01 (Final version incorporating comprehensive feedback on backend responsibility, full token lifecycle management, platform specifics, error handling, payload standardization, operational resilience, and future considerations)
+Authors: WorldChef Backend & Mobile Team
+1. Context and Problem Statement
+Push notifications are a vital engagement feature for WorldChef (Cycle 5 Blueprint), enabling timely updates (e.g., new recipes from followed creators). A reliable, scalable, cross-platform mechanism is needed for Flutter-based mobile clients (ADR-WCF-001a). This ADR documents the strategy, technology, and critical implementation details for a production-ready push notification system.
+2. Decision Drivers
+Cross-Platform Delivery (iOS/Android).
+Seamless Flutter Client Integration & Positive User Experience.
+Clear, Secure, and Resilient Backend Integration Path.
+Scalability & High Reliability (including error handling and retries).
+Developer Experience & Good Documentation.
+Cost-Effectiveness (Leveraging Free Tiers).
+MVP Features: Targeted user notifications, topic-based notifications.
+Robust Token Lifecycle Management (registration, refresh, stale cleanup, logout/deletion).
+User Control & Platform Best Practices (Android Channels, iOS permissions).
+Standardized Payloads & Deep Linking.
+Monitoring & Alerting for Delivery Health.
+3. Considered Options
+(Options remain: 1. FCM + FlutterFire (Chosen), 2. Expo Push (Not Applicable), 3. Third-Party Services (Cost/Overkill for MVP), 4. Direct APNS/FCM (Too Complex). Rationale for Option 1 is now extensively detailed.)
+4. Decision
+Chosen Option: Option 1: Firebase Cloud Messaging (FCM) directly, with FlutterFire plugins for the client. The backend logic for triggering and sending notifications will reside within the Fastify API service (ADR-WCF-001c), utilizing the 
+Supabase Edge Functions (ADR-WCF-003) may act as triggers (e.g., from database events) to invoke secured Fastify API endpoints for sending notifications, but Fastify owns firebase-admin initialization, core sending logic, and associated secret management.
+Implementation Details:
+Firebase Project Setup:
+Firebase project for WorldChef; Android & iOS apps registered.
+iOS APNS Configuration: An APNS Authentication Key (.p8 file), generated in Apple Developer account, uploaded to Firebase. Stored securely, with a documented rotation policy (e.g., annually or if compromised).
+
+Client-Side (Flutter with 
+Permissions:
+iOS: firebase_messaging.requestPermission() called after a pre-permission UI explaining notification benefits.
+Android (13+): Runtime permission for POST_NOTIFICATIONS requested.
+Denial Handling: If permission is denied (or permanently denied), app displays a persistent but dismissible in-app message/banner guiding user to OS settings to enable notifications, explaining their value. Backend is informed to potentially halt push attempts to tokens from devices with denied permissions.
+
+Token Management:
+FCM registration token obtained via FirebaseMessaging.instance.getToken() upon permission grant.
+Token sent to POST /v1/users/me/device-tokens (Fastify API) and stored in device_tokens (user_id UUID, fcm_token TEXT, platform TEXT, last_seen_at TIMESTAMPTZ, is_active BOOLEAN DEFAULT TRUE, created_at, updated_at, UNIQUE(user_id, fcm_token)). This endpoint requires JWT authentication, ensuring user can only manage their own tokens.
+Client listens to FirebaseMessaging.instance.onTokenRefresh and sends new token to backend.
+
+Receiving & Handling Notifications:
+Handlers for foreground, background, and terminated-app-opened messages.
+Client parses standardized data payload (see below) for deep linking and custom in-app actions.
+
+Topic Subscriptions:
+Client subscribes/unsubscribes to topics (e.g., creator_new_recipes_<creator_id>) via FirebaseMessaging.instance.subscribeToTopic() / unsubscribeFromTopic().
+Client-Side Rate Limiting: Topic subscription/unsubscription UI actions will be debounced (e.g., only one API call per topic per second) to prevent FCM throttling.
+Topic Limit Strategy: For MVP, client manages subscriptions. If a user follows an exceptionally large number of creators (e.g., >100, configurable threshold), client may stop subscribing to individual creator topics and rely on a more general "new content" topic or backend-driven direct-to-device notifications based on user preferences.
+
+Android Notification Channels: Defined in Flutter code (e.g., using flutter_local_notifications to create channels before first notification):
+new_content_channel (High Importance, default sound): For new recipes, critical updates.
+engagement_channel (Default Importance): For follower updates, likes, etc.
+Backend specifies android.notification.channel_id in FCM message.
+
+
+Backend-Side (Fastify API with 
+firebase-admin initialized with service account credentials (from secure environment variable, e.g., GOOGLE_APPLICATION_CREDENTIALS pointing to JSON file). Documented rotation policy for service account keys.
+Standardized FCM Message Structure (Backend to FCM):
+{
+  // "to": "FCM_TOKEN_SINGLE_DEVICE", // OR
+  // "topic": "TARGET_TOPIC", // OR
+  // "tokens": ["FCM_TOKEN_1", "FCM_TOKEN_2"], // For multicast
+
+  "notification": { // For system tray when app is background/killed (iOS & Android)
+    "title": "New Recipe from ChefCook!", // Populated by backend
+    "body": "Check out 'Delicious Pasta Bake'" // Populated by backend
+  },
+  "apns": { // iOS specific overrides/configurations
+    "payload": { "aps": { "sound": "default", "category": "NEW_CONTENT_CATEGORY" /* for iOS actions */ } }
+  },
+  "android": { // Android specific overrides/configurations
+    "notification": {
+      "channel_id": "new_content_channel", // Essential for Android 8.0+
+      "click_action": "FLUTTER_NOTIFICATION_CLICK" // Default for firebase_messaging
+    }
+  },
+  "data": { // Custom data payload for client app logic (foreground handling, deep linking)
+    "notification_type": "NEW_RECIPE", 
+    "title_key": "push_new_recipe_title", // For i18n on client
+    "body_key": "push_new_recipe_body",   // With placeholders for dynamic content
+    "body_args_json": "{\"creatorName\":\"ChefCook\", \"recipeName\":\"Delicious Pasta Bake\"}",
+    "entity_id": "recipe_uuid_v4_string",
+    "entity_type": "recipe",
+    "click_action_route": "/recipe/recipe_uuid_v4_string" 
+    // ...other relevant data (e.g., image_url for rich push later)
+  }
+}
+content_copy
+download
+Use code with caution.Jsonc
+
+Sending Logic & Rate Limiting/Throttling:
+For direct-to-device: Retrieve active FCM token(s) for user_id from device_tokens table. Use admin.messaging().sendEachForMulticast() (batches up to 500 tokens).
+Send Throttling: Implement a queue and rate-limiting in Fastify if sending large volumes of individual messages (e.g., >FCM recommended QPS). For MVP, batching with sendEachForMulticast and respecting its limits is the primary approach.
+
+Error Handling & Retries (Backend Sends):
+Wrap admin.messaging().send* calls with retry logic (e.g., 2-3 attempts with exponential backoff for transient errors like UNAVAILABLE, INTERNAL_SERVER_ERROR).
+Log permanent errors (e.g., INVALID_ARGUMENT).
+
+Stale Token Cleanup (Reactive & Proactive):
+Reactive: If FCM send response indicates token is invalid (messaging/registration-token-not-registered, messaging/invalid-registration-token), Fastify marks device_tokens.is_active = false or deletes the token.
+Proactive: A scheduled job (e.g., daily Supabase Edge Function or Fastify cron) sends a dryRun: true message (using admin.messaging().send({ token: ... }, true)) to a batch of tokens not seen recently (e.g., last_seen_at < 30 days ago AND is_active = true) and processes responses to prune invalid ones.
+
+
+ Table Management:
+last_seen_at updated on successful token validation or app activity ping.
+User Logout: Client calls DELETE /v1/users/me/device-tokens/{fcm_token} (authenticated endpoint) to set is_active = false or delete the specific token.
+Account Deletion: All tokens for the user_id are hard-deleted from device_tokens.
+
+5. Rationale
+FCM, integrated via FlutterFire and a Fastify backend using firebase-admin, offers a comprehensive, scalable, cost-effective, and developer-friendly solution for WorldChef's push notification needs. This revised strategy incorporates robust token lifecycle management, platform-specific best practices, standardized payloads, operational resilience, and clearer backend responsibilities.
+6. Consequences
+Positive Consequences / Benefits:
+Reliable, scalable cross-platform push notifications with good deliverability.
+Simplified client and backend development via mature SDKs and clear patterns.
+No direct costs for MVP notification volumes.
+Improved operational robustness due to detailed token management, error handling, and platform considerations.
+Negative Consequences / Trade-offs / Risks:
+Dependency on Firebase Ecosystem.
+Initial APNS Auth Key Setup & Firebase Project Configuration: Requires careful one-time setup.
+Token Management Complexity: While detailed, robust token management is an ongoing operational concern. (Mitigation: Automation of stale token cleanup, client refresh logic).
+Delivery is "Best Effort": Standard for push services. (Mitigation: Monitoring delivery rates via FCM console or BigQuery export if enabled).
+Backend Throttling by FCM: If send volume dramatically spikes beyond FCM limits without proper backend send-side throttling/batching. (Mitigation: Batching with sendEachForMulticast, future send queue if needed).
+7. Validation / Success Metrics
+Client successfully registers, refreshes, and de-registers FCM tokens with the backend.
+Backend reliably sends notifications (direct & topic) to iOS/Android, respecting Android Channels.
+Deep linking from notifications functions correctly via standardized data payload.
+Stale token cleanup mechanisms demonstrably reduce send errors to invalid tokens.
+User permission flows (including denial handling) are intuitive.
+Monitoring & Alerting (ADR-WCF-021):
+FCM send success API call rate >99%.
+FCM delivery rate (reported by FCM, if analytics enabled) >90% for active tokens.
+Alert if backend FCM send API error rate >2% over 15 mins.
+Alert if stale token cleanup job fails or reports excessive errors.
+
+8. Review / Revisit
+After initial launch of first notification feature (Cycle 5).
+If notification delivery rates or reliability metrics fall below targets.
+If advanced features (rich push with dynamic images, A/B testing, complex segmentation beyond topics, scheduled notifications) become high priority. For scheduled notifications, a server-side scheduler (cron/queue) interacting with Fastify would be designed.
+If FCM significantly changes API, pricing, or terms, or if analytics costs (e.g., BigQuery for delivery logs) become substantial.
+Annually, for security best practices and new platform capabilities.
+
+9. Validation Evidence (2025-06-13)
+PoC #4 Backend Integration Validation executed on 2025-06-13 confirmed technical feasibility and performance of the Firebase Cloud Messaging (FCM) strategy described in this ADR:
+• Environment: Fastify server (`spike/fcm-poc`) on port 3335 using Firebase Admin SDK.
+• Test Suite: 10 single + 5 batch notifications (total 15) sent to a live web device token.
+• Success Rate: 100 % delivery (15 / 15).
+• Average Latency (warm): 181 ms; First-request (cold): 857 ms; Batch latency (5 tokens): 173 ms.
+• Artifact: `fcm_validated.txt` (SHA256 19BDF20C7505267C99A88828ECF645CAFEB89053046946FB73270BD043BEFE9D).
+
+Performance aligns with expectations for FCM (cold start overhead accepted). Implementation details (service worker, token refresh, error handling) match the commitments in this ADR. No architectural changes required; monitoring of cold-start behavior recommended in production.
+
+

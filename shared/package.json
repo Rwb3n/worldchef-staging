@@ -1,0 +1,14 @@
+{
+  "name": "@worldchef/shared",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"No shared tests yet\" && exit 0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+} 

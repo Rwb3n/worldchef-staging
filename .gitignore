@@ -1,123 +1,87 @@
-# --- ROOT GITIGNORE: ONLY ALLOW DEPENDENCY FILES, staging/, docs/ ---
+# --- MONOREPO GITIGNORE ---
 
-# Ignore everything in the root by default
-/*
-
-# Allow dependency management files in the root
-!package.json
-!package-lock.json
-!deno.json
-!deno.lock
-!app.js
-
-# Optionally, allow .gitignore itself
-!.gitignore
-
-# Allow these directories and their contents
-!staging/
-!staging/**
-!supabase/
-!k8s
-!infra/
-!__tests__/
-!.github/workflows/
-!.github/workflows/**
-
-# END OF FILE
-
-# --- DEPENDENCY FOLDERS (GLOBAL) ---
+# Dependencies
 node_modules/
 .pnp/
 .pnp.js
-.yalc/
-.yalc.lock
-.cache/
-.next/
-.output/
-.vercel/
-.netlify/
-.firebase/
-.storybook/
-.expo/
 
-# --- ENVIRONMENT VARIABLES (GLOBAL) ---
+# Environment variables
 .env
 .env.*
+!.env.example
 
-# --- FLUTTER PROJECT IGNORE ---
-worldchef_poc_flutter/.dart_tool/
-worldchef_poc_flutter/build/
-worldchef_poc_flutter/.flutter-plugins-dependencies
-worldchef_poc_flutter/pubspec.lock
-worldchef_poc_flutter/.packages
-worldchef_poc_flutter/.idea/
-worldchef_poc_flutter/.vscode/
-worldchef_poc_flutter/lib/generated/
-# Flutter generated localization files
-worldchef_poc_flutter/lib/generated/l10n/
-# Misc
-worldchef_poc_flutter/.DS_Store
+# Build outputs
+dist/
+build/
+coverage/
+.next/
+.turbo/
+.parcel-cache/
 
-# --- REACT NATIVE PROJECT IGNORE ---
-worldchef_poc_rn/node_modules/
-worldchef_poc_rn/package-lock.json
-worldchef_poc_rn/.expo/
-worldchef_poc_rn/.expo-shared/
-worldchef_poc_rn/.vscode/
-worldchef_poc_rn/.DS_Store
-# Yarn lockfile (if used)
-worldchef_poc_rn/yarn.lock
-
-# --- iOS/macOS PROJECT IGNORE ---
-# iOS build artifacts and workspace files
-Pods/
-*.xcworkspace
-*.xcuserstate
-*.pbxproj
-*.ipa
-# Android build artifacts
-*.apk
-*.aab
-
-# --- NODE.JS MOCK SERVER IGNORE ---
-worldchef_poc_mock_server/node_modules/
-worldchef_poc_mock_server/package-lock.json
-# Yarn lockfile (if used)
-npm-debug.log*
-
-# --- IDE/EDITOR FILES (GLOBAL) ---
+# IDE/Editor files
 .idea/
 .vscode/
 *.iml
 .DS_Store
 Thumbs.db
 
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# --- DOCS & TRACE FILES ---
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
+# --- BACKEND SPECIFIC ---
+backend/dist/
+backend/coverage/
+
+# --- MOBILE SPECIFIC ---
+mobile/.dart_tool/
+mobile/build/
+mobile/.flutter-plugins-dependencies
+mobile/pubspec.lock
+mobile/.packages
+mobile/lib/generated/
+
+# iOS
+mobile/ios/Pods/
+mobile/ios/*.xcworkspace
+mobile/ios/*.xcuserstate
+
+# Android
+mobile/android/.gradle/
+mobile/android/app/build/
+mobile/android/key.properties
+*.apk
+*.aab
+*.ipa
+
+# --- SHARED SPECIFIC ---
+shared/dist/
+
+# --- INFRA SPECIFIC ---
+infra/.terraform/
+infra/terraform.tfstate*
+infra/.terraform.lock.hcl
+
+# --- DOCS ---
 docs/trace/*.json
-# Ignore Excel and other binary docs if not source
 *.xlsx
 *.xls
 
-# --- GENERAL ---
-*.log
-*.tmp
-*.swp
-coverage/
-dist/
-.sass-cache/
-.turbo/
-.parcel-cache/
-.cypress/
-.nyc_output/
-.eslintcache
-build/
-
-# --- project workspace files ---
-
+# --- PROJECT WORKSPACE FILES ---
 plans/
-poc2_supabase_validation/
 issues/
 state.txt
 registry_map.txt
+poc2_supabase_validation/
+
+# --- LEGACY/ARCHIVE IGNORE ---
+archive/
+worldchef_poc_*/

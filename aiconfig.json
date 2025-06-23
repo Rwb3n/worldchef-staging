@@ -1,0 +1,335 @@
+{
+  "project": {
+    "name": "WorldChef",
+    "description": "AI-powered recipe discovery and creator platform with mobile-first approach",
+    "version": "1.0.0-mvp",
+    "phase": "Cycle4-Staging",
+    "last_updated": "2025-06-13",
+    "global_event_counter": 111
+  },
+  "architecture": {
+    "status": "VALIDATION_GAP_IDENTIFIED",
+    "validation_date": "2025-06-13",
+    "confidence_level": "MEDIUM",
+    "poc_completion": "75%",
+    "validation_gap": "Backend integration validation required (PoC #4)"
+  },
+  "technology_stack": {
+    "mobile": {
+      "framework": "Flutter 3.x",
+      "language": "Dart",
+      "status": "VALIDATED",
+      "validation_source": "PoC #1",
+      "key_metrics": {
+        "ai_generation_success": "88%",
+        "performance_fps": "58-60",
+        "cold_launch_time": "1.2s",
+        "bundle_size": "23MB"
+      },
+      "alternatives_rejected": ["React Native 0.73 New Architecture"],
+      "decision_drivers": ["Superior performance", "Higher AI compatibility", "Better developer experience"]
+    },
+    "state_management": {
+      "framework": "Riverpod 2.x",
+      "patterns": ["AsyncNotifierProvider", "NotifierProvider", "StateNotifierProvider"],
+      "status": "VALIDATED",
+      "validation_source": "PoC #3",
+      "key_metrics": {
+        "test_pass_rate": "100%",
+        "ai_generation_success": "87.5%",
+        "optimistic_update_latency": "<50ms",
+        "mutation_p90_latency": "210ms"
+      },
+      "persistence": "Hive + shared_preferences",
+      "offline_strategy": "Global offline provider with connectivity listener"
+    },
+         "backend": {
+       "api_server": "Fastify",
+       "language": "Node.js/TypeScript",
+       "architecture": "Fastify-Only for MVP",
+       "status": "REQUIRES_VALIDATION",
+       "validation_needed": "Performance under load, schema validation, JWT integration",
+       "evolution_path": "Hybrid with Supabase Edge Functions post-MVP"
+     },
+    "database": {
+      "primary": "PostgreSQL (via Supabase)",
+      "baas_platform": "Supabase",
+      "status": "VALIDATED",
+      "validation_source": "PoC #2",
+      "key_metrics": {
+        "read_performance_p95": "90.84ms",
+        "target_performance": "150ms",
+        "performance_improvement": "39% better than target",
+        "cost_efficiency": "75% under budget",
+        "monthly_cost_10k_mau": "$25",
+        "budget_target": "$100"
+      },
+      "features": ["RLS policies", "Auth", "Storage", "Edge Functions"],
+      "optimization_needed": "Edge function warm performance (443ms → ≤300ms)"
+    },
+    "authentication": {
+      "provider": "Supabase Auth",
+      "jwt_validation": "Fastify (via JWKS)",
+      "authorization": "API-level + Supabase RLS",
+      "social_logins": "Supported",
+      "status": "ACCEPTED"
+    }
+  },
+  "development_standards": {
+    "testing": {
+      "philosophy": "Test Pyramid with emphasis on integration tests",
+      "tools": {
+        "flutter": "flutter test + integration_test",
+        "backend": "Jest + TestContainers",
+        "load_testing": "k6",
+        "e2e": "Flutter integration_test"
+      },
+      "requirements": {
+        "ci_pass_rate": "≥98%",
+        "test_reliability": "100%"
+      },
+      "status": "PROVEN"
+    },
+    "ai_development": {
+      "target_success_rate": "≥85%",
+      "validated_success_rate": "87.5%",
+      "optimization_focus": ["Provider patterns", "Widget composition", "State mutations"],
+      "proven_patterns": ["Riverpod AsyncNotifier", "Flutter ConsumerWidget", "Optimistic updates"]
+    },
+    "performance_targets": {
+      "mobile": {
+        "fps": "≥58",
+        "cold_launch": "≤1.5s",
+        "optimistic_updates": "≤50ms",
+        "mutation_latency_p90": "≤300ms"
+      },
+      "backend": {
+        "read_queries_p95": "≤200ms",
+        "edge_functions_warm_p95": "≤300ms",
+        "edge_functions_cold": "≤800ms"
+      }
+    },
+    "code_quality": {
+      "linting": "flutter analyze (0 errors, 0 warnings)",
+      "formatting": "dart format",
+      "static_analysis": "riverpod_lint",
+      "build_runner": "Required for JSON serialization"
+    }
+  },
+  "project_structure": {
+    "mobile_app": {
+      "path": "worldchef_*/",
+      "type": "Flutter application",
+      "key_directories": {
+        "lib/providers/": "Riverpod state management",
+        "lib/screens/": "UI screens and widgets",
+        "lib/services/": "API clients and business logic",
+        "lib/models/": "Data models with JSON serialization",
+        "test/": "Unit, widget, and integration tests"
+      }
+    },
+    "documentation": {
+      "adrs": "docs/adr/",
+      "pocs": "docs/poc*/",
+      "architecture": "docs/source/"
+    },
+    "infra": {
+      "staging_build_root": {
+        "path": "staging/",
+        "purpose": "Render build context – Dockerfile, automation scripts, synthetic data"
+      },
+      "supabase_functions": {
+        "path": "supabase/functions/",
+        "purpose": "Edge functions deployed to Supabase (nutrition_enrichment, cleanup_jobs)"
+      },
+      "k8s_legacy": {
+        "path": "k8s/",
+        "purpose": "Legacy manifests kept for reference; not used with Render hosting"
+      }
+    }
+  },
+  "validated_patterns": {
+    "state_management": {
+      "ui_state": {
+        "pattern": "NotifierProvider",
+        "example": "Theme, offline flag, UI preferences",
+        "persistence": "Hive box 'ui_prefs'"
+      },
+      "server_state": {
+        "pattern": "AsyncNotifierProvider with family",
+        "example": "Recipe lists, recipe details",
+        "caching": "Built-in AsyncValue cache",
+        "invalidation": "ref.invalidate() pattern"
+      },
+      "mutations": {
+        "pattern": "StateNotifier with optimistic updates",
+        "example": "Like/unlike recipe",
+        "workflow": "Update local → Send request → Reconcile/rollback"
+      }
+    },
+    "api_integration": {
+      "http_client": "dio",
+      "error_handling": "AsyncValue.guard",
+      "offline_handling": "Early return cached data when offline"
+    },
+    "testing": {
+      "widget_tests": "ProviderScope with overrides",
+      "unit_tests": "ProviderContainer for isolated testing",
+      "integration_tests": "Full app with mock server"
+    }
+  },
+     "feature_integrations": {
+     "payments": {
+       "provider": "Stripe Hosted Checkout",
+       "features": ["SCA compliance", "Tax handling", "Webhook processing"],
+       "status": "REQUIRES_VALIDATION",
+       "validation_needed": "End-to-end checkout flow, webhook signature verification, latency testing"
+     },
+     "search": {
+       "implementation": "PostgreSQL FTS + pg_trgm + unaccent",
+       "features": ["Full-text search", "Partial matching", "Result highlighting"],
+       "status": "ACCEPTED"
+     },
+     "notifications": {
+       "provider": "Firebase Cloud Messaging (FCM)",
+       "client": "FlutterFire",
+       "server": "firebase-admin SDK",
+       "status": "REQUIRES_VALIDATION",
+       "validation_needed": "Device token registration, push delivery reliability, latency measurement"
+     }
+   },
+  "data_modeling": {
+    "approach": "Relational with selective JSONB",
+    "core_entities": ["Users", "Creators", "Recipes", "Interactions"],
+    "jsonb_usage": ["Recipe steps", "Nutrition data"],
+    "features": ["Soft deletes", "Denormalized counters", "Database views"],
+    "status": "ACCEPTED"
+  },
+  "deployment": {
+    "ci_cd": "GitHub Actions",
+    "hosting": "Render",
+    "mobile_build": "EAS Build",
+    "deployment_stages": ["PR validation", "Staging", "Production with manual gate"],
+    "database_migrations": "Automated",
+    "status": "ACCEPTED"
+  },
+  "cost_projections": {
+    "validated": true,
+    "validation_source": "PoC #2",
+    "targets": {
+      "1k_mau": "$0 (Free tier)",
+      "10k_mau": "$25/month",
+      "budget_target": "$100/month",
+      "efficiency": "75% under budget"
+    }
+  },
+  "security": {
+    "data_access": "Row Level Security (RLS)",
+    "api_authorization": "JWT validation + API-level checks",
+    "compliance": ["OWASP validated", "GDPR procedures"],
+    "status": "VALIDATED"
+  },
+
+  
+  "risk_assessment": {
+    "low_risk": [
+      "Technology stack performance",
+      "Cost projections",
+      "Development velocity",
+      "Security model"
+    ],
+    "managed_risks": [
+      {
+        "risk": "Edge function performance gap",
+        "mitigation": "3-week optimization plan",
+        "timeline": "Weeks 1-3"
+      },
+      {
+        "risk": "Vendor lock-in (Supabase)",
+        "mitigation": "Migration effort <1 week",
+        "assessment": "Acceptable risk level"
+      }
+    ]
+  },
+     "validation_evidence": {
+     "poc_1": {
+       "location": "docs/poc1_mobile_stack_selection/",
+       "evidence": "Comprehensive benchmarking results",
+       "status": "COMPLETED"
+     },
+     "poc_2": {
+       "location": "docs/poc2_supabase_validation/",
+       "evidence": "Performance benchmarks + cost modeling",
+       "status": "COMPLETED"
+     },
+     "poc_3": {
+       "location": "docs/poc3_client_ui_state_integration/",
+       "evidence": "Tamper-evident logs with SHA-256 verification",
+       "status": "COMPLETED"
+     },
+     "poc_4": {
+       "location": "docs/poc4_backend_integration_validation/",
+       "evidence": "Backend service integration validation",
+       "status": "REQUIRED",
+       "spikes": {
+         "fastify": "Performance under load + schema validation",
+         "stripe": "Checkout flow + webhook security",
+         "fcm": "Push notification delivery reliability"
+       }
+     }
+   },
+  "ai_prompting_guidelines": {
+    "preferred_patterns": [
+      "Use Riverpod AsyncNotifierProvider for server state",
+      "Use NotifierProvider for UI state",
+      "Implement optimistic updates with rollback",
+      "Use ConsumerWidget for reactive UI",
+      "Leverage ref.watch for state consumption",
+      "Use ProviderScope overrides for testing"
+    ],
+    "code_generation_focus": [
+      "Provider definitions with proper typing",
+      "Widget composition with Consumer patterns",
+      "State mutation logic with error handling",
+      "Test setup with mock providers"
+    ],
+    "performance_considerations": [
+      "Minimize widget rebuilds with granular providers",
+      "Use family providers for parameterized state",
+      "Implement proper cache invalidation",
+      "Optimize for <50ms UI updates"
+    ]
+  },
+  "quality_gates": {
+    "pre_commit": [
+      "flutter analyze (0 errors/warnings)",
+      "dart format --set-exit-if-changed",
+      "flutter test (100% pass rate)"
+    ],
+    "ci_pipeline": [
+      "Static analysis with riverpod_lint",
+      "Unit + widget + integration tests",
+      "Build verification",
+      "Performance regression checks"
+    ],
+    "deployment": [
+      "Manual approval for production",
+      "Database migration validation",
+      "Performance monitoring setup"
+    ]
+  },
+  "environment": {
+    "file": ".env.local",
+    "variables": {
+      "SUPABASE_URL": "Supabase project URL (public) - used by mobile and backend clients",
+      "SUPABASE_ANON_KEY": "Supabase public anon key for client-side requests",
+      "SUPABASE_SERVICE_ROLE_KEY": "Supabase service role key (backend only) for privileged operations",
+      "DATABASE_URL": "PostgreSQL connection string for Fastify server & migrations",
+      "STRIPE_SECRET_KEY": "Stripe secret key for checkout session creation and API calls (sandbox for PoC)",
+      "STRIPE_WEBHOOK_SECRET": "Stripe webhook signing secret used to verify webhook signatures",
+      "FCM_SERVER_KEY": "Firebase Cloud Messaging server key for sending push notifications",
+      "USDA_API_KEY": "USDA FoodData Central key for nutrition enrichment edge function"
+    },
+    "secret_management": "Stored as GitHub Actions encrypted secrets and local .env; never committed to VCS"
+  }
+} 

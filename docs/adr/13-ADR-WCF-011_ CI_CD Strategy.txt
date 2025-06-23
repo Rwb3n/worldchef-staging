@@ -1,0 +1,129 @@
+ADR-WCF-011: CI/CD Strategy
+Status: ACCEPTED
+Date: 2025-06-01 (Revised based on comprehensive feedback regarding workflow reusability, deployment targets, DB migrations, production gates, CI caching, and E2E/Perf test scheduling)
+Authors: WorldChef Development Team
+1. Context and Problem Statement
+A robust Continuous Integration (CI) and Continuous Deployment/Delivery (CD) strategy is essential for WorldChef to ensure code quality, enable rapid iteration, automate testing, and streamline releases for both the Fastify backend API and the Flutter mobile application. This ADR documents the chosen CI/CD platform (GitHub Actions) and outlines the structure of CI/CD pipelines, including build steps, test execution, artifact management, deployment strategies, and operational considerations.
+2. Decision Drivers
+Automation: Automate build, test, deployment to reduce manual effort/errors.
+Fast Feedback: Quick feedback on code changes.
+Quality Assurance: Enforce quality standards (ADR-WCF-010a/b) before deployment.
+Consistent Environments: Reproducible build and test environments.
+Multi-Environment Deployment: Support for Staging and Production.
+Version Control Integration: Seamless GitHub integration.
+Cost-Effectiveness & Security: Utilize cost-effective CI/CD with secure secret handling.
+3. Decision: CI/CD Strategy using GitHub Actions
+Platform: GitHub Actions
+Branching Strategy (Informative for CI Triggers):
+main: Production-ready code. Merges/pushes trigger production deployment pipeline (with manual approval gate).
+develop: Integration branch. Merges/pushes trigger staging deployment pipeline.
+feature/*, fix/*: Development branches. PRs against develop trigger validation pipeline.
+Core CI/CD Pipelines (GitHub Actions Workflows):
+I. Reusable Validation Workflow (
+* Purpose: Encapsulates common validation steps called by other workflows.
+* Inputs: node-version, flutter-version, working-directory-backend, working-directory-client.
+* Jobs:
+1. Setup Environment: Checkout code, setup Node.js, setup Flutter/Dart. Implement CI caching for Node.js dependencies (actions/cache for node_modules) and Flutter dependencies (actions/cache for pub cache).
+2. Lint & Format (Parallel Jobs):
+* Backend: ESLint, Prettier.
+* Client: flutter analyze, dart format --output=none --set-exit-if-changed ..
+3. Unit Tests (Parallel Jobs):
+* Backend (Fastify): jest --coverage. Upload coverage report.
+* Client (Flutter): flutter test --coverage. Upload coverage report.
+4. Backend Component & Persistence Integration Tests (Fastify):
+* Run Jest tests tagged "integration" using TestContainers (ADR-WCF-010b). Requires Docker.
+5. Client Widget Integration & Client-API Contract Tests (Flutter):
+* Run Flutter testWidgets and tests using http_mock_adapter (ADR-WCF-010b).
+6. Security Scans (Fast):
+* Backend: npm audit --production --audit-level=moderate (fail on moderate+).
+* Client: flutter pub outdated --check-vulnerabilities (report only for MVP, fail on critical post-MVP).
+II. PR Validation Workflow (
+* Triggers: on: pull_request: branches: [develop, main]
+* Jobs:
+1. Validate Code: Calls the reusable-validate.yml workflow.
+* Goal: Fast feedback on PRs. Block merge if validation fails.
+III. Deploy to Staging Workflow (
+* Triggers: on: push: branches: [develop]
+* Environment: Uses GitHub staging environment for secrets.
+* Jobs:
+1. Validate Code: Calls reusable-validate.yml. If fails, stop.
+2. Build Backend (Fastify Staging): npm run build. Create Docker image (e.g., ghcr.io/worldchef/api:staging-<sha>). Push to GHCR.
+3. Database Migrations (Staging):
+* Run Supabase schema migrations against Staging DB: supabase db push --linked (if project linked) or apply migrations from supabase/migrations folder using Supabase CLI against staging DB connection string. Include pre-migration backup/snapshot step if feasible.
+4. Deploy Backend to Staging: Deploy Docker image to chosen PaaS for Fastify (e.g., Fly.io, Render, Google Cloud Run, AWS App Runner) using platform-specific CLI commands.
+5. Build Flutter App (Staging via EAS Build):
+* eas build -p android --profile staging --non-interactive
+* eas build -p ios --profile staging --non-interactive
+6. Distribute Staging App (via EAS Submit or alternative):
+* eas submit -p android --profile staging --latest (to internal/closed track on Play Store).
+* eas submit -p ios --profile staging --latest (to TestFlight).
+* Alternatively, Firebase App Distribution.
+* Goal: Ensure develop is always deployed to a stable staging environment for QA, stakeholder review, and E2E testing.
+IV. Nightly/Scheduled Tests on Staging Workflow (
+* Triggers: on: schedule: cron: '0 2 * * *' (e.g., 2 AM UTC daily). workflow_dispatch for manual runs.
+* Environment: Targets staging environment.
+* Jobs:
+1. Run E2E Tests: Flutter integration_test suite against deployed staging backend & staging DB.
+2. Run API Performance Tests (k6): Against staging API.
+3. Run DAST (OWASP ZAP - Optional for MVP, Full post-MVP): Against staging API.
+* Goal: Regular, comprehensive testing on an integrated environment. Failures trigger notifications/alerts.
+V. Deploy to Production Workflow (
+* Triggers: on: push: branches: [main] (preferred) OR on: release: types: [published]. Crucially, this workflow will use GitHub Environments with protection rules (e.g., "Required reviewers") to implement a manual approval gate before production deployment jobs run.
+* Environment: Uses GitHub production environment for secrets.
+* Jobs:
+1. Validate Code: Calls reusable-validate.yml. If fails, stop.
+2. (Optional) Pre-Prod Checks: Run critical E2E smoke tests or a brief performance check against staging if not covered by recent nightly runs.
+3. Build Backend (Fastify Production): Create production Docker image (e.g., ghcr.io/worldchef/api:prod-<version_tag>). Push to GHCR.
+4. Database Migrations (Production):
+* CRITICAL: Execute pre-migration database backup.
+* Run Supabase schema migrations against Production DB.
+* Have a documented rollback plan for failed migrations.
+5. Deploy Backend to Production: Deploy Docker image to production PaaS.
+6. Build Flutter App (Production via EAS Build):
+* eas build -p android --profile production --non-interactive
+* eas build -p ios --profile production --non-interactive
+7. Release Flutter App to Stores (via EAS Submit or manual promotion):
+* eas submit -p android --profile production --latest (promote from internal to production track).
+* eas submit -p ios --profile production --latest (submit to App Store review).
+8. Tag Release: Create Git tag (e.g., v1.0.0). Create GitHub Release.
+* Rollback Strategy (MVP - Manual Focus): If production deployment fails health checks post-deploy or critical issues are found:
+* Backend: Re-deploy previous stable Docker image tag. Revert DB migrations if safe and planned for.
+* Client: Halt phased rollout if using Play Store/App Store controls. Expedite a hotfix release.
+* Automated rollback is a post-MVP enhancement.
+* Goal: Controlled, reliable, and approved deployment to production.
+Secrets Management: GitHub encrypted secrets, scoped to Environments (staging, production).
+Artifact Management: Docker images in GHCR. Mobile builds managed by EAS. Test reports as workflow artifacts.
+5. Rationale
+GitHub Actions with EAS Build integration provides a powerful, integrated, and cost-effective CI/CD solution.
+Reusable Workflows: Enhance maintainability and consistency.
+EAS for Mobile Builds: Drastically simplifies Flutter iOS/Android build, signing, and submission.
+Staged Deployments & Quality Gates: Ensure code quality through progressive validation.
+Automated Testing: Integrates all test types defined in ADR-WCF-010a/b.
+Secure Operations: Leverages GitHub Environments and Secrets.
+CI Caching: Improves build times for dependencies.
+Clear Production Gate: Manual approval via GitHub Environments for production deployments.
+Database Migrations Integrated: Ensures schema is updated before application code.
+6. Consequences
+Positive Consequences / Benefits:
+Automated, consistent, and reliable build, test, and deployment processes.
+Early bug/regression detection. Improved code quality. Streamlined releases.
+Reduced manual effort and risk of human error.
+Negative Consequences / Trade-offs / Risks:
+Initial Setup Effort: Configuring comprehensive workflows and EAS integration takes time.
+CI Runner Costs/Limits: GitHub hosted runner usage (especially macOS for local iOS builds if EAS wasn't used, or resource-intensive TestContainers) needs monitoring. EAS has its own billing.
+Workflow Maintenance: CI/CD YAML needs ongoing updates.
+Build Times: Comprehensive pipelines can be long. (Mitigation: Caching, parallelization, running slower tests less frequently).
+TestContainer Resource Intensity: May require larger GitHub-hosted runners for backend integration tests if they become extensive, or optimization of TestContainer usage.
+7. Validation / Success Metrics
+All CI workflows are implemented and run reliably.
+PRs automatically validated; merges blocked on failure. Staging deploys automatically. Production deploys gated by approval.
+EAS Build successfully builds/submits Flutter apps. DB migrations run successfully.
+Average CI run times: PR checks < 10-15 mins; Staging deploy (incl. EAS build if feasible in this time) < 45-60 mins.
+Rollback procedures (even if manual for MVP) are documented and tested.
+CI caching effectively reduces dependency installation times.
+8. Review / Revisit
+After first successful automated deployment to Staging (end of Cycle 1 / early Cycle 2): Review stability, run times, DX.
+If CI build times become a major bottleneck. (Explore more parallelization, larger runners, optimizing slow jobs).
+When implementing more complex deployment strategies (e.g., canary releases, blue/green for backend).
+Annually, for new GitHub Actions/EAS features or CI/CD best practices.
+

@@ -1,0 +1,88 @@
+ADR-WCF-010b: Test Tooling Selection
+Status: ACCEPTED
+Date: 2025-06-01 (Revised based on comprehensive feedback regarding CI integration, external service mocking, E2E environment, performance/security/A11y tooling details, and reporting)
+Authors: WorldChef Development Team
+1. Context and Problem Statement
+Following ADR-WCF-010a (Overall Testing Philosophy), specific tools must be selected for unit, integration, E2E, performance, and other specialized tests for both the Flutter client (ADR-WCF-001a) and Fastify backend (ADR-WCF-001c). Chosen tools must align with the tech stack, DX goals, CI/CD strategy (ADR-WCF-011), and enable effective, maintainable tests, including AI-assisted generation.
+2. Decision Drivers
+Effectiveness for Test Type & Integration with Tech Stack.
+Developer Experience, Documentation & Community Support.
+CI/CD Compatibility & Reporting Capabilities.
+Performance of Test Execution.
+Ecosystem Maturity & Cost-Effectiveness (Favor Open Source).
+AI Code Generation Support.
+3. Considered Options & Decisions per Test Type
+I. Unit Testing & Backend Component Integration Testing (Fastify/Node.js)
+Decision (Fastify Backend): Jest
+Rationale: All-in-one (runner, assertions, advanced mocking via jest.mock/__mocks__, coverage). Popular, excellent TS support (ts-jest), AI familiarity.
+Mocking for Component Integration: Robust mocking strategies with Jest will be employed. Dependency injection within Fastify will be favored to simplify swapping implementations for testing.
+
+II. Unit Testing & Widget Testing (Flutter/Dart)
+Decision (Flutter Client): Flutter's Built-in 
+Rationale: Official, deeply integrated, comprehensive for Dart logic (unit) and UI component testing (testWidgets for isolated widget tree rendering, interaction, and golden file testing). Fast execution.
+III. Backend Persistence Integration Testing (Fastify Service <> Supabase DB)
+Decision (DB Environment): TestContainers (with a PostgreSQL image matching Supabase's version, including necessary extensions like 
+Rationale: Provides fresh, isolated, reproducible DB instances per test suite/run. CI-friendly.
+Supabase-Specific Features (RLS, Functions): Testing Supabase RLS activated by JWT claims or custom Supabase DB functions may require replicating parts of the Supabase auth environment/roles within the TestContainer setup or, for highly specific Supabase-internal features, a very limited set of tests against a carefully managed, resettable "dev/test Supabase project" (not for general persistence tests).
+
+Testing Framework: Jest.
+IV. Client-API Contract & Integration Testing (Flutter <> Mock API)
+Decision (Mocking API):  (assuming Dio for Flutter HTTP) or similar interceptor. Mock responses will conform to the OpenAPI spec (ADR-WCF-015).
+Rationale: Tests actual client HTTP logic. Mitigation for mock sync: Explore generating mock data/server stubs from OpenAPI spec.
+Testing Framework: Flutter's test package.
+V. End-to-End (E2E) Testing (Flutter Client ↔ Live Test Backend)
+Decision (E2E Tooling): Flutter's 
+Rationale: Official, Dart-based, runs on real devices/emulators.
+E2E Environment: Runs against a dedicated test backend (Fastify + Supabase test DB). This environment must be reset or seeded to a known state before each E2E suite run (e.g., via supabase db reset and seed scripts in CI).
+CI Infrastructure: Requires CI runners capable of handling emulators/simulators (e.g., macOS for iOS, Linux with KVM for Android). Firebase Test Lab or similar cloud device farms are a future consideration for broader device coverage.
+
+VI. Performance Testing
+Decision (API Backend): k6
+Rationale: Developer-friendly (JS scripting), high-performance load gen, CI integrable.
+SLA Example for MVP: 95th percentile response time for /v1/recipes?limit=20 under 50 virtual users (VUs) must remain <200ms. CI runs k6 nightly; failure triggers alert.
+
+Decision (Flutter Client): Flutter DevTools Profiler (manual) and custom benchmarks written with 
+Rationale: Interactive profiling + automatable checks using Stopwatch and Flutter's Timeline API for frame timings/operation durations.
+SLA Example for MVP: First meaningful paint of recipe list screen <500ms on a defined mid-tier test device/emulator.
+
+VII. Security Testing Tooling
+Dependency Scanning: npm audit --production (Fastify), dart pub outdated --mode=null-safety --check-vulnerabilities (Flutter, experimental vulnerability check), GitHub Dependabot. Fail CI on critical/high severity vulnerabilities.
+SAST (Basic): ESLint security plugins (Fastify), Flutter Analyzer.
+DAST (Scheduled): A nightly/weekly CI job may run OWASP ZAP (or similar) against a staging API deployment.
+VIII. Accessibility Testing Tooling (Flutter)
+Decision: Flutter SDK's built-in accessibility tools (Semantics widget),  package (or similar) integrated into CI, Flutter DevTools Accessibility Inspector. Manual testing with VoiceOver/TalkBack for P0 flows, guided by a PR checklist (e.g., "All tappable widgets have semanticLabel, contrast ratio >4.5:1, navigable focus order confirmed").
+IX. Mocking External Third-Party Services (Stripe, FCM)
+Decision: For unit/integration tests involving services like Stripe or FCM:
+Stripe: Use stripe-mock (local HTTP mock server) configured via environment variable.
+FCM: Use Firebase Local Emulator Suite (Auth, Functions emulators can mock FCM triggers/behavior) or a custom mock HTTP server for FCM API calls.
+Rationale: Prevents hitting live external APIs, allows simulation of error conditions, ensures test determinism.
+
+X. Rate Limiting / Throttling Test Coverage
+Decision: Specific integration tests (using Jest for Fastify, or k6 for broader scenarios) will verify rate-limiting behavior.
+Example Test: Send N+1 requests to a rate-limited endpoint; assert that the N+1th request (and subsequent) receives 429 Too Many Requests with a Retry-After header.
+
+4. Decision Summary Table
+(CI/CD orchestration of these tools and their reports is detailed in ADR-WCF-011)
+5. Rationale
+This toolset provides a comprehensive, modern, and largely open-source suite aligned with Flutter and Fastify/Node.js, supporting the testing philosophy (ADR-WCF-010a). It balances effectiveness, DX, CI compatibility, and AI generation support. Key choices like TestContainers for DB isolation, Flutter's integrated testing for client-side, k6 for API performance, and explicit mocking for external services ensure robust and reliable testing.
+6. Consequences
+Positive Consequences / Benefits:
+Tailored, effective tools for each testing need. Strong support for Flutter & Node.js.
+Good CI/CD integration and reporting capabilities. Mature, open-source tools reduce cost.
+Enables thorough implementation of the multi-layered testing philosophy.
+Negative Consequences / Trade-offs / Risks:
+Learning Curve & Setup: Team needs familiarity with multiple tools. Initial CI/tool configuration takes effort.
+TestContainers Resource Usage in CI: Requires CI runners with sufficient Docker resources (RAM, CPU). Addressed in ADR-WCF-011.
+Mock Maintenance: Keeping mocks (especially for external services or OpenAPI) in sync with actual APIs requires discipline. (Mitigation: Generate from specs where possible).
+E2E Environment Management: Maintaining a stable, resettable E2E backend environment is crucial.
+7. Validation / Success Metrics
+All chosen tools successfully integrated into dev workflow and CI/CD (ADR-WCF-011).
+Developers (human & AI) effectively write/run tests using these tools.
+Tests provide reliable, fast feedback, and consumable reports.
+The toolset enables comprehensive testing across the Test Pyramid layers.
+8. Review / Revisit
+After Cycle 1 & 2: Once initial test suites are established, review DX, effectiveness, and CI performance of tools.
+If a specific tool becomes a bottleneck for test execution or maintenance.
+If new, compelling alternative tools offer significant advantages for specific test types.
+Annually, to ensure toolset remains current and effective.
+

@@ -1,0 +1,101 @@
+PoC Plan #1: Mobile Client Stack Performance & AI Effectiveness (Flutter vs. React Native)
+(Mandated by ADR-WCF-001a: Mobile Client Technology Stack Selection Strategy & Comparative Proof-of-Concept Mandate)
+1. Objective:
+To empirically compare Flutter and React Native (RN, with New Architecture enabled) on key dimensions for the WorldChef application, enabling an evidence-based final stack selection. Dimensions include:
+Runtime Performance: For media-heavy screens (scrolling, TTI, memory) on defined mid-range devices.
+AI Code Generation Effectiveness & Human Oversight Efficiency: Quality of AI output and human effort to produce production-ready PoC features.
+Developer Experience (DX): For human oversight interacting with each stack and AI code.
+Basic NFR Implementation Feasibility: Integration of stubs for offline, Accessibility (A11y), and Internationalization (i18n).
+2. Scope of Implementation (Identical Features & Mock Data for both RN and Flutter PoCs):
+A. Project Setup & Minimal CI:
+Initialize project (Expo CLI for RN with New Arch enabled; flutter create for Flutter).
+Minimal CI job (GitHub Actions YAML snippet to be included) to build PoC in release mode and run basic lint/format checks, failing on compile errors.
+
+B. Media-Heavy Recipe List Screen:
+Scrollable list of ~50 RecipeCard components.
+RecipeCard: Image (async load from consistent mock URLs/local assets, consistent sizes/formats), title, creator name, static like/favorite icons.
+Implementation: Best-practice list virtualization (@shopify/flash-list for RN; ListView.builder with itemExtent or prototypeItem for Flutter).
+Image Caching: Robust image caching (react-native-fast-image or equivalent for RN; cached_network_image for Flutter).
+
+C. Recipe Detail Screen (Core Structure):
+Hero image, title, text description, simple text list of ingredients (e.g., 10-15 items), simple text list of steps (e.g., 5-10 items).
+
+D. Basic Navigation:
+Navigation between List Screen and Detail Screen (React Navigation for RN; GoRouter/AutoRoute for Flutter).
+
+E. Simple Shared UI State & Persistence:
+Theme toggle (light/dark) affecting background, managed by a simple global store (Zustand snippet for RN; Provider/Riverpod snippet for Flutter).
+Persist theme choice using the same offline storage mechanism chosen for the offline stub (see below).
+
+F. Basic Offline Caching Stub:
+Cache Recipe List screen's mock data (JSON) locally using a simple persistent key-value store (AsyncStorage/MMKV for RN; shared_preferences or hive for Flutter).
+Render from this cache on app restart if network is "mock-unavailable." Measure cache write/read time as part of TTI or a separate micro-benchmark.
+
+G. Basic Accessibility (A11y) & Internationalization (i18n) Stubs:
+A11y:
+All interactive elements (cards, buttons) on Recipe List & Detail PoC screens must have appropriate accessibilityLabel / Semantics.label.
+Verify logical focus order and basic screen reader announcements (VoiceOver/TalkBack) for these screens using a pre-defined checklist (3-4 common A11y tasks, e.g., navigating cards, activating toggle).
+Check color contrast for key text elements against WCAG AA.
+
+i18n:
+Implement one screen (e.g., Recipe Detail) with all user-visible static strings loaded via a chosen i18n library (e.g., i18next for RN; Flutter's intl package with ARB files).
+Include placeholder translations for a second language (e.g., Spanish) and test basic RTL layout flipping (e.g., device set to Arabic/Hebrew).
+Test one example of pluralization (e.g., "{count} ingredients") and one of string interpolation.
+
+
+3. Timebox & Resource Allocation:
+Total Calendar Timebox: 4 weeks maximum (e.g., Weeks 1-2: Stack A PoC; Weeks 3-4: Stack B PoC, or parallel if two distinct, equally skilled leads available). Hard deadline for PoC completion and evaluation report.
+Effort per Stack PoC: Strict timebox of 20-25 human oversight hours PLUS AI generation time.
+Human PoC Lead(s): Assigned. Current proficiency levels in RN/Flutter, and any learning curve during the PoC, will be documented. Leads are responsible for adhering to timeboxes for sub-tasks (e.g., max 8 human hours per stack on performance tuning).
+4. AI Interaction Model & Human Oversight Role (Consistent for both PoCs):
+AI Tooling: Same AI model (e.g., "GPT-4-Turbo via OpenAI API with specific version"), API parameters (temperature=0.7), and core principles of prompting strategy (documented appendix with sample prompts for a key component like RecipeCard).
+AI generates initial implementation based on detailed prompts.
+Human effort focuses on: prompt engineering/iteration, code review (correctness, idiomatic patterns, maintainability), debugging, guiding AI for refactoring, performance optimization, NFR stub integration.
+Time/Effort Tracking:
+"AI Generation Time": Wall-clock from first prompt to AI's first runnable snippet for a feature part.
+"AI Prompt Iteration Count": Number of significant back-and-forth prompt cycles to get an accepted initial version from AI.
+"Human Intervention Hours": Logged meticulously (e.g., shared spreadsheet/tool with start/end times and task breakdown: review, debug, optimize, re-prompt AI, direct coding).
+
+5. Test Devices & Environment (Consistent for both PoCs):
+Physical Devices (Primary for Performance/UX Testing):
+Android: Google Pixel 5 (Android 12 or latest stable for device).
+iOS: iPhone 11 (iOS 15 or latest stable for device).
+
+Emulators/Simulators: For general development.
+Network Simulation: Consistent "Fast 3G" profile (e.g., 5 Mbps down, 1 Mbps up, 100ms RTT via device dev options or Charles/Proxyman) for image loading and offline tests.
+Mock Data & Server: Identical mock JSON data (50 recipes) served from a simple, local mock server (e.g., json-server instance launched via script) with consistent, low (<30ms) response times for both PoCs.
+Build Modes: Performance measured on release/profile builds (flutter run --profile, react-native run-android --variant=release).
+6. PoC Evaluation Criteria & Metrics Collection:
+A. Performance (Quantitative & Qualitative):
+Tools & Methodology: Document exact steps for metric collection (e.g., Flipper FPS monitor for RN, Flutter DevTools Performance View, on-device code instrumentation for TTI/cache times). Specify if caches are cleared between runs for "cold" TTI.
+Scrolling FPS (Recipe List): Target: Sustained average >= 58 FPS AND 95th percentile frame build time < 17ms. No more than 2-3 visible jank events (frame drops > 50ms) per 30-second scroll. (3 runs averaged).
+TTI/Load Time (List & Detail): Target: p95 < 1.5 seconds (post one initial "warm-up" app launch, then measure subsequent cold/warm launches). Define "Interactive" clearly (e.g., content rendered, main elements responsive).
+Memory Usage (Recipe List): Native memory (Android Studio Profiler / Xcode Instruments) and JS/Dart heap after scrolling full list. Target: Stable, no runaway growth.
+Bundle Size: Release build APK/IPA size. Compare relative sizes.
+
+B. AI Code Generation & Human Oversight Efficiency: (Metrics from Sec 4)
+C. Developer Experience (DX) (Human Oversight - Qualitative Rubric 1-5, pre-defined):
+Project setup, build times, hot reload/fast refresh, debugging, documentation/community support quality.
+
+D. UI Fidelity & Feature Completeness (PoC Scope - Qualitative Rubric 1-5):
+E. Stability & Robustness: Crash count, significant bugs.
+F. NFR Stub Implementation Assessment (Qualitative Rubric 1-5): Ease/success of offline, A11y, i18n stubs.
+7. "Showstopper" / Failure Conditions for a Stack in PoC:
+Persistent failure to meet critical performance targets (e.g., scrolling consistently <50 FPS or p95 frame time >20ms; TTI > 3s) despite dedicated time-boxed optimization effort (max 8 human hours per stack on perf tuning).
+AI-generated code consistently requires >60-70% manual rewrite for core PoC functionality or to achieve basic quality.
+Fundamental roadblocks with core libraries/framework for PoC scope unresolved within timebox.
+Inability to complete defined PoC scope (including NFR stubs) to a functional level within the overall effort timebox.
+8. Deliverables & Documentation from PoC Phase:
+Code Repositories: worldchef_poc_flutter, worldchef_poc_rn. Incl. setup/test READMEs.
+PoC Evaluation Report (Single Document):
+Side-by-side quantitative metrics. Raw data logs (CSV/JSON from perf tools) as appendix.
+Summary of qualitative rubric scores. Detailed notes on challenges, AI effectiveness, DX.
+Screenshots/videos. Version pinning for all key libraries/SDKs used.
+Clear Recommendation & Rationale: Which stack is recommended, evidence-based. Key learnings, remaining risks for chosen stack.
+
+9. Contingency for Hybrid/Further Investigation:
+If PoC results are ambiguous, or if both stacks hit showstoppers for different critical aspects (e.g., Stack A great perf but poor AI DX, Stack B vice-versa), a very targeted, secondary PoC on a single problematic aspect or a discussion on a hybrid approach (acknowledged as highly complex and undesirable for MVP) would be an emergency next step, documented in a follow-up to this PoC report. The primary goal of this PoC is a clear winner.
+10. Next Steps After PoC Completion:
+Review PoC Evaluation Report with stakeholders. Update ADR-WCF-001a with final stack decision.
+Finalize ADR-WCF-025 (Early UI/UX Validation) specific to chosen stack. Proceed with foundation phase.
+
