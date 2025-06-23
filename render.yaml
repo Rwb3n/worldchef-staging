@@ -4,8 +4,9 @@ services:
     rootDir: backend
     plan: starter
     runtime: node
-    buildCommand: "npm install && npm run build"
-    startCommand: "npm run start:prod"
+    buildCommand: "npm install && npm run build --workspace=backend"
+    startCommand: "npm run start:prod --workspace=backend"
+    healthCheckPath: /v1/auth/health
     envVars:
       - key: NODE_ENV
         value: production
