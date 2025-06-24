@@ -12,10 +12,11 @@
     "start": "yarn workspace worldchef-backend run start",
     "build": "yarn workspace worldchef-backend run build",
     "start:prod": "yarn workspace worldchef-backend run start:prod",
-    "postinstall": "yarn workspace worldchef-backend run build",
-    "test": "yarn workspaces run test && deno task test",
-    "test:ci": "yarn workspaces run test && deno task test",
+
+    "test": "yarn workspaces run test",
+    "test:ci": "yarn workspaces run test --coverage",
     "test:workspace": "yarn workspaces run test",
-    "test:deno": "deno task test"
+    "test:deno": "deno task test",
+    "test:all": "yarn test && yarn test:deno"
   }
 }

@@ -24,9 +24,16 @@ jobs:
           corepack enable
           yarn install --frozen-lockfile
 
+      - name: Build TypeScript
+        run: |
+          yarn workspace worldchef-backend run build
+
       - name: Run unit tests
         run: |
           yarn test:ci
+        env:
+          SUPABASE_URL: https://myqhpmeprpaukgagktbn.supabase.co
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
       - name: Deploy to Render via Deploy Hook
         env:
