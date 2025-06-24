@@ -1,6 +1,5 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
 import { SupabaseClient } from '@supabase/supabase-js';
-import fp from 'fastify-plugin';
 
 async function authRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
   const supabase: SupabaseClient = fastify.supabase;
@@ -32,6 +31,4 @@ async function authRoutes(fastify: FastifyInstance, options: FastifyPluginOption
   });
 }
 
-export default fp(authRoutes, {
-  dependencies: ['supabase']
-}); 
+export default authRoutes; 

@@ -63,6 +63,8 @@ final userProvider = Provider<User?>((ref) {
 ```
 ### 3. Backend: Fastify JWT Validation
 The Fastify backend must validate the JWT from the client using Supabase's public JWKS URL. This avoids sharing secrets.
+
+#### Authentication Plugin (Global Decorator)
 ```typescript
 // src/plugins/auth_plugin.ts
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
@@ -103,5 +105,65 @@ async function authPlugin(fastify: FastifyInstance) {
   });
 }
 
-export default fp(authPlugin);
+// ✅ Use fp() for global decorators
+export default fp(authPlugin, {
+  dependencies: ['supabase']
+});
+```
+
+#### Authentication Routes (With Prefix Support)
+```typescript
+// src/routes/v1/auth/index.ts
+import { FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { SupabaseClient } from '@supabase/supabase-js';
+
+async function authRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
+  const supabase: SupabaseClient = fastify.supabase;
+
+  fastify.post('/signup', async (request, reply) => {
+    const { email, password } = request.body as any;
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      return reply.status(400).send(error);
+    }
+    return reply.status(201).send(data);
+  });
+
+  fastify.post('/login', async (request, reply) => {
+    const { email, password } = request.body as any;
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      return reply.status(401).send(error);
+    }
+    return reply.send(data);
+  });
+}
+
+// ✅ Direct export for route registration (preserves prefix)
+export default authRoutes;
+```
+
+#### Server Registration
+```typescript
+// src/server.ts
+import authPlugin from './plugins/auth_plugin';
+import authRoutes from './routes/v1/auth';
+
+// Register global auth plugin
+await server.register(authPlugin);
+
+// Register auth routes with prefix
+await server.register(authRoutes, { prefix: '/v1/auth' });
+// Routes available at: /v1/auth/signup, /v1/auth/login
+```
+
+**⚠️ Critical:** Never use `fp()` wrapper for route-defining plugins as it bypasses prefix configuration. See the [Fastify Plugin Registration Pattern](fastify_plugin_route_prefix_pattern.md) for details.
 ``` 

@@ -10,13 +10,18 @@ export async function build(opts: FastifyServerOptions = {}): Promise<FastifyIns
     ...opts
   });
 
-  // Register plugins
-  await server.register(supabasePlugin);
-  await server.register(authPlugin);
-  await server.register(securityHeadersPlugin);
+  try {
+    // Register plugins with error handling
+    await server.register(supabasePlugin);
+    await server.register(authPlugin);
+    await server.register(securityHeadersPlugin);
 
-  // Register routes
-  await server.register(authRoutes, { prefix: '/v1/auth' });
+    // Register routes
+    await server.register(authRoutes, { prefix: '/v1/auth' });
+  } catch (error) {
+    console.error('Error registering plugins or routes:', error);
+    throw error;
+  }
 
   // Health check endpoint
   server.get('/health', async (request, reply) => {

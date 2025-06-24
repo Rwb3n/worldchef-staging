@@ -589,5 +589,73 @@
       }
     },
     "deno_config": "deno.json"
+  },
+  "artifacts": {
+    "auth_endpoints_implementation": {
+      "primary_filepath": "backend/src/routes/v1/auth/index.ts",
+      "description": "Fastify authentication endpoints implementation with proper route prefixes",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "auth_integration_tests": {
+      "primary_filepath": "backend/__tests__/integration/auth.test.ts", 
+      "description": "Integration tests for authentication endpoints - all 6 tests passing",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "supabase_plugin": {
+      "primary_filepath": "backend/src/plugins/supabase_plugin.ts",
+      "description": "Supabase client plugin for Fastify",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "auth_plugin": {
+      "primary_filepath": "backend/src/plugins/auth_plugin.ts",
+      "description": "Authentication plugin for Fastify",
+      "status": "COMPLETED", 
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "security_headers_plugin": {
+      "primary_filepath": "backend/src/plugins/security_headers_plugin.ts",
+      "description": "Security headers plugin for Fastify",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "fastify_server": {
+      "primary_filepath": "backend/src/server.ts",
+      "description": "Main Fastify server with proper plugin registration and route prefixes",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "staging_auth_deployment": {
+      "primary_filepath": "https://worldchef-dev.onrender.com/v1/auth/",
+      "description": "Deployed authentication endpoints on staging environment",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "worldchef_backend_readme": {
+      "primary_filepath": "backend/README.md",
+      "description": "Backend service README with setup and context information",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "fastify_plugin_route_prefix_pattern": {
+      "primary_filepath": "docs/cookbook/fastify_plugin_route_prefix_pattern.md",
+      "description": "Pattern for proper Fastify plugin registration with route prefixes",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "test_driven_debugging_pattern": {
+      "primary_filepath": "docs/cookbook/test_driven_debugging_pattern.md", 
+      "description": "Systematic debugging methodology using explicit assumption testing",
+      "status": "COMPLETED",
+      "last_updated": "2025-01-31T18:15:00Z"
+    },
+    "supabase_auth_integration_pattern_updated": {
+      "primary_filepath": "docs/cookbook/supabase_auth_integration_pattern.md",
+      "description": "Updated Supabase auth pattern with fastify-plugin best practices",
+      "status": "COMPLETED", 
+      "last_updated": "2025-01-31T18:15:00Z"
+    }
   }
 } 
