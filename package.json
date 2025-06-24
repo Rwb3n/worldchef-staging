@@ -12,6 +12,8 @@
     "start": "yarn workspace worldchef-backend run start",
     "build": "yarn workspace worldchef-backend run build",
     "start:prod": "yarn workspace worldchef-backend run start:prod",
+    "postinstall": "yarn workspace worldchef-backend run build",
+    "heroku-postbuild": "yarn workspace worldchef-backend run build",
 
     "test": "yarn workspaces run test",
     "test:ci": "yarn workspaces run test --coverage",
