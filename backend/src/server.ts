@@ -14,6 +14,17 @@ server.register(securityHeadersPlugin);
 // Register routes
 server.register(authRoutes, { prefix: '/v1/auth' });
 
+// Health check endpoint
+server.get('/health', async (request, reply) => {
+  reply.type('application/json');
+  return {
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development'
+  };
+});
+
 // Basic SEO/crawler endpoints
 server.get('/robots.txt', async (request, reply) => {
   reply.type('text/plain');
@@ -39,6 +50,7 @@ server.get('/sitemap.xml', async (request, reply) => {
 
 // Root endpoint
 server.get('/', async (request, reply) => {
+  reply.type('application/json');
   return {
     name: 'WorldChef API',
     version: '1.0.0',
