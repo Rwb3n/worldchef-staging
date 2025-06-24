@@ -50,8 +50,8 @@ services:
     rootDir: backend
     plan: starter
     runtime: node
-    buildCommand: "npm install && npm run build"
-    startCommand: "npm run start:prod"
+    buildCommand: "yarn install && yarn build"
+    startCommand: "yarn start:prod"
     envVars:
       - key: NODE_ENV
         value: production
@@ -67,8 +67,8 @@ services:
 *   **`name`**: A unique name for the service on Render.
 *   **`rootDir: backend`**: This is the crucial field for monorepos. It tells Render to execute all commands from within the `/backend` directory.
 *   **`runtime: node`**: Specifies the native Node.js runtime environment.
-*   **`buildCommand: "npm install && npm run build"`**: Defines the sequence for building the service. It first installs dependencies and then runs our `build` script (`tsc`).
-*   **`startCommand: "npm run start:prod"`**: The command to run the service in production. This executes our newly defined `start:prod` script.
+*   **`buildCommand: "yarn install && yarn build"`**: Defines the sequence for building the service. It first installs dependencies and then runs our `build` script (`tsc`). Note: Use direct commands (`yarn build`) not workspace commands (`yarn workspace worldchef-backend build`) when `rootDir` is set.
+*   **`startCommand: "yarn start:prod"`**: The command to run the service in production. This executes our newly defined `start:prod` script.
 *   **`envVars`**:
     *   Hardcoded values like `NODE_ENV` and `SUPABASE_URL` can be set directly.
     *   **`fromGroup: worldchef-staging-secrets`**: This is the secure way to manage secrets. It instructs Render to inject all variables from a secret group named `worldchef-staging-secrets` into the service's environment. This avoids hardcoding sensitive keys like `SUPABASE_SERVICE_ROLE_KEY`.
@@ -97,6 +97,11 @@ For complex deployment issues, see the comprehensive [Render Deployment Troubles
 
 3. **Build Step Missing**: TypeScript compilation may not run automatically
    - **Solution**: Use `postinstall` hook to ensure build runs
+
+4. **Workspace Command Context Error**: Using workspace commands when `rootDir` is set
+   - **Error**: `Cannot find module '/opt/render/project/src/backend/dist/server.js'`
+   - **Cause**: Commands like `yarn workspace worldchef-backend build` fail when run from `rootDir: backend`
+   - **Solution**: Use direct commands (`yarn build`, `yarn start:prod`) instead of workspace commands
 
 ### Quick Diagnostic:
 ```bash
