@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 // backend/__tests__/integration/auth.test.ts
 
 import { FastifyInstance } from 'fastify';

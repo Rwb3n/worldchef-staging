@@ -2,16 +2,17 @@
   "name": "worldchef-monorepo",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "backend",
     "shared"
   ],
   "scripts": {
-    "dev": "yarn workspace backend run dev",
-    "start": "yarn workspace backend run start",
-    "build": "yarn workspace backend run build",
-    "start:prod": "yarn workspace backend run start:prod",
-    "postinstall": "yarn workspace backend run build",
+    "dev": "yarn workspace worldchef-backend run dev",
+    "start": "yarn workspace worldchef-backend run start",
+    "build": "yarn workspace worldchef-backend run build",
+    "start:prod": "yarn workspace worldchef-backend run start:prod",
+    "postinstall": "yarn workspace worldchef-backend run build",
     "test": "yarn workspaces run test && deno task test",
     "test:ci": "yarn workspaces run test && deno task test",
     "test:workspace": "yarn workspaces run test",

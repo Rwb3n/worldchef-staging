@@ -2,5 +2,15 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: ['**/__tests__/**/*.test.ts'],
-  setupFiles: ['<rootDir>/__tests__/setup.js']
+  setupFiles: ['<rootDir>/__tests__/setup.js'],
+  transform: {
+    '^.+\\.ts$': ['ts-jest', {
+      isolatedModules: true,
+      tsconfig: {
+        compilerOptions: {
+          types: ['jest', 'node']
+        }
+      }
+    }]
+  }
 }; 

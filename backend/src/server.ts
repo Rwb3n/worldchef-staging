@@ -1,44 +1,48 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
 import supabasePlugin from './plugins/supabase_plugin';
 import authPlugin from './plugins/auth_plugin';
 import securityHeadersPlugin from './plugins/security_headers_plugin';
 import authRoutes from './routes/v1/auth';
 
-const server = Fastify({ logger: true });
+export async function build(opts: FastifyServerOptions = {}): Promise<FastifyInstance> {
+  const server = Fastify({
+    logger: opts.logger !== undefined ? opts.logger : true,
+    ...opts
+  });
 
-// Register plugins
-server.register(supabasePlugin);
-server.register(authPlugin);
-server.register(securityHeadersPlugin);
+  // Register plugins
+  await server.register(supabasePlugin);
+  await server.register(authPlugin);
+  await server.register(securityHeadersPlugin);
 
-// Register routes
-server.register(authRoutes, { prefix: '/v1/auth' });
+  // Register routes
+  await server.register(authRoutes, { prefix: '/v1/auth' });
 
-// Health check endpoint
-server.get('/health', async (request, reply) => {
-  reply.type('application/json');
-  return {
-    status: 'ok',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    environment: process.env.NODE_ENV || 'development'
-  };
-});
+  // Health check endpoint
+  server.get('/health', async (request, reply) => {
+    reply.type('application/json');
+    return {
+      status: 'ok',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      environment: process.env.NODE_ENV || 'development'
+    };
+  });
 
-// Basic SEO/crawler endpoints
-server.get('/robots.txt', async (request, reply) => {
-  reply.type('text/plain');
-  return `User-agent: *
+  // Basic SEO/crawler endpoints
+  server.get('/robots.txt', async (request, reply) => {
+    reply.type('text/plain');
+    return `User-agent: *
 Disallow: /v1/auth/
 Disallow: /health
 
 # This is a staging API server
 # Production robots.txt will be different`;
-});
+  });
 
-server.get('/sitemap.xml', async (request, reply) => {
-  reply.type('application/xml');
-  return `<?xml version="1.0" encoding="UTF-8"?>
+  server.get('/sitemap.xml', async (request, reply) => {
+    reply.type('application/xml');
+    return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://worldchef-staging.onrender.com/</loc>
@@ -46,28 +50,35 @@ server.get('/sitemap.xml', async (request, reply) => {
     <priority>1.0</priority>
   </url>
 </urlset>`;
-});
+  });
 
-// Root endpoint
-server.get('/', async (request, reply) => {
-  reply.type('application/json');
-  return {
-    name: 'WorldChef API',
-    version: '1.0.0',
-    environment: process.env.NODE_ENV || 'development',
-    mode: process.env.API_MODE ? 'api' : 'web'
-  };
-});
+  // Root endpoint
+  server.get('/', async (request, reply) => {
+    reply.type('application/json');
+    return {
+      name: 'WorldChef API',
+      version: '1.0.0',
+      environment: process.env.NODE_ENV || 'development',
+      mode: process.env.API_MODE ? 'api' : 'web'
+    };
+  });
+
+  return server;
+}
 
 const start = async () => {
   try {
+    const server = await build();
     const port = parseInt(process.env.PORT || '10000', 10);
     const host = '0.0.0.0';
     await server.listen({ port, host });
   } catch (err) {
-    server.log.error(err);
+    console.error(err);
     process.exit(1);
   }
 };
 
-start(); 
+// Only start the server if this file is run directly
+if (require.main === module) {
+  start();
+} 
