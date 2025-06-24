@@ -78,8 +78,17 @@ services:
 
 1.  **Add Scripts**: Ensure the `build` and `start:prod` scripts exist in the relevant `package.json`.
 2.  **Create `render.yaml`**: Place the `render.yaml` file in the project's root directory.
-3.  **Configure Secrets**: Create a "Secret Group" in the Render dashboard (e.g., `worldchef-staging-secrets`) and add all necessary secret environment variables.
-4.  **Deploy**: Deployments are triggered by the [Staging Deploy Workflow](../.github/workflows/staging-deploy.yml), which uses a deploy hook.
+3.  **Add Fallback Scripts**: Add `postinstall` and `heroku-postbuild` to root `package.json` to handle dashboard overrides:
+    ```json
+    {
+      "scripts": {
+        "postinstall": "yarn workspace worldchef-backend run build",
+        "heroku-postbuild": "yarn workspace worldchef-backend run build"
+      }
+    }
+    ```
+4.  **Configure Secrets**: Create a "Secret Group" in the Render dashboard (e.g., `worldchef-staging-secrets`) and add all necessary secret environment variables.
+5.  **Deploy**: Deployments are triggered by the [Staging Deploy Workflow](../.github/workflows/staging-deploy.yml), which uses a deploy hook.
 
 This pattern provides a robust, secure, and clear method for deploying services from our monorepo to Render.
 
@@ -102,6 +111,19 @@ For complex deployment issues, see the comprehensive [Render Deployment Troubles
    - **Error**: `Cannot find module '/opt/render/project/src/backend/dist/server.js'`
    - **Cause**: Commands like `yarn workspace worldchef-backend build` fail when run from `rootDir: backend`
    - **Solution**: Use direct commands (`yarn build`, `yarn start:prod`) instead of workspace commands
+
+5. **Dashboard Override Issue**: Render dashboard overrides `render.yaml` configuration
+   - **Symptom**: Build runs `yarn` instead of `yarn install && yarn build`
+   - **Cause**: Dashboard settings take precedence over `render.yaml` file
+   - **Solution**: Add `postinstall` script to root `package.json` to ensure build runs automatically:
+     ```json
+     {
+       "scripts": {
+         "postinstall": "yarn workspace worldchef-backend run build",
+         "heroku-postbuild": "yarn workspace worldchef-backend run build"
+       }
+     }
+     ```
 
 ### Quick Diagnostic:
 ```bash
