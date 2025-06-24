@@ -4,8 +4,8 @@ services:
     rootDir: backend
     plan: starter
     runtime: node
-    buildCommand: "yarn install && yarn workspace worldchef-backend build"
-    startCommand: "yarn workspace worldchef-backend start:prod"
+    buildCommand: "yarn install && yarn build"
+    startCommand: "yarn start:prod"
     healthCheckPath: /v1/auth/health
     envVars:
       - key: NODE_ENV
