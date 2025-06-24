@@ -7,14 +7,14 @@
     "shared"
   ],
   "scripts": {
-    "dev": "npm --workspace backend run dev",
-    "start": "npm --workspace backend run start",
-    "build": "npm --workspace backend run build",
-    "start:prod": "npm --workspace backend run start:prod",
-    "postinstall": "npm --workspace backend run build",
-    "test": "npm --workspaces test && deno task test",
-    "test:ci": "npm --workspaces test && deno task test",
-    "test:workspace": "npm --workspaces test",
+    "dev": "yarn workspace backend run dev",
+    "start": "yarn workspace backend run start",
+    "build": "yarn workspace backend run build",
+    "start:prod": "yarn workspace backend run start:prod",
+    "postinstall": "yarn workspace backend run build",
+    "test": "yarn workspaces run test && deno task test",
+    "test:ci": "yarn workspaces run test && deno task test",
+    "test:workspace": "yarn workspaces run test",
     "test:deno": "deno task test"
   }
 }
