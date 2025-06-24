@@ -136,6 +136,22 @@ export default fp(authRoutes, {
 **Diagnosis**: Build step not running
 **Fix**: Add postinstall hook or fix buildCommand
 
+### Error: `==> Running build command 'yarn'...` (instead of full build command)
+**Diagnosis**: Dashboard override ignoring render.yaml buildCommand
+**Symptoms**: 
+- Logs show `yarn` instead of `yarn install && yarn build`
+- TypeScript compilation never occurs
+- dist/ directory missing or empty
+**Fix**: Add postinstall fallback script:
+```json
+{
+  "scripts": {
+    "postinstall": "yarn workspace worldchef-backend run build",
+    "heroku-postbuild": "yarn workspace worldchef-backend run build"
+  }
+}
+```
+
 ### Error: `Method 'GET' already declared for route`
 **Diagnosis**: Duplicate route definitions
 **Fix**: Remove redundant route registrations

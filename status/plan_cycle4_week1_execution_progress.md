@@ -4,14 +4,14 @@
 
 This document tracks the progress and key learnings from the execution of `plan_cycle4_week1_execution.txt`.
 
-## CHECKPOINT: 2025-06-24T16:15:00Z
+## CHECKPOINT: 2025-06-24T17:30:00Z
 
 ### Current Status: t001 ✅ DONE | t002 ✅ DONE | t003 ⏳ PENDING
 
-**Backend Service Status**: ✅ LIVE at `https://worldchef-dev.onrender.com`
+**Backend Service Status**: ✅ LIVE at `https://worldchef-staging.onrender.com`
 
 ### Recent Major Achievement:
-🎉 **OWASP ZAP Security Pipeline Fully Operational** - Successfully resolved all GitHub Actions artifact upload issues by replacing the problematic ZAP action with direct Docker execution, achieving complete CI/CD security scanning integration.
+🎉 **Render Deployment Pipeline Fully Resolved** - Successfully overcame Render dashboard override issues and workspace command conflicts, achieving stable production deployment with comprehensive fallback build strategies.
 
 ### Next Steps:
 1. **READY**: Proceed with t003 (nutrition edge function optimization)
@@ -252,6 +252,67 @@ zap-security-scan:
 - ✅ **Report Accessibility**: Multiple format reports available for download
 
 **Pattern Documented**: This solution follows official ZAP documentation patterns for direct Docker usage while maintaining all security scanning capabilities and eliminating GitHub Actions API conflicts.
+
+## Render Deployment Resolution
+
+### Final Resolution: Dashboard Override & Workspace Command Issues (2025-06-24T17:30:00Z)
+
+**Critical Issue**: Despite successful OWASP ZAP resolution, the Render deployment was failing with `MODULE_NOT_FOUND` errors for `/opt/render/project/src/backend/dist/server.js`.
+
+**Multi-Layered Problem Analysis**:
+
+1. **First Layer - Workspace Command Context Error**: 
+   - **Issue**: `render.yaml` used workspace commands with `rootDir: backend`
+   - **Symptom**: Commands like `yarn workspace worldchef-backend build` failed when executed from `/backend` directory
+   - **Initial Fix**: Updated `render.yaml` to use direct commands (`yarn build` instead of `yarn workspace worldchef-backend build`)
+
+2. **Second Layer - Dashboard Override Issue**:
+   - **Issue**: Render dashboard settings override `render.yaml` configuration
+   - **Symptom**: Build command ran `yarn` instead of `yarn install && yarn build`
+   - **Evidence**: Logs showed `==> Running build command 'yarn'...` despite `render.yaml` specifying `buildCommand: "yarn install && yarn build"`
+
+**Comprehensive Solution Applied**:
+
+```json
+// Added to root package.json
+{
+  "scripts": {
+    "postinstall": "yarn workspace worldchef-backend run build",
+    "heroku-postbuild": "yarn workspace worldchef-backend run build"
+  }
+}
+```
+
+**How the Fix Works**:
+1. **Render executes**: `yarn` (from dashboard override)
+2. **Yarn automatically runs**: `postinstall` script after dependency installation
+3. **postinstall triggers**: `yarn workspace worldchef-backend run build`
+4. **TypeScript compiles**: Source code to `backend/dist/server.js`
+5. **Start command succeeds**: `yarn start:prod` finds the compiled JavaScript file
+
+**Technical Verification**:
+- ✅ **Local Testing**: `yarn install` automatically builds backend and creates `dist/server.js`
+- ✅ **Build Process**: TypeScript compilation confirmed working
+- ✅ **Deployment Success**: Service now live at `https://worldchef-staging.onrender.com`
+- ✅ **Fallback Strategy**: Both `postinstall` and `heroku-postbuild` scripts ensure build runs
+
+**Key Technical Insights**:
+1. **Platform Override Behavior**: Deployment platforms often prioritize dashboard/UI settings over configuration files
+2. **Monorepo Deployment Complexity**: Workspace commands require careful context management in deployment environments
+3. **Fallback Build Strategies**: `postinstall` scripts provide reliable fallback when platform overrides configuration
+4. **Dual Command Strategy**: Including both `postinstall` and `heroku-postbuild` ensures compatibility across deployment platforms
+
+**Documentation Updated**: Enhanced `render_monorepo_backend_deployment_pattern.md` with comprehensive troubleshooting for:
+- Workspace command context errors
+- Dashboard override issues  
+- Fallback build script implementation
+- Multi-layered deployment problem resolution
+
+**Final Status**: 
+- ✅ **Render Service**: LIVE and stable at `https://worldchef-staging.onrender.com`
+- ✅ **Build Process**: Reliable TypeScript compilation via fallback scripts
+- ✅ **Configuration**: Both `render.yaml` and fallback scripts in place
+- ✅ **Documentation**: Complete troubleshooting guide for future deployments
 
 ### Previous Issues Resolved:
 1. **Package Manager Conflicts**: Updated workflows to use Yarn instead of npm
