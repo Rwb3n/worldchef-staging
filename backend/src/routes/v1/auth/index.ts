@@ -5,10 +5,6 @@ import fp from 'fastify-plugin';
 async function authRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
   const supabase: SupabaseClient = fastify.supabase;
 
-  fastify.get('/health', async (request, reply) => {
-    return reply.code(200).send({ status: 'ok' });
-  });
-
   fastify.post('/signup', async (request, reply) => {
     const { email, password } = request.body as any;
     const { data, error } = await supabase.auth.signUp({
