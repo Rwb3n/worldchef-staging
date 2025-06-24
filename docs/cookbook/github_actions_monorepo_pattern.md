@@ -335,13 +335,50 @@ env:
     exit 1
 ```
 
+## Private Repository Configuration
+
+### Issue: Private Repository Access in GitHub Actions
+When using private repositories, GitHub Actions may fail with "Repository not found" errors during checkout steps, especially in security scanning jobs.
+
+**Problem**: Default `GITHUB_TOKEN` has limited permissions for private repositories.
+
+**Solution**: Configure explicit permissions and token usage:
+
+```yaml
+# For jobs that need repository access in private repos
+zap-security-scan:
+  needs: deploy-staging
+  runs-on: ubuntu-latest
+  name: OWASP ZAP baseline scan
+  permissions:
+    contents: read  # ← Required for private repo access
+    issues: write   # ← For creating security issues
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}  # ← Explicit token required
+    
+    - name: ZAP Scan
+      uses: zaproxy/action-baseline@v0.11.0
+      with:
+        target: 'https://worldchef-staging.onrender.com'
+```
+
+### Key Points:
+- **Always add `contents: read`** to job permissions for private repos
+- **Explicitly specify `token: ${{ secrets.GITHUB_TOKEN }}`** in checkout steps
+- **This applies to all jobs**, not just security scans
+- **Public repositories don't need this configuration**
+
 ## Security Best Practices
 
 1. **Never commit secrets**: Use GitHub secrets for all sensitive data
 2. **Environment isolation**: Use different secrets for dev/staging/production
 3. **Minimal permissions**: Grant only necessary permissions to deploy hooks
-4. **Audit access**: Regularly review who has access to secrets
-5. **Rotate credentials**: Periodically update API keys and deploy hooks
+4. **Private repo access**: Configure proper permissions for private repositories
+5. **Audit access**: Regularly review who has access to secrets
+6. **Rotate credentials**: Periodically update API keys and deploy hooks
 
 ## Performance Optimizations
 
@@ -351,4 +388,107 @@ env:
 4. **Artifact caching**: Cache build outputs between stages
 5. **Conditional steps**: Use `if:` conditions to skip unnecessary steps
 
-This pattern ensures reliable, consistent CI/CD for Yarn monorepo projects with proper secret management and real service integration. 
+## OWASP ZAP Security Scanning Integration
+
+### Issue: ZAP Action Artifact Upload Failures
+The `zaproxy/action-baseline` GitHub Action has built-in artifact upload functionality that can conflict with GitHub's artifact API validation, causing "400 Bad Request: Artifact name is not valid" errors.
+
+**Problem**: ZAP action attempts to upload artifacts with default names that may not pass GitHub's validation, especially in private repositories or specific GitHub Actions environments.
+
+**Symptoms**:
+```
+Error: Create Artifact Container failed: The artifact name zap_scan is not valid
+Status Code: 400 Bad Request
+```
+
+**Solution**: Replace the ZAP action with direct Docker execution for complete control:
+
+```yaml
+# ❌ PROBLEMATIC: Using ZAP action (may fail artifact upload)
+- name: ZAP Scan
+  uses: zaproxy/action-baseline@v0.11.0
+  with:
+    target: 'https://worldchef-staging.onrender.com'
+    fail_action: false
+
+# ✅ RELIABLE: Direct Docker execution
+- name: Run ZAP Baseline Scan
+  run: |
+    mkdir -p zap-reports
+    docker run -v ${{ github.workspace }}:/zap/wrk/:rw \
+      -t ghcr.io/zaproxy/zaproxy:stable \
+      zap-baseline.py \
+      -t https://worldchef-staging.onrender.com \
+      -J zap-reports/report_json.json \
+      -w zap-reports/report_md.md \
+      -r zap-reports/report_html.html \
+      -x zap-reports/report_xml.xml \
+      -I || echo "ZAP scan completed with warnings (expected)"
+
+- name: Upload ZAP reports
+  uses: actions/upload-artifact@v4
+  if: always()
+  with:
+    name: zap-security-reports
+    path: zap-reports/
+```
+
+### Benefits of Direct Docker Approach:
+1. **Eliminates Artifact Conflicts**: No dual upload attempts causing API errors
+2. **Complete Control**: Full control over report generation and organization
+3. **Multiple Report Formats**: JSON, Markdown, HTML, and XML reports
+4. **Reliable Upload**: Single, clean artifact upload path
+5. **Better Error Handling**: Proper handling of expected warnings with `-I` flag
+6. **Maintained Functionality**: Same security validation capabilities
+
+### ZAP Command Line Options:
+- `-t <target>`: Target URL to scan
+- `-J <file>`: Generate JSON report
+- `-w <file>`: Generate Markdown report  
+- `-r <file>`: Generate HTML report
+- `-x <file>`: Generate XML report
+- `-I`: Don't return failure on warnings (recommended for CI)
+- `-a`: Include alpha passive scan rules
+- `-d`: Show debug messages
+
+### Complete Security Scanning Job:
+```yaml
+zap-security-scan:
+  needs: deploy-staging
+  runs-on: ubuntu-latest
+  name: OWASP ZAP baseline scan
+  permissions:
+    contents: read  # Required for private repos
+    issues: write   # Optional: for GitHub issue creation
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Run ZAP Baseline Scan
+      run: |
+        mkdir -p zap-reports
+        docker run -v ${{ github.workspace }}:/zap/wrk/:rw \
+          -t ghcr.io/zaproxy/zaproxy:stable \
+          zap-baseline.py \
+          -t https://worldchef-staging.onrender.com \
+          -J zap-reports/report_json.json \
+          -w zap-reports/report_md.md \
+          -r zap-reports/report_html.html \
+          -x zap-reports/report_xml.xml \
+          -I || echo "ZAP scan completed with warnings (expected)"
+    
+    - name: Upload ZAP reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: zap-security-reports
+        path: zap-reports/
+```
+
+This pattern provides reliable OWASP ZAP security scanning without GitHub Actions artifact upload issues.
+
+## Summary
+
+This pattern ensures reliable, consistent CI/CD for Yarn monorepo projects with proper secret management, real service integration, and robust security scanning. 

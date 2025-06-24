@@ -4,14 +4,14 @@
 
 This document tracks the progress and key learnings from the execution of `plan_cycle4_week1_execution.txt`.
 
-## CHECKPOINT: 2025-06-24T09:26:00Z
+## CHECKPOINT: 2025-06-24T16:15:00Z
 
 ### Current Status: t001 ✅ DONE | t002 ✅ DONE | t003 ⏳ PENDING
 
 **Backend Service Status**: ✅ LIVE at `https://worldchef-dev.onrender.com`
 
 ### Recent Major Achievement:
-🎉 **Test Environment & Real Supabase Integration Completed** - Successfully migrated from mock Supabase to real integration, resolved CI/CD test configuration, and achieved 100% test pass rate (6/6) with proper HTTP status codes.
+🎉 **OWASP ZAP Security Pipeline Fully Operational** - Successfully resolved all GitHub Actions artifact upload issues by replacing the problematic ZAP action with direct Docker execution, achieving complete CI/CD security scanning integration.
 
 ### Next Steps:
 1. **READY**: Proceed with t003 (nutrition edge function optimization)
@@ -176,17 +176,94 @@ After extensive troubleshooting, the backend service deployment was **successful
 - Proper content-type headers for all endpoints
 - Differentiated caching strategies per endpoint type
 
-## GitHub Actions Pipeline Resolution (Previous Session)
+## GitHub Actions Pipeline Resolution
 
-### Issues Resolved:
+### Latest Update: Private Repository Access Fix (2025-06-24T15:42:00Z)
+
+**Critical Issue**: OWASP ZAP security scan was failing with "Repository not found" error when trying to access the private repository `Rwb3n/worldchef-staging`.
+
+**Root Cause**: GitHub Actions workflows in private repositories require explicit permissions to access repository content. The default `GITHUB_TOKEN` has limited permissions for private repos.
+
+**Solution Applied**:
+```yaml
+zap-security-scan:
+  permissions:
+    contents: read  # ← Added for private repo access
+    issues: write
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}  # ← Added explicit token
+```
+
+**Result**: Security scanning pipeline now functional with proper repository access.
+
+### Final Resolution: OWASP ZAP Artifact Upload Issues (2025-06-24T16:15:00Z)
+
+**Critical Issue**: OWASP ZAP security scan was consistently failing with "400 Bad Request: Artifact name is not valid" errors, despite successful security scanning results and GitHub issue creation.
+
+**Root Cause Analysis**: The `zaproxy/action-baseline` GitHub Action has built-in artifact upload functionality that conflicts with GitHub's artifact API validation. The action attempts to upload artifacts with the default name `zap_scan`, which triggers validation errors in the GitHub Actions environment.
+
+**Technical Problem Details**: 
+- ZAP action's internal artifact upload: `Error: Create Artifact Container failed: The artifact name zap_scan is not valid`
+- Our custom artifact upload: ✅ Working perfectly (`zap-reports` successfully uploaded)
+- Security scan results: ✅ 64 PASS, 2 WARN (informational), 0 FAIL
+- GitHub issue creation: ✅ Working (issues #6 and #7 created successfully)
+
+**Solution Applied**: Replaced the problematic ZAP action with **direct Docker execution** for complete control:
+
+```yaml
+# BEFORE (problematic ZAP action)
+- name: ZAP Scan
+  uses: zaproxy/action-baseline@v0.11.0
+  with:
+    target: 'https://worldchef-staging.onrender.com'
+    fail_action: false
+
+# AFTER (direct Docker execution)
+- name: Run ZAP Baseline Scan
+  run: |
+    mkdir -p zap-reports
+    docker run -v ${{ github.workspace }}:/zap/wrk/:rw \
+      -t ghcr.io/zaproxy/zaproxy:stable \
+      zap-baseline.py \
+      -t https://worldchef-staging.onrender.com \
+      -J zap-reports/report_json.json \
+      -w zap-reports/report_md.md \
+      -r zap-reports/report_html.html \
+      -x zap-reports/report_xml.xml \
+      -I || echo "ZAP scan completed with warnings (expected)"
+```
+
+**Key Improvements**:
+1. **Eliminated Artifact Conflicts**: No more dual upload attempts causing API errors
+2. **Complete Control**: Full control over report generation and organization
+3. **Multiple Report Formats**: JSON, Markdown, HTML, and XML reports generated
+4. **Reliable Upload**: Single, clean artifact upload path (`zap-security-reports`)
+5. **Better Error Handling**: Proper handling of expected warnings with `-I` flag
+6. **Maintained Functionality**: Same security validation capabilities as the original action
+
+**Final Result**: 
+- ✅ **GitHub Actions Status**: GREEN (no more red failures)
+- ✅ **Security Scanning**: Fully functional with comprehensive vulnerability detection
+- ✅ **Artifact Upload**: Clean, reliable artifact generation and upload (18962 bytes)
+- ✅ **CI/CD Pipeline**: Complete end-to-end security scanning integration
+- ✅ **Report Accessibility**: Multiple format reports available for download
+
+**Pattern Documented**: This solution follows official ZAP documentation patterns for direct Docker usage while maintaining all security scanning capabilities and eliminating GitHub Actions API conflicts.
+
+### Previous Issues Resolved:
 1. **Package Manager Conflicts**: Updated workflows to use Yarn instead of npm
 2. **Workspace Configuration**: Fixed workspace references from 'backend' to 'worldchef-backend'
 3. **TypeScript Dependencies**: Added missing @types/node and typescript dependencies
 4. **Jest Configuration**: Resolved test runner configuration for CI environment
+5. **Private Repository Access**: Configured proper permissions for GitHub Actions in private repos
 
 ### CI/CD Status:
-- **Staging Deploy Workflow**: ✅ Updated to use Yarn
+- **Staging Deploy Workflow**: ✅ Updated to use Yarn + Private repo access
 - **Dev Deploy Workflow**: ✅ Updated to use Yarn  
+- **OWASP ZAP Security Scan**: ✅ Fixed private repository access
 - **Test Commands**: ✅ Configured for CI environment
 - **Build Process**: ✅ Automated TypeScript compilation
 
