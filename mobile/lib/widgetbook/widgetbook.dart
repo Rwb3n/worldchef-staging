@@ -20,8 +20,10 @@ import 'screens/home_feed_stories.dart';
 
 /// WorldChef Widgetbook - Visual Design System & Component Catalogue
 /// 
-/// This is the RED step of TDD - stories will show placeholders/errors
-/// until design system implementation is completed in task t002.
+/// This is the GREEN step of TDD - design system implementation completed
+/// in task t002. All stories now demonstrate functional components.
+/// 
+/// GitHub Pages: https://rwb3n.github.io/worldchef/
 void main() {
   runApp(const WidgetbookApp());
 }
