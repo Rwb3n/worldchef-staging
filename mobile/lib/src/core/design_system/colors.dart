@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// From: docs/ui_specifications/design_system/design_tokens.md
+/// Design system colors for WorldChef mobile application
 
 // Primary Brand Colors
 class WorldChefColors {
