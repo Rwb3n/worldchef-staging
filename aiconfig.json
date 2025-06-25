@@ -4,8 +4,8 @@
     "description": "AI-powered recipe discovery and creator platform with mobile-first approach",
     "version": "1.0.0-mvp",
     "phase": "Cycle4-Staging",
-    "last_updated": "2025-06-24",
-    "global_event_counter": 134
+    "last_updated": "2025-06-25",
+    "global_event_counter": 135
   },
   "architecture": {
     "status": "VALIDATED",
@@ -268,6 +268,10 @@
         {
           "file": "docs/cookbook/flutter_widgetbook_deployment_pattern.md",
           "description": "CI/CD for Flutter Widgetbook with Hybrid Hosting to enable visual design system testing and validation"
+        },
+        {
+          "file": "docs/cookbook/flutter_analyzer_dependency_resolution_pattern.md",
+          "description": "Flutter analyzer dependency resolution for Widgetbook and dev tools with TDD methodology"
         }
       ]
     },
