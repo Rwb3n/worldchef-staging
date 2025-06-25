@@ -51,7 +51,7 @@ List<WidgetbookComponent> buildSpacingStories() {
 
 /// Spacing Tokens Demonstration
 class SpacingTokensDemo extends StatelessWidget {
-  const SpacingTokensDemo({Key? key}) : super(key: key);
+  const SpacingTokensDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -231,7 +231,7 @@ class SpacingTokensDemo extends StatelessWidget {
 
 /// Spacing Scale Visual Demo
 class SpacingScaleDemo extends StatelessWidget {
-  const SpacingScaleDemo({Key? key}) : super(key: key);
+  const SpacingScaleDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -340,7 +340,7 @@ class SpacingScaleDemo extends StatelessWidget {
 
 /// Card Spacing Patterns
 class CardSpacingDemo extends StatelessWidget {
-  const CardSpacingDemo({Key? key}) : super(key: key);
+  const CardSpacingDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -462,7 +462,7 @@ class CardSpacingDemo extends StatelessWidget {
 
 /// List Spacing Patterns
 class ListSpacingDemo extends StatelessWidget {
-  const ListSpacingDemo({Key? key}) : super(key: key);
+  const ListSpacingDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -608,7 +608,7 @@ class ListSpacingDemo extends StatelessWidget {
 
 /// Form Spacing Patterns
 class FormSpacingDemo extends StatelessWidget {
-  const FormSpacingDemo({Key? key}) : super(key: key);
+  const FormSpacingDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -736,7 +736,7 @@ class FormSpacingDemo extends StatelessWidget {
 
 /// Touch Target Demonstration
 class TouchTargetDemo extends StatelessWidget {
-  const TouchTargetDemo({Key? key}) : super(key: key);
+  const TouchTargetDemo({super.key});
 
   @override
   Widget build(BuildContext context) {

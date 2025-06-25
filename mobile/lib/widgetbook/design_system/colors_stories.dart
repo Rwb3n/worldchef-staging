@@ -43,7 +43,7 @@ List<WidgetbookComponent> buildColorStories() {
 
 /// Brand Color Palette Showcase
 class BrandColorPalette extends StatelessWidget {
-  const BrandColorPalette({Key? key}) : super(key: key);
+  const BrandColorPalette({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -187,7 +187,7 @@ class BrandColorPalette extends StatelessWidget {
 
 /// Brand Color States (Hover, Active, Disabled)
 class BrandColorStates extends StatelessWidget {
-  const BrandColorStates({Key? key}) : super(key: key);
+  const BrandColorStates({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -291,7 +291,7 @@ class BrandColorStates extends StatelessWidget {
 
 /// Semantic Color Palette
 class SemanticColorPalette extends StatelessWidget {
-  const SemanticColorPalette({Key? key}) : super(key: key);
+  const SemanticColorPalette({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -390,7 +390,7 @@ class SemanticColorPalette extends StatelessWidget {
 
 /// WCAG AA Contrast Validation Grid
 class ContrastValidationGrid extends StatelessWidget {
-  const ContrastValidationGrid({Key? key}) : super(key: key);
+  const ContrastValidationGrid({super.key});
 
   @override
   Widget build(BuildContext context) {

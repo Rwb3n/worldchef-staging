@@ -60,7 +60,7 @@ List<WidgetbookComponent> buildButtonStories() {
 
 /// Primary CTA Buttons
 class PrimaryCTAButtons extends StatelessWidget {
-  const PrimaryCTAButtons({Key? key}) : super(key: key);
+  const PrimaryCTAButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -231,7 +231,7 @@ class PrimaryCTAButtons extends StatelessWidget {
 
 /// Primary Button States
 class PrimaryButtonStates extends StatelessWidget {
-  const PrimaryButtonStates({Key? key}) : super(key: key);
+  const PrimaryButtonStates({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -377,7 +377,7 @@ class PrimaryButtonStates extends StatelessWidget {
 
 /// Secondary Buttons
 class SecondaryButtons extends StatelessWidget {
-  const SecondaryButtons({Key? key}) : super(key: key);
+  const SecondaryButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -527,7 +527,7 @@ class SecondaryButtons extends StatelessWidget {
 
 /// Outline Buttons
 class OutlineButtons extends StatelessWidget {
-  const OutlineButtons({Key? key}) : super(key: key);
+  const OutlineButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -683,7 +683,7 @@ class OutlineButtons extends StatelessWidget {
 
 /// Icon Buttons
 class IconButtons extends StatelessWidget {
-  const IconButtons({Key? key}) : super(key: key);
+  const IconButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -816,7 +816,7 @@ class IconButtons extends StatelessWidget {
 
 /// Social Buttons
 class SocialButtons extends StatelessWidget {
-  const SocialButtons({Key? key}) : super(key: key);
+  const SocialButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -911,7 +911,7 @@ class SocialButtons extends StatelessWidget {
 
 /// Floating Action Buttons
 class FloatingActionButtons extends StatelessWidget {
-  const FloatingActionButtons({Key? key}) : super(key: key);
+  const FloatingActionButtons({super.key});
 
   @override
   Widget build(BuildContext context) {

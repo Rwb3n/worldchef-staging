@@ -51,7 +51,7 @@ List<WidgetbookComponent> buildTypographyStories() {
 
 /// Nunito UI Typography Scale
 class NunitoTypographyScale extends StatelessWidget {
-  const NunitoTypographyScale({Key? key}) : super(key: key);
+  const NunitoTypographyScale({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -279,7 +279,7 @@ class NunitoTypographyScale extends StatelessWidget {
 
 /// Lora Headlines Scale
 class LoraHeadlineScale extends StatelessWidget {
-  const LoraHeadlineScale({Key? key}) : super(key: key);
+  const LoraHeadlineScale({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -431,7 +431,7 @@ class LoraHeadlineScale extends StatelessWidget {
 
 /// UI Text Styles Examples
 class UITextStyles extends StatelessWidget {
-  const UITextStyles({Key? key}) : super(key: key);
+  const UITextStyles({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -580,30 +580,30 @@ class UITextStyles extends StatelessWidget {
 
 /// Content Text Styles Examples
 class ContentTextStyles extends StatelessWidget {
-  const ContentTextStyles({Key? key}) : super(key: key);
+  const ContentTextStyles({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Content Text Styles',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           
           // Recipe content example
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Recipe title (Lora)
-                  const Text(
+                  Text(
                     'Classic Margherita Pizza',
                     style: TextStyle(
                       fontSize: 28,
@@ -611,10 +611,10 @@ class ContentTextStyles extends StatelessWidget {
                       height: 1.3,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   
                   // Recipe subtitle (Lora)
-                  const Text(
+                  Text(
                     'Authentic Neapolitan-style pizza with fresh basil',
                     style: TextStyle(
                       fontSize: 18,
@@ -622,10 +622,10 @@ class ContentTextStyles extends StatelessWidget {
                       height: 1.4,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
                   
                   // Body text (Nunito)
-                  const Text(
+                  Text(
                     'This classic Margherita pizza recipe brings the authentic taste of Naples to your kitchen. With a perfectly crispy crust, tangy tomato sauce, and fresh mozzarella, it\'s a timeless favorite that never goes out of style.',
                     style: TextStyle(
                       fontSize: 16,
@@ -633,10 +633,10 @@ class ContentTextStyles extends StatelessWidget {
                       height: 1.5,
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
                   
                   // Section header (Lora)
-                  const Text(
+                  Text(
                     'Ingredients',
                     style: TextStyle(
                       fontSize: 22,
@@ -644,10 +644,10 @@ class ContentTextStyles extends StatelessWidget {
                       height: 1.4,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   
                   // Ingredient list (Nunito)
-                  const Text(
+                  Text(
                     '• 500g tipo 00 flour\n'
                     '• 325ml warm water\n'
                     '• 10g fine sea salt\n'
@@ -664,8 +664,8 @@ class ContentTextStyles extends StatelessWidget {
             ),
           ),
           
-          const SizedBox(height: 16),
-          const Card(
+          SizedBox(height: 16),
+          Card(
             color: Colors.orange,
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -684,7 +684,7 @@ class ContentTextStyles extends StatelessWidget {
 
 /// Text Scale Accessibility Demo
 class TextScaleDemo extends StatelessWidget {
-  const TextScaleDemo({Key? key}) : super(key: key);
+  const TextScaleDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -773,59 +773,59 @@ class TextScaleDemo extends StatelessWidget {
 
 /// Reading Flow Demo
 class ReadingFlowDemo extends StatelessWidget {
-  const ReadingFlowDemo({Key? key}) : super(key: key);
+  const ReadingFlowDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Reading Flow & Hierarchy',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Visual hierarchy demonstration
-                  const Text(
+                  Text(
                     '1. Main Recipe Title',
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   
-                  const Text(
+                  Text(
                     '2. Recipe Subtitle/Description',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
                   
-                  const Text(
+                  Text(
                     '3. Section Headers',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   
-                  const Text(
+                  Text(
                     '4. Body text for instructions and descriptions with proper line height for optimal readability. This text should flow naturally and be easy to scan.',
                     style: TextStyle(fontSize: 16, height: 1.5),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   
-                  const Text(
+                  Text(
                     '5. Secondary information and captions',
                     style: TextStyle(fontSize: 14, height: 1.4),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8),
                   
-                  const Text(
+                  Text(
                     '6. LABELS AND SMALL TEXT',
                     style: TextStyle(
                       fontSize: 12,
@@ -838,8 +838,8 @@ class ReadingFlowDemo extends StatelessWidget {
             ),
           ),
           
-          const SizedBox(height: 16),
-          const Card(
+          SizedBox(height: 16),
+          Card(
             color: Colors.blue,
             child: Padding(
               padding: EdgeInsets.all(16.0),

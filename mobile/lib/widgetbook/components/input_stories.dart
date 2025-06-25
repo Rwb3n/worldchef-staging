@@ -56,7 +56,7 @@ List<WidgetbookComponent> buildInputStories() {
 
 /// Basic Text Fields
 class BasicTextFields extends StatelessWidget {
-  const BasicTextFields({Key? key}) : super(key: key);
+  const BasicTextFields({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +206,7 @@ class BasicTextFields extends StatelessWidget {
 
 /// Text Field States
 class TextFieldStates extends StatelessWidget {
-  const TextFieldStates({Key? key}) : super(key: key);
+  const TextFieldStates({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -329,7 +329,7 @@ class TextFieldStates extends StatelessWidget {
 
 /// Search Inputs
 class SearchInputs extends StatelessWidget {
-  const SearchInputs({Key? key}) : super(key: key);
+  const SearchInputs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -523,7 +523,7 @@ class SearchInputs extends StatelessWidget {
 
 /// Selection Inputs
 class SelectionInputs extends StatelessWidget {
-  const SelectionInputs({Key? key}) : super(key: key);
+  const SelectionInputs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -562,10 +562,10 @@ class SelectionInputs extends StatelessWidget {
             'Difficulty Level',
             'WorldChefDropdown.difficulty (NOT IMPLEMENTED)',
             DropdownButtonFormField<String>(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Difficulty Level',
-                border: const OutlineInputBorder(),
-                prefixIcon: const Icon(Icons.signal_cellular_alt),
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.signal_cellular_alt),
                 helperText: 'Select cooking difficulty',
               ),
               items: const [
@@ -675,7 +675,7 @@ class SelectionInputs extends StatelessWidget {
 
 /// Checkbox and Switch Inputs
 class CheckboxSwitchInputs extends StatefulWidget {
-  const CheckboxSwitchInputs({Key? key}) : super(key: key);
+  const CheckboxSwitchInputs({super.key});
 
   @override
   State<CheckboxSwitchInputs> createState() => _CheckboxSwitchInputsState();
@@ -817,7 +817,7 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
 
 /// Specialized Recipe Form Fields
 class RecipeFormFields extends StatelessWidget {
-  const RecipeFormFields({Key? key}) : super(key: key);
+  const RecipeFormFields({super.key});
 
   @override
   Widget build(BuildContext context) {

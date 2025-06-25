@@ -55,7 +55,7 @@ List<WidgetbookComponent> buildAnimationStories() {
 
 /// Animation Timing Standards
 class AnimationTimingDemo extends StatelessWidget {
-  const AnimationTimingDemo({Key? key}) : super(key: key);
+  const AnimationTimingDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -199,10 +199,10 @@ class AnimatedTimingBar extends StatefulWidget {
   final Color color;
 
   const AnimatedTimingBar({
-    Key? key,
+    super.key,
     required this.duration,
     required this.color,
-  }) : super(key: key);
+  });
 
   @override
   State<AnimatedTimingBar> createState() => _AnimatedTimingBarState();
@@ -287,7 +287,7 @@ class _AnimatedTimingBarState extends State<AnimatedTimingBar>
 
 /// Easing Curves Demonstration
 class EasingCurvesDemo extends StatelessWidget {
-  const EasingCurvesDemo({Key? key}) : super(key: key);
+  const EasingCurvesDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -383,7 +383,7 @@ class EasingCurvesDemo extends StatelessWidget {
 class EasingCurveDemo extends StatefulWidget {
   final Curve curve;
 
-  const EasingCurveDemo({Key? key, required this.curve}) : super(key: key);
+  const EasingCurveDemo({super.key, required this.curve});
 
   @override
   State<EasingCurveDemo> createState() => _EasingCurveDemoState();
@@ -468,43 +468,43 @@ class _EasingCurveDemoState extends State<EasingCurveDemo>
 
 /// Micro Interactions Demo
 class MicroInteractionsDemo extends StatelessWidget {
-  const MicroInteractionsDemo({Key? key}) : super(key: key);
+  const MicroInteractionsDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Micro Interactions',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Interactive Elements',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16),
                   
                   // Animated favorite button
-                  const AnimatedFavoriteButton(),
-                  const SizedBox(height: 16),
+                  AnimatedFavoriteButton(),
+                  SizedBox(height: 16),
                   
                   // Animated rating stars
-                  const AnimatedRatingStars(),
-                  const SizedBox(height: 16),
+                  AnimatedRatingStars(),
+                  SizedBox(height: 16),
                   
                   // Animated toggle switch
-                  const AnimatedToggleSwitch(),
+                  AnimatedToggleSwitch(),
                 ],
               ),
             ),
@@ -517,7 +517,7 @@ class MicroInteractionsDemo extends StatelessWidget {
 
 /// Animated favorite button
 class AnimatedFavoriteButton extends StatefulWidget {
-  const AnimatedFavoriteButton({Key? key}) : super(key: key);
+  const AnimatedFavoriteButton({super.key});
 
   @override
   State<AnimatedFavoriteButton> createState() => _AnimatedFavoriteButtonState();
@@ -584,7 +584,7 @@ class _AnimatedFavoriteButtonState extends State<AnimatedFavoriteButton>
 
 /// Animated rating stars
 class AnimatedRatingStars extends StatefulWidget {
-  const AnimatedRatingStars({Key? key}) : super(key: key);
+  const AnimatedRatingStars({super.key});
 
   @override
   State<AnimatedRatingStars> createState() => _AnimatedRatingStarsState();
@@ -625,7 +625,7 @@ class _AnimatedRatingStarsState extends State<AnimatedRatingStars> {
 
 /// Animated toggle switch
 class AnimatedToggleSwitch extends StatefulWidget {
-  const AnimatedToggleSwitch({Key? key}) : super(key: key);
+  const AnimatedToggleSwitch({super.key});
 
   @override
   State<AnimatedToggleSwitch> createState() => _AnimatedToggleSwitchState();
@@ -655,7 +655,7 @@ class _AnimatedToggleSwitchState extends State<AnimatedToggleSwitch> {
 
 /// Loading Animations Demo
 class LoadingAnimationsDemo extends StatelessWidget {
-  const LoadingAnimationsDemo({Key? key}) : super(key: key);
+  const LoadingAnimationsDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -683,15 +683,15 @@ class LoadingAnimationsDemo extends StatelessWidget {
                   const SizedBox(height: 16),
                   
                   // Circular progress
-                  Row(
+                  const Row(
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         width: 24,
                         height: 24,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       ),
-                      const SizedBox(width: 16),
-                      const Text('Loading recipes...'),
+                      SizedBox(width: 16),
+                      Text('Loading recipes...'),
                     ],
                   ),
                   
@@ -730,7 +730,7 @@ class LoadingAnimationsDemo extends StatelessWidget {
 
 /// Skeleton loader widget
 class SkeletonLoader extends StatefulWidget {
-  const SkeletonLoader({Key? key}) : super(key: key);
+  const SkeletonLoader({super.key});
 
   @override
   State<SkeletonLoader> createState() => _SkeletonLoaderState();
@@ -834,22 +834,22 @@ class _SkeletonLoaderState extends State<SkeletonLoader>
 
 /// Page Transitions Demo
 class PageTransitionsDemo extends StatelessWidget {
-  const PageTransitionsDemo({Key? key}) : super(key: key);
+  const PageTransitionsDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Page Transition Animations',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           
-          const Card(
+          Card(
             color: Colors.blue,
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -878,8 +878,8 @@ class PageTransitionsDemo extends StatelessWidget {
             ),
           ),
           
-          const SizedBox(height: 16),
-          const Card(
+          SizedBox(height: 16),
+          Card(
             color: Colors.orange,
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -898,23 +898,23 @@ class PageTransitionsDemo extends StatelessWidget {
 
 /// Recipe Card Animations Demo
 class RecipeCardAnimationsDemo extends StatelessWidget {
-  const RecipeCardAnimationsDemo({Key? key}) : super(key: key);
+  const RecipeCardAnimationsDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Recipe Card Animations',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           
           // Animated recipe card
-          const AnimatedRecipeCard(),
+          AnimatedRecipeCard(),
         ],
       ),
     );
@@ -923,7 +923,7 @@ class RecipeCardAnimationsDemo extends StatelessWidget {
 
 /// Animated recipe card
 class AnimatedRecipeCard extends StatefulWidget {
-  const AnimatedRecipeCard({Key? key}) : super(key: key);
+  const AnimatedRecipeCard({super.key});
 
   @override
   State<AnimatedRecipeCard> createState() => _AnimatedRecipeCardState();
@@ -1016,22 +1016,22 @@ class _AnimatedRecipeCardState extends State<AnimatedRecipeCard> {
 
 /// List Animations Demo
 class ListAnimationsDemo extends StatelessWidget {
-  const ListAnimationsDemo({Key? key}) : super(key: key);
+  const ListAnimationsDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'List Entry Animations',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           
-          const Card(
+          Card(
             color: Colors.green,
             child: Padding(
               padding: EdgeInsets.all(16.0),

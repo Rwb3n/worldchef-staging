@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 }
 
 class _CounterHomePage extends StatefulWidget {
-  const _CounterHomePage({super.key});
+  const _CounterHomePage();
 
   @override
   State<_CounterHomePage> createState() => _CounterHomePageState();

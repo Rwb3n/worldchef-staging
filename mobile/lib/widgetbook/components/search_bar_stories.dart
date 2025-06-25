@@ -38,7 +38,7 @@ List<WidgetbookComponent> buildSearchBarStories() {
 
 /// Primary Search Bar
 class PrimarySearchBar extends StatefulWidget {
-  const PrimarySearchBar({Key? key}) : super(key: key);
+  const PrimarySearchBar({super.key});
 
   @override
   State<PrimarySearchBar> createState() => _PrimarySearchBarState();
@@ -204,7 +204,7 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
 
 /// Search Bar Variants
 class SearchBarVariants extends StatelessWidget {
-  const SearchBarVariants({Key? key}) : super(key: key);
+  const SearchBarVariants({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -437,7 +437,7 @@ class SearchBarVariants extends StatelessWidget {
 
 /// Search with Filters
 class SearchWithFilters extends StatefulWidget {
-  const SearchWithFilters({Key? key}) : super(key: key);
+  const SearchWithFilters({super.key});
 
   @override
   State<SearchWithFilters> createState() => _SearchWithFiltersState();
@@ -730,7 +730,7 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
 
 /// Search States and Results
 class SearchStatesAndResults extends StatefulWidget {
-  const SearchStatesAndResults({Key? key}) : super(key: key);
+  const SearchStatesAndResults({super.key});
 
   @override
   State<SearchStatesAndResults> createState() => _SearchStatesAndResultsState();

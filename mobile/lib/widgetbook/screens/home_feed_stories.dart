@@ -38,7 +38,7 @@ List<WidgetbookComponent> buildHomeFeedStories() {
 
 /// Main Home Feed
 class MainHomeFeed extends StatelessWidget {
-  const MainHomeFeed({Key? key}) : super(key: key);
+  const MainHomeFeed({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -783,7 +783,7 @@ class MainHomeFeed extends StatelessWidget {
 
 /// Home Feed Sections
 class HomeFeedSections extends StatelessWidget {
-  const HomeFeedSections({Key? key}) : super(key: key);
+  const HomeFeedSections({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -967,7 +967,7 @@ class HomeFeedSections extends StatelessWidget {
 
 /// Home Feed Loading States
 class HomeFeedLoadingStates extends StatelessWidget {
-  const HomeFeedLoadingStates({Key? key}) : super(key: key);
+  const HomeFeedLoadingStates({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -993,7 +993,7 @@ class HomeFeedLoadingStates extends StatelessWidget {
 
 /// Home feed skeleton loader
 class HomeFeedSkeleton extends StatefulWidget {
-  const HomeFeedSkeleton({Key? key}) : super(key: key);
+  const HomeFeedSkeleton({super.key});
 
   @override
   State<HomeFeedSkeleton> createState() => _HomeFeedSkeletonState();
@@ -1206,7 +1206,7 @@ class _HomeFeedSkeletonState extends State<HomeFeedSkeleton>
 
 /// Home Feed Empty States
 class HomeFeedEmptyStates extends StatelessWidget {
-  const HomeFeedEmptyStates({Key? key}) : super(key: key);
+  const HomeFeedEmptyStates({super.key});
 
   @override
   Widget build(BuildContext context) {

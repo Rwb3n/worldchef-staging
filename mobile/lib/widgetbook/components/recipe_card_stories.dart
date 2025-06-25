@@ -42,7 +42,7 @@ List<WidgetbookComponent> buildRecipeCardStories() {
 
 /// Standard Recipe Cards
 class StandardRecipeCards extends StatelessWidget {
-  const StandardRecipeCards({Key? key}) : super(key: key);
+  const StandardRecipeCards({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +298,7 @@ class StandardRecipeCards extends StatelessWidget {
 
 /// Compact Recipe Cards
 class CompactRecipeCards extends StatelessWidget {
-  const CompactRecipeCards({Key? key}) : super(key: key);
+  const CompactRecipeCards({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -452,7 +452,7 @@ class CompactRecipeCards extends StatelessWidget {
 
 /// Featured Recipe Cards
 class FeaturedRecipeCards extends StatelessWidget {
-  const FeaturedRecipeCards({Key? key}) : super(key: key);
+  const FeaturedRecipeCards({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -794,26 +794,26 @@ class FeaturedRecipeCards extends StatelessWidget {
 
 /// Recipe Card Loading States
 class RecipeCardLoadingStates extends StatelessWidget {
-  const RecipeCardLoadingStates({Key? key}) : super(key: key);
+  const RecipeCardLoadingStates({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return const Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Recipe Card Loading States',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           
           // PLACEHOLDER: Will be replaced with WorldChefRecipeCard.loading in t002
-          const RecipeCardSkeleton(),
+          RecipeCardSkeleton(),
           
-          const SizedBox(height: 16),
-          const RecipeCardSkeleton(),
+          SizedBox(height: 16),
+          RecipeCardSkeleton(),
         ],
       ),
     );
@@ -822,7 +822,7 @@ class RecipeCardLoadingStates extends StatelessWidget {
 
 /// Recipe card skeleton loader
 class RecipeCardSkeleton extends StatefulWidget {
-  const RecipeCardSkeleton({Key? key}) : super(key: key);
+  const RecipeCardSkeleton({super.key});
 
   @override
   State<RecipeCardSkeleton> createState() => _RecipeCardSkeletonState();
@@ -1010,7 +1010,7 @@ class _RecipeCardSkeletonState extends State<RecipeCardSkeleton>
 
 /// Recipe Card Interactive States
 class RecipeCardInteractiveStates extends StatefulWidget {
-  const RecipeCardInteractiveStates({Key? key}) : super(key: key);
+  const RecipeCardInteractiveStates({super.key});
 
   @override
   State<RecipeCardInteractiveStates> createState() => _RecipeCardInteractiveStatesState();
