@@ -38,7 +38,10 @@ jobs:
       - name: Enable Flutter Web
         run: flutter config --enable-web
 
-      - name: Install dependencies
+      - name: Install Yarn dependencies
+        run: yarn install
+
+      - name: Install Flutter dependencies
         working-directory: mobile
         run: flutter pub get
 
@@ -46,13 +49,8 @@ jobs:
         working-directory: mobile
         run: flutter analyze --no-fatal-infos
 
-      - name: Build Widgetbook for Web
-        working-directory: mobile
-        run: |
-          flutter build web \
-            -t lib/widgetbook/widgetbook.dart \
-            --base-href /worldchef/ \
-            --output build/widgetbook
+      - name: Build Widgetbook for Web (Production)
+        run: yarn widgetbook:build:prod
 
       - name: Setup Pages
         if: github.ref == 'refs/heads/main'

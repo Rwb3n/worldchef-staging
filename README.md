@@ -55,7 +55,10 @@ yarn workspace worldchef-backend dev  # Runs on :3000
 # Run Flutter mobile app
 cd mobile && flutter run  # Runs on available device/simulator
 
-# Run Widgetbook (UI component library)
+# Run Widgetbook (UI component library) - RECOMMENDED
+yarn widgetbook:dev  # Builds and serves at http://localhost:8080/
+
+# Alternative: Run in Flutter directly
 cd mobile && flutter run -t lib/widgetbook/widgetbook.dart
 ```
 

@@ -23,6 +23,10 @@
     "test:workspace": "yarn workspaces run test",
     "test:deno": "deno task test",
     "test:all": "yarn test && yarn test:deno",
-    "render:diagrams": "node scripts/render-diagrams.js"
+    "render:diagrams": "node scripts/render-diagrams.js",
+    "widgetbook:build:local": "cd mobile && flutter build web -t lib/widgetbook/widgetbook.dart --base-href / --output build/widgetbook",
+    "widgetbook:build:prod": "cd mobile && flutter build web -t lib/widgetbook/widgetbook.dart --base-href /worldchef/ --output build/widgetbook",
+    "widgetbook:serve": "cd mobile/build/widgetbook && python -m http.server 8080",
+    "widgetbook:dev": "yarn widgetbook:build:local && yarn widgetbook:serve"
   }
 }
