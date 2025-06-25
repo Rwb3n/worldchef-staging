@@ -22,7 +22,7 @@ class AppTheme {
           ),
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         margin: const EdgeInsets.all(AppSpacing.sm),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
@@ -54,7 +54,7 @@ class AppTheme {
           foregroundColor: darkColorScheme.onPrimary,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         margin: const EdgeInsets.all(AppSpacing.sm),
         color: WorldChefDarkTheme.surface,
         shape: RoundedRectangleBorder(

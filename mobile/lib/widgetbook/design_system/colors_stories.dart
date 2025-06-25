@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:worldchef_mobile/src/core/design_system/colors.dart';
 
 /// Color System Stories - GREEN Step (Implementation Complete)
 ///
@@ -90,8 +89,8 @@ class BrandColorPalette extends StatelessWidget {
           _buildColorCard(
             'Background',
             'The background color for screens.',
-            colorScheme.background,
-            'colorScheme.background',
+            colorScheme.surface,
+            'colorScheme.surface (was .background)',
           ),
 
           const SizedBox(height: 24),
@@ -164,7 +163,7 @@ class BrandColorPalette extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Hex: ${color.value.toRadixString(16).toUpperCase()}',
+                    'Hex: #${color.value.toRadixString(16).toUpperCase()}',
                     style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
                   ),
                   const SizedBox(height: 4),
@@ -363,7 +362,7 @@ class SemanticColorPalette extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Hex: ${color.value.toRadixString(16).toUpperCase()}',
+                    'Hex: #${color.value.toRadixString(16).toUpperCase()}',
                     style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
                   ),
                   const SizedBox(height: 4),
@@ -422,8 +421,8 @@ class ContrastValidationGrid extends StatelessWidget {
           ),
            _buildContrastChecker(
             'On Background',
-            colorScheme.onBackground,
-            colorScheme.background,
+            colorScheme.onSurface,
+            colorScheme.surface,
           ),
            _buildContrastChecker(
             'On Error',
@@ -461,7 +460,7 @@ class ContrastValidationGrid extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: passes ? Colors.green.withOpacity(0.8) : Colors.red.withOpacity(0.8),
+                color: passes ? Colors.green.withAlpha(204) : Colors.red.withAlpha(204),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
-import 'package:worldchef_mobile/src/core/design_system/typography.dart';
 
 /// Typography System Stories - GREEN Step (Implementation Complete)
 ///

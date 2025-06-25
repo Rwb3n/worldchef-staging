@@ -1,3 +1,5 @@
+library dimensions;
+
 /// From: docs/ui_specifications/design_system/design_tokens.md
 
 // Component Dimensions
