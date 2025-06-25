@@ -31,7 +31,16 @@ class WidgetbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Widgetbook(
+    return Widgetbook.material(
+      appBuilder: (context, child) {
+        return MaterialApp(
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          debugShowCheckedModeBanner: false,
+          home: child,
+          useInheritedMediaQuery: true,
+        );
+      },
       directories: [
         // Design System Category
         WidgetbookFolder(

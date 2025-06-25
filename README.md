@@ -142,8 +142,8 @@ flutter analyze && dart format
 - **Distribution**: TestFlight (iOS) + Play Console (Android)
 
 ### **Widgetbook** (GitHub Pages)
-- **UI Components**: Deployed via GitHub Actions
-- **Preview**: Available on PR builds
+- **UI Components**: Deployed via GitHub Actions (CI green)
+- **Preview**: https://rwb3n.github.io/worldchef-staging/
 - **URL**: Generated per deployment
 
 ## 📚 Documentation
