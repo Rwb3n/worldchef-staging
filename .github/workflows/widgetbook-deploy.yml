@@ -89,7 +89,7 @@ jobs:
             - 🧩 Components (Buttons, Inputs, Recipe Cards, Search Bars)  
             - 📱 Screens (Home Feed)
             
-            Once merged, the Widgetbook will be available at: https://${context.repo.owner}.github.io/worldchef/
+            Once merged, the Widgetbook will be available at: https://${context.repo.owner}.github.io/worldchef-staging/
             `;
             
             github.rest.issues.createComment({
