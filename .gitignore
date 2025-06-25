@@ -86,3 +86,17 @@ _legacy/
 # --- LEGACY/ARCHIVE IGNORE ---
 archive/
 worldchef_poc_*/
+
+# --- FLUTTER WEB BUILD ARTIFACTS (accidental root output) ---
+widgetbook/
+canvaskit/
+icons/
+manifest.json
+version.json
+main.dart.js
+flutter_bootstrap.js
+flutter_service_worker.js
+flutter.js
+favicon.png
+.nojekyll
+.last_build_id
