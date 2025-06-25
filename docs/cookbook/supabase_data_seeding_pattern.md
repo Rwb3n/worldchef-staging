@@ -6,6 +6,18 @@ This cookbook entry documents the validated data seeding pattern from WorldChef 
 
 **Validation**: Successfully seeded 20k users, 5k creators, 100k recipes with proper relationships and realistic distribution.
 
+## Staging Variant – Minimal Dataset
+
+While PoC #2 validated full-scale (>100k rows) seeding for load testing, the *staging* environment now uses a **lightweight variant** to keep the database footprint small (<50 MB) and refresh time <2 minutes.  The approach is:
+
+1. **Seed fewer records up-front** – 300 users & 600 recipes instead of tens of thousands.
+2. **Parameterise counts in SQL** – Change `FOR i IN 1..N LOOP` values or convert them to `psql -v users=300` variables so Ops can tune without editing SQL.
+3. **No post-seeding trimming** – We removed the separate "slim-trim" DELETE script to avoid cascading deletes & index bloat.  The initial seed volume is the single source of truth.
+
+Reference implementation lives in `staging/data-generation/01-04_*.sql` and is executed by `staging/automation/nightly-refresh.sh`.
+
+> **Tip:** Keep staging data sets *representative* (diversity, relationships) even at reduced scale—most integration tests depend on data variety, not sheer volume.
+
 ## Core Implementation
 
 ### Smart Completion Seeding

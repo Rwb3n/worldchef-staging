@@ -1,0 +1,133 @@
+1. Project Title
+Cycle 4: Engineering & Mobile Delivery for Closed-Beta
+2. Purpose & Background
+Following successful validation of our architecture (via ADRs and PoCs), Cycle 4 transitions WorldChef from blueprint to beta‑ready product. This cycle will deliver core backend services, mobile experiences, and quality gates to support a controlled closed‑beta launch.
+3. Objectives
+Backend: Implement authentication, recipe management, search, and payment stub APIs.
+Mobile: Ship home feed, recipe detail, and checkout screens with offline support and push notifications.
+Quality: Achieve coverage, performance, and security targets.
+Launch: Reach a go/no‑go decision for closed‑beta by end of Week 6.
+4. Scope
+In-Scope:
+User onboarding (sign-up, login, logout, password reset)
+Recipe feed, detail, creation, and discovery
+Happy‑path Stripe checkout stub
+Push notifications (opt‑in, token registration, deep links)
+OpenAPI spec publication and staging environment
+CI/CD pipelines, test automation, and monitoring setup
+
+
+Out-of-Scope:
+Subscription & recurring payments
+Advanced analytics & feature flags
+Internationalization beyond English
+Refunds/disputes and offline sync beyond basic cache
+
+
+5. Key Deliverables & Milestones
+Milestone
+Due
+Owner
+Charter & Scope Sign-off
+Day 1 (Week 0)
+Executive Sponsor
+Staging Environment Ready
+End Week 0
+DevOps Engineer
+Validation Gate
+End Week 1
+Tech Lead
+Backend MVP Deployed
+End Week 3
+Backend Squad
+Mobile MVP Released
+End Week 4
+Mobile Squad
+Quality Gates Passed
+End Week 5
+QA Lead
+Beta Readiness Decision
+Thursday Week 6
+Ops Lead
+
+6. Success Criteria
+≥80% backend & ≥70% mobile test coverage
+API p95 ≤200 ms; Edge-function p95 ≤300 ms
+<1% 5xx errors in staging
+Platform costs ≤£75/month
+≥4/5 developer ease‑of‑onboard rating
+7. Stakeholders & Roles
+Role
+Name(s)
+Executive Sponsor
+Ruben & Yemi
+Product Owner
+Ruben (AI)
+Tech Lead
+Ruben (AI)
+UX Lead
+Yemi
+QA Lead
+Ruben (AI)
+Marketing Lead
+Yemi
+DevOps Engineer
+Ruben (AI)
+Infrastructure Lead
+Ruben (AI)
+Performance Engineer
+Ruben (AI)
+Finance Analyst
+Ruben & Yemi
+
+8. Assumptions
+Figma designs locked by Day 0
+Staging and CI/CD tools fully operational Week 0
+Key personnel remain allocated across 6 weeks
+MVP scope stable unless formal change request
+Third‑party SLAs (Stripe, Supabase, Search) ≥99.9%
+Budget cap of £75/month holds
+9. Constraints & Dependencies
+Reliance on Stripe test environment and API versioning
+Supabase auth, database, and edge-function services
+Typesense/Meilisearch availability for search
+GitHub Actions runner quotas and licenses for ZAP/k6
+10. High‑Level Risks & Mitigations
+Risk
+Mitigation
+Edge-function warm latency
+Fallback to in‑process worker if >300 ms
+CI runner limits
+Monitor usage; optimize test suites
+Design changes mid-cycle
+Enforce scope-change tickets
+Third‑party downtime
+Alerting and retry policies; SLA escalation
+
+11. Governance & Communication
+Daily: Squad stand-ups (15 min)
+Weekly: Cross-functional status reviews (30 min)
+Biweekly: Leadership sync (60 min)
+Artifacts: Confluence page, shared Slack channel, status dashboard
+12. Approval
+Role
+Name(s)
+Signature/Date
+Executive Sponsor
+Ruben & Yemi
+
+
+Product Owner
+Ruben (AI)
+
+
+Tech Lead
+Ruben (AI)
+
+
+UX Lead
+Yemi
+
+
+
+

@@ -1,0 +1,7 @@
+{
+  "cache_hit_rate_pct": "100.0",
+  "warm_latency_success_pct": "100.0",
+  "warm_p95_latency_ms": "285.8",
+  "test_status": "PASS",
+  "timestamp": "2025-06-24T19:51:59.428Z"
+}

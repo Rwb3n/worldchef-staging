@@ -7,6 +7,10 @@
     "backend",
     "shared"
   ],
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.5.0",
+    "@types/jest": "^30.0.0"
+  },
   "scripts": {
     "dev": "yarn workspace worldchef-backend run dev",
     "start": "yarn workspace worldchef-backend run start",
@@ -14,11 +18,11 @@
     "start:prod": "yarn workspace worldchef-backend run start:prod",
     "postinstall": "yarn workspace worldchef-backend run build",
     "heroku-postbuild": "yarn workspace worldchef-backend run build",
-
     "test": "yarn workspaces run test",
     "test:ci": "yarn workspaces run test --coverage",
     "test:workspace": "yarn workspaces run test",
     "test:deno": "deno task test",
-    "test:all": "yarn test && yarn test:deno"
+    "test:all": "yarn test && yarn test:deno",
+    "render:diagrams": "node scripts/render-diagrams.js"
   }
 }

@@ -1,0 +1,32 @@
+name: Build & Publish Widgetbook Catalogue
+
+on:
+  push:
+    paths:
+      - 'mobile/**'
+      - '.github/workflows/widgetbook_catalogue.yml'
+  workflow_dispatch:
+
+jobs:
+  build-widgetbook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: mobile
+      - name: Build Widgetbook catalogue
+        run: |
+          flutter pub run build_runner build --delete-conflicting-outputs
+          flutter pub run widgetbook_cli:build --output-dir ../../docs/widgetbook
+        working-directory: mobile
+      - name: Commit catalogue
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/widgetbook
+          git commit -m "ci: update widgetbook catalogue" || echo "No changes"
+          git push 

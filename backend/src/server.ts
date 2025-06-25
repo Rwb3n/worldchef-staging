@@ -1,8 +1,22 @@
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '../../../.env.local') });
+// fallback to .env if .env.local does not exist
+import fs from 'fs';
+const envLocalPath = path.resolve(__dirname, '../../../.env.local');
+const envPath = path.resolve(__dirname, '../../../.env');
+if (!fs.existsSync(envLocalPath) && fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+}
 import Fastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
 import supabasePlugin from './plugins/supabase_plugin';
 import authPlugin from './plugins/auth_plugin';
 import securityHeadersPlugin from './plugins/security_headers_plugin';
+import swaggerPlugin from './plugins/swagger_plugin';
 import authRoutes from './routes/v1/auth';
+import statusRoute from './routes/v1/status';
+import paymentsRoutes from './routes/v1/payments/index';
+import notificationRoutes from './routes/v1/notifications/index';
 
 export async function build(opts: FastifyServerOptions = {}): Promise<FastifyInstance> {
   const server = Fastify({
@@ -16,8 +30,14 @@ export async function build(opts: FastifyServerOptions = {}): Promise<FastifyIns
     await server.register(authPlugin);
     await server.register(securityHeadersPlugin);
 
-    // Register routes
+    // Register routes BEFORE swagger plugin for dynamic generation
     await server.register(authRoutes, { prefix: '/v1/auth' });
+    await server.register(statusRoute, { prefix: '/v1' });
+    await server.register(paymentsRoutes, { prefix: '/v1' });
+    await server.register(notificationRoutes, { prefix: '/v1' });
+
+    // Register swagger plugin AFTER routes for dynamic OpenAPI generation
+    await server.register(swaggerPlugin);
   } catch (error) {
     console.error('Error registering plugins or routes:', error);
     throw error;

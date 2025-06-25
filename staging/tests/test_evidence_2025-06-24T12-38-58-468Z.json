@@ -1,0 +1,167 @@
+{
+  "test_run_at": "2025-06-24T12:38:58.468Z",
+  "test_name": "Nutrition Enrichment Smoke Test",
+  "test_payload": {
+    "ingredients": [
+      {
+        "name": "chicken breast",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp"
+      },
+      {
+        "name": "brown rice",
+        "quantity": 1,
+        "unit": "cup"
+      },
+      {
+        "name": "broccoli",
+        "quantity": 150,
+        "unit": "g"
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 1,
+        "unit": "oz"
+      },
+      {
+        "name": "salmon fillet",
+        "quantity": 6,
+        "unit": "oz"
+      },
+      {
+        "name": "sweet potato",
+        "quantity": 1,
+        "unit": "medium"
+      },
+      {
+        "name": "almonds",
+        "quantity": 30,
+        "unit": "g"
+      },
+      {
+        "name": "spinach",
+        "quantity": 2,
+        "unit": "cup"
+      },
+      {
+        "name": "greek yogurt",
+        "quantity": 150,
+        "unit": "g"
+      }
+    ]
+  },
+  "response_status": 200,
+  "response_body": {
+    "items": [
+      {
+        "ingredient_index": 0,
+        "nutrition": {
+          "calories": 263,
+          "protein_g": 14.7,
+          "fat_g": 15.8,
+          "carbs_g": 15
+        }
+      },
+      {
+        "ingredient_index": 1,
+        "nutrition": {
+          "calories": 884,
+          "protein_g": 0,
+          "fat_g": 100,
+          "carbs_g": 0
+        }
+      },
+      {
+        "ingredient_index": 2,
+        "nutrition": {
+          "calories": 365,
+          "protein_g": 7.19,
+          "fat_g": 3.85,
+          "carbs_g": 75.5
+        }
+      },
+      {
+        "ingredient_index": 3,
+        "nutrition": {
+          "calories": 31,
+          "protein_g": 2.57,
+          "fat_g": 0.34,
+          "carbs_g": 6.27
+        }
+      },
+      {
+        "ingredient_index": 4,
+        "nutrition": {
+          "calories": 408,
+          "protein_g": 23.3,
+          "fat_g": 34,
+          "carbs_g": 2.44
+        }
+      },
+      {
+        "ingredient_index": 5,
+        "nutrition": {
+          "calories": 290,
+          "protein_g": 23,
+          "fat_g": 18,
+          "carbs_g": 9
+        }
+      },
+      {
+        "ingredient_index": 6,
+        "nutrition": {
+          "calories": 42,
+          "protein_g": 2.49,
+          "fat_g": 0.51,
+          "carbs_g": 8.82
+        }
+      },
+      {
+        "ingredient_index": 7,
+        "nutrition": {
+          "calories": 0,
+          "protein_g": 26.2,
+          "fat_g": 50.2,
+          "carbs_g": 16.2
+        }
+      },
+      {
+        "ingredient_index": 8,
+        "nutrition": {
+          "calories": 172,
+          "protein_g": 7.89,
+          "fat_g": 13,
+          "carbs_g": 5.9
+        }
+      },
+      {
+        "ingredient_index": 9,
+        "nutrition": {
+          "calories": 82,
+          "protein_g": 7.23,
+          "fat_g": 0.24,
+          "carbs_g": 12.8
+        }
+      }
+    ],
+    "aggregate_totals": {
+      "calories": 2537,
+      "protein_g": 114.57,
+      "fat_g": 235.94,
+      "carbs_g": 151.93
+    },
+    "source": "USDA_FDC",
+    "cache_performance": {
+      "hits": 0,
+      "misses": 10,
+      "hit_rate": "0.0%"
+    },
+    "processing_time_ms": 1260,
+    "generated_at": "2025-06-24T12:38:58.511Z"
+  }
+}

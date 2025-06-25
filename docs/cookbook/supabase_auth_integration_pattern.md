@@ -64,6 +64,88 @@ final userProvider = Provider<User?>((ref) {
 ### 3. Backend: Fastify JWT Validation
 The Fastify backend must validate the JWT from the client using Supabase's public JWKS URL. This avoids sharing secrets.
 
+#### 4. Backend: OpenAPI Schema Integration (Recommended)
+Integrate JSON schemas with your auth routes to enable automatic OpenAPI documentation, request validation, and type safety.
+
+##### JSON Schemas
+```typescript
+// src/schemas/auth_schemas.ts
+export const signupSchema = {
+  summary: 'Create new user account',
+  tags: ['auth'],
+  description: 'Register a new user with email and password',
+  body: {
+    type: 'object',
+    required: ['email', 'password'],
+    properties: {
+      email: { type: 'string', format: 'email' },
+      password: { type: 'string', minLength: 8 }
+    }
+  },
+  response: {
+    201: {
+      description: 'Successful signup',
+      type: 'object',
+      properties: {
+        user: {
+          type: 'object',
+          properties: {
+            id: { type: 'string', format: 'uuid' },
+            email: { type: 'string', format: 'email' }
+          }
+        },
+        access_token: { type: 'string' },
+        refresh_token: { type: 'string' }
+      }
+    },
+    400: { /* ... error schema ... */ }
+  }
+};
+// ... other schemas for login, etc.
+```
+
+##### Auth Routes with Schemas
+```typescript
+// src/routes/v1/auth/index.ts
+import { FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { signupSchema, loginSchema } from '../../schemas/auth_schemas';
+
+async function authRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
+  const supabase: SupabaseClient = fastify.supabase;
+
+  // Apply schema to the route
+  fastify.post('/signup', { schema: signupSchema }, async (request, reply) => {
+    const { email, password } = request.body as any;
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      return reply.status(400).send(error);
+    }
+    return reply.status(201).send(data);
+  });
+
+  fastify.post('/login', async (request, reply) => {
+    const { email, password } = request.body as any;
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      return reply.status(401).send(error);
+    }
+    return reply.send(data);
+  });
+}
+
+// ✅ Direct export for route registration (preserves prefix)
+export default authRoutes;
+```
+
 #### Authentication Plugin (Global Decorator)
 ```typescript
 // src/plugins/auth_plugin.ts
@@ -111,46 +193,6 @@ export default fp(authPlugin, {
 });
 ```
 
-#### Authentication Routes (With Prefix Support)
-```typescript
-// src/routes/v1/auth/index.ts
-import { FastifyInstance, FastifyPluginOptions } from 'fastify';
-import { SupabaseClient } from '@supabase/supabase-js';
-
-async function authRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
-  const supabase: SupabaseClient = fastify.supabase;
-
-  fastify.post('/signup', async (request, reply) => {
-    const { email, password } = request.body as any;
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    if (error) {
-      return reply.status(400).send(error);
-    }
-    return reply.status(201).send(data);
-  });
-
-  fastify.post('/login', async (request, reply) => {
-    const { email, password } = request.body as any;
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      return reply.status(401).send(error);
-    }
-    return reply.send(data);
-  });
-}
-
-// ✅ Direct export for route registration (preserves prefix)
-export default authRoutes;
-```
-
 #### Server Registration
 ```typescript
 // src/server.ts
@@ -166,4 +208,5 @@ await server.register(authRoutes, { prefix: '/v1/auth' });
 ```
 
 **⚠️ Critical:** Never use `fp()` wrapper for route-defining plugins as it bypasses prefix configuration. See the [Fastify Plugin Registration Pattern](fastify_plugin_route_prefix_pattern.md) for details.
-``` 
+
+**🔗 Related Pattern:** For a full implementation, see the [Fastify OpenAPI/Swagger Integration Pattern](./fastify_openapi_swagger_integration_pattern.md).

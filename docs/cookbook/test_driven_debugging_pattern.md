@@ -2,7 +2,8 @@
 
 **Pattern:** Systematic Assumption Testing for Complex Issues
 **Source:** Authentication Route Debugging Session (Cycle 4, Week 1)
-**Validated in:** Cycle 4 - Task t002
+**Enhanced:** Task t003 - Edge Function Cache System Debugging
+**Validated in:** Cycle 4 - Tasks t002, t003
 
 This pattern provides a systematic approach to debugging complex issues by explicitly testing assumptions rather than relying on logs or intuition.
 
@@ -188,4 +189,80 @@ const response = await app.inject({ method: 'POST', url: '/v1/auth/signup' });
 - **Knowledge Sharing**: Documented process helps team members
 - **Confidence**: Evidence-based debugging provides certainty in fixes
 
-This pattern transforms debugging from an art into a systematic engineering practice. 
+## Production Validation: Edge Function Cache Debugging (Task t003)
+
+### Applied Methodology
+
+**Problem**: Nutrition Edge Function had 0% cache hit rate and 497% performance degradation
+
+**Phase 1: Assumption Documentation**
+```typescript
+const assumptions = [
+  "Cache table exists and is accessible",
+  "Environment variables are configured correctly", 
+  "Service role has database permissions",
+  "Cache logic is implemented correctly",
+  "RLS policies don't block cache operations"
+];
+```
+
+**Phase 2: Systematic Testing**
+
+1. **Environment Validation**:
+```bash
+# Test assumption: "Environment variables configured"
+supabase secrets list --project-ref [PROJECT_ID]
+# ✅ All secrets present
+```
+
+2. **Database Connectivity**:
+```sql
+-- Test assumption: "Service role has database permissions"
+SELECT * FROM nutrition_cache LIMIT 1;
+-- ✅ Direct query works fine
+```
+
+3. **Cache Operation Testing**:
+```typescript
+// Test assumption: "Cache logic implemented correctly"
+const { error } = await supabase.from('nutrition_cache').insert(testData);
+// ❌ ERROR: permission denied for schema public (code 42501)
+```
+
+**Phase 3: Root Cause Discovery**
+
+**Key Finding**: Edge Functions have different permission context than direct SQL access
+- Direct database queries worked fine
+- Edge Function cache operations failed with permission denied
+- Service role needed explicit schema permissions
+
+**Phase 4: Evidence-Based Fix**
+
+```sql
+-- Applied fix based on evidence
+GRANT USAGE ON SCHEMA public TO service_role;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO service_role;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO service_role;
+GRANT ALL ON ALL FUNCTIONS IN SCHEMA public TO service_role;
+```
+
+### Results
+
+| Metric | Before Debug | After Fix | Improvement |
+|--------|-------------|-----------|-------------|
+| **Cache Hit Rate** | 0% | 100% | ∞ |
+| **p95 Latency** | 1.79s | 392ms | 78% faster |
+| **Error Rate** | 100% (silent) | 0% | Perfect |
+
+### Key Learnings
+
+1. **Don't trust logs alone**: Cache operations failed silently
+2. **Test at the right level**: Direct SQL vs Edge Function permissions differ
+3. **Create debug utilities**: Isolated debug function was essential
+4. **Validate assumptions systematically**: Each phase revealed new information
+
+This validation demonstrates how systematic assumption testing prevents prolonged debugging sessions and leads to evidence-based solutions.
+
+## Conclusion
+
+This pattern transforms debugging from an art into a systematic engineering practice, validated across multiple complex system debugging scenarios. 

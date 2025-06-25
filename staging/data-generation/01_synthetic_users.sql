@@ -142,7 +142,7 @@ $$ LANGUAGE plpgsql;
 -- SYNTHETIC USER DATA GENERATION
 -- ============================================================================
 
--- Generate 500 synthetic users
+-- Generate 300 synthetic users
 DO $$
 DECLARE
   i INTEGER;
@@ -159,7 +159,7 @@ DECLARE
   created_date TIMESTAMPTZ;
   last_active_date TIMESTAMPTZ;
 BEGIN
-  FOR i IN 1..500 LOOP
+  FOR i IN 1..300 LOOP
     -- Generate basic info
     first_name := random_first_name();
     last_name := random_last_name();
@@ -230,7 +230,7 @@ BEGIN
     END IF;
   END LOOP;
   
-  RAISE NOTICE 'Successfully generated 500 synthetic users!';
+  RAISE NOTICE 'Successfully generated 300 synthetic users!';
 END;
 $$;
 

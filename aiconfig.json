@@ -4,14 +4,15 @@
     "description": "AI-powered recipe discovery and creator platform with mobile-first approach",
     "version": "1.0.0-mvp",
     "phase": "Cycle4-Staging",
-    "last_updated": "2025-06-13",
-    "global_event_counter": 111
+    "last_updated": "2025-06-24",
+    "global_event_counter": 134
   },
   "architecture": {
     "status": "VALIDATED",
-    "validation_date": "2025-01-13",
+    "validation_date": "2025-06-24",
     "confidence_level": "HIGH",
-    "poc_completion": "100%"
+    "poc_completion": "100%",
+    "notes": "All PoCs completed, backend validated, edge functions deployed to production"
   },
   "technology_stack": {
     "mobile": {
@@ -42,18 +43,27 @@
       "persistence": "Hive + shared_preferences",
       "offline_strategy": "Global offline provider with connectivity listener"
     },
-         "backend": {
-       "api_server": "Fastify",
-       "language": "Node.js/TypeScript",
-       "architecture": "Fastify-Only for MVP",
-       "status": "VALIDATED",
-       "validation_source": "PoC #4 Spikes",
-       "key_metrics": {
-         "p95_latency_ms": 0,
-         "boot_time_ms": "<100"
-       },
-       "evolution_path": "Hybrid with Supabase Edge Functions post-MVP"
-     },
+    "backend": {
+      "api_server": "Fastify",
+      "language": "Node.js/TypeScript",
+      "architecture": "Fastify-Only for MVP",
+      "status": "VALIDATED",
+      "validation_source": "PoC #4 Spikes + Production Deployment",
+      "deployment_url": "https://worldchef-staging.onrender.com",
+      "health_endpoint": "/health",
+      "openapi_integration": {
+        "status": "ACTIVE",
+        "swagger_ui_endpoint": "/v1/docs",
+        "openapi_spec_endpoint": "/v1/openapi.json",
+        "generation_method": "Manual route introspection",
+        "coverage": "All registered routes included"
+      },
+      "key_metrics": {
+        "p95_latency_ms": "TBD",
+        "boot_time_ms": "<100"
+      },
+      "evolution_path": "Hybrid with Supabase Edge Functions post-MVP"
+    },
     "database": {
       "primary": "PostgreSQL (via Supabase)",
       "baas_platform": "Supabase",
@@ -68,14 +78,40 @@
         "budget_target": "$100"
       },
       "features": ["RLS policies", "Auth", "Storage", "Edge Functions"],
-      "optimization_needed": "Edge function warm performance (443ms → ≤300ms)"
+      "edge_functions": {
+        "nutrition_enrichment": {
+          "status": "PRODUCTION_READY",
+          "function_id": "f29bcd2c-053c-404c-82a9-22b9a5364386",
+          "version": 15,
+          "url": "https://myqhpmeprpaukgagktbn.supabase.co/functions/v1/nutrition_enrichment",
+          "cache_system": "OPERATIONAL",
+          "performance_metrics": {
+            "cache_hit_rate": "100%",
+            "p95_latency": "286ms",
+            "target_p95": "300ms",
+            "performance_status": "MEETS_TARGET",
+            "improvement_vs_baseline": "45% faster (437ms → 286ms)",
+            "error_rate": "0%",
+            "reliability": "100%",
+            "observability": "Enhanced with request ID tracking and performance metrics"
+          },
+          "validation_date": "2025-06-24",
+          "validation_status": "PERFORMANCE_TARGET_ACHIEVED"
+        },
+        "cleanup_jobs": {
+          "status": "DEPLOYED",
+          "function_id": "981e6dd9-2a12-4d57-b985-198206448534",
+          "version": 1,
+          "implementation": "Skeleton only"
+        }
+      }
     },
     "authentication": {
       "provider": "Supabase Auth",
       "jwt_validation": "Fastify (via JWKS)",
       "authorization": "API-level + Supabase RLS",
       "social_logins": "Supported",
-      "status": "ACCEPTED"
+      "status": "VALIDATED"
     }
   },
   "development_standards": {
@@ -91,6 +127,7 @@
         "ci_pass_rate": "≥98%",
         "test_reliability": "100%"
       },
+      "enforcement": "All integration tests MUST use real external APIs (test mode/keys) and must not mock third-party SDKs or endpoints.",
       "status": "PROVEN"
     },
     "ai_development": {
@@ -131,53 +168,108 @@
         "test/": "Unit, widget, and integration tests"
       }
     },
+    "backend": {
+      "path": "backend/",
+      "type": "Fastify API server",
+      "status": "PRODUCTION_DEPLOYED",
+      "deployment_url": "https://worldchef-staging.onrender.com",
+      "key_directories": {
+        "src/routes/": "API endpoints and route handlers",
+        "src/middleware/": "Authentication, validation, error handling",
+        "src/services/": "Business logic and external API integrations",
+        "src/models/": "Database models and schemas",
+        "tests/": "Unit, integration, and load tests"
+      }
+    },
     "documentation": {
       "adrs": "docs/adr/",
       "pocs": "docs/poc*/",
       "architecture": "docs/source/",
       "cookbook": "docs/cookbook/",
-    "cookbook_patterns": [
-      {
-        "file": "docs/cookbook/flutter_server_state_provider.md",
-        "description": "Riverpod AsyncNotifier patterns for server state with cache optimization"
-      },
-      {
-        "file": "docs/cookbook/flutter_optimistic_mutation.md", 
-        "description": "Optimistic UI updates with rollback logic for Flutter apps"
-      },
-      {
-        "file": "docs/cookbook/backend_external_api_cache.md",
-        "description": "Read-through cache pattern for external APIs using Supabase Postgres"
-      },
-      {
-        "file": "docs/cookbook/flutter_api_service_pattern.md",
-        "description": "HTTP API service with error handling and retry logic"
-      },
-      {
-        "file": "docs/cookbook/flutter_json_model_pattern.md",
-        "description": "Type-safe JSON models with code generation"
-      },
-      {
-        "file": "docs/cookbook/mock_api_testing_pattern.md",
-        "description": "Express mock server with realistic latency simulation"
-      },
-      {
-        "file": "docs/cookbook/flutter_persistence_pattern.md",
-        "description": "SharedPreferences wrapper with type safety and error handling"
-      },
-      {
-        "file": "docs/cookbook/supabase_performance_testing_pattern.md",
-        "description": "k6-based performance testing with JWT pools and RLS validation"
-      },
-      {
-        "file": "docs/cookbook/supabase_rls_security_pattern.md",
-        "description": "Row Level Security policies with comprehensive access control"
-      },
-      {
-        "file": "docs/cookbook/supabase_data_seeding_pattern.md",
-        "description": "Realistic test data generation with relationship integrity"
-      }
-    ]
+      "cycle4_source_of_truth": "docs/cycle4/CYCLE4_CLOSED_BETA_READINESS_SOURCE_OF_TRUTH.md",
+      "cycle4_mobile_plan": "plans/plan_cycle4_mobile_mvp.txt",
+      "cookbook_patterns": [
+        {
+          "file": "docs/cookbook/flutter_server_state_provider.md",
+          "description": "Riverpod AsyncNotifier patterns for server state with cache optimization"
+        },
+        {
+          "file": "docs/cookbook/flutter_optimistic_mutation.md", 
+          "description": "Optimistic UI updates with rollback logic for Flutter apps"
+        },
+        {
+          "file": "docs/cookbook/backend_external_api_cache.md",
+          "description": "Read-through cache pattern for external APIs using Supabase Postgres"
+        },
+        {
+          "file": "docs/cookbook/flutter_api_service_pattern.md",
+          "description": "HTTP API service with error handling and retry logic"
+        },
+        {
+          "file": "docs/cookbook/flutter_json_model_pattern.md",
+          "description": "Type-safe JSON models with code generation"
+        },
+        {
+          "file": "docs/cookbook/mock_api_testing_pattern.md",
+          "description": "Express mock server with realistic latency simulation"
+        },
+        {
+          "file": "docs/cookbook/flutter_persistence_pattern.md",
+          "description": "SharedPreferences wrapper with type safety and error handling"
+        },
+        {
+          "file": "docs/cookbook/supabase_performance_testing_pattern.md",
+          "description": "k6-based performance testing with JWT pools and RLS validation"
+        },
+        {
+          "file": "docs/cookbook/supabase_rls_security_pattern.md",
+          "description": "Row Level Security policies with comprehensive access control"
+        },
+        {
+          "file": "docs/cookbook/supabase_data_seeding_pattern.md",
+          "description": "Realistic test data generation with relationship integrity"
+        },
+        {
+          "file": "docs/cookbook/supabase_edge_function_debugging_pattern.md",
+          "description": "4-phase debugging methodology for Edge Function issues"
+        },
+        {
+          "file": "docs/cookbook/supabase_edge_function_external_api_integration_pattern.md",
+          "description": "Complete USDA API integration pattern with retry logic and error handling"
+        },
+        {
+          "file": "docs/cookbook/supabase_edge_function_cache_debugging_pattern.md",
+          "description": "Systematic debugging methodology for Edge Function cache system failures"
+        },
+        {
+          "file": "docs/cookbook/fastify_environment_loading_monorepo_pattern.md",
+          "description": "TDD-driven environment variable loading for Fastify in Yarn workspace monorepo"
+        },
+        {
+          "file": "docs/cookbook/fastify_schema_debugging_pattern.md",
+          "description": "Systematic debugging pattern for Fastify schema validation issues and hooks errors"
+        },
+        {
+          "file": "docs/cookbook/fcm_push_notification_pattern.md",
+          "description": "Real FCM integration with Firebase Admin SDK, comprehensive error handling, and testing standards compliance"
+        },
+        {
+          "file": "docs/cookbook/fastify_manual_openapi_generation_pattern.md",
+          "description": "Manual OpenAPI spec generation from Fastify route introspection when automatic generation fails with sub-plugins"
+        },
+        {
+          "file": "docs/cookbook/tdd_gap_closure_methodology_pattern.md",
+          "description": "Systematic gap identification and TDD-driven closure methodology with Red-Green-Refactor enforcement"
+        },
+        {
+          "file": "docs/cookbook/supabase_edge_function_performance_optimization_pattern.md",
+          "description": "Cache optimization and batch querying for Supabase Edge Functions achieving 45% performance improvement"
+        },
+        {
+          "file": "docs/cookbook/flutter_widgetbook_deployment_pattern.md",
+          "description": "CI/CD for Flutter Widgetbook with Hybrid Hosting to enable visual design system testing and validation"
+        }
+      ]
     },
     "scripts": {
       "path": "scripts/",
@@ -186,11 +278,22 @@
     "infra": {
       "staging_build_root": {
         "path": "staging/",
-        "purpose": "Render build context – Dockerfile, automation scripts, synthetic data"
+        "purpose": "Render build context – Dockerfile, automation scripts, synthetic data, performance testing"
       },
       "supabase_functions": {
         "path": "supabase/functions/",
-        "purpose": "Edge functions deployed to Supabase (nutrition_enrichment, cleanup_jobs)"
+        "purpose": "PRODUCTION Edge functions deployed to Supabase",
+        "status": "ACTIVE",
+        "functions": {
+          "nutrition_enrichment": "Read-through cache nutrition API with USDA integration",
+          "cleanup_jobs": "Scheduled maintenance tasks (skeleton)"
+        }
+      },
+      "legacy": {
+        "path": "_legacy/",
+        "purpose": "DEPRECATED - Legacy code kept for reference only",
+        "status": "DO_NOT_USE",
+        "note": "All production code has been moved to proper directories"
       },
       "k8s_legacy": {
         "path": "k8s/",
@@ -250,36 +353,86 @@
     "push_notifications": {
       "pattern": "Backend-driven Push via Firebase Admin SDK",
       "source": "docs/cookbook/fcm_push_notification_pattern.md"
+    },
+    "edge_function_debugging": {
+      "pattern": "4-phase debugging methodology for Edge Function issues",
+      "source": "docs/cookbook/supabase_edge_function_debugging_pattern.md"
+    },
+    "external_api_integration": {
+      "pattern": "USDA API integration with retry logic and error handling",
+      "source": "docs/cookbook/supabase_edge_function_external_api_integration_pattern.md"
+    },
+    "environment_loading": {
+      "pattern": "Dotenv integration for Fastify in Yarn workspace monorepo",
+      "source": "docs/cookbook/fastify_environment_loading_monorepo_pattern.md"
+    },
+    "fastify_debugging": {
+      "pattern": "Systematic debugging for Fastify schema validation and hooks errors",
+      "source": "docs/cookbook/fastify_schema_debugging_pattern.md"
+    },
+    "fcm_push_notifications": {
+      "pattern": "Real FCM integration with Firebase Admin SDK and comprehensive error handling",
+      "source": "docs/cookbook/fcm_push_notification_pattern.md"
+    },
+    "swagger_openapi_integration": {
+      "pattern": "Manual OpenAPI spec generation from Fastify route introspection",
+      "source": "backend/src/plugins/swagger_plugin.ts",
+      "endpoints": ["/v1/docs", "/v1/openapi.json"],
+      "health_endpoint": "/health",
+      "coverage": "All registered routes with proper HTTP methods"
+    },
+    "tdd_gap_closure_methodology": {
+      "pattern": "Systematic gap identification and TDD-driven closure methodology",
+      "source": "docs/cookbook/tdd_gap_closure_methodology_pattern.md",
+      "validation": "6-task plan with 100% success rate following Red-Green-Refactor cycles",
+      "use_case": "When discrepancies exist between documentation, implementation, and performance targets"
+    },
+    "edge_function_performance_optimization": {
+      "pattern": "Cache optimization and batch querying for Supabase Edge Functions",
+      "source": "docs/cookbook/supabase_edge_function_performance_optimization_pattern.md",
+      "validation": "45% performance improvement (437ms → 286ms p95 latency)",
+      "achievements": ["100% cache hit rate", "Target performance achieved", "Zero error rate"]
     }
   },
-     "feature_integrations": {
-     "payments": {
-       "provider": "Stripe Hosted Checkout",
-       "features": ["SCA compliance", "Tax handling", "Webhook processing"],
-       "status": "VALIDATED",
-       "validation_source": "PoC #4 Spikes",
-       "key_metrics": {
-         "p95_latency_ms": 442,
-         "webhook_verify_p95_ms": "N/A"
-       }
-     },
-     "search": {
-       "implementation": "PostgreSQL FTS + pg_trgm + unaccent",
-       "features": ["Full-text search", "Partial matching", "Result highlighting"],
-       "status": "ACCEPTED"
-     },
-     "notifications": {
-       "provider": "Firebase Cloud Messaging (FCM)",
-       "client": "FlutterFire",
-       "server": "firebase-admin SDK",
-       "status": "VALIDATED",
-       "validation_source": "PoC #4 Spikes",
-       "key_metrics": {
-         "avg_latency_ms": 181,
-         "first_request_latency_ms": 857
-       }
-     }
-   },
+  "feature_integrations": {
+    "payments": {
+      "provider": "Stripe Hosted Checkout",
+      "features": ["SCA compliance", "Tax handling", "Webhook processing"],
+      "status": "VALIDATED",
+      "validation_source": "PoC #4 Spikes",
+      "key_metrics": {
+        "p95_latency_ms": 442,
+        "webhook_verify_p95_ms": "N/A"
+      }
+    },
+    "search": {
+      "implementation": "PostgreSQL FTS + pg_trgm + unaccent",
+      "features": ["Full-text search", "Partial matching", "Result highlighting"],
+      "status": "ACCEPTED"
+    },
+    "notifications": {
+      "provider": "Firebase Cloud Messaging (FCM)",
+      "client": "FlutterFire",
+      "server": "firebase-admin SDK",
+      "status": "VALIDATED",
+      "validation_source": "PoC #4 Spikes",
+      "key_metrics": {
+        "avg_latency_ms": 181,
+        "first_request_latency_ms": 857
+      }
+    },
+    "nutrition_enrichment": {
+      "provider": "USDA FoodData Central API",
+      "implementation": "Supabase Edge Function with read-through cache",
+      "status": "DEPLOYED_WITH_ISSUES",
+      "function_id": "f29bcd2c-053c-404c-82a9-22b9a5364386",
+      "issues": {
+        "cache_system": "Non-functional, 0% hit rate",
+        "performance": "p95 1.79s vs 300ms target (497% over)"
+      },
+      "next_actions": ["Debug cache writes", "Validate database permissions", "Re-test performance"]
+    }
+  },
   "data_modeling": {
     "approach": "Relational with selective JSONB",
     "core_entities": ["Users", "Creators", "Recipes", "Interactions"],
@@ -293,7 +446,11 @@
     "mobile_build": "EAS Build",
     "deployment_stages": ["PR validation", "Staging", "Production with manual gate"],
     "database_migrations": "Automated",
-    "status": "ACCEPTED"
+    "status": "VALIDATED",
+    "current_deployments": {
+      "backend": "https://worldchef-staging.onrender.com",
+      "edge_functions": "https://myqhpmeprpaukgagktbn.supabase.co/functions/v1/"
+    }
   },
   "cost_projections": {
     "validated": true,
@@ -311,55 +468,73 @@
     "compliance": ["OWASP validated", "GDPR procedures"],
     "status": "VALIDATED"
   },
-
-  
   "risk_assessment": {
     "low_risk": [
       "Technology stack performance",
       "Cost projections",
       "Development velocity",
-      "Security model"
+      "Security model",
+      "Edge function performance (resolved)"
+    ],
+    "current_issues": [
+      {
+        "issue": "Swagger/OpenAPI integration test alignment",
+        "impact": "Test expects /v1/status/health but production uses /health",
+        "priority": "P2",
+        "status": "IN_PROGRESS",
+        "next_actions": ["Update test to use /health endpoint", "Complete task t005"]
+      }
+    ],
+    "resolved_issues": [
+      {
+        "issue": "Edge function cache system failure",
+        "impact": "497% performance degradation vs target",
+        "priority": "P0",
+        "status": "RESOLVED",
+        "resolution_date": "2025-06-24",
+        "final_performance": "286ms p95 (meets 300ms target)"
+      }
     ],
     "managed_risks": [
-      {
-        "risk": "Edge function performance gap",
-        "mitigation": "3-week optimization plan",
-        "timeline": "Weeks 1-3"
-      },
       {
         "risk": "Vendor lock-in (Supabase)",
         "mitigation": "Migration effort <1 week",
         "assessment": "Acceptable risk level"
+      },
+      {
+        "risk": "UI specification delays",
+        "mitigation": "Implemented Widgetbook CI/CD pipeline for rapid visual validation and stakeholder feedback, reducing rework risk.",
+        "assessment": "Mitigated"
       }
     ]
   },
-     "validation_evidence": {
-     "poc_1": {
-       "location": "docs/poc1_mobile_stack_selection/",
-       "evidence": "Comprehensive benchmarking results",
-       "status": "COMPLETED"
-     },
-     "poc_2": {
-       "location": "docs/poc2_supabase_validation/",
-       "evidence": "Performance benchmarks + cost modeling",
-       "status": "COMPLETED"
-     },
-     "poc_3": {
-       "location": "docs/poc3_client_ui_state_integration/",
-       "evidence": "Tamper-evident logs with SHA-256 verification",
-       "status": "COMPLETED"
-     },
-     "poc_4": {
-       "location": "docs/poc4_backend_integration_validation/",
-       "evidence": "Backend service integration validation",
-       "status": "COMPLETED",
-       "spikes": {
-         "fastify": "Performance under load + schema validation",
-         "stripe": "Checkout flow + webhook security",
-         "fcm": "Push notification delivery reliability"
-       }
-     }
-   },
+  "validation_evidence": {
+    "poc_1": {
+      "location": "docs/poc1_mobile_stack_selection/",
+      "evidence": "Comprehensive benchmarking results",
+      "status": "COMPLETED"
+    },
+    "poc_2": {
+      "location": "docs/poc2_supabase_validation/",
+      "evidence": "Performance benchmarks + cost modeling",
+      "status": "COMPLETED"
+    },
+    "poc_3": {
+      "location": "docs/poc3_client_ui_state_integration/",
+      "evidence": "Tamper-evident logs with SHA-256 verification",
+      "status": "COMPLETED"
+    },
+    "poc_4": {
+      "location": "docs/poc4_backend_integration_validation/",
+      "evidence": "Backend service integration validation",
+      "status": "COMPLETED",
+      "spikes": {
+        "fastify": "Performance under load + schema validation",
+        "stripe": "Checkout flow + webhook security",
+        "fcm": "Push notification delivery reliability"
+      }
+    }
+  },
   "ai_prompting_guidelines": {
     "preferred_patterns": [
       "Use Riverpod AsyncNotifierProvider for server state",
@@ -380,6 +555,12 @@
       "Use family providers for parameterized state",
       "Implement proper cache invalidation",
       "Optimize for <50ms UI updates"
+    ],
+    "critical_rules": [
+      "NEVER work in _legacy/ directory - it's deprecated",
+      "ALWAYS use supabase/functions/ for Edge Functions",
+      "ALWAYS use backend/ for Fastify API code",
+      "ALWAYS check aiconfig.json for current deployment status"
     ]
   },
   "quality_gates": {
@@ -417,7 +598,7 @@
       "STRIPE_SECRET_KEY": "Stripe secret key for checkout session creation and API calls (sandbox for PoC)",
       "STRIPE_WEBHOOK_SECRET": "Stripe webhook signing secret used to verify webhook signatures",
       "FCM_SERVER_KEY": "Firebase Cloud Messaging server key for sending push notifications",
-      "USDA_API_KEY": "USDA FoodData Central key for nutrition enrichment edge function"
+      "USDA_API_KEY": "USDA FoodData Central key (CONFIGURED in Supabase secrets & .env.local)"
     },
     "secret_management": "Stored as GitHub Actions encrypted secrets and local .env; never committed to VCS"
   }

@@ -1,0 +1,143 @@
+name: Build and Deploy Widgetbook
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'mobile/lib/widgetbook/**'
+      - 'mobile/pubspec.yaml'
+      - '.github/workflows/widgetbook-deploy.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'mobile/lib/widgetbook/**'
+      - 'mobile/pubspec.yaml'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.6'
+          channel: 'stable'
+          cache: true
+
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+
+      - name: Install dependencies
+        working-directory: mobile
+        run: flutter pub get
+
+      - name: Analyze code
+        working-directory: mobile
+        run: flutter analyze
+
+      - name: Build Widgetbook for Web
+        working-directory: mobile
+        run: |
+          flutter build web \
+            -t lib/widgetbook/widgetbook.dart \
+            --web-renderer html \
+            --base-href /worldchef/ \
+            --output build/widgetbook
+
+      - name: Setup Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: mobile/build/widgetbook
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Comment PR with preview link
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = `
+            ## 📱 Widgetbook Preview
+            
+            Your Widgetbook changes have been built successfully!
+            
+            **Note**: This is a build-only check. For live preview, merge to main branch to deploy to GitHub Pages.
+            
+            ### Build Details
+            - **Commit**: ${context.sha.substring(0, 7)}
+            - **Branch**: ${context.payload.pull_request.head.ref}
+            - **Status**: ✅ Build successful
+            
+            ### What's included:
+            - 🎨 Design System (Colors, Typography, Spacing, Animations)
+            - 🧩 Components (Buttons, Inputs, Recipe Cards, Search Bars)  
+            - 📱 Screens (Home Feed)
+            
+            Once merged, the Widgetbook will be available at: https://${context.repo.owner}.github.io/worldchef/
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  # Alternative deployment options (commented out - choose one)
+  
+  # Option A: Deploy to Vercel
+  # deploy-vercel:
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main'
+  #   needs: build-and-deploy
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         flutter-version: '3.19.6'
+  #     - run: flutter config --enable-web
+  #     - run: cd mobile && flutter pub get
+  #     - run: cd mobile && flutter build web -t lib/widgetbook/widgetbook.dart
+  #     - uses: amondnet/vercel-action@v25
+  #       with:
+  #         vercel-token: ${{ secrets.VERCEL_TOKEN }}
+  #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+  #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+  #         working-directory: mobile/build/web
+
+  # Option B: Deploy to Firebase Hosting  
+  # deploy-firebase:
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main'
+  #   needs: build-and-deploy
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         flutter-version: '3.19.6'
+  #     - run: flutter config --enable-web
+  #     - run: cd mobile && flutter pub get
+  #     - run: cd mobile && flutter build web -t lib/widgetbook/widgetbook.dart
+  #     - uses: FirebaseExtended/action-hosting-deploy@v0
+  #       with:
+  #         repoToken: '${{ secrets.GITHUB_TOKEN }}'
+  #         firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WORLDCHEF }}'
+  #         projectId: worldchef-widgetbook
+  #         channelId: live 

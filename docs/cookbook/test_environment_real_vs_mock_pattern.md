@@ -26,6 +26,58 @@ Test environments often use mocked services to avoid external dependencies, but 
 - ✅ **Error scenario testing** - Controlled failure injection
 - ✅ **Speed optimization** - Faster test execution for large suites
 
+### Pattern 3: Real Internal Plugin Ecosystem Testing (Recommended for Integration Tests)
+While the patterns below focus on external services (like Supabase or Stripe), it is critical to also test the application's **internal services** (its own plugins) working together. Mocks cannot validate the complex interactions, dependencies, and loading order of your internal Fastify plugin ecosystem.
+
+**The Problem:**
+Testing plugins in isolation can miss:
+- **Dependency Failures:** `plugin_b` fails because `plugin_a` didn't load or decorate correctly.
+- **Decorator Conflicts:** Two plugins attempt to decorate the same property on the Fastify instance.
+- **Incorrect Loading Order:** A security plugin loads after a route, leaving it unprotected.
+- **Schema Conflicts:** Incompatible schemas used across different plugins.
+
+**The Solution:**
+For all integration tests, build and test against the **real, complete Fastify server instance**. This is the most effective way to validate your application's internal architecture.
+
+```typescript
+// __tests__/integration/some_feature.test.ts
+import { FastifyInstance } from 'fastify';
+import { describe, it, expect, beforeAll, afterAll } from '@jest/globals';
+import { build } from '../../src/server'; // Import the main server builder
+
+describe('Feature Integration with Real Plugin Ecosystem', () => {
+  let app: FastifyInstance;
+
+  beforeAll(async () => {
+    // Build the complete, real server instance once for all tests in the file
+    app = await build({ logger: false });
+    await app.ready();
+  });
+
+  afterAll(async () => {
+    await app.close();
+  });
+
+  it('should have critical plugins like Supabase and Auth available', () => {
+    expect(app.supabase).toBeDefined();
+    expect(typeof app.authenticate).toBe('function');
+  });
+
+  it('should have security headers applied by the security plugin', async () => {
+    const response = await app.inject({ method: 'GET', url: '/health' });
+    expect(response.headers['x-content-type-options']).toBe('nosniff');
+  });
+});
+```
+
+**What this approach validates:**
+- ✅ Correct plugin **loading order** and dependency resolution.
+- ✅ Successful application of all **decorators** (`app.supabase`, `app.authenticate`).
+- ✅ Integration between different internal parts (e.g., routes using auth decorators).
+- ✅ Application of global plugins (like security headers) to all routes.
+
+**🔗 Related Pattern:** For a full implementation of this testing strategy, see the **[Fastify Comprehensive Testing Pattern](./fastify_comprehensive_testing_pattern.md)**.
+
 ## Implementation Patterns
 
 ### Pattern 1: Real Service Integration

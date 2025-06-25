@@ -11,7 +11,8 @@ module.exports = {
         target: 'es2018',
         esModuleInterop: true,
         skipLibCheck: true,
-        types: ['jest', 'node']
+        types: ['jest', 'node'],
+        typeRoots: ['../node_modules/@types', './node_modules/@types']
       }
     }]
   },
