@@ -1,0 +1,18 @@
+name: WorldChef Mobile Components
+description: Component library and design system for WorldChef mobile app
+
+# Project metadata
+project: WorldChef
+version: 1.0.0-mvp
+maintainer: WorldChef Team
+
+# Component categories
+categories:
+  - Design System (Colors, Typography, Spacing, Animations)
+  - Components (Buttons, Inputs, Recipe Cards, Search Bars)
+  - Screens (Home Feed, Recipe Detail)
+
+# Build information
+build_target: lib/widgetbook/widgetbook.dart
+output_format: Flutter Web
+deployment: GitHub Pages + docs/widgetbook/ 

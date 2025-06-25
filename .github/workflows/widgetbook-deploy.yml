@@ -49,7 +49,6 @@ jobs:
         run: |
           flutter build web \
             -t lib/widgetbook/widgetbook.dart \
-            --web-renderer html \
             --base-href /worldchef/ \
             --output build/widgetbook
 
