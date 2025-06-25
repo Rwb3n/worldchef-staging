@@ -198,6 +198,32 @@ color.withValues(alpha: 0.5)  # ✅ New API
 import 'widgetbook_stories.dart' if (dart.library.js) 'widgetbook_web.dart';
 ```
 
++### 8.4. **Issue**: CI build fails with compilation errors despite analyzer passing
++**Symptoms**: Local `flutter analyze` and `flutter build web` succeed, but CI fails with compilation errors like:
++```
++Error: The getter 'globalPosition' isn't defined for the class 'DragEndDetails'
++Target dart2js failed: ProcessException: Process exited abnormally with exit code 1
++```
++
++**Root Cause**: Version mismatch between local and CI environments due to loose version constraints.
++
++**Solution**: Tighten version constraints to ensure consistent dependency resolution
++```yaml
++# BEFORE (problematic)
++dependencies:
++  widgetbook: ^3.8.0  # ❌ Too loose - allows incompatible versions
++
++# AFTER (fixed)
++dependencies:
++  widgetbook: ^3.14.0  # ✅ Forces compatible minimum version
++```
++
++**Diagnosis Steps**:
++1. Check local version: `flutter pub deps | grep package_name`
++2. Compare with CI error logs to identify version differences
++3. Update constraint to match working local version
++4. Test with fresh `flutter pub get` to verify resolution
++
 ## 9. **Validation Results**
 
 ### 9.1. **WorldChef Project Metrics**
@@ -206,7 +232,13 @@ import 'widgetbook_stories.dart' if (dart.library.js) 'widgetbook_web.dart';
 - **CI Impact**: ✅ `flutter analyze` step now passes
 - **Build Time**: No significant impact on build performance
 
-### 9.2. **Automated Fixes Applied**
+### 9.2. **Version Compatibility Fix (2025-06-25)**
+- **Issue**: CI `flutter build web` failing with `accessibility_tools globalPosition` error
+- **Root Cause**: `widgetbook: ^3.8.0` allowed CI to resolve to incompatible version
+- **Solution**: Updated to `widgetbook: ^3.14.0` ensuring compatible `accessibility_tools 2.6.0+`
+- **Result**: ✅ CI build now succeeds, local/CI version consistency achieved
+
+### 9.3. **Automated Fixes Applied**
 ```bash
 # dart fix --apply results
 lib\main.dart
@@ -229,12 +261,18 @@ lib\widgetbook\components\input_stories.dart
 - ✅ Use `flutter pub deps` to understand dependency tree
 - ✅ Regularly audit with `flutter pub outdated`
 
-### 10.2. **CI/CD Standards**
+### 10.2. **Version Management**
+- ✅ Pin to specific minimum versions that work (avoid overly loose constraints)
+- ✅ Test with fresh `flutter pub get` to verify CI-like dependency resolution
+- ✅ Monitor for transitive dependency conflicts in CI logs
+- ✅ Update version constraints when upgrading Flutter SDK
+
+### 10.3. **CI/CD Standards**
 - ✅ Enforce `flutter analyze --fatal-infos` in CI
 - ✅ Include `dart fix --dry-run` in pre-commit checks
 - ✅ Monitor analyzer performance in CI metrics
 
-### 10.3. **Development Workflow**
+### 10.4. **Development Workflow**
 - ✅ Run `flutter analyze` before committing
 - ✅ Apply `dart fix --apply` for automatic improvements
 - ✅ Address deprecation warnings proactively
