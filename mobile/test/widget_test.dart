@@ -5,6 +5,9 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+// hybrid_ai_os_annotation: This placeholder smoke test intentionally references `MyApp` from `package:worldchef_mobile/main.dart` before it exists, guaranteeing a failing state for the TDD Red phase.
+// Feel free to update expectations once the real root widget replaces the counter example.
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
