@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:worldchef_mobile/src/core/design_system/animations.dart';
+import 'package:worldchef_mobile/src/core/design_system/spacing.dart';
 
-/// Animation System Stories - RED Step (Will show placeholders/errors)
-/// 
-/// These stories demonstrate the WorldChef animation system and will fail
-/// until design system implementation is completed in task t002.
+/// Animation System Stories - GREEN Step (Implementation Complete)
+///
+/// These stories demonstrate the WorldChef animation system using the
+/// implemented design tokens from task t002.
 List<WidgetbookComponent> buildAnimationStories() {
   return [
     WidgetbookComponent(
@@ -59,64 +61,66 @@ class AnimationTimingDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(AppSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'WorldChef Animation Timing Standards',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          Text(
+            'WorldChef Animation Durations',
+            style: textTheme.headlineLarge,
           ),
-          const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will be replaced with WorldChefAnimations in t002
+          const SizedBox(height: AppSpacing.md),
+
+          // GREEN STEP: Using actual AppAnimations constants
           _buildTimingCard(
-            'Fast (100ms)',
+            'Fast',
             'Micro interactions, hover states',
-            'WorldChefAnimations.fast (NOT IMPLEMENTED)',
-            100,
+            'AppAnimations.fast',
+            AppAnimations.fast,
             Colors.green.shade200,
           ),
-          
           _buildTimingCard(
-            'Standard (200ms)',
+            'Medium',
             'Button presses, small UI changes',
-            'WorldChefAnimations.standard (NOT IMPLEMENTED)',
-            200,
+            'AppAnimations.medium',
+            AppAnimations.medium,
             Colors.blue.shade200,
           ),
-          
           _buildTimingCard(
-            'Slow (300ms)',
+            'Slow',
             'Page transitions, modal appearances',
-            'WorldChefAnimations.slow (NOT IMPLEMENTED)',
-            300,
+            'AppAnimations.slow',
+            AppAnimations.slow,
             Colors.orange.shade200,
           ),
-          
-          const SizedBox(height: 24),
-          const Card(
-            color: Colors.orange,
+
+          const SizedBox(height: AppSpacing.lg),
+           Card(
+            color: colorScheme.primaryContainer,
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(AppSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.warning, color: Colors.white),
-                  SizedBox(height: 8),
+                  Icon(Icons.check_circle, color: colorScheme.onPrimaryContainer),
+                  const SizedBox(height: AppSpacing.sm),
                   Text(
-                    'RED STEP: Animation System Not Implemented',
-                    style: TextStyle(
-                      color: Colors.white,
+                    'GREEN STEP: Animation System Implemented',
+                     style: textTheme.titleMedium?.copyWith(
+                      color: colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: AppSpacing.xs),
                   Text(
-                    'Using hardcoded durations. WorldChefAnimations constants '
-                    'will be implemented in task t002.',
-                    style: TextStyle(color: Colors.white),
+                    'Using AppAnimations constants from the design system.',
+                     style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onPrimaryContainer,
+                    ),
                   ),
                 ],
               ),
@@ -127,8 +131,8 @@ class AnimationTimingDemo extends StatelessWidget {
     );
   }
 
-  Widget _buildTimingCard(String name, String usage, String implementation, 
-                         int durationMs, Color color) {
+  Widget _buildTimingCard(String name, String usage, String implementation,
+                         Duration duration, Color color) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -161,7 +165,7 @@ class AnimationTimingDemo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${durationMs}ms',
+                  '${duration.inMilliseconds}ms',
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -173,7 +177,7 @@ class AnimationTimingDemo extends StatelessWidget {
             
             // Visual timing representation
             AnimatedTimingBar(
-              duration: Duration(milliseconds: durationMs),
+              duration: duration,
               color: color,
             ),
             
@@ -182,7 +186,7 @@ class AnimationTimingDemo extends StatelessWidget {
               implementation,
               style: TextStyle(
                 fontSize: 12,
-                color: Colors.red.shade700,
+                color: Colors.green.shade700,
                 fontStyle: FontStyle.italic,
               ),
             ),

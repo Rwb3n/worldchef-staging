@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:worldchef_mobile/src/core/design_system/app_theme.dart';
 
 // Design System Stories
 import 'design_system/colors_stories.dart';
@@ -93,11 +94,11 @@ class WidgetbookApp extends StatelessWidget {
           themes: [
             WidgetbookTheme(
               name: 'Light',
-              data: ThemeData.light(useMaterial3: true),
+              data: AppTheme.lightTheme,
             ),
             WidgetbookTheme(
               name: 'Dark', 
-              data: ThemeData.dark(useMaterial3: true),
+              data: AppTheme.darkTheme,
             ),
           ],
         ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:worldchef_mobile/src/core/design_system/typography.dart';
 
-/// Typography System Stories - RED Step (Will show placeholders/errors)
-/// 
-/// These stories demonstrate the WorldChef typography system and will fail
-/// until design system implementation is completed in task t002.
+/// Typography System Stories - GREEN Step (Implementation Complete)
+///
+/// These stories demonstrate the WorldChef typography system using the
+/// implemented design tokens from task t002.
 List<WidgetbookComponent> buildTypographyStories() {
   return [
     WidgetbookComponent(
@@ -55,131 +56,73 @@ class NunitoTypographyScale extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Nunito UI Typography Scale',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          Text(
+            'Material Design 3 Type Scale',
+            style: textTheme.headlineLarge,
           ),
           const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will be replaced with WorldChefTextStyles in t002
+
+          // GREEN STEP: Using actual TextTheme roles
           _buildTypographyCard(
             'Display Large',
-            'Hero text, main headlines',
-            'WorldChefTextStyles.displayLarge (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.w700,
-              height: 1.2,
-              // fontFamily: 'Nunito', // Will be added in t002
-            ),
-            'The quick brown fox jumps over the lazy dog',
+            'Used for short, important text or numerals.',
+            'textTheme.displayLarge',
+            textTheme.displayLarge ?? const TextStyle(),
+            'Display Large',
           ),
-          
-          _buildTypographyCard(
-            'Display Small',
-            'Section headers, card titles',
-            'WorldChefTextStyles.displaySmall (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-              height: 1.3,
-              // fontFamily: 'Nunito',
-            ),
-            'The quick brown fox jumps over the lazy dog',
-          ),
-          
           _buildTypographyCard(
             'Headline Large',
-            'Page titles, dialog headers',
-            'WorldChefTextStyles.headlineLarge (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              height: 1.4,
-              // fontFamily: 'Nunito',
-            ),
-            'The quick brown fox jumps over the lazy dog',
+            'Best for short, high-emphasis text.',
+            'textTheme.headlineLarge',
+            textTheme.headlineLarge ?? const TextStyle(),
+            'Headline Large',
           ),
-          
           _buildTypographyCard(
             'Body Large',
-            'Primary body text, descriptions',
-            'WorldChefTextStyles.bodyLarge (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              height: 1.5,
-              // fontFamily: 'Nunito',
-            ),
+            'The default style for long-form text.',
+            'textTheme.bodyLarge',
+            textTheme.bodyLarge ?? const TextStyle(),
             'The quick brown fox jumps over the lazy dog. This is the primary body text used for descriptions, instructions, and general content throughout the app.',
           ),
-          
-          _buildTypographyCard(
-            'Body Medium',
-            'Secondary text, captions',
-            'WorldChefTextStyles.bodyMedium (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              height: 1.4,
-              // fontFamily: 'Nunito',
-            ),
-            'The quick brown fox jumps over the lazy dog. Used for secondary information and captions.',
-          ),
-          
           _buildTypographyCard(
             'Label Large',
-            'Button text, form labels',
-            'WorldChefTextStyles.labelLarge (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              height: 1.3,
-              // fontFamily: 'Nunito',
-            ),
-            'BUTTON TEXT • FORM LABELS',
+            'Used for buttons and other interactive elements.',
+            'textTheme.labelLarge',
+            textTheme.labelLarge ?? const TextStyle(),
+            'BUTTON TEXT',
           ),
-          
-          _buildTypographyCard(
-            'Label Small',
-            'Small labels, badges',
-            'WorldChefTextStyles.labelSmall (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              height: 1.2,
-              // fontFamily: 'Nunito',
-            ),
-            'SMALL LABELS • BADGES',
-          ),
-          
+
           const SizedBox(height: 24),
-          const Card(
-            color: Colors.orange,
+           Card(
+            color: Theme.of(context).colorScheme.primaryContainer,
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.warning, color: Colors.white),
-                  SizedBox(height: 8),
+                  Icon(Icons.check_circle, color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  const SizedBox(height: 8),
                   Text(
-                    'RED STEP: Typography System Not Implemented',
-                    style: TextStyle(
-                      color: Colors.white,
+                    'GREEN STEP: Typography System Implemented',
+                    style: textTheme.titleMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
-                    'Using default system fonts. Nunito font family and '
-                    'WorldChefTextStyles will be implemented in task t002.',
-                    style: TextStyle(color: Colors.white),
+                    'These styles are now dynamically sourced from the active '
+                    'ThemeData via Theme.of(context).textTheme. The google_fonts '
+                    'package provides Lora and Nunito fonts.',
+                     style: textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
                   ),
                 ],
               ),
@@ -190,7 +133,7 @@ class NunitoTypographyScale extends StatelessWidget {
     );
   }
 
-  Widget _buildTypographyCard(String name, String usage, String implementation, 
+  Widget _buildTypographyCard(String name, String usage, String implementation,
                              TextStyle style, String sampleText) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
@@ -277,159 +220,26 @@ class NunitoTypographyScale extends StatelessWidget {
   }
 }
 
-/// Lora Headlines Scale
+/// Lora Headlines Scale (Placeholder)
+/// This widget is now DEPRECATED as the main scale showcases both fonts.
+/// Kept for structural reference but can be removed.
 class LoraHeadlineScale extends StatelessWidget {
   const LoraHeadlineScale({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Lora Headlines (Editorial Content)',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will use actual Lora font in t002
-          _buildHeadlineCard(
-            'Editorial Headline 1',
-            'Recipe titles, feature articles',
-            'WorldChefTextStyles.editorialHeadline1 (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.w600,
-              height: 1.3,
-              // fontFamily: 'Lora', // Will be added in t002
-            ),
-            'Authentic Italian Carbonara: A Roman Classic',
-          ),
-          
-          _buildHeadlineCard(
-            'Editorial Headline 2',
-            'Recipe subtitles, section headers',
-            'WorldChefTextStyles.editorialHeadline2 (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w500,
-              height: 1.4,
-              // fontFamily: 'Lora',
-            ),
-            'Master the Art of Perfect Pasta',
-          ),
-          
-          _buildHeadlineCard(
-            'Editorial Headline 3',
-            'Recipe steps, ingredient sections',
-            'WorldChefTextStyles.editorialHeadline3 (NOT IMPLEMENTED)',
-            const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              height: 1.4,
-              // fontFamily: 'Lora',
-            ),
-            'Preparing the Perfect Sauce',
-          ),
-          
-          const SizedBox(height: 24),
-          const Card(
-            color: Colors.blue,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Icon(Icons.info, color: Colors.white),
-                  SizedBox(height: 8),
-                  Text(
-                    'Design Decision: Nunito + Lora Combination',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    'Nunito for UI elements provides modern, clean readability. '
-                    'Lora for editorial content adds warmth and personality to recipe content.',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHeadlineCard(String name, String usage, String implementation, 
-                           TextStyle style, String sampleText) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        usage,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Text(
-                  '${style.fontSize?.toInt()}px',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            
-            // Sample text with serif styling
-            Text(sampleText, style: style),
-            
-            const SizedBox(height: 12),
-            Text(
-              implementation,
-              style: TextStyle(
-                fontSize: 11,
-                color: Colors.red.shade700,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ],
+    return const Center(
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text('DEPRECATED: Lora headlines are part of the main Material 3 Type Scale story.'),
         ),
       ),
     );
   }
 }
 
-/// UI Text Styles Examples
+/// UI Text Styles Showcase
 class UITextStyles extends StatelessWidget {
   const UITextStyles({super.key});
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:worldchef_mobile/src/core/design_system/spacing.dart';
 
-/// Spacing System Stories - RED Step (Will show placeholders/errors)
-/// 
-/// These stories demonstrate the WorldChef spacing system and will fail
-/// until design system implementation is completed in task t002.
+/// Spacing System Stories - GREEN Step (Implementation Complete)
+///
+/// These stories demonstrate the WorldChef spacing system using the
+/// implemented design tokens from task t002.
 List<WidgetbookComponent> buildSpacingStories() {
   return [
     WidgetbookComponent(
@@ -55,88 +56,80 @@ class SpacingTokensDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(AppSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'WorldChef Spacing Tokens (8px Base Unit)',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          Text(
+            'WorldChef Spacing Tokens',
+            style: textTheme.headlineLarge,
           ),
-          const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will be replaced with WorldChefSpacing in t002
+          const SizedBox(height: AppSpacing.md),
+
+          // GREEN STEP: Using actual AppSpacing constants
           _buildSpacingToken(
             'XS',
-            '4px',
-            'WorldChefSpacing.xs (NOT IMPLEMENTED)',
-            4.0,
+            '${AppSpacing.xs}px',
+            'AppSpacing.xs',
+            AppSpacing.xs,
             'Tight spacing, small gaps',
           ),
-          
           _buildSpacingToken(
             'SM',
-            '8px',
-            'WorldChefSpacing.sm (NOT IMPLEMENTED)',
-            8.0,
+            '${AppSpacing.sm}px',
+            'AppSpacing.sm',
+            AppSpacing.sm,
             'Base unit, compact layouts',
           ),
-          
           _buildSpacingToken(
             'MD',
-            '16px',
-            'WorldChefSpacing.md (NOT IMPLEMENTED)',
-            16.0,
+            '${AppSpacing.md}px',
+            'AppSpacing.md',
+            AppSpacing.md,
             'Standard spacing, most common',
           ),
-          
           _buildSpacingToken(
             'LG',
-            '24px',
-            'WorldChefSpacing.lg (NOT IMPLEMENTED)',
-            24.0,
+            '${AppSpacing.lg}px',
+            'AppSpacing.lg',
+            AppSpacing.lg,
             'Generous spacing, section breaks',
           ),
-          
           _buildSpacingToken(
             'XL',
-            '32px',
-            'WorldChefSpacing.xl (NOT IMPLEMENTED)',
-            32.0,
+            '${AppSpacing.xl}px',
+            'AppSpacing.xl',
+            AppSpacing.xl,
             'Large spacing, major sections',
           ),
-          
-          _buildSpacingToken(
-            'XXL',
-            '48px',
-            'WorldChefSpacing.xxl (NOT IMPLEMENTED)',
-            48.0,
-            'Extra large spacing, page sections',
-          ),
-          
-          const SizedBox(height: 24),
-          const Card(
-            color: Colors.orange,
+
+          const SizedBox(height: AppSpacing.lg),
+           Card(
+            color: colorScheme.primaryContainer,
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(AppSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.warning, color: Colors.white),
-                  SizedBox(height: 8),
+                  Icon(Icons.check_circle, color: colorScheme.onPrimaryContainer),
+                  const SizedBox(height: AppSpacing.sm),
                   Text(
-                    'RED STEP: Spacing System Not Implemented',
-                    style: TextStyle(
-                      color: Colors.white,
+                    'GREEN STEP: Spacing System Implemented',
+                    style: textTheme.titleMedium?.copyWith(
+                      color: colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: AppSpacing.xs),
                   Text(
-                    'Using hardcoded values. WorldChefSpacing constants '
-                    'will be implemented in task t002.',
-                    style: TextStyle(color: Colors.white),
+                    'Using AppSpacing constants from the design system.',
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onPrimaryContainer,
+                    ),
                   ),
                 ],
               ),
@@ -215,7 +208,7 @@ class SpacingTokensDemo extends StatelessWidget {
                     implementation,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.red.shade700,
+                      color: Colors.green.shade700,
                       fontStyle: FontStyle.italic,
                     ),
                   ),

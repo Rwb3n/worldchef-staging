@@ -1,9 +1,9 @@
 # WorldChef Cycle 4 Closed-Beta Readiness - Source of Truth
 
 **Document Status**: 🟢 **AUTHORITATIVE SOURCE OF TRUTH**  
-**Last Updated**: 2025-06-24  
-**Global Event**: 120  
-**Document Version**: 1.0  
+**Last Updated**: 2025-06-25  
+**Global Event**: 137  
+**Document Version**: 1.1  
 **Owner**: Tech Lead  
 **Next Review**: Weekly until Beta Launch  
 
@@ -51,17 +51,20 @@ Backend validation gates have been passed, P0 performance issues resolved, and c
 
 ### 🚧 IN PROGRESS: Mobile MVP Workstream (Weeks 2-4)
 
-| Mobile Feature | Status | Plan Task(s) |
-|----------------|--------|--------------|
-| Home Feed Screen | 🔴 **NOT STARTED** (tests pending) | t001-t003 |
-| Recipe Detail Screen | 🔴 **NOT STARTED** | t004-t006 |
-| Checkout Screen (Stripe) | 🔴 **NOT STARTED** | t007-t009 |
-| Offline Provider & Performance Hooks | 🟡 **PENDING** | t003, t006 |
-| Push Permission & Token Registration | 🟡 **PENDING** | t006 |
+| Mobile Feature | Status | Plan Task(s) | Blocking Issue |
+|----------------|--------|--------------|----------------|
+| **UI Foundation (Widgetbook)** | ✅ **COMPLETED** | ui_plan.t001 | None - CI green, ready for merge |
+| **Design System Implementation** | ✅ **COMPLETED** | ui_plan.t002 | None - MVP Unblocked |
+| Home Feed Screen | 🟡 **NEXT** | t001-t003 | None - Ready to start |
+| Recipe Detail Screen | 🟡 **PENDING** | t004-t006 | None - Ready to start |
+| Checkout Screen (Stripe) | 🟡 **PENDING** | t007-t009 | None - Ready to start |
+| Offline Provider & Performance Hooks | 🟡 **PENDING** | t003, t006 | Dependent on screen implementations |
+| Push Permission & Token Registration | 🟡 **PENDING** | t006 | Dependent on screen implementations |
 
 _Source_: `plans/plan_cycle4_mobile_mvp.txt`  
 _Owner_: Mobile Squad  
-_Target Completion_: End Week 4 (2025-07-07)
+_Target Completion_: End Week 4 (2025-07-07)  
+_Critical Path_: UI Design System Implementation (ui_plan.t002) unblocks all mobile features
 
 ### ✅ COMPLETED: Infrastructure & Documentation
 
@@ -109,6 +112,20 @@ _Target Completion_: End Week 4 (2025-07-07)
 **Impact**: Outdated documentation causing development confusion  
 **Resolution**: Systematic configuration synchronization  
 **Current Status**: ✅ **RESOLVED** - All documentation aligned  
+
+### ✅ RESOLVED: Mobile UI Foundation CI/CD Pipeline
+
+**Issue**: Widgetbook deployment CI failures blocking UI development track  
+**Impact**: Unable to deploy design system for stakeholder reviews and development  
+**Resolution**: Comprehensive Flutter CI troubleshooting and dependency management  
+**Current Status**: ✅ **RESOLVED** - CI green, ready for deployment  
+
+**Technical Details**:
+- **Root Cause**: Multiple CI issues - dependency classification, version compatibility, analyzer exit codes
+- **Solution**: Systematic resolution through dependency moves, Flutter version updates, analyzer flag configuration
+- **Validation**: CI now passes all checks with green build status
+- **Documentation**: Created comprehensive cookbook patterns (WCF-PTN-033, WCF-PTN-034)
+- **Impact**: UI development track unblocked, design system deployment ready
 
 ---
 
@@ -169,23 +186,26 @@ _Target Completion_: End Week 4 (2025-07-07)
 
 ### ✅ COMPLETE: Pattern Library
 
-**Total Patterns**: 32 validated cookbook entries  
-**Recent Additions**: 3 high-value patterns from gap closure work  
+**Total Patterns**: 34 validated cookbook entries  
+**Recent Additions**: 5 high-value patterns from gap closure and CI resolution work  
 **Coverage**: Complete development lifecycle support  
 
 **New High-Value Patterns**:
 1. **TDD Gap Closure Methodology** - Systematic approach (100% success rate)
 2. **Edge Function Performance Optimization** - 45% improvement techniques
 3. **Manual OpenAPI Generation** - Route introspection solution
+4. **Flutter Analyzer Dependency Resolution** - CI troubleshooting methodology (WCF-PTN-034)
+5. **Flutter Widgetbook Deployment** - Complete CI/CD solution (WCF-PTN-033 v1.1)
 
 **Documentation Synchronization**:
 - ✅ aiconfig.json updated with all patterns
 - ✅ Code patterns guide refreshed
 - ✅ Cross-references validated
+- ✅ Mobile CI troubleshooting patterns documented
 
 ### ✅ CURRENT: Configuration Management
 
-**Canonical Configuration**: aiconfig.json (Global Event 120)  
+**Canonical Configuration**: aiconfig.json (Global Event 137)  
 **Status**: ✅ Fully synchronized with implementation  
 **Validation**: All patterns registered and cross-referenced  
 **Update Process**: Systematic with event counter tracking  

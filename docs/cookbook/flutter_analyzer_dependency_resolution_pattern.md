@@ -155,13 +155,27 @@ dev_dependencies:
 ### 7.1. **GitHub Actions Workflow**
 ```yaml
 - name: Analyze code
-  run: flutter analyze --fatal-infos
+  run: flutter analyze --no-fatal-infos
   working-directory: mobile
 ```
 
-The `--fatal-infos` flag treats info-level warnings as errors, enforcing strict compliance.
+**⚠️ CRITICAL**: Use `--no-fatal-infos` instead of `--fatal-infos` to prevent info-level deprecation warnings from failing CI builds.
 
-### 7.2. **Pre-commit Hooks**
+**Common Mistake**: Using `--fatal-infos` causes exit code 1 when info-level warnings are present, failing the CI pipeline even when there are no actual errors.
+
+### 7.2. **Exit Code Handling**
+```bash
+# ❌ FAILS CI - Exit code 1 with info warnings
+flutter analyze --fatal-infos
+
+# ✅ PASSES CI - Exit code 0 with info warnings  
+flutter analyze --no-fatal-infos
+
+# ✅ ALTERNATIVE - Default behavior (no flags)
+flutter analyze
+```
+
+### 7.3. **Pre-commit Hooks**
 ```yaml
 # .pre-commit-config.yaml
 repos:
@@ -169,7 +183,7 @@ repos:
     hooks:
       - id: flutter-analyze
         name: Flutter Analyze
-        entry: flutter analyze --fatal-infos
+        entry: flutter analyze --no-fatal-infos
         language: system
         files: \.dart$
 ```

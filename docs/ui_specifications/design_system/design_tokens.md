@@ -97,6 +97,46 @@ class WorldChefNeutrals {
 }
 ```
 
+### Dark Theme Colors
+```dart
+// Dark Theme Colors
+class WorldChefDarkTheme {
+  // Background & Surface
+  static const Color background = Color(0xFF121212);
+  static const Color surface = Color(0xFF1E1E1E);
+
+  // Text Colors
+  static const Color primaryText = Color(0xFFE0E0E0);
+  static const Color secondaryText = Color(0xFFB0B0B0);
+
+  // UI Elements
+  static const Color dividers = Color(0xFF2C2C2C);
+}
+
+// Dark Semantic Colors
+class WorldChefDarkSemanticColors {
+  // Success
+  static const Color success = Color(0xFF81C784);
+  static const Color successHover = Color(0xFF73B97B);
+  static const Color successActive = Color(0xFF66A972);
+
+  // Warning
+  static const Color warning = Color(0xFFFFB300);
+  static const Color warningHover = Color(0xFFE6A000);
+  static const Color warningActive = Color(0xFFCC8F00);
+
+  // Error
+  static const Color error = Color(0xFFEF5350);
+  static const Color errorHover = Color(0xFFE14A4A);
+  static const Color errorActive = Color(0xFFC23E3E);
+
+  // Info
+  static const Color info = Color(0xFF64B5F6);
+  static const Color infoHover = Color(0xFF5AA4D7);
+  static const Color infoActive = Color(0xFF4F93B8);
+}
+```
+
 ### Material Design 3 Role Mappings
 ```dart
 // Material Design 3 Theme Integration
@@ -115,6 +155,22 @@ class WorldChefTheme {
     surface: Colors.white,
     onSurface: WorldChefNeutrals.primaryText,
     outline: WorldChefNeutrals.dividers,
+  );
+
+  static ColorScheme get darkColorScheme => const ColorScheme.dark(
+    primary: WorldChefColors.brandBlue,
+    onPrimary: Colors.white,
+    secondary: WorldChefColors.secondaryGreen,
+    onSecondary: Colors.white,
+    tertiary: WorldChefColors.accentCoral,
+    onTertiary: Colors.white,
+    error: WorldChefDarkSemanticColors.error,
+    onError: Colors.black,
+    background: WorldChefDarkTheme.background,
+    onBackground: WorldChefDarkTheme.primaryText,
+    surface: WorldChefDarkTheme.surface,
+    onSurface: WorldChefDarkTheme.primaryText,
+    outline: WorldChefDarkTheme.dividers,
   );
 }
 ```
@@ -610,6 +666,47 @@ class WorldChefThemeData {
       toolbarHeight: WorldChefDimensions.appBarHeight,
       backgroundColor: WorldChefColors.brandBlue,
       foregroundColor: Colors.white,
+      elevation: 0,
+    ),
+  );
+
+  static ThemeData get darkTheme => ThemeData(
+    useMaterial3: true,
+    colorScheme: WorldChefTheme.darkColorScheme,
+    textTheme: TextTheme(
+      displayLarge: WorldChefTextStyles.displayLarge,
+      displayMedium: WorldChefTextStyles.displayMedium,
+      displaySmall: WorldChefTextStyles.displaySmall,
+      headlineLarge: WorldChefTextStyles.headlineLarge,
+      headlineMedium: WorldChefTextStyles.headlineMedium,
+      headlineSmall: WorldChefTextStyles.headlineSmall,
+      bodyLarge: WorldChefTextStyles.bodyLarge,
+      bodyMedium: WorldChefTextStyles.bodyMedium,
+      bodySmall: WorldChefTextStyles.bodySmall,
+      labelLarge: WorldChefTextStyles.labelLarge,
+      labelMedium: WorldChefTextStyles.labelMedium,
+      labelSmall: WorldChefTextStyles.labelSmall,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        padding: WorldChefLayout.primaryButtonPadding,
+        minimumSize: Size.fromHeight(WorldChefDimensions.buttonLarge),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
+        ),
+      ),
+    ),
+    cardTheme: CardTheme(
+      margin: EdgeInsets.all(WorldChefSpacing.sm),
+      color: WorldChefDarkTheme.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(WorldChefDimensions.radiusLarge),
+      ),
+    ),
+    appBarTheme: AppBarTheme(
+      toolbarHeight: WorldChefDimensions.appBarHeight,
+      backgroundColor: WorldChefDarkTheme.surface,
+      foregroundColor: WorldChefDarkTheme.primaryText,
       elevation: 0,
     ),
   );

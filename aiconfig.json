@@ -5,7 +5,8 @@
     "version": "1.0.0-mvp",
     "phase": "Cycle4-Staging",
     "last_updated": "2025-06-25",
-    "global_event_counter": 137
+    "global_event_counter": 138,
+    "github_pages_url": "https://rwb3n.github.io/worldchef/"
   },
   "architecture": {
     "status": "VALIDATED",
@@ -273,7 +274,14 @@
           "file": "docs/cookbook/flutter_analyzer_dependency_resolution_pattern.md",
           "description": "Flutter analyzer dependency resolution for Widgetbook and dev tools with TDD methodology"
         }
-      ]
+      ],
+      "ui_deployment": {
+        "widgetbook_status": "OPERATIONAL",
+        "github_pages_url": "https://rwb3n.github.io/worldchef/",
+        "ci_status": "GREEN",
+        "deployment_trigger": "Merge to main branch",
+        "last_validated": "2025-06-25"
+      }
     },
     "scripts": {
       "path": "scripts/",
@@ -453,7 +461,8 @@
     "status": "VALIDATED",
     "current_deployments": {
       "backend": "https://worldchef-staging.onrender.com",
-      "edge_functions": "https://myqhpmeprpaukgagktbn.supabase.co/functions/v1/"
+      "edge_functions": "https://myqhpmeprpaukgagktbn.supabase.co/functions/v1/",
+      "widgetbook": "https://rwb3n.github.io/worldchef/"
     }
   },
   "cost_projections": {

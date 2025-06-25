@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
+import 'package:worldchef_mobile/src/core/design_system/colors.dart';
 
-/// Color System Stories - RED Step (Will show placeholders/errors)
-/// 
-/// These stories demonstrate the WorldChef color system and will fail
-/// until design system implementation is completed in task t002.
+/// Color System Stories - GREEN Step (Implementation Complete)
+///
+/// These stories demonstrate the WorldChef color system using the
+/// implemented design tokens from task t002.
 List<WidgetbookComponent> buildColorStories() {
   return [
     WidgetbookComponent(
@@ -47,68 +48,77 @@ class BrandColorPalette extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'WorldChef Brand Colors',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          Text(
+            'Material Design 3 Roles',
+            style: textTheme.headlineLarge,
           ),
           const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will be replaced with WorldChefColors in t002
+
+          // GREEN STEP: Using actual ColorScheme roles
           _buildColorCard(
-            'Brand Blue',
-            'Primary navigation, major CTAs',
-            const Color(0xFF0288D1), // Placeholder from design_tokens.md
-            'WorldChefColors.brandBlue (NOT IMPLEMENTED)',
+            'Primary',
+            'The primary color for major UI elements.',
+            colorScheme.primary,
+            'colorScheme.primary',
           ),
-          
           _buildColorCard(
-            'Secondary Green',
-            'Success highlights, badges',
-            const Color(0xFF89C247), // Placeholder from design_tokens.md
-            'WorldChefColors.secondaryGreen (NOT IMPLEMENTED)',
+            'Secondary',
+            'An accent color for less prominent components.',
+            colorScheme.secondary,
+            'colorScheme.secondary',
           ),
-          
           _buildColorCard(
-            'Accent Coral',
-            'Primary CTA buttons (Order Now)',
-            const Color(0xFFFF7247), // Placeholder from design_tokens.md
-            'WorldChefColors.accentCoral (NOT IMPLEMENTED)',
+            'Tertiary',
+            'A contrasting accent color.',
+            colorScheme.tertiary,
+            'colorScheme.tertiary',
           ),
-          
           _buildColorCard(
-            'Accent Orange',
-            'Secondary CTAs, warnings',
-            const Color(0xFFFFA000), // Placeholder from design_tokens.md
-            'WorldChefColors.accentOrange (NOT IMPLEMENTED)',
+            'Surface',
+            'The background color for components like Cards.',
+            colorScheme.surface,
+            'colorScheme.surface',
           ),
-          
+          _buildColorCard(
+            'Background',
+            'The background color for screens.',
+            colorScheme.background,
+            'colorScheme.background',
+          ),
+
           const SizedBox(height: 24),
-          const Card(
-            color: Colors.orange,
+          Card(
+            color: colorScheme.secondaryContainer,
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.warning, color: Colors.white),
-                  SizedBox(height: 8),
+                  Icon(Icons.check_circle, color: colorScheme.onSecondaryContainer),
+                  const SizedBox(height: 8),
                   Text(
-                    'RED STEP: Design System Not Implemented',
-                    style: TextStyle(
-                      color: Colors.white,
+                    'GREEN STEP: Design System Implemented',
+                    style: textTheme.titleMedium?.copyWith(
+                      color: colorScheme.onSecondaryContainer,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
-                    'These are placeholder colors from design_tokens.md. '
-                    'Actual WorldChefColors classes will be implemented in task t002.',
-                    style: TextStyle(color: Colors.white),
+                    'These colors are now dynamically sourced from the active '
+                    'ThemeData via Theme.of(context).colorScheme. '
+                    'Toggle between Light and Dark themes to see them update.',
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSecondaryContainer,
+                    ),
                   ),
                 ],
               ),
@@ -126,7 +136,6 @@ class BrandColorPalette extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
-            // Color swatch
             Container(
               width: 80,
               height: 80,
@@ -135,43 +144,35 @@ class BrandColorPalette extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.grey.shade300),
               ),
+              child: color == Colors.white || color.value == 0xFFFFFFFF
+                  ? const Center(child: Text('BG', style: TextStyle(color: Colors.black)))
+                  : null,
             ),
             const SizedBox(width: 16),
-            
-            // Color info
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     name,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     usage,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey.shade600,
-                    ),
+                    style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     'Hex: ${color.value.toRadixString(16).toUpperCase()}',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontFamily: 'monospace',
-                    ),
+                    style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     implementation,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.red.shade700,
+                      color: Colors.green.shade700, // Changed to green for success
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -191,43 +192,44 @@ class BrandColorStates extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Brand Color States',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+           Text(
+            'Color States (via Containers)',
+            style: textTheme.headlineLarge,
           ),
           const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will show actual hover/active states in t002
+
+          // GREEN STEP: Using ColorScheme roles
           _buildStateRow(
-            'Brand Blue',
-            const Color(0xFF0288D1), // Default
-            const Color(0xFF027ABC), // Hover placeholder
-            const Color(0xFF026DA7), // Active placeholder  
-            const Color(0x800288D1), // Disabled placeholder
+            'Primary -> Primary Container',
+            colorScheme.primary,
+            colorScheme.primaryContainer,
+            colorScheme.onPrimary,
+            colorScheme.onPrimaryContainer,
           ),
-          
-          _buildStateRow(
-            'Accent Coral',
-            const Color(0xFFFF7247), // Default
-            const Color(0xFFE6633F), // Hover placeholder
-            const Color(0xFFCC5639), // Active placeholder
-            const Color(0x80FF7247), // Disabled placeholder
+           _buildStateRow(
+            'Secondary -> Secondary Container',
+            colorScheme.secondary,
+            colorScheme.secondaryContainer,
+            colorScheme.onSecondary,
+            colorScheme.onSecondaryContainer,
           ),
-          
+
           const SizedBox(height: 24),
-          const Card(
-            color: Colors.orange,
+           Card(
+            color: colorScheme.tertiaryContainer,
             child: Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Text(
-                'RED STEP: Interactive states will be implemented with '
-                'proper hover/focus/active behaviors in task t002.',
-                style: TextStyle(color: Colors.white),
+                'GREEN STEP: These rows demonstrate the relationship between a color role (e.g., primary) and its container counterpart (primaryContainer), along with their corresponding "on" colors for text.',
+                style: textTheme.bodyMedium?.copyWith(color: colorScheme.onTertiaryContainer),
               ),
             ),
           ),
@@ -236,8 +238,7 @@ class BrandColorStates extends StatelessWidget {
     );
   }
 
-  Widget _buildStateRow(String name, Color defaultColor, Color hoverColor, 
-                       Color activeColor, Color disabledColor) {
+  Widget _buildStateRow(String name, Color defaultColor, Color containerColor, Color onColor, Color onContainerColor) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -252,38 +253,33 @@ class BrandColorStates extends StatelessWidget {
             const SizedBox(height: 12),
             Row(
               children: [
-                _buildStateColor('Default', defaultColor),
-                _buildStateColor('Hover', hoverColor),
-                _buildStateColor('Active', activeColor),
-                _buildStateColor('Disabled', disabledColor),
+                _buildStateSwatch('Default', defaultColor, onColor),
+                const SizedBox(width: 8),
+                _buildStateSwatch('Container', containerColor, onContainerColor),
               ],
-            ),
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget _buildStateColor(String state, Color color) {
+  Widget _buildStateSwatch(String name, Color color, Color onColor) {
     return Expanded(
-      child: Column(
-        children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey.shade300),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            state,
-            style: const TextStyle(fontSize: 12),
-            textAlign: TextAlign.center,
-          ),
-        ],
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(name, style: TextStyle(color: onColor, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 4),
+            Text('Text on this color', style: TextStyle(color: onColor)),
+          ],
+        ),
       ),
     );
   }
@@ -295,51 +291,44 @@ class SemanticColorPalette extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             'Semantic Colors',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: textTheme.headlineLarge,
           ),
           const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will be replaced with WorldChefSemanticColors in t002
-          _buildSemanticCard(
-            'Success',
-            'Success messages, confirmation badges',
-            const Color(0xFF89C247),
-            Icons.check_circle,
-          ),
-          
-          _buildSemanticCard(
-            'Warning',
-            'Warnings, promotional banners',
-            const Color(0xFFFFA000),
-            Icons.warning,
-          ),
-          
-          _buildSemanticCard(
+          _buildColorCard(
             'Error',
-            'Error states, critical alerts',
-            const Color(0xFFD32F2F),
-            Icons.error,
+            'For indicating errors in forms, etc.',
+            colorScheme.error,
+            'colorScheme.error',
           ),
-          
-          _buildSemanticCard(
-            'Info',
-            'Informational messages, tooltips',
-            const Color(0xFF0288D1),
-            Icons.info,
+          _buildColorCard(
+            'On Error',
+            'Color for text/icons on top of Error color.',
+            colorScheme.onError,
+            'colorScheme.onError',
+          ),
+          _buildColorCard(
+            'Error Container',
+            'A lighter tint for error backgrounds.',
+            colorScheme.errorContainer,
+            'colorScheme.errorContainer',
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSemanticCard(String name, String usage, Color color, IconData icon) {
+  // Re-using the same helper from BrandColorPalette
+  Widget _buildColorCard(String name, String usage, Color color, String implementation) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -352,8 +341,11 @@ class SemanticColorPalette extends StatelessWidget {
               decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.grey.shade300),
               ),
-              child: Icon(icon, color: Colors.white, size: 32),
+              child: color == Colors.white || color.value == 0xFFFFFFFF
+                  ? const Center(child: Text('BG', style: TextStyle(color: Colors.black)))
+                  : null,
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -362,19 +354,24 @@ class SemanticColorPalette extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
-                  Text(usage),
+                  Text(
+                    usage,
+                    style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+                  ),
                   const SizedBox(height: 8),
                   Text(
-                    'WorldChefSemanticColors.$name (NOT IMPLEMENTED)',
+                    'Hex: ${color.value.toRadixString(16).toUpperCase()}',
+                    style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    implementation,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.red.shade700,
+                      color: Colors.green.shade700, // Changed to green for success
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -388,142 +385,90 @@ class SemanticColorPalette extends StatelessWidget {
   }
 }
 
-/// WCAG AA Contrast Validation Grid
+/// WCAG Contrast Validation Grid
 class ContrastValidationGrid extends StatelessWidget {
   const ContrastValidationGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'WCAG AA Contrast Validation',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          Text(
+            'Contrast Validation',
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
+          const SizedBox(height: 8),
+          const Text('Demonstrating WCAG AA compliance for common text/background pairings.'),
           const SizedBox(height: 16),
-          
-          // PLACEHOLDER: Will use actual contrast calculation in t002
-          _buildContrastTest(
-            'Brand Blue on White',
-            const Color(0xFF0288D1),
-            Colors.white,
-            4.52, // Placeholder calculation
+
+          _buildContrastChecker(
+            'On Primary',
+            colorScheme.onPrimary,
+            colorScheme.primary,
           ),
-          
-          _buildContrastTest(
-            'Secondary Green on White', 
-            const Color(0xFF89C247),
-            Colors.white,
-            4.8, // Placeholder calculation
+           _buildContrastChecker(
+            'On Secondary',
+            colorScheme.onSecondary,
+            colorScheme.secondary,
           ),
-          
-          _buildContrastTest(
-            'Accent Coral on White',
-            const Color(0xFFFF7247),
-            Colors.white,
-            3.9, // Placeholder - might fail WCAG AA
+           _buildContrastChecker(
+            'On Surface',
+            colorScheme.onSurface,
+            colorScheme.surface,
           ),
-          
-          _buildContrastTest(
-            'Primary Text on Background',
-            const Color(0xFF212121),
-            const Color(0xFFFAFAFA),
-            15.8, // Placeholder calculation
+           _buildContrastChecker(
+            'On Background',
+            colorScheme.onBackground,
+            colorScheme.background,
           ),
-          
-          const SizedBox(height: 24),
-          const Card(
-            color: Colors.orange,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'RED STEP: Contrast calculations are placeholders. '
-                'Actual calculateContrast() function will be implemented in task t002.',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+           _buildContrastChecker(
+            'On Error',
+            colorScheme.onError,
+            colorScheme.error,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildContrastTest(String name, Color foreground, Color background, double ratio) {
-    final bool passesWCAG = ratio >= 4.5;
-    
+  Widget _buildContrastChecker(String name, Color textColor, Color backgroundColor) {
+    // Basic luminance calculation to determine if contrast is good.
+    // This is a simplified version. A real app might use a package.
+    final double luminance = backgroundColor.computeLuminance();
+    final double contrast = (textColor.computeLuminance() + 0.05) / (luminance + 0.05);
+    final bool passes = contrast > 4.5; // WCAG AA for normal text
+
     return Card(
-      margin: const EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 12),
+      color: backgroundColor,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Color combination preview
+            Text(
+              name,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             Container(
-              width: 120,
-              height: 80,
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: background,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.grey.shade300),
+                color: passes ? Colors.green.withOpacity(0.8) : Colors.red.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(12),
               ),
-              child: Center(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: foreground,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: const Text(
-                    'Sample',
-                    style: TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                ),
+              child: Text(
+                passes ? 'PASS' : 'FAIL',
+                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
-            ),
-            const SizedBox(width: 16),
-            
-            // Contrast info
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Text(
-                        'Contrast: ${ratio.toStringAsFixed(2)}:1',
-                        style: const TextStyle(fontSize: 14),
-                      ),
-                      const SizedBox(width: 8),
-                      Icon(
-                        passesWCAG ? Icons.check_circle : Icons.error,
-                        color: passesWCAG ? Colors.green : Colors.red,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        passesWCAG ? 'WCAG AA' : 'FAILS',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: passesWCAG ? Colors.green : Colors.red,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            )
           ],
         ),
       ),
