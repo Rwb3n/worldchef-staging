@@ -5,12 +5,14 @@ on:
     branches: [main, develop]
     paths:
       - 'mobile/lib/widgetbook/**'
+      - 'mobile/lib/src/core/design_system/**'
       - 'mobile/pubspec.yaml'
       - '.github/workflows/widgetbook-deploy.yml'
   pull_request:
     branches: [main]
     paths:
       - 'mobile/lib/widgetbook/**'
+      - 'mobile/lib/src/core/design_system/**'
       - 'mobile/pubspec.yaml'
   workflow_dispatch:
 
