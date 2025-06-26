@@ -53,7 +53,12 @@ jobs:
         run: flutter analyze --no-fatal-infos
 
       - name: Build Widgetbook for Web (Production)
-        run: yarn widgetbook:build:prod
+        working-directory: mobile
+        run: |
+          flutter build web \
+            -t lib/widgetbook/widgetbook.dart \
+            --base-href /worldchef-staging/ \
+            --output build/widgetbook
 
       - name: Setup Pages
         if: github.ref == 'refs/heads/main'
