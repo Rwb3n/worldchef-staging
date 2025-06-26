@@ -205,14 +205,43 @@ color.withOpacity(0.5)     # ❌ Deprecated
 color.withValues(alpha: 0.5)  # ✅ New API
 ```
 
-### 8.3. **Issue**: Package bloat in production
+### 8.3. **Issue**: Deprecation warnings cause CI analyzer failures
+**Symptoms**: Local builds succeed but CI fails with deprecation errors:
+```
+'useInheritedMediaQuery' is deprecated and shouldn't be used. Remove this parameter as it is now ignored.
+MaterialApp never introduces its own MediaQuery; the View widget takes care of that.
+This feature was deprecated after v3.7.0-29.0.pre
+```
+
+**Root Cause**: Deprecated parameters are treated as errors in CI environments, causing exit code 1.
+
+**Solution**: Remove deprecated parameters immediately when detected
+```dart
+// ❌ BEFORE (causes CI failure)
+return MaterialApp(
+  theme: AppTheme.lightTheme,
+  home: child,
+  useInheritedMediaQuery: true,  // DEPRECATED
+);
+
+// ✅ AFTER (CI passes)
+return MaterialApp(
+  theme: AppTheme.lightTheme,
+  home: child,
+  // useInheritedMediaQuery removed - deprecated and ignored
+);
+```
+
+**Prevention**: Monitor deprecation warnings in local development and address immediately.
+
+### 8.4. **Issue**: Package bloat in production
 **Solution**: Consider conditional imports or separate build targets
 ```dart
 // Conditional import pattern
 import 'widgetbook_stories.dart' if (dart.library.js) 'widgetbook_web.dart';
 ```
 
-+### 8.4. **Issue**: CI build fails with compilation errors despite analyzer passing
+### 8.5. **Issue**: CI build fails with compilation errors despite analyzer passing
 +**Symptoms**: Local `flutter analyze` and `flutter build web` succeed, but CI fails with compilation errors like:
 +```
 +Error: The getter 'globalPosition' isn't defined for the class 'DragEndDetails'
@@ -246,13 +275,19 @@ import 'widgetbook_stories.dart' if (dart.library.js) 'widgetbook_web.dart';
 - **CI Impact**: ✅ `flutter analyze` step now passes
 - **Build Time**: No significant impact on build performance
 
-### 9.2. **Version Compatibility Fix (2025-06-25)**
+### 9.2. **Deprecation Warning Resolution (2025-06-25)**
+- **Issue**: CI analyzer failing with `useInheritedMediaQuery` deprecation error
+- **Root Cause**: Deprecated parameter in Widgetbook MaterialApp causing exit code 1
+- **Solution**: Removed deprecated parameter entirely from MaterialApp configuration
+- **Result**: ✅ `flutter analyze --no-fatal-infos` now exits with code 0
+
+### 9.3. **Version Compatibility Fix (2025-06-25)**
 - **Issue**: CI `flutter build web` failing with `accessibility_tools globalPosition` error
 - **Root Cause**: `widgetbook: ^3.8.0` allowed CI to resolve to incompatible version
 - **Solution**: Updated to `widgetbook: ^3.14.0` ensuring compatible `accessibility_tools 2.6.0+`
 - **Result**: ✅ CI build now succeeds, local/CI version consistency achieved
 
-### 9.3. **Automated Fixes Applied**
+### 9.4. **Automated Fixes Applied**
 ```bash
 # dart fix --apply results
 lib\main.dart

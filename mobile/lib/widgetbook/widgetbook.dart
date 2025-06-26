@@ -44,7 +44,6 @@ class WidgetbookApp extends StatelessWidget {
           darkTheme: AppTheme.darkTheme,
           debugShowCheckedModeBanner: false,
           home: child,
-          useInheritedMediaQuery: true,
         );
       },
       directories: [
