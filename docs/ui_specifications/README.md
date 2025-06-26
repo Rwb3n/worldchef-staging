@@ -1,15 +1,17 @@
 # WorldChef UI Specifications
 
-**Status**: 🚧 **In Development**  
-**Created**: 2025-06-24  
-**Global Event**: 126  
-**Plan Reference**: `plans/plan_ui_comprehensive_planning.txt`
+**Status**: ✅ **Active & Implemented in Widgetbook**  
+**Last Updated**: 2025-06-26
+**Global Event**: (Increment this) 
+**Plan Reference**: `plans/plan_widgetbook_ui_spec_alignment.txt`
 
 ---
 
 ## Overview
 
 This directory contains comprehensive UI specifications that eliminate all implicitness in the WorldChef mobile application design. Every screen, component, interaction, and design decision is explicitly documented following Atomic Design Principles.
+
+**A live, interactive version of these specifications is implemented in Widgetbook.** This serves as the single source of truth for component and screen implementations.
 
 ## Directory Structure
 
@@ -70,21 +72,21 @@ docs/ui_specifications/
 3. **Accessibility First**: WCAG AA compliance for all components
 4. **Performance Driven**: All specifications include performance requirements
 5. **Internationalization Ready**: RTL support and string externalization
-6. **Test-Driven**: Every specification includes validation tests
+6. **Test-Driven**: Every specification includes validation tests and has a corresponding interactive story in Widgetbook.
 
 ## Status Tracking
 
-| Category | Status | Completion |
-|----------|--------|------------|
-| Design System | 🔴 Not Started | 0% |
-| Screen Specifications | 🔴 Not Started | 0% |
-| Component Library | 🔴 Not Started | 0% |
-| User Flows | 🔴 Not Started | 0% |
-| Validation Tests | 🔴 Not Started | 0% |
+| Category | Status | Completion | Notes |
+|----------|--------|------------|-------|
+| Design System | ✅ Implemented | 100% | All core tokens (colors, typography, spacing, animations) are defined and implemented in `AppTheme` and demonstrated in Widgetbook. |
+| Screen Specifications | 🟡 In Progress | 50% | `Home Feed` and `Recipe Detail` screens have been specified and implemented in Widgetbook. Other screens are pending. |
+| Component Library | ✅ Implemented | 95% | All major atoms, molecules, and organisms are specified and implemented in Widgetbook. Minor gaps may exist. |
+| User Flows | 🟡 In Progress | 20% | Core flows like Discovery and Onboarding are defined. |
+| Validation Tests | 🟡 In Progress | 30% | Manual validation via Widgetbook is complete. Automated validation framework is now being built. |
 
 ## Related Documents
 
-- **Plan**: `plans/plan_ui_comprehensive_planning.txt`
+- **Plan**: `plans/plan_widgetbook_ui_spec_alignment.txt`
 - **Architecture**: `docs/architecture/mobile-client.md`
 - **MVP Features**: `docs/cycle4/mvp_feat_set.md`
 - **Design ADR**: `docs/adr/2-ADR-WCF-025_ Early UI_UX Validation and Mobile Foundation Strategy.txt`
@@ -92,4 +94,4 @@ docs/ui_specifications/
 
 ---
 
-**Next Steps**: Execute tasks t001-t012 from `plan_ui_comprehensive_planning.txt` to create comprehensive UI specifications. 
+**Next Steps**: Implement automated validation framework to prevent specification drift. See `plans/plan_doc_and_validation_framework.txt`. 

@@ -2,7 +2,7 @@
 
 > **Status**: 🚀 **Cycle 4 - Mobile MVP Development** | Backend: ✅ **Production Ready** | Mobile: 🔄 **In Progress**
 
-**Current Phase**: Cycle4-Staging | **Version**: 1.0.0-mvp | **Last Updated**: 2025-06-24
+**Current Phase**: Cycle4-Staging | **Version**: 1.0.0-mvp | **Last Updated**: 2025-06-25
 
 ## 🎯 Project Status Overview
 
@@ -19,6 +19,7 @@
 - **Cost Efficiency**: 75% under budget at $25/month for 10K MAU
 - **Test Coverage**: 100% pass rate with comprehensive integration tests
 - **Architecture Validation**: All 4 PoCs completed successfully
+- **UI Catalog**: Widgetbook dual-build (local & GitHub Pages) now fully functional
 
 ## 📁 Directory Structure
 
@@ -34,6 +35,7 @@
 | `_legacy/` | ⚠️ **DEPRECATED** - Do not use for active development | ❌ **ARCHIVED** |
 
 ## 🚀 Quick Start
+> **🎨 Widgetbook Interactive Stories** – WorldChef components now include **interactive stories** with knobs for live state management (loading, empty, error) and layout tweaks. Use them to validate UI quickly during development.
 
 ### Prerequisites
 - Node.js 18+, Yarn (not npm)
@@ -57,6 +59,12 @@ cd mobile && flutter run  # Runs on available device/simulator
 
 # Run Widgetbook (UI component library) - RECOMMENDED
 yarn widgetbook:dev  # Builds and serves at http://localhost:8080/
+
+# Build Widgetbook for local testing (no base-href)
+yarn widgetbook:build:local  # Outputs to mobile/build/widgetbook
+
+# Build Widgetbook for production (GitHub Pages)
+yarn widgetbook:build:prod  # /worldchef/ base-href ready
 
 # Alternative: Run in Flutter directly
 cd mobile && flutter run -t lib/widgetbook/widgetbook.dart
@@ -210,7 +218,7 @@ flutter analyze && dart format
 ## 📞 Support
 
 - **Tech Lead**: @ruben.ai
-- **Mobile Squad**: @yemi
+- **UX/UI Squad**: @yemi
 - **DevOps**: @devops-ai
 - **Documentation**: See `docs/` directory
 

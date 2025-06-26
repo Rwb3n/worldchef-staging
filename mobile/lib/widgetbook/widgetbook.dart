@@ -9,20 +9,20 @@ import 'design_system/spacing_stories.dart';
 import 'design_system/animations_stories.dart';
 
 // Component Stories
-import 'components/button_stories.dart';
-import 'components/input_stories.dart';
-import 'components/recipe_card_stories.dart';
-import 'components/search_bar_stories.dart';
-import 'components/section_header_stories.dart';
-import 'components/category_circle_row_stories.dart';
-import 'components/featured_recipe_card_stories.dart';
-import 'components/image_stories.dart';
-import 'components/content_stories.dart';
-import 'components/navigation_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/button_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/input_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/recipe_card_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/search_bar_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/section_header_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/category_circle_row_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/featured_recipe_card_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/image_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/content_stories.dart';
+import 'package:worldchef_mobile/widgetbook/components/navigation_stories.dart';
 
 // Screen Stories
-import 'screens/home_feed_stories.dart';
-import 'screens/recipe_detail_stories.dart';
+import 'package:worldchef_mobile/widgetbook/screens/home_feed_stories.dart';
+import 'package:worldchef_mobile/widgetbook/screens/recipe_detail_stories.dart';
 
 /// WorldChef Widgetbook - Visual Design System & Component Catalogue
 /// 
@@ -106,8 +106,14 @@ class WidgetbookApp extends StatelessWidget {
               name: 'Images',
               children: buildImageStories(),
             ),
-            categoryCircleRowStories(),
-            ...buildFeaturedRecipeCardStories(),
+            WidgetbookFolder(
+              name: 'Category Circle Row',
+              children: [categoryCircleRowStories()],
+            ),
+            WidgetbookFolder(
+              name: 'Featured Recipe Card',
+              children: buildFeaturedRecipeCardStories().expand((component) => component.useCases).toList(),
+            ),
           ],
         ),
         // Screens Category
@@ -118,7 +124,10 @@ class WidgetbookApp extends StatelessWidget {
               name: 'Home Feed',
               children: buildHomeFeedStories(),
             ),
-            buildRecipeDetailStories(),
+            WidgetbookFolder(
+              name: 'Recipe Detail',
+              children: [buildRecipeDetailStories()],
+            ),
           ],
         ),
       ],

@@ -1,256 +1,153 @@
 # Recipe Detail Screen Specification (MVP v0.2)
 
-**Status**: ✅ **REFINED** – Updated to match visual design  
-**Updated**: 2025-06-25  
+**Status**: ✅ **NORMALIZED**  
+**Updated**: 2025-06-26  
 **Plan Task**: t005-C (Recipe Detail Screen Layout Refinement)  
-**Design System**: References `docs/ui_specifications/design_system/design_tokens.md`
+**Design System**: References `docs/ui_specifications/design_system/*.md`
 
 ---
 
 ## 1. Purpose
-Display comprehensive recipe information including hero image, creator details, cooking time, nutrition facts, and ingredients list. Provides primary cooking action and social interaction features.
+The recipe detail screen displays comprehensive recipe information, including a hero image, creator details, cooking time, nutrition facts, and an ingredients list. It provides the primary "Start Cooking" action and social interaction features.
 
 ## 2. Layout Structure
 
-### Visual Layout (Based on Screenshot)
+### Visual Layout
 ```
 +------------------------------------------------+
-| Status Bar: "Dish" + Time + System Icons      |
+| WCAppBarHeader                                 |
+| (← Back) (Creator Name) (Menu ...)             |
 +------------------------------------------------+
-| Header: (← < return)  (ChefSannikay < creator)              |
-+------------------------------------------------+
-| Hero Image (Jollof rice with sides)           |
+| WCHeroSection                                  |
 | [Large food photography]                       |
-| [Creator circle image] [Start cooking →]      |
+| [WCCircularImage] [WCPrimaryButton]            |
 +------------------------------------------------+
-| Creator Name: ChefSannikay                     |
-| Recipe Title: Jollof rice                      |
+| WCRecipeHeaderInfo                             |
+| (Creator Name + Recipe Title)                  |
 +------------------------------------------------+
-| Metadata Row:                                  |
-| ⏱ 15 minutes    ✕    👥 5 portions            |
+| WCMetadataRow                                  |
+| (Time, Servings)                               |
 +------------------------------------------------+
-| Nutrition facts              Full nutrition > |
-| Calories                                       |
-| [Protein 17%] [Carbs 35%] [225%] [60%]        |
+| WCNutritionSection                             |
+| (WCSectionHeader + Progress Circles)           |
 +------------------------------------------------+
-| Ingredients                                    |
-| 🧅 Large yellow onions        2 pieces    >   |
-| 🛢 Vegetable oil               60 ml       >   |
-| 🍅 Diced tomato             395 g (2 cans) >   |
+| WCIngredientsSection                           |
+| (WCSectionHeader + List of WCIngredientListItem)|
 +------------------------------------------------+
-| Blue background                                |
-|Bottom Navigation                               |
-| [feed] [Explore] [ + ] [Plans] [You]           |
+| WCBottomNavigation                             |
 +------------------------------------------------+
 ```
 
 ## 3. Detailed Component Specifications
 
-### 3.1 Header Navigation
+### 3.1 `WCAppBarHeader` (Organism)
 | Property | Value | Design Token Reference |
-|----------|--------|------------------------|
-| Background | White/System | System default |
+|----------|-------|------------------------|
+| Background | White/System | `WorldChefNeutrals.background` |
 | Height | 56dp | `WorldChefDimensions.appBarHeight` |
-| Back Button | iOS-style chevron left | `WorldChefDimensions.iconMedium` |
-| Creator Name | "ChefSannikay" | `WorldChefTextStyles.headlineSmall` |
-| Menu Button | Three dots (vertical) | `WorldChefDimensions.iconMedium` |
+| Back Button | iOS-style chevron left | `WCBackButton` (Molecule) |
+| Creator Name | "ChefSannikay" | `WCHeadlineSmall` |
+| Menu Button | Three dots (vertical) | `WCMenuButton` (Molecule) |
 | Text Color | Black | `WorldChefNeutrals.primaryText` |
 
-### 3.2 Hero Image Section
+### 3.2 `WCHeroSection` (Organism)
 | Property | Value | Design Token Reference |
-|----------|--------|------------------------|
-| Aspect Ratio | 4:3 or 16:9 | `WorldChefMedia.horizontalRatio` |
-| Image Quality | High-resolution food photo | - |
-| Image Content | Featured dish with sides | - |
-| Overlay Elements | Creator circle + Start button | Positioned bottom section |
+|----------|-------|------------------------|
+| Aspect Ratio | 4:3 | `WorldChefMedia.horizontalRatio` |
+| Creator Image | 48dp circle with border | `WCCircularImage` (Atom) |
+| Start Button | Rounded rectangle | `WCPrimaryButton` (Atom) |
 
-#### Creator Circle & Start Button Overlay
-| Component | Position | Styling | Design Token Reference |
-|-----------|----------|---------|------------------------|
-| Creator Image | Bottom left | 48dp circle with border | Custom size |
-| Creator Border | White border | 2dp border width | White on image |
-| Start Button | Bottom right | Rounded rectangle | `WorldChefDimensions.radiusMedium` |
-| Button Background | Teal/Green | `WorldChefColors.secondaryGreen` |
-| Button Text | "Start cooking" | `WorldChefTextStyles.labelLarge` |
-| Button Icon | Right arrow | `WorldChefDimensions.iconSmall` |
-| Button Text Color | White | Ensure contrast |
-
-### 3.3 Recipe Header Section
+### 3.3 `WCRecipeHeaderInfo` (Molecule)
 | Property | Value | Design Token Reference |
-|----------|--------|------------------------|
-| Container Padding | 16dp horizontal | `WorldChefLayout.mobileContainerPadding` |
-| Vertical Spacing | 16dp | `WorldChefSpacing.md` |
+|----------|-------|------------------------|
+| Creator Name | "ChefSannikay" | `WCBodyMedium` |
+| Recipe Title | "Jollof rice" | `WCHeadlineLarge` |
+| Vertical Spacing | 4dp between items | `WorldChefSpacing.xs` |
+| Container Padding | 16dp horizontal | `WorldChefSpacing.lg` |
 
-#### Recipe Title & Creator
-| Component | Styling | Design Token Reference |
-|-----------|---------|------------------------|
-| Creator Name | "ChefSannikay" | `WorldChefTextStyles.bodyMedium` |
-| Creator Color | Black | `WorldChefNeutrals.primaryText` |
-| Recipe Title | "Jollof rice" | `WorldChefTextStyles.headlineLarge` |
-| Title Color | Black | `WorldChefNeutrals.primaryText` |
-| Title Spacing | 4dp below creator | `WorldChefSpacing.xs` |
-
-### 3.4 Metadata Row
+### 3.4 `WCMetadataRow` (Organism)
 | Property | Value | Design Token Reference |
-|----------|--------|------------------------|
+|----------|-------|------------------------|
 | Layout | Three-column layout | Evenly distributed |
 | Vertical Spacing | 16dp from title | `WorldChefSpacing.md` |
-| Icon Size | 16dp | `WorldChefDimensions.iconSmall` |
-| Text Style | Metadata labels | `WorldChefTextStyles.bodySmall` |
-| Text Color | Gray | `WorldChefNeutrals.secondaryText` |
+| Item Style | Icon + Text | `WCMetadataItem` (Molecule) |
 
-#### Metadata Items
-| Item | Icon | Text | Format |
-|------|------|------|--------|
-| Cooking Time | ⏱ Clock | "15 minutes" | "[n] minutes" |
-| Close/Cancel | ✕ X mark | - | Action button |
-| Servings | 👥 People | "5 portions" | "[n] portions" |
-
-### 3.5 Nutrition Section
+### 3.5 `WCNutritionSection` (Organism)
 | Property | Value | Design Token Reference |
-|----------|--------|------------------------|
-| Section Title | "Nutrition facts" | `WorldChefTextStyles.headlineSmall` |
-| Title Color | Black | `WorldChefNeutrals.primaryText` |
-| "Full nutrition" Link | Right-aligned | `WorldChefColors.brandBlue` |
-| Container Padding | 16dp horizontal | `WorldChefLayout.mobileContainerPadding` |
-| Vertical Spacing | 24dp from metadata | `WorldChefLayout.headlineToGrid` |
-
-#### Nutrition Indicators
-| Property | Value | Design Token Reference |
-|----------|--------|------------------------|
-| Calories Text | "Calories" subtitle | `WorldChefTextStyles.bodyMedium` |
-| Progress Circles | 4 circular indicators | Custom component |
+|----------|-------|------------------------|
+| Section Header | "Nutrition facts" + "Full nutrition >" link | `WCSectionHeader` (Molecule) |
+| Progress Indicators| 4 circular indicators | `WCCircularProgress` (Atom) |
 | Circle Size | 48dp diameter | Custom size |
-| Progress Colors | Different colors per macro | Semantic colors |
-| Percentage Text | Inside circles | `WorldChefTextStyles.labelMedium` |
-| Circle Spacing | 12dp between circles | `WorldChefSpacing.sm` + 4dp |
+| Circle Spacing | 12dp between circles | `WorldChefSpacing.md` |
 
-#### Nutrition Circle Details
-| Circle | Label | Percentage | Color Reference |
-|--------|-------|------------|-----------------|
-| 1 | Protein | 17% | `WorldChefColors.brandBlue` |
-| 2 | Carbs | 35% | `WorldChefColors.accentOrange` |
-| 3 | Unknown | 225% | `WorldChefSemanticColors.warning` |
-| 4 | Unknown | 60% | `WorldChefColors.secondaryGreen` |
-
-### 3.6 Ingredients Section
+### 3.6 `WCIngredientsSection` (Organism)
 | Property | Value | Design Token Reference |
-|----------|--------|------------------------|
-| Section Title | "Ingredients" | `WorldChefTextStyles.headlineSmall` |
-| Title Color | Black | `WorldChefNeutrals.primaryText` |
-| List Style | Vertical list | Full-width items |
-| Item Spacing | No spacing | Continuous list |
+|----------|-------|------------------------|
+| Section Header | "Ingredients" | `WCSectionHeader` (Molecule) |
+| List Style | Vertical list | Continuous list items |
+| List Item | Icon + Name + Quantity + Chevron | `WCIngredientListItem` (Molecule) |
 
-#### Ingredient List Items
-| Component | Position | Styling | Design Token Reference |
-|-----------|----------|---------|------------------------|
-| Ingredient Icon | Left | 24dp emoji/icon | Food category icon |
-| Ingredient Name | Center-left | Primary text | `WorldChefTextStyles.bodyLarge` |
-| Quantity | Right | Secondary text | `WorldChefTextStyles.bodyMedium` |
-| Chevron | Far right | Navigation arrow | `WorldChefDimensions.iconSmall` |
-| Item Height | 56dp minimum | Touch target | `WorldChefDimensions.comfortableTouchTarget` + 8dp |
-| Item Padding | 16dp horizontal | `WorldChefLayout.mobileContainerPadding` |
-| Divider | Bottom border | Light gray | `WorldChefNeutrals.dividers` |
-
-#### Ingredient Examples
-| Icon | Name | Quantity | Format |
-|------|------|----------|--------|
-| 🧅 | Large yellow onions | 2 pieces | "[quantity] [unit]" |
-| 🛢 | Vegetable oil | 60 ml | "[quantity] [unit]" |
-| 🍅 | Diced tomato | 395 g (2 cans) | "[quantity] ([additional info])" |
-
-### 3.7 Bottom Navigation
+### 3.7 `WCBottomNavigation` (Organism)
 | Property | Value | Design Token Reference |
-|----------|--------|------------------------|
+|----------|-------|------------------------|
 | Height | 56dp | `WorldChefDimensions.bottomNavHeight` |
 | Background | Blue gradient/solid | `WorldChefColors.brandBlue` |
-| Active Item | Context-dependent | `WorldChefColors.brandBlue` or highlighted |
-| Inactive Items | White | On blue background |
-| Icon Size | 24dp | `WorldChefDimensions.iconMedium` |
-| Labels | Below icons | `WorldChefTextStyles.labelSmall` |
-
-#### Bottom Navigation Items
-| Position | Label | Icon | Function |
-|----------|-------|------|----------|
-| 1 | "feed" | Home/Grid icon | Main feed |
-| 2 | "Explore" | Search/Compass icon | Discovery and search |
-| 3 | "+" | Plus icon | Quick create action |
-| 4 | "Plans" | Calendar/List icon | Meal planning |
-| 5 | "You" | Profile/Person icon | User profile |
+| Items | 5 Nav Items | `WCBottomNavItem` (Molecule) |
 
 ## 4. Interactions
 
 ### 4.1 Header Actions
-1. **Tap back arrow** → Navigate back to previous screen
-2. **Tap three dots menu** → Open recipe options menu
-3. **Tap creator name** → Navigate to creator profile (optional)
+1. **Tap `WCBackButton`** → Navigate back to the previous screen.
+2. **Tap `WCMenuButton`** → Open recipe options menu.
 
 ### 4.2 Hero Section Actions
-1. **Tap creator circle** → Navigate to creator profile
-2. **Tap "Start cooking"** → Navigate to cooking mode/timer
-3. **Long press hero image** → Image zoom/fullscreen (optional)
+1. **Tap `WCCircularImage` (creator)** → Navigate to the creator's profile.
+2. **Tap `WCPrimaryButton` ("Start cooking")** → Navigate to the cooking mode/timer screen.
 
-### 4.3 Metadata Actions
-1. **Tap time icon** → Show cooking timeline (optional)
-2. **Tap X button** → Close/back action (alternative nav)
-3. **Tap portions** → Adjust serving size (optional)
-
-### 4.4 Nutrition Section
-1. **Tap "Full nutrition"** → Navigate to detailed nutrition screen
-2. **Tap nutrition circles** → Show detailed macro information
-
-### 4.5 Ingredients Section
-1. **Tap ingredient item** → Navigate to ingredient detail
-2. **Tap chevron** → Same as ingredient item tap
-3. **Long press ingredient** → Add to shopping list (optional)
-
-### 4.6 Bottom Navigation
-1. **Tap "feed"** → Navigate to Home Feed screen
-2. **Tap "Explore"** → Navigate to Search/Discovery screen
-3. **Tap "+"** → Quick action menu or recipe creation
-4. **Tap "Plans"** → Navigate to Meal Planning screen
-5. **Tap "You"** → Navigate to User Profile screen
+### 4.3 Nutrition/Ingredients Actions
+1. **Tap "Full nutrition" in `WCSectionHeader`** → Navigate to the detailed nutrition screen.
+2. **Tap `WCIngredientListItem`** → Navigate to the ingredient detail screen.
 
 ## 5. Responsive Behavior
 
 ### 5.1 Screen Size Adaptations
-| Screen Width | Hero Image | Nutrition Circles | Adjustments |
-|--------------|------------|-------------------|-------------|
-| 320-375dp | Maintain aspect | 4 circles stacked closer | Compact spacing |
-| 375-414dp | Standard aspect | 4 circles standard spacing | Normal layout |
-| 414dp+ | Standard aspect | 4 circles with breathing room | Comfortable spacing |
+| Screen Width | Hero Image | `WCNutritionSection` | Adjustments |
+|--------------|------------|----------------------|-------------|
+| 320-375dp    | Maintain aspect | 4 circles stacked closer | Compact spacing |
+| 375dp+       | Standard aspect | 4 circles with more space | Normal layout |
 
 ### 5.2 Content Loading
 | State | Visual Behavior | Duration |
-|-------|----------------|----------|
-| Initial Load | Hero image fade-in | Progressive loading |
-| Ingredient Load | Skeleton list items | Until data loaded |
-| Nutrition Load | Empty circles fill | Animated progress |
+|-------|-----------------|----------|
+| Initial Load | Hero image fade-in, skeletons | Progressive loading |
+| Content Refresh | Crossfade | `WorldChefAnimations.short` |
 
 ## 6. States & Error Handling
 
-### 6.1 Loading States
+### 6.1 Loading State
 | Component | Loading Visual | Animation |
 |-----------|----------------|-----------|
-| Hero Image | Blur-to-sharp transition | Progressive enhancement |
-| Creator Info | Skeleton text blocks | `WorldChefAnimations.shimmer` |
-| Nutrition Circles | Empty circles | Fill animation on load |
-| Ingredients List | Skeleton list items | `WorldChefAnimations.shimmer` |
+| `WCHeroSection` | Blur-to-sharp image transition | Progressive enhancement |
+| `WCRecipeHeaderInfo` | Skeleton text blocks | `WorldChefAnimations.shimmer` |
+| `WCNutritionSection` | Empty circles filling up | `WorldChefAnimations.pulse` |
+| `WCIngredientsSection`| Skeleton list items | `WorldChefAnimations.shimmer` |
 
-### 6.2 Error States
+### 6.2 Error State
 | Scenario | Error Visual | Recovery Action |
 |----------|--------------|-----------------|
 | Recipe Not Found | "Recipe not available" message | "Go back" button |
-| Image Load Failed | Placeholder image | Retry on tap |
+| Image Load Failed | Placeholder image with icon | Retry on tap |
 | Ingredients Failed | "Unable to load ingredients" | "Retry" button |
-| Network Error | Offline banner | Auto-retry when online |
+| Network Error | Global offline banner | Auto-retry when online |
 
-### 6.3 Offline Behavior
+### 6.3 Empty State
+*Not applicable for this screen, as it always requires a recipe context to be displayed.*
+
+### 6.4 Offline Behavior
 | Content | Offline Behavior | Visual Indicator |
 |---------|------------------|------------------|
-| Cached Recipe | Full offline access | Subtle offline indicator |
-| Uncached Recipe | Limited data display | "Limited offline access" banner |
-| Start Cooking | Local timer mode | "Offline cooking mode" notice |
+| Recipe Data | Display cached version if available | "You are offline" banner at the top |
+| Actions | Disable actions requiring a connection | Disabled button states |
 
 ## 7. Accessibility
 
