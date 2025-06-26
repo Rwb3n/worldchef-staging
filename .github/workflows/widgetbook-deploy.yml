@@ -49,7 +49,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Widgetbook for Web (Production)
-        working-directory: mobile
+        working-directory: mobile # hm
         run: |
           flutter build web \
             -t lib/widgetbook/widgetbook.dart \
