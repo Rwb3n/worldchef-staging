@@ -277,24 +277,4 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
         );
     }
   }
-
-  MaterialStateProperty<Color> _materialStateColor({
-    required Color defaultColor,
-    Color? hoveredColor,
-    Color? pressedColor,
-    Color? disabledColor,
-  }) {
-    return MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.disabled) && disabledColor != null) {
-        return disabledColor;
-      }
-      if (states.contains(MaterialState.pressed) && pressedColor != null) {
-        return pressedColor;
-      }
-      if (states.contains(MaterialState.hovered) && hoveredColor != null) {
-        return hoveredColor;
-      }
-      return defaultColor;
-    });
-  }
 } 

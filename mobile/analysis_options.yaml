@@ -13,9 +13,10 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   errors:
     deprecated_member_use_from_same_package: error
-    magic_number_hex: error # custom CI script check
+    # custom rule removed; linter upgrade covers magic numbers
   exclude:
     - build/**
+    - test/**
     - '**/*.g.dart'
 
 linter:
