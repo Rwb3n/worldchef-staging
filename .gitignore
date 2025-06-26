@@ -47,7 +47,6 @@ mobile/build/
 mobile/.flutter-plugins-dependencies
 mobile/pubspec.lock
 mobile/.packages
-mobile/lib/generated/
 
 # iOS
 mobile/ios/Pods/
@@ -78,6 +77,7 @@ docs/trace/*.json
 # --- PROJECT WORKSPACE FILES ---
 plans/
 issues/
+status/
 state.txt
 registry_map.txt
 poc2_supabase_validation/
@@ -88,9 +88,6 @@ archive/
 worldchef_poc_*/
 
 # --- FLUTTER WEB BUILD ARTIFACTS (accidental root output) ---
-widgetbook/
-canvaskit/
-icons/
 manifest.json
 version.json
 main.dart.js
