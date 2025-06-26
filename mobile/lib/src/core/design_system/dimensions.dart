@@ -3,7 +3,7 @@ library dimensions;
 /// From: docs/ui_specifications/design_system/design_tokens.md
 
 // Component Dimensions
-class AppDimensions {
+class WorldChefDimensions {
   // Touch Targets
   static const double minimumTouchTarget = 44.0;
   static const double comfortableTouchTarget = 48.0;

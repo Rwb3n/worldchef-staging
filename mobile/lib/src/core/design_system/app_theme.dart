@@ -16,20 +16,20 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: WorldChefLayout.primaryButtonPadding,
-          minimumSize: const Size.fromHeight(AppDimensions.buttonLarge),
+          minimumSize: const Size.fromHeight(WorldChefDimensions.buttonLarge),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
+            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
         ),
       ),
       cardTheme: CardThemeData(
-        margin: const EdgeInsets.all(AppSpacing.sm),
+        margin: const EdgeInsets.all(WorldChefSpacing.sm),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
+          borderRadius: BorderRadius.circular(WorldChefDimensions.radiusLarge),
         ),
       ),
       appBarTheme: AppBarTheme(
-        toolbarHeight: AppDimensions.appBarHeight,
+        toolbarHeight: WorldChefDimensions.appBarHeight,
         backgroundColor: WorldChefColors.brandBlue,
         foregroundColor: Colors.white,
         elevation: 0,
@@ -46,23 +46,23 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: WorldChefLayout.primaryButtonPadding,
-          minimumSize: const Size.fromHeight(AppDimensions.buttonLarge),
+          minimumSize: const Size.fromHeight(WorldChefDimensions.buttonLarge),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
+            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
           backgroundColor: darkColorScheme.primary,
           foregroundColor: darkColorScheme.onPrimary,
         ),
       ),
       cardTheme: CardThemeData(
-        margin: const EdgeInsets.all(AppSpacing.sm),
+        margin: const EdgeInsets.all(WorldChefSpacing.sm),
         color: WorldChefDarkTheme.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
+          borderRadius: BorderRadius.circular(WorldChefDimensions.radiusLarge),
         ),
       ),
       appBarTheme: AppBarTheme(
-        toolbarHeight: AppDimensions.appBarHeight,
+        toolbarHeight: WorldChefDimensions.appBarHeight,
         backgroundColor: WorldChefDarkTheme.surface,
         foregroundColor: WorldChefDarkTheme.primaryText,
         elevation: 0,

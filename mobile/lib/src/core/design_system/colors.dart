@@ -28,6 +28,22 @@ class WorldChefColors {
   static const Color accentOrangeHover = Color(0xFFE68F00);
   static const Color accentOrangeActive = Color(0xFFCC7A00);
   static const Color accentOrangeDisabled = Color(0x80FFA000);
+
+  // ------------------------------------------------------------
+  // Legacy/alias tokens (for backward-compat with older stories)
+  // These map to the new Design-System neutral palette.
+  // ------------------------------------------------------------
+  /// Neutral divider / placeholder surface – legacy name used in stories.
+  static const Color neutralGray = WorldChefNeutrals.dividers;
+
+  /// Secondary text color – legacy name used across older components.
+  static const Color textSecondary = WorldChefNeutrals.secondaryText;
+
+  /// Variant surface color – mapped to neutral background.
+  static const Color surfaceVariant = WorldChefNeutrals.background;
+
+  /// Outline stroke color – synonym for divider neutral.
+  static const Color outline = WorldChefNeutrals.dividers;
 }
 
 // Semantic Colors

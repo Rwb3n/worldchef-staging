@@ -13,10 +13,16 @@ import 'components/button_stories.dart';
 import 'components/input_stories.dart';
 import 'components/recipe_card_stories.dart';
 import 'components/search_bar_stories.dart';
+import 'components/section_header_stories.dart';
+import 'components/category_circle_row_stories.dart';
+import 'components/featured_recipe_card_stories.dart';
+import 'components/image_stories.dart';
+import 'components/content_stories.dart';
+import 'components/navigation_stories.dart';
 
 // Screen Stories
 import 'screens/home_feed_stories.dart';
-// import 'screens/recipe_detail_stories.dart'; // TODO: Create this file
+import 'screens/recipe_detail_stories.dart';
 
 /// WorldChef Widgetbook - Visual Design System & Component Catalogue
 /// 
@@ -69,6 +75,10 @@ class WidgetbookApp extends StatelessWidget {
           name: 'Components',
           children: [
             WidgetbookFolder(
+              name: 'Navigation',
+              children: buildNavigationStories(),
+            ),
+            WidgetbookFolder(
               name: 'Buttons',
               children: buildButtonStories(),
             ),
@@ -84,6 +94,20 @@ class WidgetbookApp extends StatelessWidget {
               name: 'Search Bars',
               children: buildSearchBarStories(),
             ),
+            WidgetbookFolder(
+              name: 'Section Headers',
+              children: buildSectionHeaderStories(),
+            ),
+            WidgetbookFolder(
+              name: 'Content',
+              children: buildContentStories(),
+            ),
+            WidgetbookFolder(
+              name: 'Images',
+              children: buildImageStories(),
+            ),
+            categoryCircleRowStories(),
+            ...buildFeaturedRecipeCardStories(),
           ],
         ),
         // Screens Category
@@ -94,7 +118,7 @@ class WidgetbookApp extends StatelessWidget {
               name: 'Home Feed',
               children: buildHomeFeedStories(),
             ),
-            // TODO: Add Recipe Detail when file is created
+            buildRecipeDetailStories(),
           ],
         ),
       ],

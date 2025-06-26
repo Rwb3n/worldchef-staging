@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:worldchef_mobile/src/core/design_system/animations.dart';
 import 'package:worldchef_mobile/src/core/design_system/spacing.dart';
+import 'package:worldchef_mobile/src/ui/atoms/wc_button.dart';
 
 /// Animation System Stories - GREEN Step (Implementation Complete)
 ///
@@ -52,6 +53,15 @@ List<WidgetbookComponent> buildAnimationStories() {
         ),
       ],
     ),
+    WidgetbookComponent(
+      name: 'Component Animations',
+      useCases: [
+        WidgetbookUseCase(
+          name: 'Button Press',
+          builder: (context) => const ButtonPressAnimationDemo(),
+        ),
+      ],
+    ),
   ];
 }
 
@@ -65,7 +75,7 @@ class AnimationTimingDemo extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.md),
+      padding: const EdgeInsets.all(WorldChefSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,7 +83,7 @@ class AnimationTimingDemo extends StatelessWidget {
             'WorldChef Animation Durations',
             style: textTheme.headlineLarge,
           ),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: WorldChefSpacing.md),
 
           // GREEN STEP: Using actual AppAnimations constants
           _buildTimingCard(
@@ -98,16 +108,16 @@ class AnimationTimingDemo extends StatelessWidget {
             Colors.orange.shade200,
           ),
 
-          const SizedBox(height: AppSpacing.lg),
+          const SizedBox(height: WorldChefSpacing.lg),
            Card(
             color: colorScheme.primaryContainer,
             child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.md),
+              padding: const EdgeInsets.all(WorldChefSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.check_circle, color: colorScheme.onPrimaryContainer),
-                  const SizedBox(height: AppSpacing.sm),
+                  const SizedBox(height: WorldChefSpacing.sm),
                   Text(
                     'GREEN STEP: Animation System Implemented',
                      style: textTheme.titleMedium?.copyWith(
@@ -115,7 +125,7 @@ class AnimationTimingDemo extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: AppSpacing.xs),
+                  const SizedBox(height: WorldChefSpacing.xs),
                   Text(
                     'Using AppAnimations constants from the design system.',
                      style: textTheme.bodyMedium?.copyWith(
@@ -1064,6 +1074,43 @@ class ListAnimationsDemo extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ButtonPressAnimationDemo extends StatelessWidget {
+  const ButtonPressAnimationDemo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Press the button to see the animation.',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 24),
+            WorldChefButton.primary(
+              label: 'Animate Me',
+              onPressed: () {},
+            ),
+            const SizedBox(height: 24),
+            const Card(
+              color: Colors.amberAccent,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  '🔴 FAILING TEST:\nThis button does not yet have the specified 100ms scale animation.',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

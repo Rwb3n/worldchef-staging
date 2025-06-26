@@ -60,7 +60,7 @@ class SpacingTokensDemo extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.md),
+      padding: const EdgeInsets.all(WorldChefSpacing.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -68,55 +68,55 @@ class SpacingTokensDemo extends StatelessWidget {
             'WorldChef Spacing Tokens',
             style: textTheme.headlineLarge,
           ),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: WorldChefSpacing.md),
 
-          // GREEN STEP: Using actual AppSpacing constants
+          // GREEN STEP: Using actual WorldChefSpacing constants
           _buildSpacingToken(
             'XS',
-            '${AppSpacing.xs}px',
-            'AppSpacing.xs',
-            AppSpacing.xs,
+            '${WorldChefSpacing.xs}px',
+            'WorldChefSpacing.xs',
+            WorldChefSpacing.xs,
             'Tight spacing, small gaps',
           ),
           _buildSpacingToken(
             'SM',
-            '${AppSpacing.sm}px',
-            'AppSpacing.sm',
-            AppSpacing.sm,
+            '${WorldChefSpacing.sm}px',
+            'WorldChefSpacing.sm',
+            WorldChefSpacing.sm,
             'Base unit, compact layouts',
           ),
           _buildSpacingToken(
             'MD',
-            '${AppSpacing.md}px',
-            'AppSpacing.md',
-            AppSpacing.md,
+            '${WorldChefSpacing.md}px',
+            'WorldChefSpacing.md',
+            WorldChefSpacing.md,
             'Standard spacing, most common',
           ),
           _buildSpacingToken(
             'LG',
-            '${AppSpacing.lg}px',
-            'AppSpacing.lg',
-            AppSpacing.lg,
+            '${WorldChefSpacing.lg}px',
+            'WorldChefSpacing.lg',
+            WorldChefSpacing.lg,
             'Generous spacing, section breaks',
           ),
           _buildSpacingToken(
             'XL',
-            '${AppSpacing.xl}px',
-            'AppSpacing.xl',
-            AppSpacing.xl,
+            '${WorldChefSpacing.xl}px',
+            'WorldChefSpacing.xl',
+            WorldChefSpacing.xl,
             'Large spacing, major sections',
           ),
 
-          const SizedBox(height: AppSpacing.lg),
+          const SizedBox(height: WorldChefSpacing.lg),
            Card(
             color: colorScheme.primaryContainer,
             child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.md),
+              padding: const EdgeInsets.all(WorldChefSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.check_circle, color: colorScheme.onPrimaryContainer),
-                  const SizedBox(height: AppSpacing.sm),
+                  const SizedBox(height: WorldChefSpacing.sm),
                   Text(
                     'GREEN STEP: Spacing System Implemented',
                     style: textTheme.titleMedium?.copyWith(
@@ -124,9 +124,9 @@ class SpacingTokensDemo extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: AppSpacing.xs),
+                  const SizedBox(height: WorldChefSpacing.xs),
                   Text(
-                    'Using AppSpacing constants from the design system.',
+                    'Using WorldChefSpacing constants from the design system.',
                     style: textTheme.bodyMedium?.copyWith(
                       color: colorScheme.onPrimaryContainer,
                     ),

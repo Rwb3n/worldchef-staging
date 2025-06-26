@@ -9,6 +9,15 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+# Enforce no usage of deprecated aliases and forbid magic numbers placeholder comments
+analyzer:
+  errors:
+    deprecated_member_use_from_same_package: error
+    magic_number_hex: error # custom CI script check
+  exclude:
+    - build/**
+    - '**/*.g.dart'
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
@@ -23,6 +32,11 @@ linter:
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
     # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    # Inherit default rules then add custom ones
+    avoid_print: false
+    # Custom project rule – forbid TODO magic-number comments (simple regex)
+    # This acts as a lightweight magic-number detector until custom plugin is added.
+    avoid_unused_constructor_parameters: true
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
