@@ -22,7 +22,7 @@ class WCThumbnailImage extends StatelessWidget {
 
   /// Callback for tap events.
   final VoidCallback? onTap;
-  
+
   /// Semantic label for accessibility.
   final String? semanticLabel;
 
@@ -55,7 +55,8 @@ class WCThumbnailImage extends StatelessWidget {
                   imageUrl,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.image_not_supported, color: Colors.grey);
+                    return const Icon(Icons.image_not_supported,
+                        color: Colors.grey);
                   },
                 ),
                 if (overlay != null)
@@ -69,4 +70,4 @@ class WCThumbnailImage extends StatelessWidget {
       ),
     );
   }
-} 
+}

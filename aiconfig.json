@@ -4,9 +4,9 @@
     "description": "AI-powered recipe discovery and creator platform with mobile-first approach",
     "version": "1.0.0-mvp",
     "phase": "Cycle4-Staging",
-    "last_updated": "2025-06-26",
-    "global_event_counter": 185,
-    "github_pages_url": "https://rwb3n.github.io/worldchef/"
+    "last_updated": "2025-06-27",
+    "global_event_counter": 215,
+    "github_pages_url": "https://rwb3n.github.io/worldchef-staging/"
   },
   "architecture": {
     "status": "VALIDATED",

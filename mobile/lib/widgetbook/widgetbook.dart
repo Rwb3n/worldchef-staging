@@ -25,7 +25,7 @@ import 'screens/home_feed_stories.dart';
 import 'screens/recipe_detail_stories.dart';
 
 /// WorldChef Widgetbook - Visual Design System & Component Catalogue
-/// 
+///
 /// This is the GREEN step of TDD - design system implementation completed
 /// and all stories now show functional components and design tokens.
 void main() {
@@ -112,7 +112,8 @@ class WidgetbookApp extends StatelessWidget {
             WidgetbookFolder(
               name: 'Featured Recipe Card',
               children: buildFeaturedRecipeCardStories()
-                  .map((e) => WidgetbookFolder(name: e.name, children: e.useCases))
+                  .map((e) =>
+                      WidgetbookFolder(name: e.name, children: e.useCases))
                   .toList(),
             ),
           ],
@@ -140,7 +141,7 @@ class WidgetbookApp extends StatelessWidget {
               data: AppTheme.lightTheme,
             ),
             WidgetbookTheme(
-              name: 'Dark', 
+              name: 'Dark',
               data: AppTheme.darkTheme,
             ),
           ],
@@ -155,5 +156,3 @@ class WidgetbookApp extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,16 +1,10 @@
-# --- MONOREPO GITIGNORE ---
+# ────────── MONOREPO GITIGNORE ──────────
 
-# Dependencies
+######## 1. Generic things to ignore ########
+# Node / PNPM / Turbo / Parcel
 node_modules/
 .pnp/
 .pnp.js
-
-# Environment variables
-.env
-.env.*
-!.env.example
-
-# Build outputs
 dist/
 build/
 coverage/
@@ -18,42 +12,47 @@ coverage/
 .turbo/
 .parcel-cache/
 
-# IDE/Editor files
+# Operating-system & IDE noise
 .idea/
 .vscode/
 *.iml
 .DS_Store
 Thumbs.db
 
-# Logs
+# Logs & runtime data
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
 
-# --- BACKEND SPECIFIC ---
+# Environment variables
+.env
+.env.*
+!.env.example
+
+
+
+######## 2. Project-specific artefacts ########
+# ---- Backend (Fastify) ----
 backend/dist/
 backend/coverage/
 
-# --- MOBILE SPECIFIC ---
+# ---- Mobile (Flutter) ----
 mobile/.dart_tool/
 mobile/build/
 mobile/.flutter-plugins-dependencies
 mobile/pubspec.lock
 mobile/.packages
+mobile/lib/generated/      # <-- keep ignoring generated code only
 
-# iOS
+# iOS / Android sub-dirs
 mobile/ios/Pods/
 mobile/ios/*.xcworkspace
 mobile/ios/*.xcuserstate
-
-# Android
 mobile/android/.gradle/
 mobile/android/app/build/
 mobile/android/key.properties
@@ -61,20 +60,22 @@ mobile/android/key.properties
 *.aab
 *.ipa
 
-# --- SHARED SPECIFIC ---
+# ---- Shared (TypeScript pkg) ----
 shared/dist/
 
-# --- INFRA SPECIFIC ---
+# ---- Infrastructure (Terraform, etc.) ----
 infra/.terraform/
 infra/terraform.tfstate*
 infra/.terraform.lock.hcl
 
-# --- DOCS ---
+# ---- Docs and large binary exports ----
 docs/trace/*.json
 *.xlsx
 *.xls
 
-# --- PROJECT WORKSPACE FILES ---
+
+
+######## 3. Workspace management files ########
 plans/
 issues/
 status/
@@ -83,11 +84,15 @@ registry_map.txt
 poc2_supabase_validation/
 _legacy/
 
-# --- LEGACY/ARCHIVE IGNORE ---
+
+
+######## 4. Legacy / archive buckets ########
 archive/
 worldchef_poc_*/
 
-# --- FLUTTER WEB BUILD ARTIFACTS (accidental root output) ---
+
+
+######## 5. Flutter-web artefacts accidentally created at repo root ########
 manifest.json
 version.json
 main.dart.js
@@ -97,3 +102,10 @@ flutter.js
 favicon.png
 .nojekyll
 .last_build_id
+
+
+
+######## 6. OVERRIDES ─ KEEP WIDGETBOOK STORIES ########
+# In case someone has a global rule like “*stories.dart”, make sure
+# all Widgetbook story files stay in source control.
+!mobile/lib/widgetbook/**/*.dart

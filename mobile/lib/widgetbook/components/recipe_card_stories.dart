@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 /// Recipe Card Component Stories - RED Step (Will show placeholders/errors)
-/// 
+///
 /// These stories demonstrate WorldChef recipe card components and will fail
 /// until design system implementation is completed in task t002.
 List<WidgetbookComponent> buildRecipeCardStories() {
@@ -56,7 +56,7 @@ class StandardRecipeCards extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefRecipeCard in t002
           _buildRecipeCard(
             'Classic Margherita Pizza',
@@ -67,9 +67,9 @@ class StandardRecipeCards extends StatelessWidget {
             'Italian',
             true,
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           _buildRecipeCard(
             'Chicken Tikka Masala',
             'Creamy tomato-based curry with tender chicken pieces',
@@ -79,9 +79,9 @@ class StandardRecipeCards extends StatelessWidget {
             'Indian',
             false,
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           _buildRecipeCard(
             'Chocolate Chip Cookies',
             'Soft and chewy cookies with premium chocolate chips',
@@ -91,7 +91,7 @@ class StandardRecipeCards extends StatelessWidget {
             'Dessert',
             true,
           ),
-          
+
           const SizedBox(height: 24),
           const Card(
             color: Colors.orange,
@@ -205,7 +205,7 @@ class StandardRecipeCards extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Recipe details
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -223,7 +223,7 @@ class StandardRecipeCards extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8),
-                
+
                 // Description
                 Text(
                   description,
@@ -235,7 +235,7 @@ class StandardRecipeCards extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Metadata row
                 Row(
                   children: [
@@ -254,7 +254,7 @@ class StandardRecipeCards extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 16),
-                    
+
                     // Servings
                     Icon(
                       Icons.people,
@@ -270,7 +270,7 @@ class StandardRecipeCards extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    
+
                     // Rating
                     const Icon(
                       Icons.star,
@@ -312,7 +312,7 @@ class CompactRecipeCards extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefRecipeCard.compact in t002
           _buildCompactCard(
             'Quick Pasta Salad',
@@ -320,34 +320,34 @@ class CompactRecipeCards extends StatelessWidget {
             '4.5',
             false,
           ),
-          
+
           const SizedBox(height: 12),
-          
+
           _buildCompactCard(
             'Grilled Chicken Sandwich',
             '20 min',
             '4.7',
             true,
           ),
-          
+
           const SizedBox(height: 12),
-          
+
           _buildCompactCard(
             'Vegetable Stir Fry',
             '12 min',
             '4.3',
             false,
           ),
-          
+
           const SizedBox(height: 12),
-          
+
           _buildCompactCard(
             'Banana Smoothie Bowl',
             '5 min',
             '4.8',
             true,
           ),
-          
+
           const SizedBox(height: 24),
           const Card(
             color: Colors.blue,
@@ -466,7 +466,7 @@ class FeaturedRecipeCards extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefRecipeCard.featured in t002
           _buildFeaturedCard(
             'Chef\'s Special: Beef Wellington',
@@ -478,9 +478,9 @@ class FeaturedRecipeCards extends StatelessWidget {
             'British',
             true,
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           _buildFeaturedCard(
             'Trending: Korean BBQ Tacos',
             'Fusion cuisine at its finest - Korean flavors meet Mexican tradition',
@@ -534,7 +534,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                     color: Colors.grey,
                   ),
                 ),
-                
+
                 // Gradient overlay
                 Container(
                   decoration: BoxDecoration(
@@ -552,7 +552,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                     ),
                   ),
                 ),
-                
+
                 // Featured badge
                 if (isFeatured)
                   Positioned(
@@ -588,7 +588,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                       ),
                     ),
                   ),
-                
+
                 // Favorite button
                 Positioned(
                   top: 16,
@@ -607,7 +607,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                     ),
                   ),
                 ),
-                
+
                 // Title overlay
                 Positioned(
                   bottom: 16,
@@ -641,7 +641,7 @@ class FeaturedRecipeCards extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Recipe details
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -660,7 +660,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Metadata row
                 Row(
                   children: [
@@ -695,7 +695,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    
+
                     // Servings
                     Container(
                       padding: const EdgeInsets.symmetric(
@@ -727,7 +727,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    
+
                     // Rating
                     Container(
                       padding: const EdgeInsets.symmetric(
@@ -760,7 +760,7 @@ class FeaturedRecipeCards extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Action button
                 SizedBox(
                   width: double.infinity,
@@ -808,10 +808,10 @@ class RecipeCardLoadingStates extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefRecipeCard.loading in t002
           RecipeCardSkeleton(),
-          
+
           SizedBox(height: 16),
           RecipeCardSkeleton(),
         ],
@@ -880,7 +880,7 @@ class _RecipeCardSkeletonState extends State<RecipeCardSkeleton>
                   ),
                 ),
               ),
-              
+
               // Content skeleton
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -905,7 +905,7 @@ class _RecipeCardSkeletonState extends State<RecipeCardSkeleton>
                       ),
                     ),
                     const SizedBox(height: 8),
-                    
+
                     // Description skeleton
                     Container(
                       width: double.infinity,
@@ -941,7 +941,7 @@ class _RecipeCardSkeletonState extends State<RecipeCardSkeleton>
                       ),
                     ),
                     const SizedBox(height: 16),
-                    
+
                     // Metadata skeleton
                     Row(
                       children: [
@@ -951,7 +951,8 @@ class _RecipeCardSkeletonState extends State<RecipeCardSkeleton>
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             gradient: LinearGradient(
-                              begin: Alignment(-1.0 + 2 * _controller.value, 0.0),
+                              begin:
+                                  Alignment(-1.0 + 2 * _controller.value, 0.0),
                               end: Alignment(1.0 + 2 * _controller.value, 0.0),
                               colors: [
                                 Colors.grey.shade300,
@@ -968,7 +969,8 @@ class _RecipeCardSkeletonState extends State<RecipeCardSkeleton>
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             gradient: LinearGradient(
-                              begin: Alignment(-1.0 + 2 * _controller.value, 0.0),
+                              begin:
+                                  Alignment(-1.0 + 2 * _controller.value, 0.0),
                               end: Alignment(1.0 + 2 * _controller.value, 0.0),
                               colors: [
                                 Colors.grey.shade300,
@@ -985,7 +987,8 @@ class _RecipeCardSkeletonState extends State<RecipeCardSkeleton>
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             gradient: LinearGradient(
-                              begin: Alignment(-1.0 + 2 * _controller.value, 0.0),
+                              begin:
+                                  Alignment(-1.0 + 2 * _controller.value, 0.0),
                               end: Alignment(1.0 + 2 * _controller.value, 0.0),
                               colors: [
                                 Colors.grey.shade300,
@@ -1013,10 +1016,12 @@ class RecipeCardInteractiveStates extends StatefulWidget {
   const RecipeCardInteractiveStates({super.key});
 
   @override
-  State<RecipeCardInteractiveStates> createState() => _RecipeCardInteractiveStatesState();
+  State<RecipeCardInteractiveStates> createState() =>
+      _RecipeCardInteractiveStatesState();
 }
 
-class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveStates> {
+class _RecipeCardInteractiveStatesState
+    extends State<RecipeCardInteractiveStates> {
   bool _isFavorited = false;
   bool _isBookmarked = false;
 
@@ -1032,7 +1037,7 @@ class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveState
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // Interactive recipe card
           Card(
             elevation: 2,
@@ -1062,7 +1067,7 @@ class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveState
                           color: Colors.grey,
                         ),
                       ),
-                      
+
                       // Interactive buttons
                       Positioned(
                         top: 12,
@@ -1084,15 +1089,18 @@ class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveState
                                 icon: AnimatedSwitcher(
                                   duration: const Duration(milliseconds: 200),
                                   child: Icon(
-                                    _isFavorited ? Icons.favorite : Icons.favorite_border,
+                                    _isFavorited
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
                                     key: ValueKey(_isFavorited),
-                                    color: _isFavorited ? Colors.red : Colors.grey,
+                                    color:
+                                        _isFavorited ? Colors.red : Colors.grey,
                                   ),
                                 ),
                               ),
                             ),
                             const SizedBox(height: 8),
-                            
+
                             // Bookmark button
                             Container(
                               decoration: BoxDecoration(
@@ -1108,9 +1116,13 @@ class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveState
                                 icon: AnimatedSwitcher(
                                   duration: const Duration(milliseconds: 200),
                                   child: Icon(
-                                    _isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                                    _isBookmarked
+                                        ? Icons.bookmark
+                                        : Icons.bookmark_border,
                                     key: ValueKey(_isBookmarked),
-                                    color: _isBookmarked ? const Color(0xFF0288D1) : Colors.grey,
+                                    color: _isBookmarked
+                                        ? const Color(0xFF0288D1)
+                                        : Colors.grey,
                                   ),
                                 ),
                               ),
@@ -1121,7 +1133,7 @@ class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveState
                     ],
                   ),
                 ),
-                
+
                 // Recipe details
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -1144,7 +1156,7 @@ class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveState
                         ),
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Status indicators
                       Row(
                         children: [
@@ -1222,4 +1234,4 @@ class _RecipeCardInteractiveStatesState extends State<RecipeCardInteractiveState
       ),
     );
   }
-} 
+}

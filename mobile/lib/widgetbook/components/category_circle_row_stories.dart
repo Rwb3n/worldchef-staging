@@ -3,10 +3,10 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:worldchef_mobile/src/ui/organisms/wc_category_circle_row.dart';
 
 /// Widgetbook Story for WCCategoryCircleRow Organism
-/// 
+///
 /// Validates horizontal scrolling behavior, category display, and create button variants.
 /// Tests the organism's behavior with different category counts and configurations.
-/// 
+///
 /// Author: WorldChef Mobile Team
 /// Date: 2025-06-26
 /// Global Event: 162 (Widgetbook story for WCCategoryCircleRow)
@@ -20,11 +20,18 @@ WidgetbookComponent categoryCircleRowStories() {
         name: 'Default Usage',
         builder: (context) {
           final categories = [
-            CategoryData(name: 'Breakfast', imageUrl: 'https://picsum.photos/id/292/60/60'),
-            CategoryData(name: 'Lunch', imageUrl: 'https://picsum.photos/id/326/60/60'),
-            CategoryData(name: 'Dinner', imageUrl: 'https://picsum.photos/id/365/60/60'),
-            CategoryData(name: 'Desserts', imageUrl: 'https://picsum.photos/id/431/60/60'),
-            CategoryData(name: 'Snacks', imageUrl: 'https://picsum.photos/id/488/60/60'),
+            CategoryData(
+                name: 'Breakfast',
+                imageUrl: 'https://picsum.photos/id/292/60/60'),
+            CategoryData(
+                name: 'Lunch', imageUrl: 'https://picsum.photos/id/326/60/60'),
+            CategoryData(
+                name: 'Dinner', imageUrl: 'https://picsum.photos/id/365/60/60'),
+            CategoryData(
+                name: 'Desserts',
+                imageUrl: 'https://picsum.photos/id/431/60/60'),
+            CategoryData(
+                name: 'Snacks', imageUrl: 'https://picsum.photos/id/488/60/60'),
             CategoryData(name: 'Create +', isCreateButton: true),
           ];
 
@@ -58,16 +65,32 @@ WidgetbookComponent categoryCircleRowStories() {
         name: 'Scrolling Behavior',
         builder: (context) {
           final categories = [
-            CategoryData(name: 'Breakfast', imageUrl: 'https://picsum.photos/id/292/60/60'),
-            CategoryData(name: 'Lunch', imageUrl: 'https://picsum.photos/id/326/60/60'),
-            CategoryData(name: 'Dinner', imageUrl: 'https://picsum.photos/id/365/60/60'),
-            CategoryData(name: 'Desserts', imageUrl: 'https://picsum.photos/id/431/60/60'),
-            CategoryData(name: 'Snacks', imageUrl: 'https://picsum.photos/id/488/60/60'),
-            CategoryData(name: 'Beverages', imageUrl: 'https://picsum.photos/id/225/60/60'),
-            CategoryData(name: 'Vegetarian', imageUrl: 'https://picsum.photos/id/312/60/60'),
-            CategoryData(name: 'Vegan', imageUrl: 'https://picsum.photos/id/385/60/60'),
-            CategoryData(name: 'Gluten Free', imageUrl: 'https://picsum.photos/id/456/60/60'),
-            CategoryData(name: 'Low Carb', imageUrl: 'https://picsum.photos/id/502/60/60'),
+            CategoryData(
+                name: 'Breakfast',
+                imageUrl: 'https://picsum.photos/id/292/60/60'),
+            CategoryData(
+                name: 'Lunch', imageUrl: 'https://picsum.photos/id/326/60/60'),
+            CategoryData(
+                name: 'Dinner', imageUrl: 'https://picsum.photos/id/365/60/60'),
+            CategoryData(
+                name: 'Desserts',
+                imageUrl: 'https://picsum.photos/id/431/60/60'),
+            CategoryData(
+                name: 'Snacks', imageUrl: 'https://picsum.photos/id/488/60/60'),
+            CategoryData(
+                name: 'Beverages',
+                imageUrl: 'https://picsum.photos/id/225/60/60'),
+            CategoryData(
+                name: 'Vegetarian',
+                imageUrl: 'https://picsum.photos/id/312/60/60'),
+            CategoryData(
+                name: 'Vegan', imageUrl: 'https://picsum.photos/id/385/60/60'),
+            CategoryData(
+                name: 'Gluten Free',
+                imageUrl: 'https://picsum.photos/id/456/60/60'),
+            CategoryData(
+                name: 'Low Carb',
+                imageUrl: 'https://picsum.photos/id/502/60/60'),
             CategoryData(name: 'Create +', isCreateButton: true),
           ];
 
@@ -124,8 +147,16 @@ WidgetbookComponent categoryCircleRowStories() {
 
           final categories = List.generate(categoryCount, (index) {
             final categoryNames = [
-              'Breakfast', 'Lunch', 'Dinner', 'Desserts', 'Snacks',
-              'Beverages', 'Vegetarian', 'Vegan', 'Gluten Free', 'Low Carb'
+              'Breakfast',
+              'Lunch',
+              'Dinner',
+              'Desserts',
+              'Snacks',
+              'Beverages',
+              'Vegetarian',
+              'Vegan',
+              'Gluten Free',
+              'Low Carb'
             ];
             final imageUrls = [
               'https://picsum.photos/id/292/60/60',
@@ -142,12 +173,14 @@ WidgetbookComponent categoryCircleRowStories() {
 
             return CategoryData(
               name: categoryNames[index % categoryNames.length],
-              imageUrl: usePlaceholders ? null : imageUrls[index % imageUrls.length],
+              imageUrl:
+                  usePlaceholders ? null : imageUrls[index % imageUrls.length],
             );
           }).toList();
 
           if (showCreateButton) {
-            categories.add(CategoryData(name: 'Create +', isCreateButton: true));
+            categories
+                .add(CategoryData(name: 'Create +', isCreateButton: true));
           }
 
           return Scaffold(
@@ -201,7 +234,11 @@ WidgetbookComponent categoryCircleRowStories() {
         builder: (context) {
           final testCase = context.knobs.list(
             label: 'Test Case',
-            options: ['Single Category', 'Only Create Button', 'Long Category Names'],
+            options: [
+              'Single Category',
+              'Only Create Button',
+              'Long Category Names'
+            ],
             initialOption: 'Single Category',
           );
 
@@ -210,7 +247,9 @@ WidgetbookComponent categoryCircleRowStories() {
           switch (testCase) {
             case 'Single Category':
               categories = [
-                CategoryData(name: 'Breakfast', imageUrl: 'https://picsum.photos/id/292/60/60'),
+                CategoryData(
+                    name: 'Breakfast',
+                    imageUrl: 'https://picsum.photos/id/292/60/60'),
               ];
               break;
             case 'Only Create Button':
@@ -220,9 +259,15 @@ WidgetbookComponent categoryCircleRowStories() {
               break;
             case 'Long Category Names':
               categories = [
-                CategoryData(name: 'Very Long Category Name Test', imageUrl: 'https://picsum.photos/id/292/60/60'),
-                CategoryData(name: 'Another Extremely Long Name', imageUrl: 'https://picsum.photos/id/326/60/60'),
-                CategoryData(name: 'Short', imageUrl: 'https://picsum.photos/id/365/60/60'),
+                CategoryData(
+                    name: 'Very Long Category Name Test',
+                    imageUrl: 'https://picsum.photos/id/292/60/60'),
+                CategoryData(
+                    name: 'Another Extremely Long Name',
+                    imageUrl: 'https://picsum.photos/id/326/60/60'),
+                CategoryData(
+                    name: 'Short',
+                    imageUrl: 'https://picsum.photos/id/365/60/60'),
                 CategoryData(name: 'Create +', isCreateButton: true),
               ];
               break;
@@ -239,7 +284,8 @@ WidgetbookComponent categoryCircleRowStories() {
                 children: [
                   Text(
                     'Edge Case: $testCase',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
                   WCCategoryCircleRow(
@@ -256,4 +302,4 @@ WidgetbookComponent categoryCircleRowStories() {
       ),
     ],
   );
-} 
+}

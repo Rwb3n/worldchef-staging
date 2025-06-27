@@ -9,7 +9,8 @@
   ],
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^10.5.0",
-    "@types/jest": "^30.0.0"
+    "@types/jest": "^30.0.0",
+    "husky": "^9.1.7"
   },
   "scripts": {
     "dev": "yarn workspace worldchef-backend run dev",
@@ -27,6 +28,12 @@
     "widgetbook:build:local": "cd mobile && flutter build web -t lib/widgetbook/widgetbook.dart --base-href / --output build/widgetbook",
     "widgetbook:build:prod": "cd mobile && flutter build web -t lib/widgetbook/widgetbook.dart --base-href /worldchef-staging/ --output build/widgetbook",
     "widgetbook:serve": "cd mobile/build/widgetbook && python -m http.server 8080",
-    "widgetbook:dev": "yarn widgetbook:build:local && yarn widgetbook:serve"
+    "widgetbook:dev": "yarn widgetbook:build:local && yarn widgetbook:serve",
+    "gen:openapi": "node scripts/generate-openapi.js",
+    "gen:patterns": "python scripts/gen-patterns-index.py",
+    "move:assets": "node scripts/move-assets.js",
+    "convert:txt": "bash scripts/convert-txt.sh",
+    "lint:links": "npx markdown-link-check \"docs/**/*.md\"",
+    "docs:build": "yarn gen:openapi && yarn gen:patterns && yarn move:assets"
   }
 }

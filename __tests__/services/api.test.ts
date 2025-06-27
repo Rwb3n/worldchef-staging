@@ -51,6 +51,7 @@ ANNOTATION_BLOCK_END */
 import { getRecipes, getRecipeById } from '../../src/services/api';
 import { NetworkError, ApiError, NotFoundError } from '../../src/types/errors';
 import { Recipe } from '../../src/types';
+import { API_BASE_URL } from '../../backend/src/utils/constants';
 
 // Mock the global fetch function
 global.fetch = jest.fn();
@@ -116,7 +117,7 @@ describe('API Service Tests', () => {
 
       const result = await getRecipes();
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3000/recipes', undefined);
+      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/recipes`, undefined);
       expect(result).toEqual(mockRecipes);
     });
 
@@ -181,7 +182,7 @@ describe('API Service Tests', () => {
         expect.stringContaining('API request failed (attempt 1/3). Retrying in'),
         expect.objectContaining({
           error: 'Network timeout',
-          url: 'http://localhost:3000/recipes',
+          url: `${API_BASE_URL}/recipes`,
           attempt: 1
         })
       );
@@ -247,7 +248,7 @@ describe('API Service Tests', () => {
 
       const result = await getRecipeById(1);
 
-      expect(fetch).toHaveBeenCalledWith('http://localhost:3000/recipes/1', undefined);
+      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/recipes/1`, undefined);
       expect(result).toEqual(mockRecipe);
     });
 

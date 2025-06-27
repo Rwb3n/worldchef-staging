@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 /// Input Component Stories - RED Step (Will show placeholders/errors)
-/// 
+///
 /// These stories demonstrate WorldChef input components and will fail
 /// until design system implementation is completed in task t002.
 List<WidgetbookComponent> buildInputStories() {
@@ -70,7 +70,7 @@ class BasicTextFields extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefTextField in t002
           _buildTextFieldExample(
             'Recipe Name',
@@ -84,7 +84,7 @@ class BasicTextFields extends StatelessWidget {
               ),
             ),
           ),
-          
+
           _buildTextFieldExample(
             'Description',
             'WorldChefTextField.multiline (NOT IMPLEMENTED)',
@@ -98,7 +98,7 @@ class BasicTextFields extends StatelessWidget {
               ),
             ),
           ),
-          
+
           _buildTextFieldExample(
             'Cooking Time',
             'WorldChefTextField.numeric (NOT IMPLEMENTED)',
@@ -118,7 +118,7 @@ class BasicTextFields extends StatelessWidget {
               ],
             ),
           ),
-          
+
           _buildTextFieldExample(
             'Servings',
             'WorldChefTextField.numeric (NOT IMPLEMENTED)',
@@ -138,7 +138,7 @@ class BasicTextFields extends StatelessWidget {
               ],
             ),
           ),
-          
+
           const SizedBox(height: 24),
           const Card(
             color: Colors.orange,
@@ -171,7 +171,8 @@ class BasicTextFields extends StatelessWidget {
     );
   }
 
-  Widget _buildTextFieldExample(String label, String implementation, Widget field) {
+  Widget _buildTextFieldExample(
+      String label, String implementation, Widget field) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -220,7 +221,7 @@ class TextFieldStates extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // Default state
           _buildStateExample(
             'Default',
@@ -232,7 +233,7 @@ class TextFieldStates extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Focused state (simulated)
           _buildStateExample(
             'Focused',
@@ -251,7 +252,7 @@ class TextFieldStates extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Error state
           _buildStateExample(
             'Error',
@@ -267,7 +268,7 @@ class TextFieldStates extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Disabled state
           _buildStateExample(
             'Disabled',
@@ -280,7 +281,7 @@ class TextFieldStates extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Success state
           _buildStateExample(
             'Success',
@@ -343,7 +344,7 @@ class SearchInputs extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefSearchBar in t002
           _buildSearchExample(
             'Recipe Search Bar',
@@ -366,7 +367,7 @@ class SearchInputs extends StatelessWidget {
               ),
             ),
           ),
-          
+
           _buildSearchExample(
             'Ingredient Search',
             'WorldChefSearchBar.ingredient (NOT IMPLEMENTED)',
@@ -393,7 +394,7 @@ class SearchInputs extends StatelessWidget {
               ),
             ),
           ),
-          
+
           _buildSearchExample(
             'Filter Search',
             'WorldChefSearchBar.filter (NOT IMPLEMENTED)',
@@ -422,7 +423,7 @@ class SearchInputs extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Search with suggestions
           _buildSearchExample(
             'Search with Suggestions',
@@ -476,7 +477,8 @@ class SearchInputs extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchExample(String label, String implementation, Widget search) {
+  Widget _buildSearchExample(
+      String label, String implementation, Widget search) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -537,7 +539,7 @@ class SelectionInputs extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefDropdown in t002
           _buildSelectionExample(
             'Cuisine Type Dropdown',
@@ -557,7 +559,7 @@ class SelectionInputs extends StatelessWidget {
               onChanged: (value) {},
             ),
           ),
-          
+
           _buildSelectionExample(
             'Difficulty Level',
             'WorldChefDropdown.difficulty (NOT IMPLEMENTED)',
@@ -576,7 +578,7 @@ class SelectionInputs extends StatelessWidget {
               onChanged: (value) {},
             ),
           ),
-          
+
           _buildSelectionExample(
             'Meal Type',
             'WorldChefDropdown.mealType (NOT IMPLEMENTED)',
@@ -596,7 +598,7 @@ class SelectionInputs extends StatelessWidget {
               onChanged: (value) {},
             ),
           ),
-          
+
           // Time picker
           _buildSelectionExample(
             'Cooking Time Picker',
@@ -640,7 +642,8 @@ class SelectionInputs extends StatelessWidget {
     );
   }
 
-  Widget _buildSelectionExample(String label, String implementation, Widget selection) {
+  Widget _buildSelectionExample(
+      String label, String implementation, Widget selection) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -700,7 +703,6 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -712,7 +714,7 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // PLACEHOLDER: Will be replaced with WorldChefCheckbox in t002
                   CheckboxListTile(
                     title: const Text('Vegetarian'),
@@ -725,7 +727,7 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
                     },
                     secondary: const Icon(Icons.eco),
                   ),
-                  
+
                   CheckboxListTile(
                     title: const Text('Gluten-Free'),
                     subtitle: const Text('Contains no gluten ingredients'),
@@ -737,7 +739,7 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
                     },
                     secondary: const Icon(Icons.no_food),
                   ),
-                  
+
                   CheckboxListTile(
                     title: const Text('Dairy-Free'),
                     subtitle: const Text('Contains no dairy products'),
@@ -753,9 +755,7 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
               ),
             ),
           ),
-          
           const SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -767,7 +767,7 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // PLACEHOLDER: Will be replaced with WorldChefSwitch in t002
                   SwitchListTile(
                     title: const Text('Push Notifications'),
@@ -780,10 +780,11 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
                     },
                     secondary: const Icon(Icons.notifications),
                   ),
-                  
+
                   SwitchListTile(
                     title: const Text('Auto-Save Recipes'),
-                    subtitle: const Text('Automatically save recipes as you browse'),
+                    subtitle:
+                        const Text('Automatically save recipes as you browse'),
                     value: _autoSave,
                     onChanged: (value) {
                       setState(() {
@@ -796,7 +797,6 @@ class _CheckboxSwitchInputsState extends State<CheckboxSwitchInputs> {
               ),
             ),
           ),
-          
           const SizedBox(height: 16),
           const Card(
             color: Colors.orange,
@@ -831,7 +831,7 @@ class RecipeFormFields extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefIngredientInput in t002
           _buildSpecializedExample(
             'Ingredient Input',
@@ -877,9 +877,12 @@ class RecipeFormFields extends StatelessWidget {
                               border: OutlineInputBorder(),
                             ),
                             items: const [
-                              DropdownMenuItem(value: 'cups', child: Text('cups')),
-                              DropdownMenuItem(value: 'tsp', child: Text('tsp')),
-                              DropdownMenuItem(value: 'tbsp', child: Text('tbsp')),
+                              DropdownMenuItem(
+                                  value: 'cups', child: Text('cups')),
+                              DropdownMenuItem(
+                                  value: 'tsp', child: Text('tsp')),
+                              DropdownMenuItem(
+                                  value: 'tbsp', child: Text('tbsp')),
                               DropdownMenuItem(value: 'g', child: Text('g')),
                               DropdownMenuItem(value: 'ml', child: Text('ml')),
                             ],
@@ -893,7 +896,7 @@ class RecipeFormFields extends StatelessWidget {
               ),
             ),
           ),
-          
+
           _buildSpecializedExample(
             'Recipe Step Input',
             'WorldChefStepInput (NOT IMPLEMENTED)',
@@ -958,7 +961,7 @@ class RecipeFormFields extends StatelessWidget {
               ),
             ),
           ),
-          
+
           _buildSpecializedExample(
             'Nutrition Input',
             'WorldChefNutritionInput (NOT IMPLEMENTED)',
@@ -1030,7 +1033,8 @@ class RecipeFormFields extends StatelessWidget {
     );
   }
 
-  Widget _buildSpecializedExample(String label, String implementation, Widget field) {
+  Widget _buildSpecializedExample(
+      String label, String implementation, Widget field) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -1061,4 +1065,4 @@ class RecipeFormFields extends StatelessWidget {
       ),
     );
   }
-} 
+}

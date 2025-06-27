@@ -10,19 +10,19 @@ class WorldChefColors {
   static const Color brandBlueHover = Color(0xFF027ABC);
   static const Color brandBlueActive = Color(0xFF026DA7);
   static const Color brandBlueDisabled = Color(0x800288D1); // 50% opacity
-  
+
   // Secondary Green - Background badges, success highlights
   static const Color secondaryGreen = Color(0xFF89C247);
   static const Color secondaryGreenHover = Color(0xFF7EB23F);
   static const Color secondaryGreenActive = Color(0xFF70A236);
   static const Color secondaryGreenDisabled = Color(0x8089C247);
-  
+
   // Accent Coral - Primary CTA buttons (Order Now)
   static const Color accentCoral = Color(0xFFFF7247);
   static const Color accentCoralHover = Color(0xFFE6633F);
   static const Color accentCoralActive = Color(0xFFCC5639);
   static const Color accentCoralDisabled = Color(0x80FF7247);
-  
+
   // Accent Orange - Secondary CTAs, promos, warning highlights
   static const Color accentOrange = Color(0xFFFFA000);
   static const Color accentOrangeHover = Color(0xFFE68F00);
@@ -52,17 +52,17 @@ class WorldChefSemanticColors {
   static const Color success = Color(0xFF89C247);
   static const Color successHover = Color(0xFF7EB23F);
   static const Color successActive = Color(0xFF70A236);
-  
+
   // Warning - Warnings, promotional banners
   static const Color warning = Color(0xFFFFA000);
   static const Color warningHover = Color(0xFFE68F00);
   static const Color warningActive = Color(0xFFCC7A00);
-  
+
   // Error - Error states, critical alerts
   static const Color error = Color(0xFFD32F2F);
   static const Color errorHover = Color(0xFFC12C2C);
   static const Color errorActive = Color(0xFFA32828);
-  
+
   // Info - Informational messages, tooltips
   static const Color info = Color(0xFF0288D1);
   static const Color infoHover = Color(0xFF027ABC);
@@ -73,11 +73,11 @@ class WorldChefSemanticColors {
 class WorldChefNeutrals {
   // Background
   static const Color background = Color(0xFFFAFAFA);
-  
+
   // Text Colors
   static const Color primaryText = Color(0xFF212121);
   static const Color secondaryText = Color(0xFF757575);
-  
+
   // UI Elements
   static const Color dividers = Color(0xFFE0E0E0);
 }
@@ -121,50 +121,50 @@ class WorldChefDarkSemanticColors {
 
 // Material Design 3 Theme Integration
 ColorScheme get lightColorScheme => const ColorScheme.light(
-    primary: WorldChefColors.brandBlue,
-    onPrimary: Colors.white,
-    secondary: WorldChefColors.secondaryGreen,
-    onSecondary: Colors.white,
-    tertiary: WorldChefColors.accentCoral,
-    onTertiary: Colors.white,
-    error: WorldChefSemanticColors.error,
-    onError: Colors.white,
-    surface: WorldChefNeutrals.background,
-    onSurface: WorldChefNeutrals.primaryText,
-    surfaceContainerHighest: WorldChefNeutrals.dividers,
-    onSurfaceVariant: WorldChefNeutrals.dividers,
-    outline: WorldChefNeutrals.dividers,
-    tertiaryContainer: WorldChefColors.accentCoral,
-    onTertiaryContainer: WorldChefColors.accentCoral,
-    shadow: Colors.black,
-    scrim: Colors.black,
-    inverseSurface: WorldChefNeutrals.background,
-    onInverseSurface: WorldChefNeutrals.primaryText,
-    inversePrimary: WorldChefColors.brandBlue,
-    surfaceTint: WorldChefColors.brandBlue,
-  );
+      primary: WorldChefColors.brandBlue,
+      onPrimary: Colors.white,
+      secondary: WorldChefColors.secondaryGreen,
+      onSecondary: Colors.white,
+      tertiary: WorldChefColors.accentCoral,
+      onTertiary: Colors.white,
+      error: WorldChefSemanticColors.error,
+      onError: Colors.white,
+      surface: WorldChefNeutrals.background,
+      onSurface: WorldChefNeutrals.primaryText,
+      surfaceContainerHighest: WorldChefNeutrals.dividers,
+      onSurfaceVariant: WorldChefNeutrals.dividers,
+      outline: WorldChefNeutrals.dividers,
+      tertiaryContainer: WorldChefColors.accentCoral,
+      onTertiaryContainer: WorldChefColors.accentCoral,
+      shadow: Colors.black,
+      scrim: Colors.black,
+      inverseSurface: WorldChefNeutrals.background,
+      onInverseSurface: WorldChefNeutrals.primaryText,
+      inversePrimary: WorldChefColors.brandBlue,
+      surfaceTint: WorldChefColors.brandBlue,
+    );
 
 // A dark scheme can be defined here as well, for now we focus on light
 ColorScheme get darkColorScheme => const ColorScheme.dark(
-    primary: WorldChefColors.brandBlue,
-    onPrimary: Colors.white,
-    secondary: WorldChefColors.secondaryGreen,
-    onSecondary: Colors.white,
-    tertiary: WorldChefColors.accentCoral,
-    onTertiary: Colors.white,
-    error: WorldChefDarkSemanticColors.error,
-    onError: Colors.black,
-    surface: WorldChefDarkTheme.surface,
-    onSurface: WorldChefDarkTheme.primaryText,
-    surfaceContainerHighest: WorldChefDarkTheme.dividers,
-    onSurfaceVariant: WorldChefDarkTheme.dividers,
-    outline: WorldChefDarkTheme.dividers,
-    tertiaryContainer: WorldChefColors.accentCoral,
-    onTertiaryContainer: WorldChefColors.accentCoral,
-    shadow: Colors.white,
-    scrim: Colors.white,
-    inverseSurface: WorldChefDarkTheme.background,
-    onInverseSurface: WorldChefDarkTheme.primaryText,
-    inversePrimary: WorldChefColors.brandBlue,
-    surfaceTint: WorldChefColors.brandBlue,
-  ); 
+      primary: WorldChefColors.brandBlue,
+      onPrimary: Colors.white,
+      secondary: WorldChefColors.secondaryGreen,
+      onSecondary: Colors.white,
+      tertiary: WorldChefColors.accentCoral,
+      onTertiary: Colors.white,
+      error: WorldChefDarkSemanticColors.error,
+      onError: Colors.black,
+      surface: WorldChefDarkTheme.surface,
+      onSurface: WorldChefDarkTheme.primaryText,
+      surfaceContainerHighest: WorldChefDarkTheme.dividers,
+      onSurfaceVariant: WorldChefDarkTheme.dividers,
+      outline: WorldChefDarkTheme.dividers,
+      tertiaryContainer: WorldChefColors.accentCoral,
+      onTertiaryContainer: WorldChefColors.accentCoral,
+      shadow: Colors.white,
+      scrim: Colors.white,
+      inverseSurface: WorldChefDarkTheme.background,
+      onInverseSurface: WorldChefDarkTheme.primaryText,
+      inversePrimary: WorldChefColors.brandBlue,
+      surfaceTint: WorldChefColors.brandBlue,
+    );

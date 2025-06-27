@@ -4,13 +4,13 @@ import 'package:worldchef_mobile/src/core/design_system/colors.dart';
 import 'package:worldchef_mobile/src/core/design_system/spacing.dart';
 
 /// WCSectionHeader - Molecule-level component for section titles with optional "View all" action
-/// 
+///
 /// From: docs/ui_specifications/design_system/atomic_design_components.md
 /// Usage: Home Feed sections, Recipe Detail sections
-/// 
+///
 /// Design token compliance:
 /// - Title: WorldChefTextStyles.headlineSmall
-/// - Link: WorldChefColors.brandBlue  
+/// - Link: WorldChefColors.brandBlue
 /// - Padding: WorldChefLayout.mobileContainerPadding
 class WCSectionHeader extends StatelessWidget {
   const WCSectionHeader({
@@ -32,12 +32,15 @@ class WCSectionHeader extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.alphabetic,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: WorldChefTextStyles.headlineSmall,
+          Expanded(
+            child: Text(
+              title,
+              style: WorldChefTextStyles.headlineSmall,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           if (showViewAll)
             GestureDetector(
@@ -55,4 +58,4 @@ class WCSectionHeader extends StatelessWidget {
       ),
     );
   }
-} 
+}

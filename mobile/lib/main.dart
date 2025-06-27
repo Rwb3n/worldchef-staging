@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:worldchef_mobile/src/screens/home_feed_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,41 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const _CounterHomePage(),
+      home: const ProviderScope(child: HomeFeedScreen()),
     );
   }
 }
-
-class _CounterHomePage extends StatefulWidget {
-  const _CounterHomePage();
-
-  @override
-  State<_CounterHomePage> createState() => _CounterHomePageState();
-}
-
-class _CounterHomePageState extends State<_CounterHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('WorldChef'),
-      ),
-      body: Center(
-        child: Text('$_counter', key: const Key('counterText')),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-} 

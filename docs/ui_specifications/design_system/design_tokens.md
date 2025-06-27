@@ -179,23 +179,22 @@ class WorldChefTheme {
 
 ### Font Families
 ```dart
-// Font Families - Nunito + Lora
+// Font Families – Nunito (Unified)
 class WorldChefFonts {
   // UI & Body - Clean, approachable for buttons, menus, ingredient lists
   static const String uiFont = 'Nunito';
   
-  // Headlines - Elegant for dish names, section titles
-  static const String headlineFont = 'Lora';
+  // Headlines - Consistent Nunito usage for headlines
+  static const String headlineFont = 'Nunito';
   
   // Google Fonts Integration
   static const List<String> googleFontsLinks = [
     'https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap',
-    'https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap',
   ];
   
   // Fallback Stacks
   static const String uiFontStack = 'Nunito, Poppins, sans-serif';
-  static const String headlineFontStack = 'Lora, Merriweather, serif';
+  static const String headlineFontStack = 'Nunito, Poppins, sans-serif';
 }
 ```
 
@@ -719,6 +718,12 @@ class WorldChefThemeData {
 - All animations must respect user's reduced motion preferences
 - All text must be readable at 200% zoom
 - All interactive elements must have proper semantic labels
+
+### System UI Spacers (NEW)
+Token | Value | Description
+----- | ----- | -----------
+`statusBarSpacer` | `44px` | Height of iOS-style status bar safe area spacer when drawing brand background
+`bottomScrollSpacer` | `100px` | Extra scroll-space at bottom of long lists so final item clears bottom navigation bar
 
 ---
 

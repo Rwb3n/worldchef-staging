@@ -43,4 +43,4 @@ class WCMetadataItem extends StatelessWidget {
       ],
     );
   }
-} 
+}

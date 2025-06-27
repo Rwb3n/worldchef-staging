@@ -8,7 +8,7 @@ import 'package:worldchef_mobile/src/ui/molecules/wc_creator_info_row.dart';
 import 'package:worldchef_mobile/src/models/creator_data.dart';
 
 /// Home Feed Screen Stories - GREEN Step (Specification Compliant)
-/// 
+///
 /// These stories demonstrate WorldChef home feed screens using all created
 /// components to match the UI specification exactly. This implementation
 /// should make the golden tests pass with pixel-perfect alignment.
@@ -65,11 +65,11 @@ List<WidgetbookComponent> buildHomeFeedStories() {
 }
 
 /// Main Home Feed - Specification Compliant Implementation
-/// 
+///
 /// This implementation matches the UI specification exactly and uses all
 /// created WorldChef components to achieve pixel-perfect alignment with
 /// the golden test target layout.
-/// 
+///
 /// Key Features:
 /// - Blue background matching WorldChef brand colors
 /// - WCCategoryCircleRow for category navigation
@@ -83,7 +83,8 @@ class MainHomeFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0288D1), // WorldChef brand blue background
+      backgroundColor:
+          const Color(0xFF0288D1), // WorldChef brand blue background
       body: CustomScrollView(
         slivers: [
           // Status bar area with blue background
@@ -93,7 +94,7 @@ class MainHomeFeed extends StatelessWidget {
               color: const Color(0xFF0288D1),
             ),
           ),
-          
+
           // Category navigation section
           SliverToBoxAdapter(
             child: Container(
@@ -103,19 +104,21 @@ class MainHomeFeed extends StatelessWidget {
                 categories: _getMockCategoryData(),
                 onCategoryTapped: (category) {
                   if (category.isCreateButton) {
-                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Create new recipe tapped!')),
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text('Create new recipe tapped!')),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Tapped category: ${category.name}')),
+                      SnackBar(
+                          content: Text('Tapped category: ${category.name}')),
                     );
                   }
                 },
               ),
             ),
           ),
-          
+
           // Country section
           SliverToBoxAdapter(
             child: Container(
@@ -124,29 +127,31 @@ class MainHomeFeed extends StatelessWidget {
                 children: [
                   // Section header with proper spacing
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 24, 16, 16), // headlineToGrid spacing
+                    padding: const EdgeInsets.fromLTRB(
+                        16, 24, 16, 16), // headlineToGrid spacing
                     child: WCSectionHeader(
                       title: 'Taste by Country',
                       onViewAllPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('View all countries tapped!')),
+                          const SnackBar(
+                              content: Text('View all countries tapped!')),
                         );
                       },
                     ),
                   ),
-                  
+
                   // Country grid (4 columns)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: _buildCountryGrid(context),
                   ),
-                  
+
                   const SizedBox(height: 32), // gridToGrid spacing
                 ],
               ),
             ),
           ),
-          
+
           // Diet section
           SliverToBoxAdapter(
             child: Container(
@@ -160,14 +165,15 @@ class MainHomeFeed extends StatelessWidget {
                       title: 'Taste by Diet',
                       onViewAllPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('View all diets tapped!')),
+                          const SnackBar(
+                              content: Text('View all diets tapped!')),
                         );
                       },
                     ),
                   ),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   // Featured recipe card
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -175,12 +181,13 @@ class MainHomeFeed extends StatelessWidget {
                       recipe: _getMockFeaturedRecipe(),
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Featured recipe tapped!')),
+                          const SnackBar(
+                              content: Text('Featured recipe tapped!')),
                         );
                       },
                     ),
                   ),
-                  
+
                   const SizedBox(height: 24),
                 ],
               ),
@@ -203,10 +210,30 @@ class MainHomeFeed extends StatelessWidget {
   /// Builds the country thumbnail grid (4 columns) matching specification
   Widget _buildCountryGrid(BuildContext context) {
     final countries = [
-      {'name': 'Mexico', 'flag': '🇲🇽', 'image': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'},
-      {'name': 'Jamaica', 'flag': '🇯🇲', 'image': 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200'},
-      {'name': 'France', 'flag': '🇫🇷', 'image': 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=200'},
-      {'name': 'Nigeria', 'flag': '🇳🇬', 'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'},
+      {
+        'name': 'Mexico',
+        'flag': '🇲🇽',
+        'image':
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'
+      },
+      {
+        'name': 'Jamaica',
+        'flag': '🇯🇲',
+        'image':
+            'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200'
+      },
+      {
+        'name': 'France',
+        'flag': '🇫🇷',
+        'image':
+            'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=200'
+      },
+      {
+        'name': 'Nigeria',
+        'flag': '🇳🇬',
+        'image':
+            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'
+      },
     ];
 
     return GridView.builder(
@@ -232,7 +259,8 @@ class MainHomeFeed extends StatelessWidget {
   }
 
   /// Builds individual country thumbnail matching specification
-  Widget _buildCountryThumbnail(BuildContext context, String name, String flag, String imageUrl) {
+  Widget _buildCountryThumbnail(
+      BuildContext context, String name, String flag, String imageUrl) {
     return GestureDetector(
       onTap: () {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -252,7 +280,8 @@ class MainHomeFeed extends StatelessWidget {
                 child: Image.network(
                   imageUrl,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error),
                 ),
               ),
               // Gradient overlay for text readability
@@ -260,7 +289,10 @@ class MainHomeFeed extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Colors.transparent, Colors.black.withOpacity(0.6)],
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withOpacity(0.6)
+                      ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       stops: const [0.5, 1.0],
@@ -293,11 +325,26 @@ class MainHomeFeed extends StatelessWidget {
 
   List<CategoryData> _getMockCategoryData() {
     return [
-      CategoryData(name: 'Italian', imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'),
-      CategoryData(name: 'Mexican', imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'),
-      CategoryData(name: 'Vegan', imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200'),
-      CategoryData(name: 'Japanese', imageUrl: 'https://images.unsplash.com/photo-1569058242253-92a9c5552db3?w=200'),
-      CategoryData(name: 'Quick', imageUrl: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=200'),
+      CategoryData(
+          name: 'Italian',
+          imageUrl:
+              'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'),
+      CategoryData(
+          name: 'Mexican',
+          imageUrl:
+              'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'),
+      CategoryData(
+          name: 'Vegan',
+          imageUrl:
+              'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200'),
+      CategoryData(
+          name: 'Japanese',
+          imageUrl:
+              'https://images.unsplash.com/photo-1569058242253-92a9c5552db3?w=200'),
+      CategoryData(
+          name: 'Quick',
+          imageUrl:
+              'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=200'),
       CategoryData(name: 'Create', isCreateButton: true),
     ];
   }
@@ -306,7 +353,8 @@ class MainHomeFeed extends StatelessWidget {
     return RecipeCardData(
       id: '1',
       title: 'Classic Italian Spaghetti Bolognese with a secret ingredient',
-      imageUrl: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400',
+      imageUrl:
+          'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400',
       creator: CreatorData(
         name: 'Jamie Oliver',
         avatarUrl: 'https://i.pravatar.cc/48?u=jamieoliver',
@@ -328,45 +376,49 @@ class InteractiveHomeFeed extends StatefulWidget {
 class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
   int _selectedTabIndex = 0;
   String _selectedCategory = 'All';
-  
+
   @override
   Widget build(BuildContext context) {
     // Widgetbook knobs for interactive testing
     final backgroundColor = context.knobs.colorOrNull(
-      label: 'Background Color',
-      initialValue: const Color(0xFF0288D1),
-    ) ?? const Color(0xFF0288D1);
-    
+          label: 'Background Color',
+          initialValue: const Color(0xFF0288D1),
+        ) ??
+        const Color(0xFF0288D1);
+
     final showCategories = context.knobs.boolean(
       label: 'Show Categories',
       initialValue: true,
     );
-    
+
     final showCountrySection = context.knobs.boolean(
-      label: 'Show Country Section', 
+      label: 'Show Country Section',
       initialValue: true,
     );
-    
+
     final showDietSection = context.knobs.boolean(
       label: 'Show Diet Section',
       initialValue: true,
     );
-    
-    final categoryCount = context.knobs.double.slider(
-      label: 'Category Count',
-      initialValue: 5,
-      min: 1,
-      max: 10,
-    ).toInt();
-    
+
+    final categoryCount = context.knobs.double
+        .slider(
+          label: 'Category Count',
+          initialValue: 5,
+          min: 1,
+          max: 10,
+        )
+        .toInt();
+
     final selectedTab = context.knobs.list(
       label: 'Active Tab',
       options: ['Home', 'Explore', 'Create', 'Plans', 'Profile'],
       initialOption: 'Home',
     );
-    
-    _selectedTabIndex = ['Home', 'Explore', 'Create', 'Plans', 'Profile'].indexOf(selectedTab);
-    
+
+    _selectedTabIndex =
+        ['Home', 'Explore', 'Create', 'Plans', 'Profile'].indexOf(selectedTab);
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: CustomScrollView(
@@ -378,33 +430,37 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
               color: backgroundColor,
             ),
           ),
-          
+
           // Category section (conditional)
           if (showCategories)
             SliverToBoxAdapter(
               child: Container(
                 color: backgroundColor,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: WCCategoryCircleRow(
-                  categories: _getMockCategoryData().take(categoryCount).toList(),
+                  categories:
+                      _getMockCategoryData().take(categoryCount).toList(),
                   onCategoryTapped: (category) {
                     setState(() {
                       _selectedCategory = category.name;
                     });
                     if (category.isCreateButton) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Create new recipe tapped!')),
+                        const SnackBar(
+                            content: Text('Create new recipe tapped!')),
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Tapped category: ${category.name}')),
+                        SnackBar(
+                            content: Text('Tapped category: ${category.name}')),
                       );
                     }
                   },
                 ),
               ),
             ),
-          
+
           // Country section (conditional)
           if (showCountrySection)
             SliverToBoxAdapter(
@@ -418,7 +474,8 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
                         title: 'Taste by Country',
                         onViewAllPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('View all countries!')),
+                            const SnackBar(
+                                content: Text('View all countries!')),
                           );
                         },
                       ),
@@ -432,7 +489,7 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
                 ),
               ),
             ),
-          
+
           // Diet section (conditional)
           if (showDietSection)
             SliverToBoxAdapter(
@@ -458,7 +515,8 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
                         recipe: _getMockFeaturedRecipe(),
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Featured recipe tapped!')),
+                            const SnackBar(
+                                content: Text('Featured recipe tapped!')),
                           );
                         },
                       ),
@@ -468,7 +526,7 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
                 ),
               ),
             ),
-          
+
           // Selected category display
           SliverToBoxAdapter(
             child: Container(
@@ -481,7 +539,8 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
                     children: [
                       Text(
                         'Interactive State',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 8),
                       Text('Selected Category: $_selectedCategory'),
@@ -508,13 +567,33 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
       ),
     );
   }
-  
+
   Widget _buildCountryGrid(BuildContext context) {
     final countries = [
-      {'name': 'Mexico', 'flag': '🇲🇽', 'image': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'},
-      {'name': 'Jamaica', 'flag': '🇯🇲', 'image': 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200'},
-      {'name': 'France', 'flag': '🇫🇷', 'image': 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=200'},
-      {'name': 'Nigeria', 'flag': '🇳🇬', 'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'},
+      {
+        'name': 'Mexico',
+        'flag': '🇲🇽',
+        'image':
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'
+      },
+      {
+        'name': 'Jamaica',
+        'flag': '🇯🇲',
+        'image':
+            'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200'
+      },
+      {
+        'name': 'France',
+        'flag': '🇫🇷',
+        'image':
+            'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=200'
+      },
+      {
+        'name': 'Nigeria',
+        'flag': '🇳🇬',
+        'image':
+            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'
+      },
     ];
 
     return GridView.builder(
@@ -538,8 +617,9 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
       },
     );
   }
-  
-  Widget _buildCountryThumbnail(BuildContext context, String name, String flag, String imageUrl) {
+
+  Widget _buildCountryThumbnail(
+      BuildContext context, String name, String flag, String imageUrl) {
     return GestureDetector(
       onTap: () {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -618,17 +698,20 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
       CategoryData(
         id: '1',
         name: 'Breakfast',
-        imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100',
+        imageUrl:
+            'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100',
       ),
       CategoryData(
         id: '2',
         name: 'Dinner',
-        imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100',
+        imageUrl:
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100',
       ),
       CategoryData(
         id: '3',
         name: 'Desserts',
-        imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100',
+        imageUrl:
+            'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100',
       ),
     ];
   }
@@ -638,10 +721,12 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
     return RecipeCardData(
       id: 'featured1',
       title: 'Protein muffins',
-      imageUrl: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
+      imageUrl:
+          'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
       creator: CreatorData(
         name: 'Chef Muscle',
-        avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
+        avatarUrl:
+            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
       ),
       rating: 4.5,
       reviewCount: 128,
@@ -785,7 +870,8 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
     );
   }
 
-  Widget _buildFeaturedCard(String title, String chef, String time, String rating) {
+  Widget _buildFeaturedCard(
+      String title, String chef, String time, String rating) {
     return Container(
       width: 220,
       margin: const EdgeInsets.only(right: 16),
@@ -874,7 +960,7 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
                 ],
               ),
             ),
-            
+
             // Content
             Padding(
               padding: const EdgeInsets.all(12),
@@ -972,7 +1058,7 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
             ),
           ),
           const SizedBox(height: 16),
-          
+
           // Trending recipe cards
           _buildTrendingCard(
             'Korean BBQ Tacos',
@@ -1126,7 +1212,7 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
             ),
           ),
           const SizedBox(height: 16),
-          
+
           // Recent recipe grid
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -1178,7 +1264,7 @@ class _InteractiveHomeFeedState extends State<InteractiveHomeFeed> {
               ),
             ),
           ),
-          
+
           // Content
           Padding(
             padding: const EdgeInsets.all(8),
@@ -1292,7 +1378,7 @@ class HomeFeedSections extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             _buildSectionDemo(
               'Quick Actions Section',
               'WorldChefQuickActions (NOT IMPLEMENTED)',
@@ -1303,14 +1389,16 @@ class HomeFeedSections extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _buildQuickAction(Icons.add, 'Add Recipe', Colors.orange),
-                    _buildQuickAction(Icons.camera_alt, 'Scan Food', Colors.green),
+                    _buildQuickAction(
+                        Icons.camera_alt, 'Scan Food', Colors.green),
                     _buildQuickAction(Icons.list, 'Meal Plan', Colors.blue),
-                    _buildQuickAction(Icons.shopping_cart, 'Grocery', Colors.purple),
+                    _buildQuickAction(
+                        Icons.shopping_cart, 'Grocery', Colors.purple),
                   ],
                 ),
               ),
             ),
-            
+
             _buildSectionDemo(
               'Recipe Feed Section',
               'WorldChefRecipeFeed (NOT IMPLEMENTED)',
@@ -1331,7 +1419,8 @@ class HomeFeedSections extends StatelessWidget {
     );
   }
 
-  Widget _buildSectionDemo(String title, String implementation, Widget content) {
+  Widget _buildSectionDemo(
+      String title, String implementation, Widget content) {
     return Card(
       margin: const EdgeInsets.all(16),
       child: Column(
@@ -1437,7 +1526,7 @@ class HomeFeedLoadingStates extends StatelessWidget {
         child: Column(
           children: [
             // Loading skeleton for home feed
-                          HomeFeedSkeleton(),
+            HomeFeedSkeleton(),
           ],
         ),
       ),
@@ -1454,14 +1543,16 @@ class ContentVariationsHomeFeed extends StatelessWidget {
       options: ['Standard', 'Minimal', 'Rich', 'International'],
       initialOption: 'Standard',
     );
-    
-    final recipeCount = context.knobs.double.slider(
-      label: 'Recipe Count',
-      initialValue: 1,
-      min: 0,
-      max: 5,
-    ).toInt();
-    
+
+    final recipeCount = context.knobs.double
+        .slider(
+          label: 'Recipe Count',
+          initialValue: 1,
+          min: 0,
+          max: 5,
+        )
+        .toInt();
+
     return Scaffold(
       backgroundColor: const Color(0xFF0288D1),
       body: CustomScrollView(
@@ -1472,7 +1563,6 @@ class ContentVariationsHomeFeed extends StatelessWidget {
               color: const Color(0xFF0288D1),
             ),
           ),
-          
           SliverToBoxAdapter(
             child: Container(
               color: const Color(0xFF0288D1),
@@ -1487,7 +1577,6 @@ class ContentVariationsHomeFeed extends StatelessWidget {
               ),
             ),
           ),
-          
           SliverToBoxAdapter(
             child: Container(
               color: Colors.white,
@@ -1504,16 +1593,17 @@ class ContentVariationsHomeFeed extends StatelessWidget {
                       },
                     ),
                   ),
-                  
                   if (recipeCount > 0)
                     ...List.generate(recipeCount, (index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                         child: WCFeaturedRecipeCard(
                           recipe: _getVariationRecipe(contentType, index),
                           onTap: () {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Recipe ${index + 1} tapped!')),
+                              SnackBar(
+                                  content: Text('Recipe ${index + 1} tapped!')),
                             );
                           },
                         ),
@@ -1540,7 +1630,6 @@ class ContentVariationsHomeFeed extends StatelessWidget {
                         ],
                       ),
                     ),
-                  
                   const SizedBox(height: 24),
                 ],
               ),
@@ -1564,17 +1653,18 @@ class ContentVariationsHomeFeed extends StatelessWidget {
 /// Category Filtering Home Feed
 class CategoryFilteringHomeFeed extends StatefulWidget {
   @override
-  _CategoryFilteringHomeFeedState createState() => _CategoryFilteringHomeFeedState();
+  _CategoryFilteringHomeFeedState createState() =>
+      _CategoryFilteringHomeFeedState();
 }
 
 class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
   String _activeFilter = 'All';
-  
+
   @override
   Widget build(BuildContext context) {
     final categories = _getMockCategoryData();
     final filteredRecipes = _getFilteredRecipes(_activeFilter);
-    
+
     return Scaffold(
       backgroundColor: const Color(0xFF0288D1),
       body: CustomScrollView(
@@ -1585,7 +1675,6 @@ class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
               color: const Color(0xFF0288D1),
             ),
           ),
-          
           SliverToBoxAdapter(
             child: Container(
               color: const Color(0xFF0288D1),
@@ -1603,7 +1692,6 @@ class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
               ),
             ),
           ),
-          
           SliverToBoxAdapter(
             child: Container(
               color: Colors.white,
@@ -1628,7 +1716,6 @@ class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
               ),
             ),
           ),
-          
           SliverToBoxAdapter(
             child: Container(
               color: Colors.white,
@@ -1645,16 +1732,17 @@ class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
                       },
                     ),
                   ),
-                  
                   if (filteredRecipes.isNotEmpty)
                     ...filteredRecipes.map((recipe) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                         child: WCFeaturedRecipeCard(
                           recipe: recipe,
                           onTap: () {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('${recipe.title} tapped!')),
+                              SnackBar(
+                                  content: Text('${recipe.title} tapped!')),
                             );
                           },
                         ),
@@ -1681,7 +1769,6 @@ class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
                         ],
                       ),
                     ),
-                  
                   const SizedBox(height: 24),
                 ],
               ),
@@ -1703,11 +1790,26 @@ class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
 
   List<CategoryData> _getMockCategoryData() {
     return [
-      CategoryData(name: 'Italian', imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'),
-      CategoryData(name: 'Mexican', imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'),
-      CategoryData(name: 'Vegan', imageUrl: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200'),
-      CategoryData(name: 'Japanese', imageUrl: 'https://images.unsplash.com/photo-1569058242253-92a9c5552db3?w=200'),
-      CategoryData(name: 'Quick', imageUrl: 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=200'),
+      CategoryData(
+          name: 'Italian',
+          imageUrl:
+              'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'),
+      CategoryData(
+          name: 'Mexican',
+          imageUrl:
+              'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'),
+      CategoryData(
+          name: 'Vegan',
+          imageUrl:
+              'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200'),
+      CategoryData(
+          name: 'Japanese',
+          imageUrl:
+              'https://images.unsplash.com/photo-1569058242253-92a9c5552db3?w=200'),
+      CategoryData(
+          name: 'Quick',
+          imageUrl:
+              'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=200'),
       CategoryData(name: 'Create', isCreateButton: true),
     ];
   }
@@ -1716,16 +1818,17 @@ class _CategoryFilteringHomeFeedState extends State<CategoryFilteringHomeFeed> {
 /// Navigation States Home Feed
 class NavigationStatesHomeFeed extends StatefulWidget {
   @override
-  _NavigationStatesHomeFeedState createState() => _NavigationStatesHomeFeedState();
+  _NavigationStatesHomeFeedState createState() =>
+      _NavigationStatesHomeFeedState();
 }
 
 class _NavigationStatesHomeFeedState extends State<NavigationStatesHomeFeed> {
   int _currentIndex = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     final tabContent = _getTabContent(_currentIndex);
-    
+
     return Scaffold(
       backgroundColor: tabContent['backgroundColor'] as Color,
       body: CustomScrollView(
@@ -1736,7 +1839,6 @@ class _NavigationStatesHomeFeedState extends State<NavigationStatesHomeFeed> {
               color: tabContent['backgroundColor'] as Color,
             ),
           ),
-          
           SliverToBoxAdapter(
             child: Container(
               color: Colors.white,
@@ -1772,11 +1874,14 @@ class _NavigationStatesHomeFeedState extends State<NavigationStatesHomeFeed> {
                       ElevatedButton(
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('${tabContent['title']} action!')),
+                            SnackBar(
+                                content:
+                                    Text('${tabContent['title']} action!')),
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: tabContent['backgroundColor'] as Color,
+                          backgroundColor:
+                              tabContent['backgroundColor'] as Color,
                           foregroundColor: Colors.white,
                         ),
                         child: Text(tabContent['action'] as String),
@@ -1813,41 +1918,102 @@ List<CategoryData> _getContentVariationCategories(String contentType) {
         CategoryData(
           id: '1',
           name: 'Quick',
-          imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100',
+          imageUrl:
+              'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100',
         ),
       ];
     case 'Rich':
       return [
-        CategoryData(id: '1', name: 'Breakfast', imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
-        CategoryData(id: '2', name: 'Lunch', imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
-        CategoryData(id: '3', name: 'Dinner', imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100'),
-        CategoryData(id: '4', name: 'Desserts', imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100'),
-        CategoryData(id: '5', name: 'Snacks', imageUrl: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=100'),
-        CategoryData(id: '6', name: 'Drinks', imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
-        CategoryData(id: '7', name: 'Healthy', imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
+        CategoryData(
+            id: '1',
+            name: 'Breakfast',
+            imageUrl:
+                'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
+        CategoryData(
+            id: '2',
+            name: 'Lunch',
+            imageUrl:
+                'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
+        CategoryData(
+            id: '3',
+            name: 'Dinner',
+            imageUrl:
+                'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100'),
+        CategoryData(
+            id: '4',
+            name: 'Desserts',
+            imageUrl:
+                'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100'),
+        CategoryData(
+            id: '5',
+            name: 'Snacks',
+            imageUrl:
+                'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=100'),
+        CategoryData(
+            id: '6',
+            name: 'Drinks',
+            imageUrl:
+                'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
+        CategoryData(
+            id: '7',
+            name: 'Healthy',
+            imageUrl:
+                'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
       ];
     case 'International':
       return [
-        CategoryData(id: '1', name: 'Italian', imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
-        CategoryData(id: '2', name: 'Mexican', imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
-        CategoryData(id: '3', name: 'Asian', imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100'),
-        CategoryData(id: '4', name: 'French', imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100'),
+        CategoryData(
+            id: '1',
+            name: 'Italian',
+            imageUrl:
+                'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
+        CategoryData(
+            id: '2',
+            name: 'Mexican',
+            imageUrl:
+                'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
+        CategoryData(
+            id: '3',
+            name: 'Asian',
+            imageUrl:
+                'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100'),
+        CategoryData(
+            id: '4',
+            name: 'French',
+            imageUrl:
+                'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100'),
       ];
     default: // Standard
       return [
-        CategoryData(id: '1', name: 'Breakfast', imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
-        CategoryData(id: '2', name: 'Dinner', imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
-        CategoryData(id: '3', name: 'Desserts', imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100'),
+        CategoryData(
+            id: '1',
+            name: 'Breakfast',
+            imageUrl:
+                'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100'),
+        CategoryData(
+            id: '2',
+            name: 'Dinner',
+            imageUrl:
+                'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100'),
+        CategoryData(
+            id: '3',
+            name: 'Desserts',
+            imageUrl:
+                'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100'),
       ];
   }
 }
 
 String _getSectionTitle(String contentType) {
   switch (contentType) {
-    case 'Minimal': return 'Quick Bites';
-    case 'Rich': return 'Gourmet Collection';
-    case 'International': return 'World Cuisines';
-    default: return 'Featured Recipes';
+    case 'Minimal':
+      return 'Quick Bites';
+    case 'Rich':
+      return 'Gourmet Collection';
+    case 'International':
+      return 'World Cuisines';
+    default:
+      return 'Featured Recipes';
   }
 }
 
@@ -1857,8 +2023,12 @@ RecipeCardData _getVariationRecipe(String contentType, int index) {
       RecipeCardData(
         id: 'min1',
         title: '5-Minute Smoothie',
-        imageUrl: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
-        creator: CreatorData(name: 'Quick Chef', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+        imageUrl:
+            'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
+        creator: CreatorData(
+            name: 'Quick Chef',
+            avatarUrl:
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
         rating: 4.2,
         reviewCount: 45,
         cookTime: '5 min',
@@ -1869,8 +2039,12 @@ RecipeCardData _getVariationRecipe(String contentType, int index) {
       RecipeCardData(
         id: 'rich1',
         title: 'Truffle Risotto',
-        imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400',
-        creator: CreatorData(name: 'Chef Laurent', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+        imageUrl:
+            'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400',
+        creator: CreatorData(
+            name: 'Chef Laurent',
+            avatarUrl:
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
         rating: 4.9,
         reviewCount: 234,
         cookTime: '45 min',
@@ -1879,8 +2053,12 @@ RecipeCardData _getVariationRecipe(String contentType, int index) {
       RecipeCardData(
         id: 'rich2',
         title: 'Wagyu Beef Wellington',
-        imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
-        creator: CreatorData(name: 'Chef Gordon', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+        imageUrl:
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
+        creator: CreatorData(
+            name: 'Chef Gordon',
+            avatarUrl:
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
         rating: 4.8,
         reviewCount: 156,
         cookTime: '90 min',
@@ -1891,8 +2069,12 @@ RecipeCardData _getVariationRecipe(String contentType, int index) {
       RecipeCardData(
         id: 'int1',
         title: 'Authentic Pad Thai',
-        imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400',
-        creator: CreatorData(name: 'Chef Siriporn', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+        imageUrl:
+            'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400',
+        creator: CreatorData(
+            name: 'Chef Siriporn',
+            avatarUrl:
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
         rating: 4.7,
         reviewCount: 189,
         cookTime: '30 min',
@@ -1900,20 +2082,25 @@ RecipeCardData _getVariationRecipe(String contentType, int index) {
       ),
     ],
   };
-  
-  final recipeList = recipes[contentType] ?? [
-    RecipeCardData(
-      id: 'std1',
-      title: 'Classic Pancakes',
-      imageUrl: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
-      creator: CreatorData(name: 'Chef Maria', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
-      rating: 4.5,
-      reviewCount: 128,
-      cookTime: '20 min',
-      servings: 4,
-    ),
-  ];
-  
+
+  final recipeList = recipes[contentType] ??
+      [
+        RecipeCardData(
+          id: 'std1',
+          title: 'Classic Pancakes',
+          imageUrl:
+              'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
+          creator: CreatorData(
+              name: 'Chef Maria',
+              avatarUrl:
+                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+          rating: 4.5,
+          reviewCount: 128,
+          cookTime: '20 min',
+          servings: 4,
+        ),
+      ];
+
   return recipeList[index % recipeList.length];
 }
 
@@ -1922,8 +2109,12 @@ List<RecipeCardData> _getFilteredRecipes(String filter) {
     RecipeCardData(
       id: 'breakfast1',
       title: 'Fluffy Pancakes',
-      imageUrl: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
-      creator: CreatorData(name: 'Chef Maria', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+      imageUrl:
+          'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
+      creator: CreatorData(
+          name: 'Chef Maria',
+          avatarUrl:
+              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
       rating: 4.5,
       reviewCount: 128,
       cookTime: '20 min',
@@ -1932,8 +2123,12 @@ List<RecipeCardData> _getFilteredRecipes(String filter) {
     RecipeCardData(
       id: 'dinner1',
       title: 'Grilled Salmon',
-      imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
-      creator: CreatorData(name: 'Chef John', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+      imageUrl:
+          'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400',
+      creator: CreatorData(
+          name: 'Chef John',
+          avatarUrl:
+              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
       rating: 4.7,
       reviewCount: 203,
       cookTime: '25 min',
@@ -1942,20 +2137,24 @@ List<RecipeCardData> _getFilteredRecipes(String filter) {
     RecipeCardData(
       id: 'dessert1',
       title: 'Chocolate Cake',
-      imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400',
-      creator: CreatorData(name: 'Chef Sophie', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
+      imageUrl:
+          'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400',
+      creator: CreatorData(
+          name: 'Chef Sophie',
+          avatarUrl:
+              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100'),
       rating: 4.8,
       reviewCount: 156,
       cookTime: '60 min',
       servings: 8,
     ),
   ];
-  
+
   if (filter == 'All') return allRecipes;
-  
+
   return allRecipes.where((recipe) {
     return recipe.title.toLowerCase().contains(filter.toLowerCase()) ||
-           recipe.id.toLowerCase().contains(filter.toLowerCase());
+        recipe.id.toLowerCase().contains(filter.toLowerCase());
   }).toList();
 }
 
@@ -1997,9 +2196,9 @@ Map<String, dynamic> _getTabContent(int index) {
       'action': 'Edit Profile',
     },
   ];
-  
+
   return contents[index];
-} 
+}
 
 /// Home feed skeleton loader
 class HomeFeedSkeleton extends StatefulWidget {
@@ -2049,9 +2248,9 @@ class _HomeFeedSkeletonState extends State<HomeFeedSkeleton>
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Categories skeleton
             Container(
               color: Colors.white,
@@ -2087,9 +2286,9 @@ class _HomeFeedSkeletonState extends State<HomeFeedSkeleton>
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Featured recipes skeleton
             Container(
               color: Colors.white,
@@ -2121,11 +2320,13 @@ class _HomeFeedSkeletonState extends State<HomeFeedSkeleton>
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _buildSkeletonBox(double.infinity, 120, borderRadius: 8),
+                                _buildSkeletonBox(double.infinity, 120,
+                                    borderRadius: 8),
                                 Padding(
                                   padding: const EdgeInsets.all(12),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       _buildSkeletonBox(double.infinity, 16),
                                       const SizedBox(height: 8),
@@ -2151,9 +2352,9 @@ class _HomeFeedSkeletonState extends State<HomeFeedSkeleton>
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Recipe list skeleton
             Container(
               color: Colors.white,
@@ -2163,7 +2364,8 @@ class _HomeFeedSkeletonState extends State<HomeFeedSkeleton>
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     child: Row(
                       children: [
                         _buildSkeletonBox(60, 60, borderRadius: 8),
@@ -2194,7 +2396,8 @@ class _HomeFeedSkeletonState extends State<HomeFeedSkeleton>
     );
   }
 
-  Widget _buildSkeletonBox(double width, double height, {double borderRadius = 4}) {
+  Widget _buildSkeletonBox(double width, double height,
+      {double borderRadius = 4}) {
     return Container(
       width: width,
       height: height,
@@ -2238,9 +2441,7 @@ class HomeFeedEmptyStates extends StatelessWidget {
               'Add Recipe',
               Colors.orange,
             ),
-            
             const SizedBox(height: 24),
-            
             _buildEmptyState(
               Icons.wifi_off,
               'No Internet Connection',
@@ -2248,9 +2449,7 @@ class HomeFeedEmptyStates extends StatelessWidget {
               'Retry',
               Colors.red,
             ),
-            
             const SizedBox(height: 24),
-            
             _buildEmptyState(
               Icons.favorite_border,
               'No Favorites Yet',
@@ -2326,4 +2525,4 @@ class HomeFeedEmptyStates extends StatelessWidget {
       ),
     );
   }
-} 
+}

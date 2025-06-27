@@ -47,4 +47,4 @@ class _WCCategoryChipState extends State<WCCategoryChip> {
       },
     );
   }
-} 
+}

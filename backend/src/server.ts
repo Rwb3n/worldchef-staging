@@ -12,6 +12,7 @@ import Fastify, { FastifyInstance, FastifyServerOptions } from 'fastify';
 import supabasePlugin from './plugins/supabase_plugin';
 import authPlugin from './plugins/auth_plugin';
 import securityHeadersPlugin from './plugins/security_headers_plugin';
+import cacheControlPlugin from './plugins/cache_control_plugin';
 import swaggerPlugin from './plugins/swagger_plugin';
 import authRoutes from './routes/v1/auth';
 import statusRoute from './routes/v1/status';
@@ -29,6 +30,7 @@ export async function build(opts: FastifyServerOptions = {}): Promise<FastifyIns
     await server.register(supabasePlugin);
     await server.register(authPlugin);
     await server.register(securityHeadersPlugin);
+    await server.register(cacheControlPlugin);
 
     // Register routes BEFORE swagger plugin for dynamic generation
     await server.register(authRoutes, { prefix: '/v1/auth' });

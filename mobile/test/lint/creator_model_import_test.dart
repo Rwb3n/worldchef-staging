@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('All files using CreatorData must import models/creator_data.dart', () {
-    final libDir = Directory('mobile/lib');
+    final libDir = Directory('lib');
     final offenders = <String>[];
 
     for (final entity in libDir.listSync(recursive: true)) {
@@ -21,4 +21,4 @@ void main() {
     expect(offenders, isEmpty,
         reason: 'Files missing CreatorData import:\n${offenders.join('\n')}');
   });
-} 
+}

@@ -3,7 +3,8 @@ import 'package:worldchef_mobile/src/core/design_system/colors.dart';
 import 'package:worldchef_mobile/src/core/design_system/dimensions.dart';
 import 'package:worldchef_mobile/src/core/design_system/spacing.dart';
 import 'package:worldchef_mobile/src/core/design_system/typography.dart';
-import 'package:worldchef_mobile/src/core/design_system/spacing.dart' as ds show WorldChefLayout;
+import 'package:worldchef_mobile/src/core/design_system/spacing.dart' as ds
+    show WorldChefLayout;
 
 /// WorldChefButton – token-compliant button atom
 ///
@@ -33,15 +34,16 @@ class WorldChefButton extends StatefulWidget {
     IconData? icon,
     bool enabled = true,
     Key? key,
-  }) => WorldChefButton(
-    label: label,
-    onPressed: onPressed,
-    icon: icon,
-    variant: ButtonVariant.filled,
-    enabled: enabled,
-    isSelected: false,
-    key: key,
-  );
+  }) =>
+      WorldChefButton(
+        label: label,
+        onPressed: onPressed,
+        icon: icon,
+        variant: ButtonVariant.filled,
+        enabled: enabled,
+        isSelected: false,
+        key: key,
+      );
 
   factory WorldChefButton.secondary({
     required String label,
@@ -49,30 +51,32 @@ class WorldChefButton extends StatefulWidget {
     IconData? icon,
     bool enabled = true,
     Key? key,
-  }) => WorldChefButton(
-    label: label,
-    onPressed: onPressed,
-    icon: icon,
-    variant: ButtonVariant.outlined,
-    enabled: enabled,
-    isSelected: false,
-    key: key,
-  );
+  }) =>
+      WorldChefButton(
+        label: label,
+        onPressed: onPressed,
+        icon: icon,
+        variant: ButtonVariant.outlined,
+        enabled: enabled,
+        isSelected: false,
+        key: key,
+      );
 
   factory WorldChefButton.icon({
     required IconData icon,
     required VoidCallback? onPressed,
     bool enabled = true,
     Key? key,
-  }) => WorldChefButton(
-    label: '',
-    onPressed: onPressed,
-    icon: icon,
-    variant: ButtonVariant.icon,
-    enabled: enabled,
-    isSelected: false,
-    key: key,
-  );
+  }) =>
+      WorldChefButton(
+        label: '',
+        onPressed: onPressed,
+        icon: icon,
+        variant: ButtonVariant.icon,
+        enabled: enabled,
+        isSelected: false,
+        key: key,
+      );
 
   factory WorldChefButton.chip({
     required String label,
@@ -81,15 +85,16 @@ class WorldChefButton extends StatefulWidget {
     bool enabled = true,
     bool isSelected = false,
     Key? key,
-  }) => WorldChefButton(
-      label: label,
-      onPressed: onPressed,
-      icon: icon,
-    variant: ButtonVariant.chip,
-    enabled: enabled,
-    isSelected: isSelected,
-      key: key,
-    );
+  }) =>
+      WorldChefButton(
+        label: label,
+        onPressed: onPressed,
+        icon: icon,
+        variant: ButtonVariant.chip,
+        enabled: enabled,
+        isSelected: isSelected,
+        key: key,
+      );
 
   @override
   State<WorldChefButton> createState() => _WorldChefButtonState();
@@ -97,7 +102,8 @@ class WorldChefButton extends StatefulWidget {
 
 enum ButtonVariant { filled, filledTonal, outlined, text, icon, chip }
 
-class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProviderStateMixin {
+class _WorldChefButtonState extends State<WorldChefButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _pressController;
   late Animation<double> _scaleAnimation;
 
@@ -124,7 +130,7 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
     _pressController.forward();
   }
 
-  void _onTapUp(TapUpDetails details) {
+  void _onTapUp(TapUpUpDetails details) {
     _pressController.reverse();
   }
 
@@ -141,15 +147,15 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
     final style = _getButtonStyle(widget.variant);
     final child = widget.icon == null
         ? Text(widget.label, style: WorldChefTextStyles.labelLarge)
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
               Icon(widget.icon, size: WorldChefDimensions.iconMedium),
               if (widget.label.isNotEmpty) ...[
-                  const SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Text(widget.label, style: WorldChefTextStyles.labelLarge),
-                ],
+              ],
             ],
           );
     return GestureDetector(
@@ -179,10 +185,10 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
   Widget _buildChip(BuildContext context) {
     final chipTheme = Theme.of(context).chipTheme;
     final isSelected = widget.isSelected;
-    
+
     final Color selectedColor = WorldChefColors.accentOrange;
     final Color unselectedColor = WorldChefColors.accentOrange.withOpacity(0.1);
-    
+
     final Color selectedForegroundColor = Colors.white;
     final Color unselectedForegroundColor = WorldChefColors.accentOrange;
 
@@ -205,19 +211,23 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
                 Icon(
                   widget.icon,
                   size: WorldChefDimensions.iconSmall,
-                  color: isSelected ? selectedForegroundColor : unselectedForegroundColor,
+                  color: isSelected
+                      ? selectedForegroundColor
+                      : unselectedForegroundColor,
                 ),
                 const SizedBox(width: WorldChefSpacing.xs),
               ],
               Text(
                 widget.label,
                 style: WorldChefTextStyles.labelSmall.copyWith(
-                  color: isSelected ? selectedForegroundColor : unselectedForegroundColor,
+                  color: isSelected
+                      ? selectedForegroundColor
+                      : unselectedForegroundColor,
                 ),
               ),
             ],
           ),
-              ),
+        ),
       ),
     );
   }
@@ -231,7 +241,8 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
           minimumSize: const Size.fromHeight(WorldChefDimensions.buttonLarge),
           padding: ds.WorldChefLayout.primaryButtonPadding,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
           textStyle: WorldChefTextStyles.labelLarge,
         );
@@ -242,7 +253,8 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
           minimumSize: const Size.fromHeight(WorldChefDimensions.buttonMedium),
           padding: ds.WorldChefLayout.secondaryButtonPadding,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
           textStyle: WorldChefTextStyles.labelLarge,
         );
@@ -252,7 +264,8 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
           backgroundColor: Colors.transparent,
           minimumSize: const Size.square(44),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
         );
       case ButtonVariant.chip:
@@ -264,7 +277,8 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
           minimumSize: const Size.fromHeight(WorldChefDimensions.buttonLarge),
           padding: ds.WorldChefLayout.primaryButtonPadding,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
           textStyle: WorldChefTextStyles.labelLarge,
         );
@@ -277,4 +291,4 @@ class _WorldChefButtonState extends State<WorldChefButton> with SingleTickerProv
         );
     }
   }
-} 
+}

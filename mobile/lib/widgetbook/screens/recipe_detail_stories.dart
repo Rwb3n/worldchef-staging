@@ -10,17 +10,9 @@ WidgetbookComponent buildRecipeDetailStories() {
       WidgetbookUseCase(
         name: 'Interactive States',
         builder: (context) {
-          final state = context.knobs.list<ScreenState>(
-            label: 'Screen State',
-            options: ScreenState.values,
-            labelBuilder: (value) => value.toString().split('.').last,
-          );
-
-          return RecipeDetailScreen(
-            state: state,
-          );
+          return const RecipeDetailScreen();
         },
       ),
     ],
   );
-} 
+}

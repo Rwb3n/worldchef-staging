@@ -101,7 +101,8 @@ class BrandColorPalette extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check_circle, color: colorScheme.onSecondaryContainer),
+                  Icon(Icons.check_circle,
+                      color: colorScheme.onSecondaryContainer),
                   const SizedBox(height: 8),
                   Text(
                     'GREEN STEP: Design System Implemented',
@@ -128,7 +129,8 @@ class BrandColorPalette extends StatelessWidget {
     );
   }
 
-  Widget _buildColorCard(String name, String usage, Color color, String implementation) {
+  Widget _buildColorCard(
+      String name, String usage, Color color, String implementation) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -144,7 +146,8 @@ class BrandColorPalette extends StatelessWidget {
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: color == Colors.white || color.value == 0xFFFFFFFF
-                  ? const Center(child: Text('BG', style: TextStyle(color: Colors.black)))
+                  ? const Center(
+                      child: Text('BG', style: TextStyle(color: Colors.black)))
                   : null,
             ),
             const SizedBox(width: 16),
@@ -154,7 +157,8 @@ class BrandColorPalette extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -164,14 +168,16 @@ class BrandColorPalette extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     'Hex: #${color.value.toRadixString(16).toUpperCase()}',
-                    style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
+                    style:
+                        const TextStyle(fontSize: 12, fontFamily: 'monospace'),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     implementation,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.green.shade700, // Changed to green for success
+                      color:
+                          Colors.green.shade700, // Changed to green for success
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -199,7 +205,7 @@ class BrandColorStates extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(
+          Text(
             'Color States (via Containers)',
             style: textTheme.headlineLarge,
           ),
@@ -213,7 +219,7 @@ class BrandColorStates extends StatelessWidget {
             colorScheme.onPrimary,
             colorScheme.onPrimaryContainer,
           ),
-           _buildStateRow(
+          _buildStateRow(
             'Secondary -> Secondary Container',
             colorScheme.secondary,
             colorScheme.secondaryContainer,
@@ -222,13 +228,14 @@ class BrandColorStates extends StatelessWidget {
           ),
 
           const SizedBox(height: 24),
-           Card(
+          Card(
             color: colorScheme.tertiaryContainer,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 'GREEN STEP: These rows demonstrate the relationship between a color role (e.g., primary) and its container counterpart (primaryContainer), along with their corresponding "on" colors for text.',
-                style: textTheme.bodyMedium?.copyWith(color: colorScheme.onTertiaryContainer),
+                style: textTheme.bodyMedium
+                    ?.copyWith(color: colorScheme.onTertiaryContainer),
               ),
             ),
           ),
@@ -237,7 +244,8 @@ class BrandColorStates extends StatelessWidget {
     );
   }
 
-  Widget _buildStateRow(String name, Color defaultColor, Color containerColor, Color onColor, Color onContainerColor) {
+  Widget _buildStateRow(String name, Color defaultColor, Color containerColor,
+      Color onColor, Color onContainerColor) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -254,7 +262,8 @@ class BrandColorStates extends StatelessWidget {
               children: [
                 _buildStateSwatch('Default', defaultColor, onColor),
                 const SizedBox(width: 8),
-                _buildStateSwatch('Container', containerColor, onContainerColor),
+                _buildStateSwatch(
+                    'Container', containerColor, onContainerColor),
               ],
             )
           ],
@@ -274,7 +283,8 @@ class BrandColorStates extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(name, style: TextStyle(color: onColor, fontWeight: FontWeight.bold)),
+            Text(name,
+                style: TextStyle(color: onColor, fontWeight: FontWeight.bold)),
             const SizedBox(height: 4),
             Text('Text on this color', style: TextStyle(color: onColor)),
           ],
@@ -298,7 +308,7 @@ class SemanticColorPalette extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(
+          Text(
             'Semantic Colors',
             style: textTheme.headlineLarge,
           ),
@@ -327,7 +337,8 @@ class SemanticColorPalette extends StatelessWidget {
   }
 
   // Re-using the same helper from BrandColorPalette
-  Widget _buildColorCard(String name, String usage, Color color, String implementation) {
+  Widget _buildColorCard(
+      String name, String usage, Color color, String implementation) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -343,7 +354,8 @@ class SemanticColorPalette extends StatelessWidget {
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: color == Colors.white || color.value == 0xFFFFFFFF
-                  ? const Center(child: Text('BG', style: TextStyle(color: Colors.black)))
+                  ? const Center(
+                      child: Text('BG', style: TextStyle(color: Colors.black)))
                   : null,
             ),
             const SizedBox(width: 16),
@@ -353,7 +365,8 @@ class SemanticColorPalette extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -363,14 +376,16 @@ class SemanticColorPalette extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     'Hex: #${color.value.toRadixString(16).toUpperCase()}',
-                    style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
+                    style:
+                        const TextStyle(fontSize: 12, fontFamily: 'monospace'),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     implementation,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.green.shade700, // Changed to green for success
+                      color:
+                          Colors.green.shade700, // Changed to green for success
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -401,30 +416,30 @@ class ContrastValidationGrid extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           const SizedBox(height: 8),
-          const Text('Demonstrating WCAG AA compliance for common text/background pairings.'),
+          const Text(
+              'Demonstrating WCAG AA compliance for common text/background pairings.'),
           const SizedBox(height: 16),
-
           _buildContrastChecker(
             'On Primary',
             colorScheme.onPrimary,
             colorScheme.primary,
           ),
-           _buildContrastChecker(
+          _buildContrastChecker(
             'On Secondary',
             colorScheme.onSecondary,
             colorScheme.secondary,
           ),
-           _buildContrastChecker(
+          _buildContrastChecker(
             'On Surface',
             colorScheme.onSurface,
             colorScheme.surface,
           ),
-           _buildContrastChecker(
+          _buildContrastChecker(
             'On Background',
             colorScheme.onSurface,
             colorScheme.surface,
           ),
-           _buildContrastChecker(
+          _buildContrastChecker(
             'On Error',
             colorScheme.onError,
             colorScheme.error,
@@ -434,11 +449,13 @@ class ContrastValidationGrid extends StatelessWidget {
     );
   }
 
-  Widget _buildContrastChecker(String name, Color textColor, Color backgroundColor) {
+  Widget _buildContrastChecker(
+      String name, Color textColor, Color backgroundColor) {
     // Basic luminance calculation to determine if contrast is good.
     // This is a simplified version. A real app might use a package.
     final double luminance = backgroundColor.computeLuminance();
-    final double contrast = (textColor.computeLuminance() + 0.05) / (luminance + 0.05);
+    final double contrast =
+        (textColor.computeLuminance() + 0.05) / (luminance + 0.05);
     final bool passes = contrast > 4.5; // WCAG AA for normal text
 
     return Card(
@@ -460,12 +477,15 @@ class ContrastValidationGrid extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: passes ? Colors.green.withAlpha(204) : Colors.red.withAlpha(204),
+                color: passes
+                    ? Colors.green.withAlpha(204)
+                    : Colors.red.withAlpha(204),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
                 passes ? 'PASS' : 'FAIL',
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold),
               ),
             )
           ],
@@ -473,4 +493,4 @@ class ContrastValidationGrid extends StatelessWidget {
       ),
     );
   }
-} 
+}

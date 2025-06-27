@@ -46,7 +46,7 @@ class DefaultSectionHeader extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 24),
-            
+
             // Home Feed examples from specification
             WCSectionHeader(
               title: 'Taste by Country',
@@ -55,18 +55,18 @@ class DefaultSectionHeader extends StatelessWidget {
                 print('View all pressed: Taste by Country');
               },
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             WCSectionHeader(
               title: 'Taste by Diet',
               onViewAllPressed: () {
                 print('View all pressed: Taste by Diet');
               },
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             // Recipe Detail example
             WCSectionHeader(
               title: 'Nutrition Information',
@@ -74,18 +74,18 @@ class DefaultSectionHeader extends StatelessWidget {
                 print('View all pressed: Nutrition Information');
               },
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             WCSectionHeader(
               title: 'Ingredients',
               onViewAllPressed: () {
                 print('View all pressed: Ingredients');
               },
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Design token validation card
             Card(
               color: Theme.of(context).colorScheme.secondaryContainer,
@@ -102,9 +102,11 @@ class DefaultSectionHeader extends StatelessWidget {
                     Text(
                       'Design Token Compliance',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSecondaryContainer,
-                        fontWeight: FontWeight.bold,
-                      ),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const SizedBox(height: 8),
                     Text(
@@ -113,8 +115,10 @@ class DefaultSectionHeader extends StatelessWidget {
                       '✅ Padding: WorldChefSpacing.md (16dp)\n'
                       '✅ Layout: Row with MainAxisAlignment.spaceBetween',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSecondaryContainer,
-                      ),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
+                          ),
                     ),
                   ],
                 ),
@@ -145,7 +149,7 @@ class SectionHeaderVariants extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 24),
-            
+
             // With View All (default)
             const Text('With View All (default):'),
             const SizedBox(height: 8),
@@ -153,9 +157,9 @@ class SectionHeaderVariants extends StatelessWidget {
               title: 'Featured Recipes',
               onViewAllPressed: () {},
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             // Without View All
             const Text('Without View All:'),
             const SizedBox(height: 8),
@@ -164,9 +168,9 @@ class SectionHeaderVariants extends StatelessWidget {
               onViewAllPressed: () {},
               showViewAll: false,
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             // Long title example
             const Text('Long Title Example:'),
             const SizedBox(height: 8),
@@ -174,9 +178,9 @@ class SectionHeaderVariants extends StatelessWidget {
               title: 'Healthy Mediterranean Diet Recipes',
               onViewAllPressed: () {},
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             // Short title example
             const Text('Short Title Example:'),
             const SizedBox(height: 8),
@@ -196,7 +200,8 @@ class InteractiveSectionHeader extends StatefulWidget {
   const InteractiveSectionHeader({super.key});
 
   @override
-  State<InteractiveSectionHeader> createState() => _InteractiveSectionHeaderState();
+  State<InteractiveSectionHeader> createState() =>
+      _InteractiveSectionHeaderState();
 }
 
 class _InteractiveSectionHeaderState extends State<InteractiveSectionHeader> {
@@ -217,15 +222,12 @@ class _InteractiveSectionHeaderState extends State<InteractiveSectionHeader> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 16),
-            
             Text(
               'Tap counter: $tapCount\n'
               'Last tapped: $lastTappedSection',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-            
             const SizedBox(height: 24),
-            
             WCSectionHeader(
               title: 'Popular This Week',
               onViewAllPressed: () {
@@ -235,9 +237,7 @@ class _InteractiveSectionHeaderState extends State<InteractiveSectionHeader> {
                 });
               },
             ),
-            
             const SizedBox(height: 24),
-            
             WCSectionHeader(
               title: 'Recently Added',
               onViewAllPressed: () {
@@ -247,9 +247,7 @@ class _InteractiveSectionHeaderState extends State<InteractiveSectionHeader> {
                 });
               },
             ),
-            
             const SizedBox(height: 24),
-            
             WCSectionHeader(
               title: 'Top Rated',
               onViewAllPressed: () {
@@ -259,9 +257,7 @@ class _InteractiveSectionHeaderState extends State<InteractiveSectionHeader> {
                 });
               },
             ),
-            
             const SizedBox(height: 32),
-            
             ElevatedButton(
               onPressed: () {
                 setState(() {
@@ -276,4 +272,4 @@ class _InteractiveSectionHeaderState extends State<InteractiveSectionHeader> {
       ),
     );
   }
-} 
+}

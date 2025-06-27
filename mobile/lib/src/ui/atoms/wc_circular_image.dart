@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 
 /// WorldChef Circular Image Atom
-/// 
+///
 /// A reusable circular image component that maintains perfect circle proportions
 /// and handles user interactions. Used primarily in category displays.
-/// 
+///
 /// Design Specifications:
 /// - Size: Configurable, typically 60dp for categories
 /// - Shape: Perfect circle with appropriate clipping
 /// - Interaction: Tap handling with visual feedback
 /// - Accessibility: Semantic labels and tap targets
-/// 
+///
 /// Author: WorldChef Mobile Team
 /// Date: 2025-06-26
 /// Global Event: 161 (Implementation of WCCircularImage atom)
 class WCCircularImage extends StatelessWidget {
   /// The image URL to display in the circle
   final String imageUrl;
-  
+
   /// The diameter of the circular image
   final double size;
-  
+
   /// Callback for tap events
   final VoidCallback onTap;
-  
+
   /// Optional placeholder widget when image fails to load
   final Widget? placeholder;
-  
+
   /// Optional semantic label for accessibility
   final String? semanticLabel;
 
@@ -69,7 +69,7 @@ class WCCircularImage extends StatelessWidget {
                 },
               ),
             ),
-            child: placeholder != null 
+            child: placeholder != null
                 ? Container(
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
@@ -83,4 +83,4 @@ class WCCircularImage extends StatelessWidget {
       ),
     );
   }
-} 
+}

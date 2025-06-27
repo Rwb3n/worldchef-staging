@@ -32,6 +32,60 @@ const swaggerPlugin: FastifyPluginAsync = async (fastify) => {
     },
   });
 
+  // Helper function to process a single route line and add it to the OpenAPI spec
+  const processRouteLine = (routeLine: string, paths: Record<string, any>) => {
+    if (!routeLine.trim()) return;
+    
+    // Parse route line format: "├── /v1/auth/signup (POST)"
+    const match = routeLine.match(/[├└│]\s*─*\s*([^\s]+)\s*\(([^)]+)\)/);
+    if (!match) return;
+    
+    const [, rawPath, methods] = match;
+    // Ensure path starts with /
+    const path = rawPath.startsWith('/') ? rawPath : '/' + rawPath;
+    const methodList = methods.split(',').map(m => m.trim().toLowerCase());
+    
+    // Initialize path object if it doesn't exist
+    if (!paths[path]) {
+      paths[path] = {};
+    }
+    
+    // Add each HTTP method
+    for (const method of methodList) {
+      if (['get', 'post', 'put', 'patch', 'delete', 'head', 'options'].includes(method)) {
+        paths[path][method] = {
+          summary: `${method.toUpperCase()} ${path}`,
+          description: `${method.toUpperCase()} operation for ${path}`,
+          responses: {
+            '200': {
+              description: 'Successful response',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                  },
+                },
+              },
+            },
+          },
+        };
+        
+        // Add request body for POST/PUT/PATCH
+        if (['post', 'put', 'patch'].includes(method)) {
+          paths[path][method].requestBody = {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                },
+              },
+            },
+          };
+        }
+      }
+    }
+  };
+
   // 2. Function to manually build OpenAPI spec from registered routes
   const buildOpenAPISpec = () => {
     const baseSpec = {
@@ -54,56 +108,7 @@ const swaggerPlugin: FastifyPluginAsync = async (fastify) => {
     const routes = fastify.printRoutes({ includeHooks: false, commonPrefix: false }).split('\n');
     
     for (const routeLine of routes) {
-      if (!routeLine.trim()) continue;
-      
-      // Parse route line format: "├── /v1/auth/signup (POST)"
-      const match = routeLine.match(/[├└│]\s*─*\s*([^\s]+)\s*\(([^)]+)\)/);
-      if (!match) continue;
-      
-      const [, rawPath, methods] = match;
-      // Ensure path starts with /
-      const path = rawPath.startsWith('/') ? rawPath : '/' + rawPath;
-      const methodList = methods.split(',').map(m => m.trim().toLowerCase());
-      
-      // Initialize path object if it doesn't exist
-      if (!baseSpec.paths[path]) {
-        baseSpec.paths[path] = {};
-      }
-      
-      // Add each HTTP method
-      for (const method of methodList) {
-        if (['get', 'post', 'put', 'patch', 'delete', 'head', 'options'].includes(method)) {
-          baseSpec.paths[path][method] = {
-            summary: `${method.toUpperCase()} ${path}`,
-            description: `${method.toUpperCase()} operation for ${path}`,
-            responses: {
-              '200': {
-                description: 'Successful response',
-                content: {
-                  'application/json': {
-                    schema: {
-                      type: 'object',
-                    },
-                  },
-                },
-              },
-            },
-          };
-          
-          // Add request body for POST/PUT/PATCH
-          if (['post', 'put', 'patch'].includes(method)) {
-            baseSpec.paths[path][method].requestBody = {
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                  },
-                },
-              },
-            };
-          }
-        }
-      }
+      processRouteLine(routeLine, baseSpec.paths);
     }
 
     return baseSpec;

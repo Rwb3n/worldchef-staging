@@ -7,84 +7,93 @@ import 'package:worldchef_mobile/src/ui/organisms/wc_category_circle_row.dart';
 import 'package:worldchef_mobile/src/ui/organisms/wc_featured_recipe_card.dart';
 import 'package:worldchef_mobile/src/ui/molecules/wc_section_header.dart';
 import 'package:worldchef_mobile/src/ui/molecules/wc_creator_info_row.dart';
+import 'package:worldchef_mobile/src/models/category_data.dart';
+import 'package:worldchef_mobile/src/models/creator_data.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 /// Golden test for Home Feed screen layout alignment
-/// 
+///
 /// This test establishes the target visual specification for the complete
 /// Home Feed layout as defined in docs/ui_specifications/screens/home_feed_screen.md
-/// 
+///
 /// The test will initially FAIL because the current Home Feed story uses
 /// placeholder implementation instead of the specified component composition.
-/// 
+///
 /// Success criteria:
 /// - Blue background throughout the screen
 /// - WCCategoryCircleRow with proper category navigation
 /// - "Taste by Country" section with WCSectionHeader and country grid
 /// - "Taste by Diet" section with WCSectionHeader and WCFeaturedRecipeCard
 /// - WCBottomNavigation with proper styling and active state
-/// 
+///
 /// This is the RED step of the TDD cycle for Home Feed layout integration.
 void main() {
   group('Home Feed Golden Tests', () {
     testGoldens('Home Feed layout matches UI specification', (tester) async {
-      // Configure golden test environment
-      await loadAppFonts();
-      
-      // Build the target Home Feed layout as specified
-      await tester.pumpWidgetBuilder(
-        _buildTargetHomeFeedLayout(),
-        wrapper: materialAppWrapper(
-          theme: AppTheme.lightTheme,
-          platform: TargetPlatform.android,
-        ),
-        surfaceSize: const Size(375, 812), // iPhone 13 Pro dimensions
-      );
+      await mockNetworkImagesFor(() async {
+        // Configure golden test environment
+        await loadAppFonts();
 
-      // Allow for image loading and animations to settle
-      await tester.pumpAndSettle(const Duration(seconds: 2));
+        // Build the target Home Feed layout as specified
+        await tester.pumpWidgetBuilder(
+          _buildTargetHomeFeedLayout(),
+          wrapper: materialAppWrapper(
+            theme: AppTheme.lightTheme,
+            platform: TargetPlatform.android,
+          ),
+          surfaceSize: const Size(375, 812), // iPhone 13 Pro dimensions
+        );
 
-      // Capture golden image for visual comparison
-      await screenMatchesGolden(tester, 'home_feed_layout_specification');
+        // Allow for image loading and animations to settle
+        await tester.pumpAndSettle(const Duration(seconds: 2));
+
+        // Capture golden image for visual comparison
+        await screenMatchesGolden(tester, 'home_feed_layout_specification');
+      });
     });
 
     testGoldens('Home Feed sections alignment', (tester) async {
-      await loadAppFonts();
-      
-      // Test individual sections for detailed validation
-      await tester.pumpWidgetBuilder(
-        _buildHomeFeedSectionsOnly(),
-        wrapper: materialAppWrapper(
-          theme: AppTheme.lightTheme,
-          platform: TargetPlatform.android,
-        ),
-        surfaceSize: const Size(375, 600),
-      );
+      await mockNetworkImagesFor(() async {
+        await loadAppFonts();
 
-      await tester.pumpAndSettle(const Duration(seconds: 1));
-      await screenMatchesGolden(tester, 'home_feed_sections_specification');
+        // Test individual sections for detailed validation
+        await tester.pumpWidgetBuilder(
+          _buildHomeFeedSectionsOnly(),
+          wrapper: materialAppWrapper(
+            theme: AppTheme.lightTheme,
+            platform: TargetPlatform.android,
+          ),
+          surfaceSize: const Size(375, 600),
+        );
+
+        await tester.pumpAndSettle(const Duration(seconds: 1));
+        await screenMatchesGolden(tester, 'home_feed_sections_specification');
+      });
     });
 
     testGoldens('Home Feed responsive layout', (tester) async {
-      await loadAppFonts();
-      
-      // Test responsive behavior at different screen sizes
-      await tester.pumpWidgetBuilder(
-        _buildTargetHomeFeedLayout(),
-        wrapper: materialAppWrapper(
-          theme: AppTheme.lightTheme,
-          platform: TargetPlatform.android,
-        ),
-        surfaceSize: const Size(320, 568), // iPhone SE dimensions
-      );
+      await mockNetworkImagesFor(() async {
+        await loadAppFonts();
 
-      await tester.pumpAndSettle(const Duration(seconds: 2));
-      await screenMatchesGolden(tester, 'home_feed_layout_responsive');
+        // Test responsive behavior at different screen sizes
+        await tester.pumpWidgetBuilder(
+          _buildTargetHomeFeedLayout(),
+          wrapper: materialAppWrapper(
+            theme: AppTheme.lightTheme,
+            platform: TargetPlatform.android,
+          ),
+          surfaceSize: const Size(320, 568), // iPhone SE dimensions
+        );
+
+        await tester.pumpAndSettle(const Duration(seconds: 2));
+        await screenMatchesGolden(tester, 'home_feed_layout_responsive');
+      });
     });
   });
 }
 
 /// Builds the target Home Feed layout according to UI specification
-/// 
+///
 /// This represents the EXPECTED final implementation that should match
 /// the visual design specification exactly. The current Home Feed story
 /// implementation will NOT match this, causing the golden test to fail.
@@ -100,7 +109,7 @@ Widget _buildTargetHomeFeedLayout() {
             color: const Color(0xFF0288D1),
           ),
         ),
-        
+
         // Category navigation section
         SliverToBoxAdapter(
           child: Container(
@@ -108,12 +117,11 @@ Widget _buildTargetHomeFeedLayout() {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: WCCategoryCircleRow(
               categories: _getMockCategoryData(),
-              onCategoryTap: (category) {},
-              onCreateTap: () {},
+              onCategoryTapped: (category) {},
             ),
           ),
         ),
-        
+
         // Country section
         SliverToBoxAdapter(
           child: Container(
@@ -125,22 +133,22 @@ Widget _buildTargetHomeFeedLayout() {
                   padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
                   child: WCSectionHeader(
                     title: 'Taste by Country',
-                    onViewAllTap: () {},
+                    onViewAllPressed: () {},
                   ),
                 ),
-                
+
                 // Country grid (4 columns)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: _buildCountryGrid(),
                 ),
-                
+
                 const SizedBox(height: 32), // gridToGrid spacing
               ],
             ),
           ),
         ),
-        
+
         // Diet section
         SliverToBoxAdapter(
           child: Container(
@@ -152,12 +160,12 @@ Widget _buildTargetHomeFeedLayout() {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: WCSectionHeader(
                     title: 'Taste by Diet',
-                    onViewAllTap: () {},
+                    onViewAllPressed: () {},
                   ),
                 ),
-                
+
                 const SizedBox(height: 16),
-                
+
                 // Featured recipe card
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -166,7 +174,7 @@ Widget _buildTargetHomeFeedLayout() {
                     onTap: () {},
                   ),
                 ),
-                
+
                 const SizedBox(height: 24),
               ],
             ),
@@ -192,28 +200,28 @@ Widget _buildHomeFeedSectionsOnly() {
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
           child: WCSectionHeader(
             title: 'Taste by Country',
-            onViewAllTap: () {},
+            onViewAllPressed: () {},
           ),
         ),
-        
+
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: _buildCountryGrid(),
         ),
-        
+
         const SizedBox(height: 32),
-        
+
         // Diet section
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: WCSectionHeader(
             title: 'Taste by Diet',
-            onViewAllTap: () {},
+            onViewAllPressed: () {},
           ),
         ),
-        
+
         const SizedBox(height: 16),
-        
+
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: WCFeaturedRecipeCard(
@@ -227,16 +235,34 @@ Widget _buildHomeFeedSectionsOnly() {
 }
 
 /// Builds the country thumbnail grid (4 columns)
-/// 
+///
 /// This represents the WCCountryThumbnailGrid organism that should be
 /// implemented in the future. For now, we'll use a simple grid layout
 /// that matches the specification.
 Widget _buildCountryGrid() {
   final countries = [
-    {'name': 'Mexico', 'flag': '🇲🇽', 'image': 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'},
-    {'name': 'Jamaica', 'flag': '🇯🇲', 'image': 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200'},
-    {'name': 'France', 'flag': '🇫🇷', 'image': 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=200'},
-    {'name': 'Nigeria', 'flag': '🇳🇬', 'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'},
+    {
+      'name': 'Mexico',
+      'flag': '🇲🇽',
+      'image':
+          'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=200'
+    },
+    {
+      'name': 'Jamaica',
+      'flag': '🇯🇲',
+      'image':
+          'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200'
+    },
+    {
+      'name': 'France',
+      'flag': '🇫🇷',
+      'image': 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=200'
+    },
+    {
+      'name': 'Nigeria',
+      'flag': '🇳🇬',
+      'image': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200'
+    },
   ];
 
   return GridView.builder(
@@ -283,7 +309,7 @@ Widget _buildCountryThumbnail(String name, String flag, String imageUrl) {
               },
             ),
           ),
-          
+
           // Bottom overlay with flag and name
           Positioned(
             bottom: 0,
@@ -336,17 +362,20 @@ List<CategoryData> _getMockCategoryData() {
     CategoryData(
       id: '1',
       name: 'Breakfast',
-      imageUrl: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100',
+      imageUrl:
+          'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=100',
     ),
     CategoryData(
       id: '2',
       name: 'Dinner',
-      imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100',
+      imageUrl:
+          'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=100',
     ),
     CategoryData(
       id: '3',
       name: 'Desserts',
-      imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100',
+      imageUrl:
+          'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=100',
     ),
   ];
 }
@@ -356,14 +385,16 @@ RecipeCardData _getMockFeaturedRecipe() {
   return RecipeCardData(
     id: 'featured1',
     title: 'Protein muffins',
-    imageUrl: 'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
+    imageUrl:
+        'https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?w=400',
     creator: CreatorData(
       name: 'Chef Muscle',
-      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
+      avatarUrl:
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
     ),
     rating: 4.5,
     reviewCount: 128,
     cookTime: '25 min',
     servings: 12,
   );
-} 
+}

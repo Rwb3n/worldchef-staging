@@ -1,0 +1,9192 @@
+/* stylelint-disable */
+
+/* Home */
+
+position: relative;
+width: 430px;
+height: 949px;
+overflow-y: scroll;
+
+/* Grayscale/White */
+background: #FFFFFF;
+border-radius: 20px;
+
+
+/* Sections */
+
+position: absolute;
+width: 415px;
+height: 175px;
+left: 8px;
+top: 177px;
+overflow-x: scroll;
+
+/* Grayscale/White */
+background: #FFFFFF;
+border-radius: 10px;
+
+
+/* Countries Row */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+position: absolute;
+width: 803px;
+height: 129px;
+left: 8px;
+top: 48px;
+
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 129px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 6 */
+
+width: 101px;
+height: 104px;
+
+background: url(Tilapia fish);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 68px;
+top: 69px;
+
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Frame 20 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 17px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+right: 0px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+
+
+/* Rectangle 22481 */
+
+position: absolute;
+width: 5px;
+height: 5px;
+left: 8px;
+top: 5px;
+
+background: url(pngegg);
+
+
+/* Nigeria */
+
+width: 43px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 129px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Frame 6 */
+
+width: 101px;
+height: 104px;
+
+background: url(foo5);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 68px;
+top: 69px;
+
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Frame 20 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 17px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Yellow */
+background: #FFE600;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Polygon 5 */
+
+position: absolute;
+width: 12.5px;
+height: 8.5px;
+left: 13px;
+top: 13.5px;
+
+background: #000000;
+transform: rotate(-90deg);
+
+
+/* Polygon 6 */
+
+position: absolute;
+width: 12.5px;
+height: 8.5px;
+left: 8.5px;
+top: 13.5px;
+
+background: #000000;
+transform: matrix(0, -1, -1, 0, 0, 0);
+
+
+/* Polygon 7 */
+
+position: absolute;
+width: 15px;
+height: 5.5px;
+left: 18px;
+top: 9.5px;
+
+/* Green */
+background: #34A853;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Polygon 8 */
+
+position: absolute;
+width: 15px;
+height: 5.5px;
+left: 18px;
+top: 5.5px;
+
+/* Green */
+background: #34A853;
+transform: rotate(-180deg);
+
+
+/* Nigeria */
+
+width: 49px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 129px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 6 */
+
+width: 101px;
+height: 104px;
+
+background: url(Cucumber Salad 2);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 68px;
+top: 69px;
+
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Frame 20 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 17px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Blue/5 */
+background: #0065FD;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+right: 0px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+
+
+/* Nigeria */
+
+width: 42px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 129px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 6 */
+
+width: 101px;
+height: 104px;
+
+background: url(Jollof_Rice_with_Stew);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 68px;
+top: 69px;
+
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Frame 20 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 17px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 14px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Nigeria */
+
+width: 44px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 129px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 6 */
+
+width: 101px;
+height: 104px;
+
+background: url(food2.jpg);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 68px;
+top: 69px;
+
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Frame 20 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 17px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Red/1 */
+background: #FF0000;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 47 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 5px;
+height: 5px;
+left: 2px;
+top: 2px;
+
+/* Yellow */
+border: 2px dashed #FFE600;
+
+
+/* Nigeria */
+
+width: 36px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 129px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Frame 6 */
+
+width: 101px;
+height: 104px;
+
+background: url(food6);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 68px;
+top: 69px;
+
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Frame 20 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 17px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+right: 0px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+
+
+/* Nigeria */
+
+width: 26px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 129px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* Frame 6 */
+
+width: 101px;
+height: 104px;
+
+background: url(waakye-feat);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 68px;
+top: 69px;
+
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Frame 20 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 101px;
+height: 17px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Yellow */
+background: #FFE600;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 5px;
+height: 21px;
+left: 21px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 5px;
+height: 21px;
+left: 21px;
+bottom: -16px;
+
+/* Green */
+background: #34A853;
+transform: rotate(90deg);
+
+
+/* Star 3 */
+
+position: absolute;
+width: 4px;
+height: 4px;
+left: calc(50% - 4px/2 + 0.5px);
+top: calc(50% - 4px/2 + 0.5px);
+
+/* Blue/Dark */
+background: #014878;
+
+
+/* Nigeria */
+
+width: 41px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Title and link */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-end;
+padding: 0px;
+gap: 15px;
+
+position: absolute;
+width: 403px;
+height: 24px;
+left: 8px;
+top: 8px;
+
+
+
+/* Taste by Country */
+
+margin: 0 auto;
+width: 155px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Lilnk */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+margin: 0 auto;
+width: 91px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Muli */
+
+width: 63px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Brand/green */
+color: #00C9A7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/green */
+border: 2px solid #00C9A7;
+
+
+/* Food column */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+position: absolute;
+width: 400px;
+height: 4539px;
+left: calc(50% - 400px/2);
+top: 424px;
+overflow-y: scroll;
+
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 172px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 90px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 2px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22462 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 6px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22463 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 10px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22466 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22467 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 14px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+bottom: -6px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22464 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+bottom: -10px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22465 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+bottom: -14px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Square */
+
+position: absolute;
+width: 9px;
+height: 7px;
+left: 0px;
+top: 0px;
+
+/* Blue/2 */
+background: #0088C2;
+
+
+/* Frame 1000002954 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 1px;
+
+position: absolute;
+width: 7px;
+height: 1px;
+left: 1px;
+top: 3px;
+
+
+
+/* Ellipse 48 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 49 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 50 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Ellipse 51 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 1000002956 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 1px;
+
+position: absolute;
+width: 7px;
+height: 1px;
+left: 1px;
+top: 1px;
+
+
+
+/* Ellipse 48 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 49 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 50 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Ellipse 51 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Frame 1000002955 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 1px;
+
+position: absolute;
+width: 7px;
+height: 1px;
+left: 1px;
+top: 5px;
+
+
+
+/* Ellipse 48 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 49 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 50 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Ellipse 51 */
+
+width: 1px;
+height: 1px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Mexico */
+
+width: 61px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(chocolate chip muffins);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 168px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 113px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 111px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 82px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 14px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Mexico */
+
+width: 53px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Jollof_Rice_with_Stew);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 181px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(201302-orig-beautiful-chicken-600x411);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 126px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 175px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 81px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+right: 0px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+
+
+/* Rectangle 22481 */
+
+position: absolute;
+width: 5px;
+height: 5px;
+left: 8px;
+top: 5px;
+
+background: url(pngegg);
+
+
+/* Mexico */
+
+width: 52px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Beef Enchiladas);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 249px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 194px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 122px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 79px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Blue/5 */
+background: #0065FD;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+right: 0px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+
+
+/* Mexico */
+
+width: 50px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Ratatouille);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 161px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 106px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 84px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 112px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 0px;
+top: 0px;
+
+/* Brown/1 */
+background: #FFB800;
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 7px;
+height: 15px;
+left: 14px;
+top: 0px;
+
+/* Green */
+background: #34A853;
+
+
+/* Mexico */
+
+width: 83px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Attiéke s rybou@2x);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 147px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 92px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 160px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 72px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Red/1 */
+background: #FF0000;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 47 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 5px;
+height: 5px;
+left: 2px;
+top: 2px;
+
+/* Yellow */
+border: 2px dashed #FFE600;
+
+
+/* Mexico */
+
+width: 43px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Tom Yum Kung);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 152px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 97px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 280px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 95px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 2px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22462 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 6px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22463 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 10px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22466 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22467 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+top: 14px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: calc(50% - 1px/2 + 11px);
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22464 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+bottom: -10px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22465 */
+
+position: absolute;
+width: 1px;
+height: 21px;
+left: 21px;
+bottom: -14px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Square */
+
+position: absolute;
+width: 9px;
+height: 7px;
+left: 0px;
+top: 0px;
+
+/* Blue/Dark */
+background: #014878;
+
+
+/* Star 1 */
+
+position: absolute;
+width: 4px;
+height: 4px;
+left: 4px;
+top: 1px;
+
+/* Yellow */
+background: #FFE600;
+
+
+/* Vector 49 */
+
+position: absolute;
+width: 2px;
+height: 4px;
+left: 2px;
+top: 1px;
+
+/* Yellow */
+background: #FFE600;
+
+
+/* Mexico */
+
+width: 66px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Easy_Cucumber_Chickpea_Salad_with_Lime_Dressing_web_03);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 167px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 112px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 68px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 98px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Yellow */
+background: #FFE600;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 5px;
+height: 21px;
+left: 21px;
+top: 10px;
+
+/* Red/1 */
+background: #FF0000;
+transform: rotate(90deg);
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 5px;
+height: 21px;
+left: 21px;
+bottom: -11px;
+
+/* Blue/5 */
+background: #0065FD;
+transform: rotate(90deg);
+
+
+/* Mexico */
+
+width: 69px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Ajiaco);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 201px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 146px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Large card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 400px;
+height: 483px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Title */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 6px;
+
+width: 400px;
+height: 26px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Chocolate muffins */
+
+margin: 0 auto;
+width: 147px;
+height: 26px;
+
+/* H5 */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 23px;
+line-height: 26px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Country */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 102px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Flag
+
+<p>country countries flag</p>
+*/
+
+width: 21px;
+height: 15px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Rectangle 22460 */
+
+position: absolute;
+width: 5px;
+height: 21px;
+left: 21px;
+top: 0px;
+
+/* Blue/4 */
+background: #A8F5FF;
+transform: rotate(90deg);
+
+
+/* Rectangle 22461 */
+
+position: absolute;
+width: 5px;
+height: 21px;
+left: 21px;
+bottom: -16px;
+
+/* Blue/4 */
+background: #A8F5FF;
+transform: rotate(90deg);
+
+
+/* Star 1 */
+
+position: absolute;
+width: 5px;
+height: 5px;
+left: 8px;
+top: 5px;
+
+/* Yellow */
+background: #FFE600;
+
+
+/* Mexico */
+
+width: 73px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Pic */
+
+width: 400px;
+height: 400px;
+
+background: url(Mango pickle);
+border-radius: 10px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* BG */
+
+position: absolute;
+width: 400px;
+height: 69px;
+left: 0px;
+top: 0px;
+
+background: rgba(50, 50, 50, 0.46);
+filter: blur(2px);
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 338px;
+top: 17px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Name card */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 7px;
+
+position: absolute;
+width: 165px;
+height: 48px;
+left: 13px;
+top: 13px;
+
+
+
+/* Ellipse 69 */
+
+width: 48px;
+height: 48px;
+
+background: url(.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 110px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ROW */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 126px;
+
+width: 400px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 140px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 47px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* exercise */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* exercise */
+
+position: absolute;
+left: 8.44%;
+right: 8.33%;
+top: 8.28%;
+bottom: 8.44%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 35px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Halal */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* prayer_times */
+
+position: absolute;
+left: 2.92%;
+right: 2.92%;
+top: 2.92%;
+bottom: 2.92%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* Halal */
+
+width: 35px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Symbol
+
+<p>icon and text</p>
+*/
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 42px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Vegan icon */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 65%;
+right: 12.5%;
+top: 12.5%;
+bottom: 65%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 35%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Vegan */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Full rating */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 111px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Rating number */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 3px;
+
+width: 47px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 4.2 */
+
+width: 24px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Star */
+
+width: 20px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 12.42%;
+
+background: #000000;
+
+
+/* (1,000+) */
+
+width: 62px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Title and link */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 137px;
+
+position: absolute;
+width: 403px;
+height: 24px;
+left: 15px;
+top: 384px;
+
+
+
+/* Taste by Diet */
+
+width: 121px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Lilnk */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 91px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Muli */
+
+width: 63px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Brand/green */
+color: #00C9A7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/green */
+border: 2px solid #00C9A7;
+
+
+/* Line 1 */
+
+position: absolute;
+width: 400px;
+height: 0px;
+left: 15px;
+top: 368px;
+
+/* Grayscale/2 */
+border: 1px solid #EBEBEB;
+
+
+/* Top bar */
+
+position: absolute;
+width: 431px;
+height: 169px;
+left: calc(50% - 431px/2 + 0.5px);
+top: 0px;
+
+/* Brand gradient */
+background: linear-gradient(180.03deg, #04AEF7 -19.71%, #06FFF2 99.97%);
+
+
+/* Back */
+
+position: absolute;
+width: 133px;
+height: 51px;
+left: 0px;
+top: 0px;
+
+
+
+/* Invisible back */
+
+position: absolute;
+width: 124px;
+height: 51px;
+left: 0px;
+top: 0px;
+
+
+
+/* Stories row */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+position: absolute;
+width: 621px;
+height: 107px;
+left: 19px;
+top: 54px;
+
+
+
+/* Breakfast */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 86px;
+height: 107px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 42 */
+
+width: 86px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 61 */
+
+position: absolute;
+width: 86px;
+height: 86px;
+left: 0px;
+top: 0px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+/* Pink/1 */
+border: 1px solid #FF6F91;
+
+
+/* Ellipse 62 */
+
+position: absolute;
+width: 78.18px;
+height: 78.18px;
+left: 3.91px;
+top: 3.91px;
+
+background: url(smoothie-bowl-3a8632c);
+
+
+/* Breakfast */
+
+width: 64px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Grayscale/Body */
+color: #3C3C3C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Stories */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 86px;
+height: 107px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 42 */
+
+width: 86px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 61 */
+
+position: absolute;
+width: 86px;
+height: 86px;
+left: 0px;
+top: 0px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+/* Pink/1 */
+border: 1px solid #FF6F91;
+
+
+/* Ellipse 62 */
+
+position: absolute;
+width: 78.18px;
+height: 78.18px;
+left: 3.91px;
+top: 3.91px;
+
+background: url(images (1).jpg);
+
+
+/* Breakfast */
+
+width: 43px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Grayscale/Body */
+color: #3C3C3C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Deserts */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 86px;
+height: 107px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Group 42 */
+
+width: 86px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 61 */
+
+position: absolute;
+width: 86px;
+height: 86px;
+left: 0px;
+top: 0px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+/* Pink/1 */
+border: 1px solid #FF6F91;
+
+
+/* Ellipse 62 */
+
+position: absolute;
+width: 78.18px;
+height: 78.18px;
+left: 3.91px;
+top: 3.91px;
+
+background: url(dessert6);
+
+
+/* Breakfast */
+
+width: 57px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Grayscale/Body */
+color: #3C3C3C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Add */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 111px;
+height: 106px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Add circle */
+
+width: 68px;
+height: 68px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 86 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 68px;
+height: 68px;
+left: 21.5px;
+top: 0px;
+
+/* Grayscale/White */
+border: 2px dashed #FFFFFF;
+
+
+/* Plus
+
+Keywords: add, new
+*/
+
+position: absolute;
+width: 37.95px;
+height: 37.95px;
+left: 36.52px;
+top: 15.02px;
+
+
+
+/* Icon */
+
+position: absolute;
+left: 20.83%;
+right: 20.83%;
+top: 20.83%;
+bottom: 20.83%;
+
+/* Grayscale/White */
+border: 4px solid #FFFFFF;
+
+
+/* Create meal plan */
+
+width: 111px;
+height: 34px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+text-align: center;
+
+/* Grayscale/Body */
+color: #3C3C3C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Lunch */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 86px;
+height: 107px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Group 42 */
+
+width: 86px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 61 */
+
+position: absolute;
+width: 86px;
+height: 86px;
+left: 0px;
+top: 0px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+/* Pink/1 */
+border: 1px solid #FF6F91;
+
+
+/* Ellipse 62 */
+
+position: absolute;
+width: 78.18px;
+height: 78.18px;
+left: 3.91px;
+top: 3.91px;
+
+background: url(2626701_qfspo_00042-2000-11e7a909b44b49c79387e034aa4a0e1c);
+
+
+/* Breakfast */
+
+width: 39px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Grayscale/Body */
+color: #3C3C3C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Stories */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 86px;
+height: 107px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* Group 42 */
+
+width: 86px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 61 */
+
+position: absolute;
+width: 86px;
+height: 86px;
+left: 0px;
+top: 0px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+/* Pink/1 */
+border: 1px solid #FF6F91;
+
+
+/* Ellipse 62 */
+
+position: absolute;
+width: 78.18px;
+height: 78.18px;
+left: 3.91px;
+top: 3.91px;
+
+background: url(bento04.jpg);
+
+
+/* Breakfast */
+
+width: 42px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Grayscale/Body */
+color: #3C3C3C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Fixed Header */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+position: absolute;
+width: 430px;
+height: 44px;
+left: 0px;
+top: 0px;
+
+
+
+/* iPhone X (or newer) */
+
+width: 430px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* iPhone X (or newer) */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Notch */
+
+position: absolute;
+visibility: hidden;
+width: 219px;
+height: 30px;
+left: 105px;
+top: -2px;
+
+
+
+/* BG */
+
+position: absolute;
+visibility: hidden;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+background: #000000;
+
+
+/* Exclude */
+
+position: absolute;
+visibility: hidden;
+width: 430px;
+height: 44px;
+left: 0px;
+top: 0px;
+
+/* Carbon / Darkest */
+background: #24262B;
+
+
+/* BG */
+
+position: absolute;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+/* Carbon Neutral/300 */
+background: #D6D9DD;
+
+
+/* Notch */
+
+position: absolute;
+width: 219px;
+height: 30px;
+left: calc(50% - 219px/2 - 0.5px);
+top: -2px;
+
+background: #000000;
+
+
+/* Right Side */
+
+position: absolute;
+width: 66.66px;
+height: 11.34px;
+left: 348.67px;
+top: 17.33px;
+
+
+
+/* Battery */
+
+position: absolute;
+left: 90.93%;
+right: 3.41%;
+top: 39.39%;
+bottom: 34.85%;
+
+
+
+/* Rectangle */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 22px;
+height: 11.33px;
+right: 17px;
+top: 17.33px;
+
+mix-blend-mode: normal;
+opacity: 0.35;
+/* Grayscale/White */
+border: 1px solid #FFFFFF;
+border-radius: 2.66667px;
+
+
+/* Combined Shape */
+
+position: absolute;
+width: 1.33px;
+height: 4px;
+right: 14.67px;
+top: 21px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+mix-blend-mode: normal;
+opacity: 0.4;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 18px;
+height: 7.33px;
+right: 19px;
+top: 19.33px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+border-radius: 1.33333px;
+
+
+/* Wifi */
+
+position: absolute;
+left: 86.21%;
+right: 10.24%;
+top: 39.39%;
+bottom: 35.69%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Wifi-path */
+
+position: absolute;
+width: 15.27px;
+height: 4.74px;
+right: 44.03px;
+top: 17.33px;
+
+background: #DADADA;
+
+
+/* Wifi-path */
+
+position: absolute;
+width: 9.95px;
+height: 3.63px;
+right: 46.69px;
+top: 21.12px;
+
+background: #DADADA;
+
+
+/* Wifi-path */
+
+position: absolute;
+width: 4.63px;
+height: 3.37px;
+right: 49.36px;
+top: 24.92px;
+
+background: #DADADA;
+
+
+/* Mobile Signal */
+
+position: absolute;
+left: 81.09%;
+right: 14.96%;
+top: 40.15%;
+bottom: 35.61%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 4px;
+right: 78.33px;
+top: 24.33px;
+
+background: #DADADA;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 6px;
+right: 73.67px;
+top: 22.33px;
+
+background: #DADADA;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 8.33px;
+right: 69px;
+top: 20px;
+
+background: #DADADA;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 10.67px;
+right: 64.33px;
+top: 17.67px;
+
+background: #DADADA;
+
+
+/* Recording Indicator */
+
+position: absolute;
+visibility: hidden;
+width: 6px;
+height: 6px;
+left: 353px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+/* SystemOrange / Light
+
+class var systemOrange: UIColor
+*/
+background: #FF9500;
+
+
+/* Left Side */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+
+
+/* Time */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+
+
+/* Time */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+border-radius: 32px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: 12.45px;
+top: 5.17px;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Floating button */
+
+position: absolute;
+width: 93px;
+height: 91px;
+left: calc(50% - 93px/2 + 140.5px);
+bottom: 68px;
+
+/* Drop shadow 1 */
+filter: drop-shadow(1px 1px 8px rgba(0, 0, 0, 0.25));
+
+
+/* Ellipse 63 */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 6px;
+top: 6px;
+
+/* Brand/green */
+background: #00C9A7;
+/* Drop shadow 1 */
+box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+
+
+/* add */
+
+position: absolute;
+width: 66px;
+height: 66px;
+left: 13px;
+top: 13px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* add */
+
+position: absolute;
+left: 20.83%;
+right: 20.83%;
+top: 20.83%;
+bottom: 20.83%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Bottom navigation bar */
+
+position: absolute;
+width: 430px;
+height: 60px;
+left: 0px;
+bottom: 0px;
+
+/* Brand blue */
+background: #04AEF7;
+
+
+/* Buttons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px 20px;
+gap: 36px;
+
+position: absolute;
+width: 383px;
+height: 41px;
+left: 31px;
+top: 8px;
+
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 38px;
+height: 41px;
+
+filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* home */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* home */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand light */
+background: #24F0B3;
+
+
+/* Home */
+
+width: 38px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand light */
+color: #24F0B3;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 49px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* travel_explore */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* travel_explore */
+
+position: absolute;
+left: 8.33%;
+right: 6.25%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Home */
+
+width: 49px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand lightest */
+color: #BDEAE8;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 30px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* calendar_clock */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* calendar_clock */
+
+position: absolute;
+left: 12.5%;
+right: 4.17%;
+top: 8.33%;
+bottom: 4.17%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 56 */
+
+position: absolute;
+left: 29.17%;
+right: 62.5%;
+top: 50%;
+bottom: 41.67%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 59 */
+
+position: absolute;
+left: 29.17%;
+right: 62.5%;
+top: 66.67%;
+bottom: 25%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 60 */
+
+position: absolute;
+left: 45.83%;
+right: 45.83%;
+top: 66.67%;
+bottom: 25%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 57 */
+
+position: absolute;
+left: 45.83%;
+right: 45.83%;
+top: 50%;
+bottom: 41.67%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 58 */
+
+position: absolute;
+left: 62.5%;
+right: 29.17%;
+top: 50%;
+bottom: 41.67%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Home */
+
+width: 30px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand lightest */
+color: #BDEAE8;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+display: none;
+width: 38px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 24px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 1000002959 */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* account_circle */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 0px;
+top: 0px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* account_circle */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 68 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 12px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+
+
+/* You */
+
+width: 24px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand lightest */
+color: #BDEAE8;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;

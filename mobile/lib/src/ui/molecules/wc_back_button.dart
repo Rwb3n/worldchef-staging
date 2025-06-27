@@ -28,4 +28,4 @@ class WorldChefBackButton extends StatelessWidget {
 
 // Temporary typedef for backward compatibility while migrating codebase.
 @deprecated
-typedef WCBackButton = WorldChefBackButton; 
+typedef WCBackButton = WorldChefBackButton;

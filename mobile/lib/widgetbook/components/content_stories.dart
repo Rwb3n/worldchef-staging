@@ -20,7 +20,9 @@ List<WidgetbookComponent> buildContentStories() {
           builder: (context) => Center(
             child: WCStarRatingDisplay(
               rating: 4.5,
-              reviewCount: context.knobs.double.input(label: 'Review Count', initialValue: 128).toInt(),
+              reviewCount: context.knobs.double
+                  .input(label: 'Review Count', initialValue: 128)
+                  .toInt(),
             ),
           ),
         ),
@@ -29,7 +31,9 @@ List<WidgetbookComponent> buildContentStories() {
           builder: (context) => Center(
             child: WCStarRatingDisplay(
               rating: 3,
-              reviewCount: context.knobs.double.input(label: 'Review Count', initialValue: 42).toInt(),
+              reviewCount: context.knobs.double
+                  .input(label: 'Review Count', initialValue: 42)
+                  .toInt(),
             ),
           ),
         ),
@@ -38,16 +42,20 @@ List<WidgetbookComponent> buildContentStories() {
           builder: (context) => Center(
             child: WCStarRatingDisplay(
               rating: 1.5,
-              reviewCount: context.knobs.double.input(label: 'Review Count', initialValue: 5).toInt(),
+              reviewCount: context.knobs.double
+                  .input(label: 'Review Count', initialValue: 5)
+                  .toInt(),
             ),
           ),
         ),
-         WidgetbookUseCase(
+        WidgetbookUseCase(
           name: 'Zero Rating',
           builder: (context) => Center(
             child: WCStarRatingDisplay(
               rating: 0,
-              reviewCount: context.knobs.double.input(label: 'Review Count', initialValue: 0).toInt(),
+              reviewCount: context.knobs.double
+                  .input(label: 'Review Count', initialValue: 0)
+                  .toInt(),
             ),
           ),
         ),
@@ -59,7 +67,8 @@ List<WidgetbookComponent> buildContentStories() {
         WidgetbookUseCase(
           name: 'Interactive',
           builder: (context) {
-            final isSelected = context.knobs.boolean(label: 'Selected', initialValue: false);
+            final isSelected =
+                context.knobs.boolean(label: 'Selected', initialValue: false);
             return Center(
               child: WCCategoryChip(
                 label: 'Vegetarian',
@@ -73,8 +82,9 @@ List<WidgetbookComponent> buildContentStories() {
         WidgetbookUseCase(
           name: 'Without Icon',
           builder: (context) {
-            final isSelected = context.knobs.boolean(label: 'Selected', initialValue: true);
-             return Center(
+            final isSelected =
+                context.knobs.boolean(label: 'Selected', initialValue: true);
+            return Center(
               child: WCCategoryChip(
                 label: 'Quick & Easy',
                 isSelected: isSelected,
@@ -96,12 +106,14 @@ List<WidgetbookComponent> buildContentStories() {
           name: 'Default',
           builder: (context) => Center(
             child: WCFlagCountryLabel(
-              flagEmoji: context.knobs.string(label: 'Flag Emoji', initialValue: '🇺🇸'),
-              countryName: context.knobs.string(label: 'Country Name', initialValue: 'United States'),
+              flagEmoji: context.knobs
+                  .string(label: 'Flag Emoji', initialValue: '🇺🇸'),
+              countryName: context.knobs
+                  .string(label: 'Country Name', initialValue: 'United States'),
             ),
           ),
         ),
-         WidgetbookUseCase(
+        WidgetbookUseCase(
           name: 'Long Name',
           builder: (context) => Center(
             child: SizedBox(
@@ -123,16 +135,18 @@ List<WidgetbookComponent> buildContentStories() {
           builder: (context) => Center(
             child: WCMetadataItem(
               icon: Icons.access_time,
-              label: context.knobs.string(label: 'Time', initialValue: '45 min'),
+              label:
+                  context.knobs.string(label: 'Time', initialValue: '45 min'),
             ),
           ),
         ),
-         WidgetbookUseCase(
+        WidgetbookUseCase(
           name: 'Servings',
           builder: (context) => Center(
             child: WCMetadataItem(
               icon: Icons.people_outline,
-              label: context.knobs.string(label: 'Servings', initialValue: '4 servings'),
+              label: context.knobs
+                  .string(label: 'Servings', initialValue: '4 servings'),
             ),
           ),
         ),
@@ -221,4 +235,4 @@ class _ChipAnimationDemoState extends State<ChipAnimationDemo> {
       ),
     );
   }
-} 
+}

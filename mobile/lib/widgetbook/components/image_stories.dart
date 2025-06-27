@@ -16,7 +16,8 @@ List<WidgetbookComponent> buildImageStories() {
           name: 'Category Image',
           builder: (context) => Center(
             child: WCCircularImage(
-              imageUrl: 'https://placehold.co/60x60/E91E63/FFFFFF/png', // Placeholder
+              imageUrl:
+                  'https://placehold.co/60x60/E91E63/FFFFFF/png', // Placeholder
               size: 60,
               onTap: () {},
               semanticLabel: 'Browse category',
@@ -27,7 +28,8 @@ List<WidgetbookComponent> buildImageStories() {
           name: 'Creator Avatar',
           builder: (context) => Center(
             child: WCCircularImage(
-              imageUrl: 'https://placehold.co/48x48/3F51B5/FFFFFF/png', // Placeholder
+              imageUrl:
+                  'https://placehold.co/48x48/3F51B5/FFFFFF/png', // Placeholder
               size: 48,
               onTap: () {},
               semanticLabel: 'View creator profile',
@@ -84,7 +86,8 @@ List<WidgetbookComponent> buildImageStories() {
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       '🇫🇷 France',
-                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -95,4 +98,4 @@ List<WidgetbookComponent> buildImageStories() {
       ],
     ),
   ];
-} 
+}

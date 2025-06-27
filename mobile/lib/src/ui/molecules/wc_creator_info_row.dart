@@ -6,10 +6,10 @@ import 'package:worldchef_mobile/src/core/design_system/app_theme.dart';
 import 'package:worldchef_mobile/src/core/design_system/typography.dart';
 
 /// WCCreatorInfoRow - Molecule component that displays creator avatar and name
-/// 
+///
 /// This molecule follows the atomic design pattern and uses WorldChef design tokens
 /// for consistent spacing, typography, and colors throughout the application.
-/// 
+///
 /// Design System Compliance:
 /// - Uses WorldChefSpacing.sm (8dp) for spacing between avatar and name
 /// - Uses WorldChefTextStyles.bodyMedium for creator name text
@@ -33,21 +33,22 @@ class WCCreatorInfoRow extends StatelessWidget {
         CircleAvatar(
           radius: 12, // 24dp diameter for compact display
           backgroundColor: WorldChefColors.neutralGray,
-          backgroundImage: creator.avatarUrl != null 
-            ? NetworkImage(creator.avatarUrl!)
-            : null,
+          backgroundImage: creator.avatarUrl != null
+              ? NetworkImage(creator.avatarUrl!)
+              : null,
           child: creator.avatarUrl == null
-            ? Text(
-                _getInitials(creator.name),
-                style: WorldChefTextStyles.labelSmall.copyWith(
-                  color: WorldChefColors.textSecondary,
-                ),
-              )
-            : null,
+              ? Text(
+                  _getInitials(creator.name),
+                  style: WorldChefTextStyles.labelSmall.copyWith(
+                    color: WorldChefColors.textSecondary,
+                  ),
+                )
+              : null,
         ),
-        
-        SizedBox(width: WorldChefSpacing.sm), // 8dp spacing between avatar and name
-        
+
+        SizedBox(
+            width: WorldChefSpacing.sm), // 8dp spacing between avatar and name
+
         // Creator name
         Flexible(
           child: Text(
@@ -69,4 +70,4 @@ class WCCreatorInfoRow extends StatelessWidget {
     if (words.length == 1) return words[0][0].toUpperCase();
     return '${words[0][0]}${words[1][0]}'.toUpperCase();
   }
-} 
+}

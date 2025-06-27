@@ -7,9 +7,13 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@utils/*": ["src/utils/*"]
+    },
     "typeRoots": ["./node_modules/@types", "./src/types"],
-    "types": ["node", "jest"]
+    "types": ["node"]
   },
-  "include": ["src/**/*", "__tests__/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 } 

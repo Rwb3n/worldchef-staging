@@ -326,8 +326,48 @@ lib\widgetbook\components\input_stories.dart
 - ✅ Apply `dart fix --apply` for automatic improvements
 - ✅ Address deprecation warnings proactively
 
----
+## 11. **Compile-Health Regression Test & Incremental Cleanup (WorldChef g203)**
 
-**Status**: ✅ **VALIDATED** in WorldChef project (2025-06-25)  
-**Impact**: Resolved CI/CD pipeline failures and improved code quality standards  
-**Next Steps**: Monitor for new analyzer rules and dependency patterns
+### 11.1. **Why a Compile-Health Test?**
+The **Red-Green-Refactor** cycle for analyzer compliance mirrors the standard TDD loop:
+1. **Red (Test-Creation)** – add a test that fails by asserting `flutter analyze` exits with code 0.
+2. **Green (Implementation)** – fix blocking analyzer errors until the test passes (warnings allowed).
+3. **Refactor** – iteratively remove warnings 🟡 and info ℹ️ until the analyzer can be run without the `--no-fatal-warnings/infos` flags.
+
+### 11.2. **Reference Test (WorldChef)**
+```dart
+import 'dart:io';
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  test('analyzer health – no blocking errors', () async {
+    final result = await Process.run(
+      'flutter',
+      ['analyze', '--no-congratulate', '--no-fatal-warnings', '--no-fatal-infos'],
+    );
+
+    expect(result.exitCode, 0, reason: result.stdout + result.stderr);
+  });
+}
+```
+
+### 11.3. **CI Usage**
+```yaml
+- name: Analyzer Health (blocking errors only)
+  run: flutter analyze --no-congratulate --no-fatal-warnings --no-fatal-infos
+```
+This allows teams to land code while warnings are being triaged, yet still blocks genuinely broken builds.
+
+### 11.4. **Promotion Strategy**
+1. Merge with relaxed flags once **errors = 0**.
+2. Schedule a follow-up task to burn down warnings; tighten flags gradually.
+3. Final gate: run analyzer with **no flags**.
+
+### 11.5. **WorldChef Outcomes (g203)**
+- Added `test/analyzer_health_test.dart` (compile-health regression).
+- Resolved initial 3 blocking errors (invalid override, undefined generics) in <35 min.
+- Plan `mobile_analyzer_fix` closed; analyzer test now green under relaxed flags.
+- Remaining warnings logged for next lint-hardening cycle.
+
+---
+*Appendix added automatically as part of Compile-Recovery cycle, Global Event 203.*

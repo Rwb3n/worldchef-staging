@@ -1,0 +1,3912 @@
+/* stylelint-disable */
+
+/* Dish */
+
+position: relative;
+width: 430px;
+height: 932px;
+overflow-y: scroll;
+
+background: #FFFFFF;
+border-radius: 20px;
+
+
+/* Rectangle 22473 */
+
+position: absolute;
+width: 430px;
+height: 276px;
+left: 0px;
+top: 87px;
+
+background: url(jollof-rice);
+
+
+/* Full body */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 376px;
+height: 1249px;
+left: 27px;
+top: 299px;
+
+
+
+/* Frame 1000002973 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+
+width: 376px;
+height: 126px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Title card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+margin: 0 auto;
+width: 126px;
+height: 126px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 69 */
+
+width: 100px;
+height: 100px;
+
+background: url(201302-orig-beautiful-chicken-600x411.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ChefSannikay */
+
+width: 126px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px 10px;
+gap: 10px;
+
+margin: 0 auto;
+width: 136px;
+height: 49px;
+
+/* Brand/green */
+background: #00C9A7;
+border-radius: 40px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow 2 */
+
+box-sizing: border-box;
+
+display: none;
+width: 10px;
+height: 0px;
+
+/* Grayscale/White */
+border: 1px solid #FFFFFF;
+transform: rotate(180deg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button */
+
+width: 89px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+text-align: right;
+
+/* Grayscale/White */
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow 3 */
+
+box-sizing: border-box;
+
+width: 10px;
+height: 0px;
+
+/* Grayscale/White */
+border: 2px solid #FFFFFF;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Frame 88 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 376px;
+height: 1123px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Jollof rice */
+
+width: 93px;
+height: 22px;
+
+/* H6/Titles */
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 19.2px;
+line-height: 22px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* info */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 26px;
+
+width: 230px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Time */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+width: 106px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Time
+
+<p>clock time symbol icon alarm</p>
+*/
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* alarm */
+
+position: absolute;
+left: 5.63%;
+right: 5.62%;
+top: 9.79%;
+bottom: 8.33%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* 15 minutes */
+
+width: 82px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Serving */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+width: 98px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* local_dining
+
+<p>icon symbol food dish</p>
+*/
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* local_dining */
+
+position: absolute;
+left: 12.4%;
+right: 12.6%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand/blue */
+background: #00A0C7;
+
+
+/* 6 portions */
+
+width: 74px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Nutrition facts */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 376px;
+height: 114px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Nutrion facts */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 29px;
+
+width: 376px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Nutrition facts */
+
+margin: 0 auto;
+width: 113px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Lilnk */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+margin: 0 auto;
+width: 128px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Muli */
+
+width: 100px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Brand/green */
+color: #00C9A7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/green */
+border: 2px solid #00C9A7;
+
+
+/* Nutritions */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 365px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Percentage of goals */
+
+width: 81px;
+height: 34px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Stat */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 47px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Protein */
+
+width: 47px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 1 */
+
+width: 44px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 8 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 1.5px;
+top: 21px;
+
+/* Brand/blue */
+border: 3px solid #00A0C7;
+
+
+/* Ellipse 9 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 44px;
+height: 39.26px;
+left: 1.5px;
+top: 21px;
+
+/* Yellow */
+border: 3px solid #FFE600;
+
+
+/* 20% */
+
+position: absolute;
+width: 29px;
+height: 17px;
+left: calc(50% - 29px/2);
+top: calc(50% - 17px/2 - 0.5px);
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+
+/* 50g */
+
+width: 24px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Stat */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 44px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Carbs */
+
+width: 38px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 1 */
+
+width: 44px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 8 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 0px;
+top: 21px;
+
+/* Brand/blue */
+border: 3px solid #00A0C7;
+
+
+/* Ellipse 9 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 33.68px;
+height: 30.5px;
+left: 0px;
+top: 21px;
+
+/* Purple */
+border: 3px solid #DB00FF;
+
+
+/* 15% */
+
+position: absolute;
+width: 29px;
+height: 17px;
+left: calc(50% - 29px/2);
+top: calc(50% - 17px/2 - 0.5px);
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+
+/* 35g */
+
+width: 24px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Stat */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 53px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Calories */
+
+width: 53px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 1 */
+
+width: 44px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 8 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 4.5px;
+top: 21px;
+
+/* Brand/blue */
+border: 3px solid #00A0C7;
+
+
+/* Ellipse 9 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 44px;
+height: 39.26px;
+left: 4.5px;
+top: 21px;
+
+/* Blue/4 */
+border: 3px solid #A8F5FF;
+
+
+/* 35% */
+
+position: absolute;
+width: 29px;
+height: 17px;
+left: calc(50% - 29px/2);
+top: calc(50% - 17px/2 - 0.5px);
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+
+/* 225g */
+
+width: 32px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Stat */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+width: 44px;
+height: 86px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Fat */
+
+width: 22px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Group 1 */
+
+width: 44px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 8 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 0px;
+top: 21px;
+
+/* Brand/blue */
+border: 3px solid #00A0C7;
+
+
+/* Ellipse 9 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 23.07px;
+height: 19.61px;
+left: 0.13px;
+top: 21px;
+
+/* Red/1 */
+border: 3px solid #FF0000;
+
+
+/* 17% */
+
+position: absolute;
+width: 29px;
+height: 17px;
+left: calc(50% - 29px/2);
+top: calc(50% - 17px/2 - 0.5px);
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+
+/* 20g */
+
+width: 24px;
+height: 17px;
+
+/* Small/small */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand/blue */
+color: #00A0C7;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Ingredients */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+
+width: 376px;
+height: 939px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 86 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 376px;
+height: 20px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredients */
+
+width: 88px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Lilnk */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+display: none;
+width: 61px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ingredient list */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 376px;
+height: 915px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(1200px-Onion_on_White);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Large yellow onions */
+
+width: 159px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 2 pieces */
+
+width: 120px;
+max-width: 120px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(vegetable oil);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vegetable oil */
+
+width: 94px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 80 ml */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(How-to-dice-a-tomato-13);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Diced tomato */
+
+width: 98px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 395 g (2 cans) */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(tomato paste);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Tomato paste */
+
+width: 100px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 170 g (1 can) */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 20px;
+
+/* body/default */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(habanero pepper);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Habanero pepper */
+
+width: 116px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 1 piece */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(curry powder);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Curry powder */
+
+width: 159px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 2 teaspoons */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(Black_Pepper_Ground_2048x);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ground pepper */
+
+width: 100px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 1 teaspoon */
+
+margin: 0 auto;
+width: 73px;
+max-width: 120px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(Mixed dried herbs.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Mixed dried herbs */
+
+width: 159px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 0.5 teaspoon */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(Chicken bouillon cubes.jpg);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Chicken bouillon cubes */
+
+width: 159px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 3 pieces */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(long-grain-white-rice-gettyimages-806770568-f3c1d7887feb475783bb3e3b592066e3);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Long grain rice */
+
+width: 159px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 500g (2.5 cups) */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 11;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(Air-Fryer-Frozen-Vegetables-VR-6-1-of-1-731x1024);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frozen mixed vegetable */
+
+width: 159px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 150 g (1 cup) */
+
+margin: 0 auto;
+width: 120px;
+max-width: 120px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* Ingredient and quantity */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 59px;
+
+width: 376px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 12;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Ingredient */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+margin: 0 auto;
+width: 230px;
+max-width: 230px;
+height: 63px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Ellipse 10 */
+
+width: 63px;
+height: 63px;
+
+background: url(water cup);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Water */
+
+width: 159px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 360 ml (1.5 cup) */
+
+margin: 0 auto;
+width: 107px;
+height: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 5px;
+top: 3px;
+
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 21.43%;
+right: 25%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Brand/blue */
+border: 2px solid #00A0C7;
+
+
+/* favorite like heart icon */
+
+position: absolute;
+width: 44px;
+height: 44px;
+left: 355px;
+top: 110px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* favorite */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 11.04%;
+bottom: 12.5%;
+
+/* Grayscale/White */
+background: #FFFFFF;
+
+
+/* Polygon 2 */
+
+position: absolute;
+visibility: hidden;
+width: 105px;
+height: 105px;
+left: 266px;
+top: 181px;
+
+background: #FFFFFF;
+transform: rotate(90deg);
+
+
+/* Top navigation bar */
+
+position: absolute;
+width: 430px;
+height: 43px;
+left: 0px;
+top: 44px;
+
+
+
+/* Right icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 16px;
+
+position: absolute;
+width: 24px;
+height: 24px;
+right: 31px;
+top: 10px;
+
+
+
+/* search */
+
+display: none;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* favorite like heart icon */
+
+display: none;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Menu */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Dots */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 3px;
+
+position: absolute;
+width: 4px;
+height: 18px;
+left: 10px;
+top: 3px;
+
+
+
+/* Ellipse 70 */
+
+width: 4px;
+height: 4px;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Ellipse 71 */
+
+width: 4px;
+height: 4px;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Ellipse 72 */
+
+width: 4px;
+height: 4px;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Lilnk */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 4px;
+
+position: absolute;
+width: 137px;
+height: 24px;
+left: 27px;
+top: 10px;
+
+
+
+/* Arrow
+
+<p>navigation</p>
+*/
+
+box-sizing: border-box;
+
+width: 24px;
+height: 24px;
+
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Arrow */
+
+position: absolute;
+width: 14px;
+height: 18px;
+left: 19px;
+top: 3px;
+
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Vector 51 */
+
+position: absolute;
+left: 78.57%;
+right: -32.14%;
+top: 5.56%;
+bottom: 5.56%;
+
+/* Grayscale/Body */
+border: 2px solid #3C3C3C;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Muli */
+
+width: 109px;
+height: 20px;
+
+/* body/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Grayscale/Body */
+color: #3C3C3C;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Fixed Header */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+position: absolute;
+width: 430px;
+height: 44px;
+left: calc(50% - 430px/2);
+top: 0px;
+
+
+
+/* iPhone X (or newer) */
+
+width: 430px;
+height: 44px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* iPhone X (or newer) */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Notch */
+
+position: absolute;
+visibility: hidden;
+width: 219px;
+height: 30px;
+left: 105px;
+top: -2px;
+
+
+
+/* BG */
+
+position: absolute;
+visibility: hidden;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+background: #000000;
+
+
+/* Exclude */
+
+position: absolute;
+visibility: hidden;
+width: 430px;
+height: 44px;
+left: 0px;
+top: 0px;
+
+/* Carbon / Darkest */
+background: #24262B;
+
+
+/* BG */
+
+position: absolute;
+left: 0px;
+right: 0px;
+top: 0px;
+bottom: 0px;
+
+/* Carbon Neutral/300 */
+background: #D6D9DD;
+
+
+/* Notch */
+
+position: absolute;
+width: 219px;
+height: 30px;
+left: calc(50% - 219px/2 - 0.5px);
+top: -2px;
+
+background: #000000;
+
+
+/* Right Side */
+
+position: absolute;
+width: 66.66px;
+height: 11.34px;
+left: 348.67px;
+top: 17.33px;
+
+
+
+/* Battery */
+
+position: absolute;
+left: 90.93%;
+right: 3.41%;
+top: 39.39%;
+bottom: 34.85%;
+
+
+
+/* Rectangle */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 22px;
+height: 11.33px;
+right: 17px;
+top: 17.33px;
+
+mix-blend-mode: normal;
+opacity: 0.35;
+/* Grayscale/Body */
+border: 1px solid #3C3C3C;
+border-radius: 2.66667px;
+
+
+/* Combined Shape */
+
+position: absolute;
+width: 1.33px;
+height: 4px;
+right: 14.67px;
+top: 21px;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+mix-blend-mode: normal;
+opacity: 0.4;
+
+
+/* Rectangle */
+
+position: absolute;
+width: 18px;
+height: 7.33px;
+right: 19px;
+top: 19.33px;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+border-radius: 1.33333px;
+
+
+/* Wifi */
+
+position: absolute;
+left: 86.21%;
+right: 10.24%;
+top: 39.39%;
+bottom: 35.69%;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+
+
+/* Wifi-path */
+
+position: absolute;
+width: 15.27px;
+height: 4.74px;
+right: 44.03px;
+top: 17.33px;
+
+background: #DADADA;
+
+
+/* Wifi-path */
+
+position: absolute;
+width: 9.95px;
+height: 3.63px;
+right: 46.69px;
+top: 21.12px;
+
+background: #DADADA;
+
+
+/* Wifi-path */
+
+position: absolute;
+width: 4.63px;
+height: 3.37px;
+right: 49.36px;
+top: 24.92px;
+
+background: #DADADA;
+
+
+/* Mobile Signal */
+
+position: absolute;
+left: 81.09%;
+right: 14.96%;
+top: 40.15%;
+bottom: 35.61%;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 4px;
+right: 78.33px;
+top: 24.33px;
+
+background: #DADADA;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 6px;
+right: 73.67px;
+top: 22.33px;
+
+background: #DADADA;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 8.33px;
+right: 69px;
+top: 20px;
+
+background: #DADADA;
+
+
+/* Cellular_Connection-path */
+
+position: absolute;
+width: 3px;
+height: 10.67px;
+right: 64.33px;
+top: 17.67px;
+
+background: #DADADA;
+
+
+/* Recording Indicator */
+
+position: absolute;
+visibility: hidden;
+width: 6px;
+height: 6px;
+left: 353px;
+top: 8px;
+
+
+
+/* Indicator */
+
+position: absolute;
+width: 6px;
+height: 6px;
+right: 71px;
+top: 8px;
+
+/* SystemOrange / Light
+
+class var systemOrange: UIColor
+*/
+background: #FF9500;
+
+
+/* Left Side */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+
+
+/* Time */
+
+position: absolute;
+width: 54px;
+height: 21px;
+left: 21px;
+top: 12px;
+
+
+
+/* Time */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+border-radius: 32px;
+
+
+/* 9:41 */
+
+position: absolute;
+width: 28.43px;
+height: 11.09px;
+left: 12.45px;
+top: 5.17px;
+
+/* Grayscale/Body */
+background: #3C3C3C;
+
+
+/* Bottom navigation bar */
+
+position: absolute;
+width: 430px;
+height: 60px;
+left: calc(50% - 430px/2);
+bottom: 0px;
+
+/* Brand blue */
+background: #04AEF7;
+
+
+/* Buttons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px 20px;
+gap: 36px;
+
+position: absolute;
+width: 383px;
+height: 41px;
+left: 31px;
+top: 8px;
+
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 38px;
+height: 41px;
+
+filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.25));
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* home */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* home */
+
+position: absolute;
+left: 16.67%;
+right: 16.67%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Brand light */
+background: #24F0B3;
+
+
+/* Home */
+
+width: 38px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand light */
+color: #24F0B3;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 49px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* travel_explore */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* travel_explore */
+
+position: absolute;
+left: 8.33%;
+right: 6.25%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Home */
+
+width: 49px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand lightest */
+color: #BDEAE8;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 30px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* calendar_clock */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Bounding box */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #D9D9D9;
+
+
+/* calendar_clock */
+
+position: absolute;
+left: 12.5%;
+right: 4.17%;
+top: 8.33%;
+bottom: 4.17%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 56 */
+
+position: absolute;
+left: 29.17%;
+right: 62.5%;
+top: 50%;
+bottom: 41.67%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 59 */
+
+position: absolute;
+left: 29.17%;
+right: 62.5%;
+top: 66.67%;
+bottom: 25%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 60 */
+
+position: absolute;
+left: 45.83%;
+right: 45.83%;
+top: 66.67%;
+bottom: 25%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 57 */
+
+position: absolute;
+left: 45.83%;
+right: 45.83%;
+top: 50%;
+bottom: 41.67%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 58 */
+
+position: absolute;
+left: 62.5%;
+right: 29.17%;
+top: 50%;
+bottom: 41.67%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Home */
+
+width: 30px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand lightest */
+color: #BDEAE8;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+display: none;
+width: 38px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Nav symbol */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+margin: 0 auto;
+width: 24px;
+height: 41px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* Frame 1000002959 */
+
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* account_circle */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 0px;
+top: 0px;
+
+
+
+/* Bounding box */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* account_circle */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+/* Brand lightest */
+background: #BDEAE8;
+
+
+/* Ellipse 68 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 12px;
+top: 0px;
+
+/* Red/1 */
+background: #FF0000;
+
+
+/* You */
+
+width: 24px;
+height: 17px;
+
+/* Small/bold */
+font-family: 'Muli';
+font-style: normal;
+font-weight: 800;
+font-size: 13.3px;
+line-height: 17px;
+/* identical to box height */
+
+/* Brand lightest */
+color: #BDEAE8;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;

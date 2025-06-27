@@ -6,10 +6,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Recipe Detail Screen Tests', () {
-    testWidgets('should display main layout components', (WidgetTester tester) async {
+    testWidgets('should display main layout components',
+        (WidgetTester tester) async {
       // Create a minimal implementation that satisfies the spec
       const recipeDetailScreen = RecipeDetailScreenStub();
-      
+
       await tester.pumpWidget(
         const MaterialApp(
           home: recipeDetailScreen,
@@ -17,35 +18,37 @@ void main() {
       );
 
       // Test based on Recipe Detail Screen Specification v0.2
-      
+
       // 1. Header Navigation should be present
-      expect(find.text('ChefSannikay'), findsAtLeastNWidgets(1)); // Allow multiple instances
+      expect(find.text('ChefSannikay'),
+          findsAtLeastNWidgets(1)); // Allow multiple instances
       expect(find.byIcon(Icons.arrow_back), findsOneWidget);
       expect(find.byIcon(Icons.more_vert), findsOneWidget);
-      
+
       // 2. Recipe Title should be present
       expect(find.text('Jollof rice'), findsOneWidget);
-      
+
       // 3. Metadata Row should be present
       expect(find.text('15 minutes'), findsOneWidget);
       expect(find.text('5 portions'), findsOneWidget);
-      
+
       // 4. Nutrition Section should be present
       expect(find.text('Nutrition facts'), findsOneWidget);
       expect(find.text('Full nutrition'), findsOneWidget);
       expect(find.text('Calories'), findsOneWidget);
-      
+
       // 5. Start Cooking Button should be present
       expect(find.text('Start cooking'), findsOneWidget);
-      
+
       // 6. Bottom Navigation should be present
       expect(find.text('feed'), findsOneWidget);
       expect(find.text('Explore'), findsOneWidget);
     });
 
-    testWidgets('should have proper accessibility labels', (WidgetTester tester) async {
+    testWidgets('should have proper accessibility labels',
+        (WidgetTester tester) async {
       const recipeDetailScreen = RecipeDetailScreenStub();
-      
+
       await tester.pumpWidget(
         const MaterialApp(
           home: recipeDetailScreen,
@@ -58,9 +61,10 @@ void main() {
       expect(find.text('ChefSannikay'), findsAtLeastNWidgets(1));
     });
 
-    testWidgets('should display nutrition circles', (WidgetTester tester) async {
+    testWidgets('should display nutrition circles',
+        (WidgetTester tester) async {
       const recipeDetailScreen = RecipeDetailScreenStub();
-      
+
       await tester.pumpWidget(
         const MaterialApp(
           home: recipeDetailScreen,
@@ -97,7 +101,7 @@ class RecipeDetailScreenStub extends StatelessWidget {
           ),
         ],
       ),
-      
+
       body: CustomScrollView(
         slivers: [
           // Hero Image Section (placeholder)
@@ -131,7 +135,7 @@ class RecipeDetailScreenStub extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Recipe Header Section
           SliverToBoxAdapter(
             child: Container(
@@ -152,7 +156,7 @@ class RecipeDetailScreenStub extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Metadata Row
           SliverToBoxAdapter(
             child: Container(
@@ -162,7 +166,8 @@ class RecipeDetailScreenStub extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.access_time, size: 16, color: Colors.grey[600]),
+                      Icon(Icons.access_time,
+                          size: 16, color: Colors.grey[600]),
                       const SizedBox(width: 4),
                       Text(
                         '15 minutes',
@@ -185,7 +190,7 @@ class RecipeDetailScreenStub extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Nutrition Section
           SliverToBoxAdapter(
             child: Container(
@@ -198,7 +203,8 @@ class RecipeDetailScreenStub extends StatelessWidget {
                     children: [
                       const Text(
                         'Nutrition facts',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         'Full nutrition',
@@ -223,7 +229,7 @@ class RecipeDetailScreenStub extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Ingredients Section
           SliverToBoxAdapter(
             child: Container(
@@ -245,7 +251,7 @@ class RecipeDetailScreenStub extends StatelessWidget {
           ),
         ],
       ),
-      
+
       // Bottom Navigation based on spec section 3.7
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -332,4 +338,4 @@ class RecipeDetailScreenStub extends StatelessWidget {
       ),
     );
   }
-} 
+}

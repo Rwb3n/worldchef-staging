@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('No deprecated knobs.options API remains', () {
-    final libDir = Directory('mobile/lib');
+    final libDir = Directory('lib');
     final offenders = <String>[];
 
     for (final entity in libDir.listSync(recursive: true)) {
@@ -16,6 +16,7 @@ void main() {
     }
 
     expect(offenders, isEmpty,
-        reason: 'Deprecated knobs.options API found in:\n${offenders.join('\n')}');
+        reason:
+            'Deprecated knobs.options API found in:\n${offenders.join('\n')}');
   });
-} 
+}

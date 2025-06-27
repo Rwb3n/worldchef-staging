@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('All files using WorldChefTextStyles must import typography.dart', () {
-    final libDir = Directory('mobile/lib');
+    final libDir = Directory('lib');
     final offendingFiles = <String>[];
 
     for (final entity in libDir.listSync(recursive: true)) {
@@ -18,6 +18,8 @@ void main() {
       }
     }
 
-    expect(offendingFiles, isEmpty, reason: 'Files missing typography import:\n${offendingFiles.join('\n')}');
+    expect(offendingFiles, isEmpty,
+        reason:
+            'Files missing typography import:\n${offendingFiles.join('\n')}');
   });
-} 
+}

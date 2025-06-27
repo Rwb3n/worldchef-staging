@@ -69,7 +69,7 @@ class _WCBottomNavItemState extends State<WCBottomNavItem>
       begin: colorScheme.onSurfaceVariant,
       end: colorScheme.primary,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
-    
+
     _scaleAnimation = Tween<double>(begin: 1.0, end: 1.1).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
     );
@@ -111,4 +111,4 @@ class _WCBottomNavItemState extends State<WCBottomNavItem>
       ),
     );
   }
-} 
+}

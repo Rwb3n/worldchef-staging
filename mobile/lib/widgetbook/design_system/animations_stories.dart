@@ -109,18 +109,19 @@ class AnimationTimingDemo extends StatelessWidget {
           ),
 
           const SizedBox(height: WorldChefSpacing.lg),
-           Card(
+          Card(
             color: colorScheme.primaryContainer,
             child: Padding(
               padding: const EdgeInsets.all(WorldChefSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check_circle, color: colorScheme.onPrimaryContainer),
+                  Icon(Icons.check_circle,
+                      color: colorScheme.onPrimaryContainer),
                   const SizedBox(height: WorldChefSpacing.sm),
                   Text(
                     'GREEN STEP: Animation System Implemented',
-                     style: textTheme.titleMedium?.copyWith(
+                    style: textTheme.titleMedium?.copyWith(
                       color: colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.bold,
                     ),
@@ -128,7 +129,7 @@ class AnimationTimingDemo extends StatelessWidget {
                   const SizedBox(height: WorldChefSpacing.xs),
                   Text(
                     'Using AppAnimations constants from the design system.',
-                     style: textTheme.bodyMedium?.copyWith(
+                    style: textTheme.bodyMedium?.copyWith(
                       color: colorScheme.onPrimaryContainer,
                     ),
                   ),
@@ -142,7 +143,7 @@ class AnimationTimingDemo extends StatelessWidget {
   }
 
   Widget _buildTimingCard(String name, String usage, String implementation,
-                         Duration duration, Color color) {
+      Duration duration, Color color) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -184,13 +185,13 @@ class AnimationTimingDemo extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            
+
             // Visual timing representation
             AnimatedTimingBar(
               duration: duration,
               color: color,
             ),
-            
+
             const SizedBox(height: 12),
             Text(
               implementation,
@@ -315,7 +316,7 @@ class EasingCurvesDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will use WorldChefAnimations.curves in t002
           _buildEasingCard(
             'Ease Out',
@@ -323,21 +324,21 @@ class EasingCurvesDemo extends StatelessWidget {
             'WorldChefAnimations.easeOut (NOT IMPLEMENTED)',
             Curves.easeOut,
           ),
-          
+
           _buildEasingCard(
             'Ease In Out',
             'Smooth transitions, page changes',
             'WorldChefAnimations.easeInOut (NOT IMPLEMENTED)',
             Curves.easeInOut,
           ),
-          
+
           _buildEasingCard(
             'Bounce',
             'Playful interactions, success states',
             'WorldChefAnimations.bounce (NOT IMPLEMENTED)',
             Curves.bounceOut,
           ),
-          
+
           _buildEasingCard(
             'Elastic',
             'Attention-grabbing animations',
@@ -349,7 +350,8 @@ class EasingCurvesDemo extends StatelessWidget {
     );
   }
 
-  Widget _buildEasingCard(String name, String usage, String implementation, Curve curve) {
+  Widget _buildEasingCard(
+      String name, String usage, String implementation, Curve curve) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -373,10 +375,10 @@ class EasingCurvesDemo extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            
+
             // Easing curve visualization
             EasingCurveDemo(curve: curve),
-            
+
             const SizedBox(height: 12),
             Text(
               implementation,
@@ -453,7 +455,8 @@ class _EasingCurveDemoState extends State<EasingCurveDemo>
                   ),
                 ),
                 Positioned(
-                  left: 8 + (MediaQuery.of(context).size.width - 80) * curvedValue,
+                  left: 8 +
+                      (MediaQuery.of(context).size.width - 80) * curvedValue,
                   top: 8,
                   child: Container(
                     width: 44,
@@ -496,7 +499,6 @@ class MicroInteractionsDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -508,15 +510,15 @@ class MicroInteractionsDemo extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 16),
-                  
+
                   // Animated favorite button
                   AnimatedFavoriteButton(),
                   SizedBox(height: 16),
-                  
+
                   // Animated rating stars
                   AnimatedRatingStars(),
                   SizedBox(height: 16),
-                  
+
                   // Animated toggle switch
                   AnimatedToggleSwitch(),
                 ],
@@ -683,7 +685,6 @@ class LoadingAnimationsDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -695,7 +696,7 @@ class LoadingAnimationsDemo extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // Circular progress
                   const Row(
                     children: [
@@ -708,9 +709,9 @@ class LoadingAnimationsDemo extends StatelessWidget {
                       Text('Loading recipes...'),
                     ],
                   ),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   // Linear progress
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -722,12 +723,13 @@ class LoadingAnimationsDemo extends StatelessWidget {
                         backgroundColor: Colors.grey.shade200,
                       ),
                       const SizedBox(height: 4),
-                      const Text('70% complete', style: TextStyle(fontSize: 12)),
+                      const Text('70% complete',
+                          style: TextStyle(fontSize: 12)),
                     ],
                   ),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   // Skeleton loading
                   const Text('Skeleton Loading:'),
                   const SizedBox(height: 8),
@@ -801,7 +803,7 @@ class _SkeletonLoaderState extends State<SkeletonLoader>
                 ),
               ),
               const SizedBox(height: 16),
-              
+
               // Title skeleton
               Container(
                 width: double.infinity * 0.7,
@@ -820,7 +822,7 @@ class _SkeletonLoaderState extends State<SkeletonLoader>
                 ),
               ),
               const SizedBox(height: 8),
-              
+
               // Description skeleton
               Container(
                 width: double.infinity * 0.9,
@@ -862,7 +864,6 @@ class PageTransitionsDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          
           Card(
             color: Colors.blue,
             child: Padding(
@@ -891,7 +892,6 @@ class PageTransitionsDemo extends StatelessWidget {
               ),
             ),
           ),
-          
           SizedBox(height: 16),
           Card(
             color: Colors.orange,
@@ -926,7 +926,7 @@ class RecipeCardAnimationsDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          
+
           // Animated recipe card
           AnimatedRecipeCard(),
         ],
@@ -958,8 +958,7 @@ class _AnimatedRecipeCardState extends State<AnimatedRecipeCard> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           curve: Curves.easeOut,
-          transform: Matrix4.identity()
-            ..scale(_isHovered ? 1.02 : 1.0),
+          transform: Matrix4.identity()..scale(_isHovered ? 1.02 : 1.0),
           child: Card(
             elevation: _isHovered ? 8 : 2,
             child: Padding(
@@ -1044,7 +1043,6 @@ class ListAnimationsDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          
           Card(
             color: Colors.green,
             child: Padding(
@@ -1114,4 +1112,4 @@ class ButtonPressAnimationDemo extends StatelessWidget {
       ),
     );
   }
-} 
+}

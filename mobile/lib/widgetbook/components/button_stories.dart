@@ -3,7 +3,7 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:worldchef_mobile/src/ui/atoms/wc_button.dart';
 
 /// Button Component Stories - GREEN Step (Interactive, token-compliant)
-/// 
+///
 /// These stories demonstrate all WorldChef button variants and states interactively.
 List<WidgetbookComponent> buildButtonStories() {
   return [
@@ -40,7 +40,8 @@ List<WidgetbookComponent> buildButtonStories() {
         ),
         WidgetbookUseCase(
           name: 'Secondary Button States',
-          builder: (context) => ButtonStateDemo(variant: ButtonVariant.outlined),
+          builder: (context) =>
+              ButtonStateDemo(variant: ButtonVariant.outlined),
         ),
       ],
     ),
@@ -109,13 +110,13 @@ List<WidgetbookComponent> buildButtonStories() {
           builder: (context) => Center(
             child: WorldChefButton(
               label: 'Text',
-                onPressed: () {},
+              onPressed: () {},
               variant: ButtonVariant.text,
             ),
-                      ),
-                    ),
-                  ],
-                ),
+          ),
+        ),
+      ],
+    ),
   ];
 }
 
@@ -161,8 +162,8 @@ class _ButtonStateDemoState extends State<ButtonStateDemo> {
               ),
             ),
           ),
-          ),
-          const SizedBox(height: 16),
+        ),
+        const SizedBox(height: 16),
         Text('States: ' +
             (_hovered ? 'Hovered ' : '') +
             (_pressed ? 'Pressed ' : '') +
@@ -171,4 +172,4 @@ class _ButtonStateDemoState extends State<ButtonStateDemo> {
       ],
     );
   }
-} 
+}

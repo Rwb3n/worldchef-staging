@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:worldchef_mobile/src/core/design_system/dimensions.dart' show WorldChefDimensions;
-import 'package:worldchef_mobile/src/core/design_system/spacing.dart' show WorldChefSpacing;
+import 'package:worldchef_mobile/src/core/design_system/dimensions.dart'
+    show WorldChefDimensions;
+import 'package:worldchef_mobile/src/core/design_system/spacing.dart'
+    show WorldChefSpacing;
 
 void main() {
   group('Design system token exposure', () {
@@ -16,4 +18,4 @@ void main() {
       expect(WorldChefSpacing.xl, 32.0);
     });
   });
-} 
+}

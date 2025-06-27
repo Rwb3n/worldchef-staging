@@ -1,0 +1,1 @@
+yarn docs:build && git add docs/api/openapi_v1.json docs/guides/code-patterns.md docs/assets

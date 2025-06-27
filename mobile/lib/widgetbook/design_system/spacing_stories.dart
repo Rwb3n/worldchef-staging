@@ -108,14 +108,15 @@ class SpacingTokensDemo extends StatelessWidget {
           ),
 
           const SizedBox(height: WorldChefSpacing.lg),
-           Card(
+          Card(
             color: colorScheme.primaryContainer,
             child: Padding(
               padding: const EdgeInsets.all(WorldChefSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check_circle, color: colorScheme.onPrimaryContainer),
+                  Icon(Icons.check_circle,
+                      color: colorScheme.onPrimaryContainer),
                   const SizedBox(height: WorldChefSpacing.sm),
                   Text(
                     'GREEN STEP: Spacing System Implemented',
@@ -140,8 +141,8 @@ class SpacingTokensDemo extends StatelessWidget {
     );
   }
 
-  Widget _buildSpacingToken(String name, String size, String implementation, 
-                           double value, String usage) {
+  Widget _buildSpacingToken(String name, String size, String implementation,
+      double value, String usage) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -170,7 +171,7 @@ class SpacingTokensDemo extends StatelessWidget {
               ],
             ),
             const SizedBox(width: 16),
-            
+
             // Token info
             Expanded(
               child: Column(
@@ -238,7 +239,6 @@ class SpacingScaleDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -250,7 +250,7 @@ class SpacingScaleDemo extends StatelessWidget {
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // Visual spacing scale
                   _buildSpacingRow('XS', 4.0, Colors.red.shade200),
                   _buildSpacingRow('SM', 8.0, Colors.orange.shade200),
@@ -262,7 +262,6 @@ class SpacingScaleDemo extends StatelessWidget {
               ),
             ),
           ),
-          
           const SizedBox(height: 16),
           const Card(
             color: Colors.blue,
@@ -347,7 +346,7 @@ class CardSpacingDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // Recipe card example
           Card(
             child: Padding(
@@ -368,7 +367,7 @@ class CardSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16), // MD spacing
-                  
+
                   // Title
                   const Text(
                     'Classic Margherita Pizza',
@@ -378,7 +377,7 @@ class CardSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8), // SM spacing
-                  
+
                   // Description
                   Text(
                     'Authentic Neapolitan-style pizza with fresh basil and mozzarella',
@@ -388,7 +387,7 @@ class CardSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16), // MD spacing
-                  
+
                   // Metadata row
                   Row(
                     children: [
@@ -417,7 +416,7 @@ class CardSpacingDemo extends StatelessWidget {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 16),
           const Card(
             color: Colors.green,
@@ -469,7 +468,7 @@ class ListSpacingDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // Ingredient list example
           Card(
             child: Padding(
@@ -485,7 +484,7 @@ class ListSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16), // MD spacing
-                  
+
                   // List items
                   _buildListItem('500g tipo 00 flour', '2 cups'),
                   const SizedBox(height: 12), // Between items
@@ -500,9 +499,9 @@ class ListSpacingDemo extends StatelessWidget {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Recipe steps example
           Card(
             child: Padding(
@@ -518,12 +517,14 @@ class ListSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16), // MD spacing
-                  
+
                   _buildStepItem(1, 'Mix flour and salt in a large bowl'),
                   const SizedBox(height: 16), // MD spacing between steps
-                  _buildStepItem(2, 'Dissolve yeast in warm water and let stand for 5 minutes'),
+                  _buildStepItem(2,
+                      'Dissolve yeast in warm water and let stand for 5 minutes'),
                   const SizedBox(height: 16),
-                  _buildStepItem(3, 'Add yeast mixture to flour and mix until dough forms'),
+                  _buildStepItem(3,
+                      'Add yeast mixture to flour and mix until dough forms'),
                 ],
               ),
             ),
@@ -615,7 +616,6 @@ class FormSpacingDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -630,7 +630,7 @@ class FormSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24), // LG spacing after title
-                  
+
                   // Recipe name field
                   const Text(
                     'Recipe Name',
@@ -655,7 +655,7 @@ class FormSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24), // LG spacing between fields
-                  
+
                   // Description field
                   const Text(
                     'Description',
@@ -673,7 +673,7 @@ class FormSpacingDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24), // LG spacing
-                  
+
                   // Cooking time field
                   const Text(
                     'Cooking Time',
@@ -698,7 +698,7 @@ class FormSpacingDemo extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 32), // XL spacing before buttons
-                  
+
                   // Action buttons
                   Row(
                     children: [
@@ -743,7 +743,6 @@ class TouchTargetDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -758,7 +757,7 @@ class TouchTargetDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  
+
                   // Good touch targets
                   _buildTouchTargetExample(
                     'Primary Button',
@@ -772,9 +771,9 @@ class TouchTargetDemo extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   _buildTouchTargetExample(
                     'Icon Button',
                     true,
@@ -788,9 +787,9 @@ class TouchTargetDemo extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                   const SizedBox(height: 16),
-                  
+
                   _buildTouchTargetExample(
                     'List Item',
                     true,
@@ -802,9 +801,9 @@ class TouchTargetDemo extends StatelessWidget {
                       minVerticalPadding: 12, // Ensures 44dp+ height
                     ),
                   ),
-                  
+
                   const SizedBox(height: 24),
-                  
+
                   // Bad touch targets (too small)
                   const Text(
                     'Avoid: Too Small Touch Targets',
@@ -815,7 +814,7 @@ class TouchTargetDemo extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  
+
                   _buildTouchTargetExample(
                     'Small Icon (BAD)',
                     false,
@@ -836,7 +835,6 @@ class TouchTargetDemo extends StatelessWidget {
               ),
             ),
           ),
-          
           const SizedBox(height: 16),
           const Card(
             color: Colors.green,
@@ -907,4 +905,4 @@ class TouchTargetDemo extends StatelessWidget {
       ],
     );
   }
-} 
+}

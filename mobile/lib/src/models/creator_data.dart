@@ -7,5 +7,4 @@ class CreatorData {
     required this.name,
     this.avatarUrl,
   });
-} 
- 
+}

@@ -17,12 +17,12 @@ List<WidgetbookComponent> buildNavigationStories() {
           name: 'Interactive',
           builder: (context) {
             final isSelected = context.knobs.boolean(label: 'Selected');
-            final isEnabled = context.knobs.boolean(label: 'Enabled', initialValue: true);
+            final isEnabled =
+                context.knobs.boolean(label: 'Enabled', initialValue: true);
 
             return Theme(
               data: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)
-              ),
+                  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
               child: Scaffold(
                 backgroundColor: Colors.grey.shade200,
                 body: Center(
@@ -197,4 +197,4 @@ class _BottomNavigationDemoState extends State<BottomNavigationDemo> {
       ),
     );
   }
-} 
+}

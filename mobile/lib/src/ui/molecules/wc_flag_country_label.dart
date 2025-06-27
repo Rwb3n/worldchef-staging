@@ -15,7 +15,7 @@ class WCFlagCountryLabel extends StatelessWidget {
 
   /// The name of the country.
   final String countryName;
-  
+
   final TextStyle? style;
 
   const WCFlagCountryLabel({
@@ -32,7 +32,8 @@ class WCFlagCountryLabel extends StatelessWidget {
       children: [
         Text(
           flagEmoji,
-          style: const TextStyle(fontSize: 14), // Emojis have their own rendered size
+          style: const TextStyle(
+              fontSize: 14), // Emojis have their own rendered size
         ),
         const SizedBox(width: WorldChefSpacing.xs),
         Flexible(
@@ -45,4 +46,4 @@ class WCFlagCountryLabel extends StatelessWidget {
       ],
     );
   }
-} 
+}

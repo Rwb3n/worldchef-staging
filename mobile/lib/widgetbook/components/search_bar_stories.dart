@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 
 /// Search Bar Component Stories - RED Step (Will show placeholders/errors)
-/// 
+///
 /// These stories demonstrate WorldChef search bar components and will fail
 /// until design system implementation is completed in task t002.
 List<WidgetbookComponent> buildSearchBarStories() {
@@ -66,7 +66,7 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // PLACEHOLDER: Will be replaced with WorldChefSearchBar.primary in t002
           Card(
             child: Padding(
@@ -82,7 +82,6 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.grey.shade50,
@@ -92,7 +91,8 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
-                        hintText: 'Search for recipes, ingredients, or cuisines...',
+                        hintText:
+                            'Search for recipes, ingredients, or cuisines...',
                         hintStyle: TextStyle(
                           color: Colors.grey.shade500,
                           fontSize: 16,
@@ -133,7 +133,6 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
                       },
                     ),
                   ),
-                  
                   if (_isSearching) ...[
                     const SizedBox(height: 16),
                     Container(
@@ -168,7 +167,7 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 24),
           const Card(
             color: Colors.orange,
@@ -218,7 +217,7 @@ class SearchBarVariants extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // Compact search bar
           _buildSearchVariant(
             'Compact Search',
@@ -242,7 +241,7 @@ class SearchBarVariants extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Ingredient search
           _buildSearchVariant(
             'Ingredient Search',
@@ -280,7 +279,7 @@ class SearchBarVariants extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Voice search bar
           _buildSearchVariant(
             'Voice Search',
@@ -331,7 +330,7 @@ class SearchBarVariants extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Search with suggestions
           _buildSearchVariant(
             'Search with Quick Suggestions',
@@ -377,7 +376,8 @@ class SearchBarVariants extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchVariant(String title, String implementation, Widget searchBar) {
+  Widget _buildSearchVariant(
+      String title, String implementation, Widget searchBar) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -462,7 +462,7 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -494,8 +494,8 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                       const SizedBox(width: 8),
                       Container(
                         decoration: BoxDecoration(
-                          color: _showFilters 
-                              ? const Color(0xFF0288D1) 
+                          color: _showFilters
+                              ? const Color(0xFF0288D1)
                               : Colors.grey.shade100,
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -507,13 +507,15 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                           },
                           icon: Icon(
                             Icons.tune,
-                            color: _showFilters ? Colors.white : Colors.grey.shade600,
+                            color: _showFilters
+                                ? Colors.white
+                                : Colors.grey.shade600,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  
+
                   // Animated filter panel
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
@@ -524,7 +526,7 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                               const SizedBox(height: 16),
                               const Divider(),
                               const SizedBox(height: 16),
-                              
+
                               // Filter options
                               Row(
                                 children: [
@@ -552,7 +554,7 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                 ],
                               ),
                               const SizedBox(height: 16),
-                              
+
                               // Cuisine filter
                               _buildFilterRow(
                                 'Cuisine',
@@ -560,11 +562,20 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                   value: _selectedCuisine,
                                   isExpanded: true,
                                   items: const [
-                                    DropdownMenuItem(value: 'All', child: Text('All Cuisines')),
-                                    DropdownMenuItem(value: 'Italian', child: Text('Italian')),
-                                    DropdownMenuItem(value: 'Mexican', child: Text('Mexican')),
-                                    DropdownMenuItem(value: 'Asian', child: Text('Asian')),
-                                    DropdownMenuItem(value: 'American', child: Text('American')),
+                                    DropdownMenuItem(
+                                        value: 'All',
+                                        child: Text('All Cuisines')),
+                                    DropdownMenuItem(
+                                        value: 'Italian',
+                                        child: Text('Italian')),
+                                    DropdownMenuItem(
+                                        value: 'Mexican',
+                                        child: Text('Mexican')),
+                                    DropdownMenuItem(
+                                        value: 'Asian', child: Text('Asian')),
+                                    DropdownMenuItem(
+                                        value: 'American',
+                                        child: Text('American')),
                                   ],
                                   onChanged: (value) {
                                     setState(() {
@@ -573,7 +584,7 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                   },
                                 ),
                               ),
-                              
+
                               // Cooking time filter
                               _buildFilterRow(
                                 'Cooking Time',
@@ -581,11 +592,20 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                   value: _selectedTime,
                                   isExpanded: true,
                                   items: const [
-                                    DropdownMenuItem(value: 'Any', child: Text('Any Time')),
-                                    DropdownMenuItem(value: '15', child: Text('Under 15 min')),
-                                    DropdownMenuItem(value: '30', child: Text('Under 30 min')),
-                                    DropdownMenuItem(value: '60', child: Text('Under 1 hour')),
-                                    DropdownMenuItem(value: '60+', child: Text('Over 1 hour')),
+                                    DropdownMenuItem(
+                                        value: 'Any', child: Text('Any Time')),
+                                    DropdownMenuItem(
+                                        value: '15',
+                                        child: Text('Under 15 min')),
+                                    DropdownMenuItem(
+                                        value: '30',
+                                        child: Text('Under 30 min')),
+                                    DropdownMenuItem(
+                                        value: '60',
+                                        child: Text('Under 1 hour')),
+                                    DropdownMenuItem(
+                                        value: '60+',
+                                        child: Text('Over 1 hour')),
                                   ],
                                   onChanged: (value) {
                                     setState(() {
@@ -594,7 +614,7 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                   },
                                 ),
                               ),
-                              
+
                               // Difficulty filter
                               _buildFilterRow(
                                 'Difficulty',
@@ -602,10 +622,14 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                   value: _selectedDifficulty,
                                   isExpanded: true,
                                   items: const [
-                                    DropdownMenuItem(value: 'Any', child: Text('Any Level')),
-                                    DropdownMenuItem(value: 'Easy', child: Text('Easy')),
-                                    DropdownMenuItem(value: 'Medium', child: Text('Medium')),
-                                    DropdownMenuItem(value: 'Hard', child: Text('Hard')),
+                                    DropdownMenuItem(
+                                        value: 'Any', child: Text('Any Level')),
+                                    DropdownMenuItem(
+                                        value: 'Easy', child: Text('Easy')),
+                                    DropdownMenuItem(
+                                        value: 'Medium', child: Text('Medium')),
+                                    DropdownMenuItem(
+                                        value: 'Hard', child: Text('Hard')),
                                   ],
                                   onChanged: (value) {
                                     setState(() {
@@ -614,7 +638,7 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                   },
                                 ),
                               ),
-                              
+
                               // Dietary restriction
                               CheckboxListTile(
                                 title: const Text('Vegetarian Only'),
@@ -624,12 +648,13 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                                     _vegetarianOnly = value!;
                                   });
                                 },
-                                controlAffinity: ListTileControlAffinity.leading,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
                                 contentPadding: EdgeInsets.zero,
                               ),
-                              
+
                               const SizedBox(height: 16),
-                              
+
                               // Apply filters button
                               SizedBox(
                                 width: double.infinity,
@@ -652,11 +677,11 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
               ),
             ),
           ),
-          
+
           // Active filters display
-          if (_selectedCuisine != 'All' || 
-              _selectedTime != 'Any' || 
-              _selectedDifficulty != 'Any' || 
+          if (_selectedCuisine != 'All' ||
+              _selectedTime != 'Any' ||
+              _selectedDifficulty != 'Any' ||
               _vegetarianOnly) ...[
             const SizedBox(height: 16),
             Card(
@@ -680,7 +705,8 @@ class _SearchWithFiltersState extends State<SearchWithFilters> {
                         if (_selectedTime != 'Any')
                           _buildActiveFilterChip('Time: $_selectedTime'),
                         if (_selectedDifficulty != 'Any')
-                          _buildActiveFilterChip('Difficulty: $_selectedDifficulty'),
+                          _buildActiveFilterChip(
+                              'Difficulty: $_selectedDifficulty'),
                         if (_vegetarianOnly)
                           _buildActiveFilterChip('Vegetarian'),
                       ],
@@ -751,7 +777,7 @@ class _SearchStatesAndResultsState extends State<SearchStatesAndResults> {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // State selector
           Card(
             child: Padding(
@@ -777,9 +803,9 @@ class _SearchStatesAndResultsState extends State<SearchStatesAndResults> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Search bar
           Container(
             decoration: BoxDecoration(
@@ -798,9 +824,9 @@ class _SearchStatesAndResultsState extends State<SearchStatesAndResults> {
               ),
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Dynamic content based on state
           _buildStateContent(),
         ],
@@ -931,7 +957,7 @@ class _SearchStatesAndResultsState extends State<SearchStatesAndResults> {
           ),
         ),
         const SizedBox(height: 16),
-        
+
         // Sample search results
         _buildSearchResultItem(
           'Creamy Carbonara',
@@ -1065,4 +1091,4 @@ class _SearchStatesAndResultsState extends State<SearchStatesAndResults> {
       ),
     );
   }
-} 
+}

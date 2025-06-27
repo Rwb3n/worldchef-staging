@@ -18,7 +18,8 @@ class AppTheme {
           padding: WorldChefLayout.primaryButtonPadding,
           minimumSize: const Size.fromHeight(WorldChefDimensions.buttonLarge),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
         ),
       ),
@@ -48,7 +49,8 @@ class AppTheme {
           padding: WorldChefLayout.primaryButtonPadding,
           minimumSize: const Size.fromHeight(WorldChefDimensions.buttonLarge),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusMedium),
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusMedium),
           ),
           backgroundColor: darkColorScheme.primary,
           foregroundColor: darkColorScheme.onPrimary,
@@ -69,4 +71,4 @@ class AppTheme {
       ),
     );
   }
-} 
+}

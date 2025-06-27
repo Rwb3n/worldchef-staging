@@ -32,17 +32,17 @@ class RecipeCardData {
 }
 
 /// WCFeaturedRecipeCard - Organism component that displays a featured recipe card
-/// 
+///
 /// This organism follows the atomic design pattern and uses WorldChef design tokens
 /// for consistent spacing, typography, and colors throughout the application.
-/// 
+///
 /// Design System Compliance:
 /// - Uses WorldChefMedia.horizontalRatio (4:3) for card aspect ratio
 /// - Uses WorldChefDimensions.radiusLarge (12dp) for card border radius
 /// - Uses WorldChefSpacing tokens for consistent internal spacing
 /// - Uses WorldChefTextStyles.headlineSmall for recipe title
 /// - Composes WCCreatorInfoRow and WCStarRatingDisplay molecules
-/// 
+///
 /// Features:
 /// - 4:3 aspect ratio container with hero image background
 /// - Recipe title with proper typography
@@ -54,7 +54,7 @@ class RecipeCardData {
 class WCFeaturedRecipeCard extends StatelessWidget {
   /// Recipe data to display
   final RecipeCardData recipe;
-  
+
   /// Callback for when the card is tapped
   final VoidCallback onTap;
 
@@ -72,7 +72,8 @@ class WCFeaturedRecipeCard extends StatelessWidget {
         aspectRatio: 4.0 / 3.0, // 4:3 aspect ratio as per design spec
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusLarge), // 12dp
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusLarge), // 12dp
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
@@ -82,7 +83,8 @@ class WCFeaturedRecipeCard extends StatelessWidget {
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(WorldChefDimensions.radiusLarge),
+            borderRadius:
+                BorderRadius.circular(WorldChefDimensions.radiusLarge),
             child: Stack(
               children: [
                 // Hero image background
@@ -117,7 +119,7 @@ class WCFeaturedRecipeCard extends StatelessWidget {
                     },
                   ),
                 ),
-                
+
                 // Gradient overlay for text readability
                 Positioned.fill(
                   child: Container(
@@ -134,7 +136,7 @@ class WCFeaturedRecipeCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                
+
                 // Content overlay
                 Positioned(
                   left: WorldChefSpacing.md, // 16dp padding
@@ -154,78 +156,60 @@ class WCFeaturedRecipeCard extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      
+
                       SizedBox(height: WorldChefSpacing.sm), // 8dp spacing
-                      
+
                       // Creator info row
                       Theme(
                         data: Theme.of(context).copyWith(
                           textTheme: Theme.of(context).textTheme.apply(
-                            bodyColor: Colors.white,
-                            displayColor: Colors.white,
-                          ),
+                                bodyColor: Colors.white,
+                                displayColor: Colors.white,
+                              ),
                         ),
                         child: WCCreatorInfoRow(creator: recipe.creator),
                       ),
-                      
+
                       SizedBox(height: WorldChefSpacing.xs), // 4dp spacing
-                      
+
                       // Rating and metadata row
-                      Row(
+                      Wrap(
+                        spacing: 8,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           // Star rating display
                           Theme(
                             data: Theme.of(context).copyWith(
                               textTheme: Theme.of(context).textTheme.apply(
-                                bodyColor: Colors.white,
-                                displayColor: Colors.white,
-                              ),
+                                    bodyColor: Colors.white,
+                                    displayColor: Colors.white,
+                                  ),
                             ),
                             child: WCStarRatingDisplay(
                               rating: recipe.rating,
                               reviewCount: recipe.reviewCount,
                             ),
                           ),
-                          
-                          const Spacer(),
-                          
+
                           // Cook time
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                Icons.access_time,
-                                size: WorldChefDimensions.iconSmall, // 16dp
-                                color: Colors.white.withOpacity(0.9),
-                              ),
-                              SizedBox(width: WorldChefSpacing.xs / 2), // 2dp spacing
-                              Text(
-                                recipe.cookTime,
-                                style: WorldChefTextStyles.bodySmall.copyWith(
-                                  color: Colors.white.withOpacity(0.9),
-                                ),
-                              ),
+                              Icon(Icons.access_time, size: 16, color: Colors.white),
+                              const SizedBox(width: 4),
+                              Text(recipe.cookTime,
+                                  style: WorldChefTextStyles.bodySmall.copyWith(color: Colors.white)),
                             ],
                           ),
-                          
-                          SizedBox(width: WorldChefSpacing.sm), // 8dp spacing
-                          
+
                           // Servings
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                Icons.people,
-                                size: WorldChefDimensions.iconSmall, // 16dp
-                                color: Colors.white.withOpacity(0.9),
-                              ),
-                              SizedBox(width: WorldChefSpacing.xs / 2), // 2dp spacing
-                              Text(
-                                '${recipe.servings} servings',
-                                style: WorldChefTextStyles.bodySmall.copyWith(
-                                  color: Colors.white.withOpacity(0.9),
-                                ),
-                              ),
+                              Icon(Icons.restaurant, size: 16, color: Colors.white),
+                              const SizedBox(width: 4),
+                              Text('${recipe.servings}p',
+                                  style: WorldChefTextStyles.bodySmall.copyWith(color: Colors.white)),
                             ],
                           ),
                         ],
@@ -240,4 +224,4 @@ class WCFeaturedRecipeCard extends StatelessWidget {
       ),
     );
   }
-} 
+}

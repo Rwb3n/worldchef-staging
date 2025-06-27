@@ -98,14 +98,15 @@ class NunitoTypographyScale extends StatelessWidget {
           ),
 
           const SizedBox(height: 24),
-           Card(
+          Card(
             color: Theme.of(context).colorScheme.primaryContainer,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check_circle, color: Theme.of(context).colorScheme.onPrimaryContainer),
+                  Icon(Icons.check_circle,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer),
                   const SizedBox(height: 8),
                   Text(
                     'GREEN STEP: Typography System Implemented',
@@ -119,7 +120,7 @@ class NunitoTypographyScale extends StatelessWidget {
                     'These styles are now dynamically sourced from the active '
                     'ThemeData via Theme.of(context).textTheme. The google_fonts '
                     'package provides Lora and Nunito fonts.',
-                     style: textTheme.bodyMedium?.copyWith(
+                    style: textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
                   ),
@@ -133,7 +134,7 @@ class NunitoTypographyScale extends StatelessWidget {
   }
 
   Widget _buildTypographyCard(String name, String usage, String implementation,
-                             TextStyle style, String sampleText) {
+      TextStyle style, String sampleText) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -184,10 +185,10 @@ class NunitoTypographyScale extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-            
+
             // Sample text
             Text(sampleText, style: style),
-            
+
             const SizedBox(height: 12),
             Text(
               implementation,
@@ -231,7 +232,8 @@ class LoraHeadlineScale extends StatelessWidget {
       child: Card(
         child: Padding(
           padding: EdgeInsets.all(16.0),
-          child: Text('DEPRECATED: Lora headlines are part of the main Material 3 Type Scale story.'),
+          child: Text(
+              'DEPRECATED: Lora headlines are part of the main Material 3 Type Scale story.'),
         ),
       ),
     );
@@ -254,17 +256,18 @@ class UITextStyles extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
+
           // Button text examples
           _buildContextCard(
             'Button Text',
             'Primary and secondary buttons',
             [
               _buildButtonExample('Primary CTA', Colors.blue, Colors.white),
-              _buildButtonExample('Secondary', Colors.grey.shade200, Colors.black87),
+              _buildButtonExample(
+                  'Secondary', Colors.grey.shade200, Colors.black87),
             ],
           ),
-          
+
           // Form text examples
           _buildContextCard(
             'Form Elements',
@@ -273,7 +276,7 @@ class UITextStyles extends StatelessWidget {
               _buildFormExample(),
             ],
           ),
-          
+
           // Navigation text examples
           _buildContextCard(
             'Navigation',
@@ -287,7 +290,8 @@ class UITextStyles extends StatelessWidget {
     );
   }
 
-  Widget _buildContextCard(String title, String description, List<Widget> examples) {
+  Widget _buildContextCard(
+      String title, String description, List<Widget> examples) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       child: Padding(
@@ -312,7 +316,8 @@ class UITextStyles extends StatelessWidget {
     );
   }
 
-  Widget _buildButtonExample(String text, Color backgroundColor, Color textColor) {
+  Widget _buildButtonExample(
+      String text, Color backgroundColor, Color textColor) {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       child: ElevatedButton(
@@ -403,7 +408,7 @@ class ContentTextStyles extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          
+
           // Recipe content example
           Card(
             child: Padding(
@@ -421,7 +426,7 @@ class ContentTextStyles extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-                  
+
                   // Recipe subtitle (Lora)
                   Text(
                     'Authentic Neapolitan-style pizza with fresh basil',
@@ -432,7 +437,7 @@ class ContentTextStyles extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  
+
                   // Body text (Nunito)
                   Text(
                     'This classic Margherita pizza recipe brings the authentic taste of Naples to your kitchen. With a perfectly crispy crust, tangy tomato sauce, and fresh mozzarella, it\'s a timeless favorite that never goes out of style.',
@@ -443,7 +448,7 @@ class ContentTextStyles extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-                  
+
                   // Section header (Lora)
                   Text(
                     'Ingredients',
@@ -454,7 +459,7 @@ class ContentTextStyles extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-                  
+
                   // Ingredient list (Nunito)
                   Text(
                     '• 500g tipo 00 flour\n'
@@ -472,7 +477,7 @@ class ContentTextStyles extends StatelessWidget {
               ),
             ),
           ),
-          
+
           SizedBox(height: 16),
           Card(
             color: Colors.orange,
@@ -507,19 +512,16 @@ class TextScaleDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
-          
           const Text(
             'Use the Text Scale addon in Widgetbook to test different accessibility scales:',
             style: TextStyle(fontSize: 16),
           ),
           const SizedBox(height: 16),
-          
           _buildScaleExample('0.8x - Small', 0.8),
           _buildScaleExample('1.0x - Default', 1.0),
           _buildScaleExample('1.2x - Large', 1.2),
           _buildScaleExample('1.5x - Extra Large', 1.5),
           _buildScaleExample('2.0x - Accessibility', 2.0),
-          
           const SizedBox(height: 16),
           const Card(
             color: Colors.green,
@@ -596,7 +598,6 @@ class ReadingFlowDemo extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 16),
-          
           Card(
             child: Padding(
               padding: EdgeInsets.all(16.0),
@@ -609,31 +610,31 @@ class ReadingFlowDemo extends StatelessWidget {
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 8),
-                  
+
                   Text(
                     '2. Recipe Subtitle/Description',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
                   ),
                   SizedBox(height: 16),
-                  
+
                   Text(
                     '3. Section Headers',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 8),
-                  
+
                   Text(
                     '4. Body text for instructions and descriptions with proper line height for optimal readability. This text should flow naturally and be easy to scan.',
                     style: TextStyle(fontSize: 16, height: 1.5),
                   ),
                   SizedBox(height: 12),
-                  
+
                   Text(
                     '5. Secondary information and captions',
                     style: TextStyle(fontSize: 14, height: 1.4),
                   ),
                   SizedBox(height: 8),
-                  
+
                   Text(
                     '6. LABELS AND SMALL TEXT',
                     style: TextStyle(
@@ -646,7 +647,6 @@ class ReadingFlowDemo extends StatelessWidget {
               ),
             ),
           ),
-          
           SizedBox(height: 16),
           Card(
             color: Colors.blue,
@@ -680,4 +680,4 @@ class ReadingFlowDemo extends StatelessWidget {
       ),
     );
   }
-} 
+}
